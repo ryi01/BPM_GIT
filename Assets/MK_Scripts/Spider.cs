@@ -6,6 +6,8 @@ using UnityEngine;
 // FSM 사용해서 Move, Jump, Run으로 바꿔야할듯
 public class Spider : MonoBehaviour
 {
+    // 점프 힘
+    public float jumpPow = 2;
     // 필요속성 : 현재 시간
     float currentTime = 0;
     // 속도
@@ -18,7 +20,10 @@ public class Spider : MonoBehaviour
     float stopTime = 2;
     // 달리는 시간
     float runTime = 4;
+    // 플레이어와의 방향
     Vector3 runDir;
+    // 플레이어의 위치
+    Vector3 pPos;
     // 리지드바디
     Rigidbody sRigid;
 
@@ -27,7 +32,8 @@ public class Spider : MonoBehaviour
         Move,
         Run,
         Jump,
-        Stop
+        Stop,
+        Set
     }
     SpiderState state;
     // Start is called before the first frame update
@@ -62,6 +68,10 @@ public class Spider : MonoBehaviour
         else if (state == SpiderState.Jump)
         {
             SpiderJump();
+        }
+        else if(state == SpiderState.Set)
+        {
+            SpiderSet();
         }
 
     }
@@ -99,9 +109,11 @@ public class Spider : MonoBehaviour
         currentTime += Time.deltaTime;
         if(currentTime > stopTime)
         {
-            runDir = player.transform.position - transform.position;
+            // 플레이어 방향
+            runDir = player.position - transform.position;
             runDir.Normalize();
             state = SpiderState.Jump;
+            print(pPos);
             /*int rndAttack = Random.Range(0, 1);
             if(rndAttack == 0)
             {
@@ -124,44 +136,66 @@ public class Spider : MonoBehaviour
         if (currentTime >= runTime)
         {
             currentTime = 0;
-            state = SpiderState.Move;
+            state = SpiderState.Set;
         }
     }
 
     private void SpiderJump()
     {
-        Debug.Log("Jump");
-        sRigid.AddForceAtPosition(Vector3.forward, runDir, ForceMode.Impulse);
+        runDir += Vector3.up;
+        // 그쪽으로 점프하고 싶다
+        sRigid.AddForce(Vector3.up * jumpPow, ForceMode.Impulse);
+        float dis = Vector3.Distance(transform.position, runDir);
+        if(dis < 2)
+        {
+            state = SpiderState.Set;
+        }
+    }
+    // 가만히 서서 플레이어 바라보기
+    private void SpiderSet()
+    {
+        Vector3 mySight = new Vector3(player.position.x, transform.position.y, player.position.z);
+        transform.LookAt(mySight);
+
+        // 그 자리에 멈추지만, 플레이어는 바라봐야함.
+        transform.position += dir * 0 * Time.deltaTime;
+
+        currentTime += Time.deltaTime;
+        if(currentTime > 3)
+        {
+            state = SpiderState.Move;
+            currentTime = 0;
+        }
     }
 
- /*   void SpiderAttack(Vector3 dir)
-    {        
-        // 랜덤으로 할 행동을 고르고
-        int rnd = Random.Range(0, 1);
-        if (rnd == 0)
-        {
-            // 랜덤시간마다
-            float rndTime = Random.Range(3, 10);
-            // 시간이 흐르고
-            currentTime += Time.deltaTime;
-            if (rndTime < currentTime)
-            {
-                // 그쪽으로 점프하고 싶다
-                transform.position = Vector3.Slerp(transform.position, player.transform.position, 0.05f);
-            }
-        }
-        else
-        {
-            // 랜덤시간마다
-            float rndTime = Random.Range(3, 10);
-            // 시간이 흐르고
-            currentTime += Time.deltaTime;
-            if (rndTime < currentTime)
-            {
-                // 그쪽으로 점프하고 싶다
-                transform.position += dir * speed * 2 * Time.deltaTime;
-            }
-        }
+    /*   void SpiderAttack(Vector3 dir)
+       {        
+           // 랜덤으로 할 행동을 고르고
+           int rnd = Random.Range(0, 1);
+           if (rnd == 0)
+           {
+               // 랜덤시간마다
+               float rndTime = Random.Range(3, 10);
+               // 시간이 흐르고
+               currentTime += Time.deltaTime;
+               if (rndTime < currentTime)
+               {
+                   // 그쪽으로 점프하고 싶다
+                   transform.position = Vector3.Slerp(transform.position, player.transform.position, 0.05f);
+               }
+           }
+           else
+           {
+               // 랜덤시간마다
+               float rndTime = Random.Range(3, 10);
+               // 시간이 흐르고
+               currentTime += Time.deltaTime;
+               if (rndTime < currentTime)
+               {
+                   // 그쪽으로 점프하고 싶다
+                   transform.position += dir * speed * 2 * Time.deltaTime;
+               }
+           }
 
-    }*/
+       }*/
 }
