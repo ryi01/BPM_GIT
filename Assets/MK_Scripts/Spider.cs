@@ -22,8 +22,8 @@ public class Spider : MonoBehaviour
     float runTime = 4;
     // 플레이어와의 방향
     Vector3 runDir;
-    // 플레이어의 위치
-    Vector3 pPos;
+    // y속도
+    float yVelocity;
     // 리지드바디
     Rigidbody sRigid;
 
@@ -33,25 +33,27 @@ public class Spider : MonoBehaviour
         Run,
         Jump,
         Stop,
-        Set
+        Set,
+        Back
     }
     SpiderState state;
     // Start is called before the first frame update
     void Start()
     {
         // 플레이어 찾기
-        player = GameObject.Find("Dummy_Player").transform;
+        player = GameObject.Find("Pos").GetComponent<Transform>();
         state = SpiderState.Move;
         sRigid = GetComponent<Rigidbody>();
-
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-
-        dir = player.transform.position - transform.position;
+        // 플레이어까지의 방향
+        dir = player.position - transform.position;
         dir.Normalize();
+        // 중력 넣기
+        yVelocity += -9.8f * Time.deltaTime;
 
         if (state == SpiderState.Move)
         {
@@ -69,10 +71,27 @@ public class Spider : MonoBehaviour
         {
             SpiderJump();
         }
-        else if(state == SpiderState.Set)
+        else if (state == SpiderState.Set)
         {
             SpiderSet();
         }
+        else if (state == SpiderState.Back)
+        {
+            SpiderBack();
+        }
+
+        if (state == SpiderState.Jump)
+        {
+            yVelocity = jumpPow;
+        }
+
+    }
+    private void Update()
+    {
+/*        if (sRigid.constraints == RigidbodyConstraints.None)
+        {
+            sRigid.constraints = RigidbodyConstraints.FreezePositionY & RigidbodyConstraints.FreezeRotation;
+        }*/
 
     }
 
@@ -87,7 +106,7 @@ public class Spider : MonoBehaviour
 
         // 랜덤 시간이 되면
         currentTime += Time.deltaTime;
-        int rndTime = Random.Range(2, 5);
+        int rndTime = Random.Range(2, 8);
         if (currentTime > rndTime)
         {
             // stop으로 바뀌기
@@ -100,11 +119,7 @@ public class Spider : MonoBehaviour
     // 그 자리에 서서 멈추고 플레이어만 바라보다가 일정 시간이 지난 후, 런이나 점프 모드로 바뀜
     private void SpiderStop()
     {
-        Vector3 mySight = new Vector3(player.position.x, transform.position.y, player.position.z);
-        transform.LookAt(mySight);
-
-        // 그 자리에 멈추지만, 플레이어는 바라봐야함.
-        transform.position += dir * 0 * Time.deltaTime;
+        LookPlayer();
         // 일정시간이 지나면
         currentTime += Time.deltaTime;
         if(currentTime > stopTime)
@@ -112,53 +127,45 @@ public class Spider : MonoBehaviour
             // 플레이어 방향
             runDir = player.position - transform.position;
             runDir.Normalize();
-            state = SpiderState.Jump;
-            print(pPos);
-            /*int rndAttack = Random.Range(0, 1);
-            if(rndAttack == 0)
+
+            int rndAttack = Random.Range(0, 2);
+            if (rndAttack == 0)
             {
                 state = SpiderState.Run;
             }
             else
             {
                 state = SpiderState.Jump;
-            }*/
+            }
         }
         
     }
     private void SpiderRun()
     {
-
         // 일정시간동안 계속 달림 => 플레이어의 위치는 뛰는 순간 고정
         currentTime += Time.deltaTime;
 
-        transform.position += runDir * (speed + 1f) * Time.deltaTime;
+        transform.position += runDir * (speed + 3f) * Time.deltaTime;
         if (currentTime >= runTime)
         {
             currentTime = 0;
             state = SpiderState.Set;
         }
     }
-
     private void SpiderJump()
     {
-        runDir += Vector3.up;
-        // 그쪽으로 점프하고 싶다
-        sRigid.AddForce(Vector3.up * jumpPow, ForceMode.Impulse);
-        float dis = Vector3.Distance(transform.position, runDir);
-        if(dis < 2)
-        {
-            state = SpiderState.Set;
-        }
+
+        // 특정지점까지 점프해야함
+        runDir.y = yVelocity;
+
+        transform.position += runDir * speed * Time.deltaTime;
+
     }
+
     // 가만히 서서 플레이어 바라보기
     private void SpiderSet()
     {
-        Vector3 mySight = new Vector3(player.position.x, transform.position.y, player.position.z);
-        transform.LookAt(mySight);
-
-        // 그 자리에 멈추지만, 플레이어는 바라봐야함.
-        transform.position += dir * 0 * Time.deltaTime;
+        LookPlayer();
 
         currentTime += Time.deltaTime;
         if(currentTime > 3)
@@ -167,35 +174,41 @@ public class Spider : MonoBehaviour
             currentTime = 0;
         }
     }
+    // 넉백
+    void SpiderBack()
+    {
+        NockBack();
 
-    /*   void SpiderAttack(Vector3 dir)
-       {        
-           // 랜덤으로 할 행동을 고르고
-           int rnd = Random.Range(0, 1);
-           if (rnd == 0)
-           {
-               // 랜덤시간마다
-               float rndTime = Random.Range(3, 10);
-               // 시간이 흐르고
-               currentTime += Time.deltaTime;
-               if (rndTime < currentTime)
-               {
-                   // 그쪽으로 점프하고 싶다
-                   transform.position = Vector3.Slerp(transform.position, player.transform.position, 0.05f);
-               }
-           }
-           else
-           {
-               // 랜덤시간마다
-               float rndTime = Random.Range(3, 10);
-               // 시간이 흐르고
-               currentTime += Time.deltaTime;
-               if (rndTime < currentTime)
-               {
-                   // 그쪽으로 점프하고 싶다
-                   transform.position += dir * speed * 2 * Time.deltaTime;
-               }
-           }
+        state = SpiderState.Set;
+    }
+    void LookPlayer()
+    {
+        Vector3 mySight = new Vector3(player.position.x, transform.position.y, player.position.z);
+        transform.LookAt(mySight);
 
-       }*/
+        // 그 자리에 멈추지만, 플레이어는 바라봐야함.
+        transform.position += dir * 0 * Time.deltaTime;
+    }
+
+    // 부딪혔을 경우,
+    // 넉백 힘
+    public float backPow = 3;
+    // 넉백용 함수
+    public void NockBack()
+    {
+        sRigid.AddForce(-dir * backPow, ForceMode.Impulse);
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.name.Contains("Player"))
+        {
+            state = SpiderState.Back;
+        }
+        if (collision.gameObject.name.Contains("Floor") && state == SpiderState.Jump)
+        {
+
+            state = SpiderState.Set;
+        }
+    }
+
 }

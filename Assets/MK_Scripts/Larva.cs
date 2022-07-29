@@ -26,7 +26,7 @@ public class Larva : MonoBehaviour
     void Start()
     {
         // 플레이어 찾기
-        player = GameObject.Find("Dummy_Player").transform;
+        player = GameObject.Find("Pos").transform;
         // 리지드바디 가져오기
         rigid = GetComponent<Rigidbody>();
     }
