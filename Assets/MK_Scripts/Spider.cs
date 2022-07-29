@@ -4,6 +4,7 @@ using UnityEngine;
 
 // 거미 : 랜덤 시간마다 플레이어의 위치로 점프하거나 돌진함
 // FSM 사용해서 Move, Jump, Run으로 바꿔야할듯
+// 공격부 추가하기 07.29 아직 안함 => 하면 지워라
 public class Spider : MonoBehaviour
 {
     // 점프 힘
