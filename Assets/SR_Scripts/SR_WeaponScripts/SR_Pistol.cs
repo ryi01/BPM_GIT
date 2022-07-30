@@ -15,9 +15,25 @@ public class SR_Pistol : MonoBehaviour
     public float fireRate = 15f;
     private float nextTimeToFire = 0f;
 
+    public int maxAmmo = 10;
+    private int currentAmmo;
+    public float reloadTime = 1f;
+    private bool isReloading = false;
+    private void Start()
+    {
+        currentAmmo = maxAmmo;
+    }
+
     void Update()
     {
-        if(Input.GetButtonDown("Fire1") && Time.time >= nextTimeToFire)
+        if (isReloading) return;
+
+        if (currentAmmo <= 0)
+        {
+            StartCoroutine(Reload());
+            return;
+        }
+        if (Input.GetButtonDown("Fire1") && Time.time >= nextTimeToFire)
         {
             muzzle = Instantiate(muzzleFactory,muzzlePoint);
 
@@ -26,9 +42,17 @@ public class SR_Pistol : MonoBehaviour
             Shoot();
         }
     }
+    IEnumerator Reload()
+    {
+        isReloading = true;
+        Debug.Log("Reloading....");
+        yield return new WaitForSeconds(reloadTime);
+        currentAmmo = maxAmmo;
+        isReloading = false;
+    }
     void Shoot()
     {
-        
+        currentAmmo--;
 
         RaycastHit hit;
 
