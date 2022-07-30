@@ -19,7 +19,8 @@ public class Bat : MonoBehaviour
     enum BatState
     {
         Come,
-        Move
+        Move,
+        Stop
     }
     BatState batState;
     // 플레이어
@@ -49,6 +50,10 @@ public class Bat : MonoBehaviour
         {
             BatCome();
         }
+        else if (batState == BatState.Stop)
+        {
+            BatStop();
+        }
     }
     // 플레이어를 향해 특정 부분까지 가까워짐
     private void BatCome()
@@ -68,25 +73,35 @@ public class Bat : MonoBehaviour
     float x;
     float y;
     float z;
+    Vector3 batDir;
+    Vector3 pos;
 
     // 플레이어와 가깝다면 공중에서 랜덤으로 움직임
     private void BatMove()
     {
+
         currentTime += Time.deltaTime;
         if (currentTime > moveTime)
         {
-            x = UnityEngine.Random.Range(-2, 2);
+            x = UnityEngine.Random.Range(-1, 1);
             y = UnityEngine.Random.Range(2, 5);
             z = UnityEngine.Random.Range(-2, 2);
+            pos = new Vector3(x, y, z);
+            batDir = pos - transform.position;
+            currentTime = 0;
         }
-        Vector3 pos = new Vector3(x, y, z);
-        Vector3 dir = pos - transform.position;
-        transform.position += dir * bSpeed * Time.deltaTime;
+        print(pos);
 
-        
-        if(transform.position )
-
-        
+        transform.position += batDir.normalized * bSpeed * Time.deltaTime;
+        float dis = Vector3.Distance(pos, transform.position);
+        if(dis < 0.5f)
+        {
+            batState = BatState.Stop;
+        }
+    }
+    void BatStop()
+    {
+        transform.position += dir * 0 * Time.deltaTime;
     }
 
 }
