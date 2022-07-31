@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SR_PlayerMove : MonoBehaviour
 {
@@ -17,6 +18,12 @@ public class SR_PlayerMove : MonoBehaviour
 
     public bool dashing;
 
+    public int hp = 100;
+    int maxHp = 100;
+    public Slider hpSlider;
+    public Text hpText;
+    public Text maxHpText;
+
     void Start()
     {
         cc = GetComponent<CharacterController>();
@@ -24,6 +31,10 @@ public class SR_PlayerMove : MonoBehaviour
 
     void Update()
     {
+        hpSlider.value = (float)hp / (float)maxHp;
+        hpText.text = hp + " ";
+        maxHpText.text = "/ " + maxHp;
+
         finalSpeed = speed;
 
         //«Ǫ
