@@ -2,17 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// 利 HP 包府 
 public class EnemyHP : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    // 教臂沛
+    public static EnemyHP instance;
+    private void Awake()
     {
-        
+        instance = this;
     }
-
-    // Update is called once per frame
-    void Update()
+    // 眉仿
+    int enemyHP;
+    public int ENEMYHP
     {
-        
+        get { return enemyHP; }
+        set
+        {
+            enemyHP = value;
+            
+        }
     }
 }

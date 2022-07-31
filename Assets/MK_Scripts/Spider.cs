@@ -48,6 +48,9 @@ public class Spider : MonoBehaviour
         player = GameObject.Find("Pos").GetComponent<Transform>();
         state = SpiderState.Move;
         sRigid = GetComponent<Rigidbody>();
+
+        // 적 체력 세팅
+        EnemyHP.instance.ENEMYHP = 5;
     }
 
     // Update is called once per frame

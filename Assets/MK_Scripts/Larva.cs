@@ -29,6 +29,9 @@ public class Larva : MonoBehaviour
         player = GameObject.Find("Pos").transform;
         // 리지드바디 가져오기
         rigid = GetComponent<Rigidbody>();
+        // 체력
+        // 적 체력 세팅
+        EnemyHP.instance.ENEMYHP = 2;
     }
 
     // Update is called once per frame

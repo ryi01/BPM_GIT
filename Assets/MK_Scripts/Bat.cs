@@ -32,10 +32,19 @@ public class Bat : MonoBehaviour
     float currentTime;
     // 총알 발사용 시간
     float currentTime2;
+    // 랜덤 좌표
+    float x;
+    float y;
+    float z;
+    // 방향 백터 및 위치
+    Vector3 batDir;
+    Vector3 pos;
 
     // Start is called before the first frame update
     void Start()
     {
+        // 적 체력 세팅
+        EnemyHP.instance.ENEMYHP = 1;
     }
 
     // Update is called once per frame
@@ -87,13 +96,6 @@ public class Bat : MonoBehaviour
             batState = BatState.Move;
         }
     }
-    // 랜덤 좌표
-    float x;
-    float y;
-    float z;
-    // 방향 백터 및 위치
-    Vector3 batDir;
-    Vector3 pos;
 
     // 플레이어와 가깝다면 공중에서 랜덤으로 움직임
     private void BatMove()
