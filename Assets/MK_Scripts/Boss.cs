@@ -87,7 +87,7 @@ public class Boss : MonoBehaviour
     // 플레이어를 향해 움직임
     private void BossMove()
     {
-        transform.position += dir * bossSpeed * 2 * Time.deltaTime;
+        transform.position += dir * bossSpeed  * Time.deltaTime;
         float dis = Vector3.Distance(transform.position, player.transform.position);
         if(dis < 5f)
         {
@@ -108,7 +108,7 @@ public class Boss : MonoBehaviour
         rndDir.Normalize();
         transform.position += rndDir * bossSpeed * Time.deltaTime;
         float dis = Vector3.Distance(pos, transform.position);
-        if(dis < 1f)
+        if (dis < 1f)
         {
             state = BossState.Set;
             currentTime = 0;
