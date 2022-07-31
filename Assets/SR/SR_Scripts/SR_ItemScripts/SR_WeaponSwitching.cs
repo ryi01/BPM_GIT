@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class SR_WeaponSwitching : MonoBehaviour
 {
-    public int selectedWeapon = 0;
+    public int selectedWeapon = 1;
 
-    // Start is called before the first frame update
+    
     void Start()
     {
         SelectedWeapon();
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         int previousSelectedWeapon = selectedWeapon;

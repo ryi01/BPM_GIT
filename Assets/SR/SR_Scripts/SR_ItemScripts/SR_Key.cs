@@ -1,0 +1,17 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class SR_Key : MonoBehaviour
+{
+    private void OnTriggerEnter(Collider other)
+    {
+        SR_PlayerInventory playerInventory = other.GetComponent<SR_PlayerInventory>();
+
+        if (playerInventory != null)
+        {
+            playerInventory.KeyCollected();
+            gameObject.SetActive(false);
+        }
+    }
+}
