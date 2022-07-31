@@ -34,7 +34,8 @@ public class Larva : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.LookAt(player);
+        Vector3 mySight = new Vector3(player.position.x, transform.position.y, player.position.z);
+        transform.LookAt(mySight);
 
         // 방향 설정
         dir = player.position - transform.position;
@@ -51,6 +52,7 @@ public class Larva : MonoBehaviour
     }
 
     // 땅에 있을때 점프
+    // 플레이어와 가까우면 공격
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.name.Contains("Floor"))

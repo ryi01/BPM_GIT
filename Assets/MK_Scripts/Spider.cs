@@ -27,6 +27,8 @@ public class Spider : MonoBehaviour
     float yVelocity;
     // 리지드바디
     Rigidbody sRigid;
+    // 플레이어와의 거리
+    float dis;
 
     enum SpiderState
     {
@@ -35,7 +37,8 @@ public class Spider : MonoBehaviour
         Jump,
         Stop,
         Set,
-        Back
+        Back,
+        Attack
     }
     SpiderState state;
     // Start is called before the first frame update
@@ -80,6 +83,10 @@ public class Spider : MonoBehaviour
         {
             SpiderBack();
         }
+        else if(state == SpiderState.Attack)
+        {
+            SpiderAttack();
+        }
 
         if (state == SpiderState.Jump)
         {
@@ -87,13 +94,15 @@ public class Spider : MonoBehaviour
         }
 
     }
+
     private void Update()
     {
-/*        if (sRigid.constraints == RigidbodyConstraints.None)
+        dis = Vector3.Distance(player.position, transform.position);
+        if (dis < 1)
         {
-            sRigid.constraints = RigidbodyConstraints.FreezePositionY & RigidbodyConstraints.FreezeRotation;
-        }*/
-
+            Debug.Log("Attack");
+            state = SpiderState.Attack;
+        }
     }
 
     // 기본적인 움직임
@@ -175,6 +184,22 @@ public class Spider : MonoBehaviour
             currentTime = 0;
         }
     }
+    // 근접 공격하기
+    private void SpiderAttack()
+    {
+        currentTime += Time.deltaTime;
+        if (currentTime > 1)
+        {
+            Debug.Log("Attack");
+            currentTime = 0;
+        }
+
+        if(dis >= 1)
+        {
+            state = SpiderState.Move;
+        }
+        
+    }
     // 넉백
     void SpiderBack()
     {
@@ -184,12 +209,14 @@ public class Spider : MonoBehaviour
     }
     void LookPlayer()
     {
+        // 플레이어 보기
         Vector3 mySight = new Vector3(player.position.x, transform.position.y, player.position.z);
         transform.LookAt(mySight);
 
         // 그 자리에 멈추지만, 플레이어는 바라봐야함.
         transform.position += dir * 0 * Time.deltaTime;
     }
+
 
     // 부딪혔을 경우,
     // 넉백 힘
@@ -203,11 +230,13 @@ public class Spider : MonoBehaviour
     {
         if (collision.gameObject.name.Contains("Player"))
         {
+            // 플레이어랑 부딪히면 넉백 => 플레이어와 부딪히면 넉백이 아니라 공격
             state = SpiderState.Back;
+
         }
         if (collision.gameObject.name.Contains("Floor") && state == SpiderState.Jump)
         {
-
+            // set상태로 변경
             state = SpiderState.Set;
         }
     }
