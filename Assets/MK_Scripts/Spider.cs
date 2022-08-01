@@ -220,12 +220,7 @@ public class Spider : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.name.Contains("Dummy_Player"))
-        {
-            // 플레이어랑 부딪히면 넉백 => 플레이어와 부딪히면 넉백이 아니라 공격
-            NockBack();
-            SpiderHP.instance.ENEMYHP--;
-        }
+
         if (collision.gameObject.name.Contains("Floor") && state == SpiderState.Jump)
         {
             // set상태로 변경
