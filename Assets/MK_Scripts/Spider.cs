@@ -2,32 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// °Å¹Ì : ·£´ý ½Ã°£¸¶´Ù ÇÃ·¹ÀÌ¾îÀÇ À§Ä¡·Î Á¡ÇÁÇÏ°Å³ª µ¹ÁøÇÔ
-// FSM »ç¿ëÇØ¼­ Move, Jump, RunÀ¸·Î ¹Ù²ã¾ßÇÒµí
-// °ø°ÝºÎ Ãß°¡ÇÏ±â 07.29 ¾ÆÁ÷ ¾ÈÇÔ => ÇÏ¸é Áö¿ö¶ó
+// ï¿½Å¹ï¿½ : ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°Å³ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+// FSM ï¿½ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ Move, Jump, Runï¿½ï¿½ï¿½ï¿½ ï¿½Ù²ï¿½ï¿½ï¿½ï¿½Òµï¿½
+// ï¿½ï¿½ï¿½Ýºï¿½ ï¿½ß°ï¿½ï¿½Ï±ï¿½ 07.29 ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ => ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 public class Spider : MonoBehaviour
 {
-    // Á¡ÇÁ Èû
+    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
     public float jumpPow = 2;
-    // ÇÊ¿ä¼Ó¼º : ÇöÀç ½Ã°£
+    // ï¿½Ê¿ï¿½ï¿½Ó¼ï¿½ : ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½
     float currentTime = 0;
-    // ¼Óµµ
+    // ï¿½Óµï¿½
     float speed = 4;
-    // ÇÃ·¹ÀÌ¾î
+    // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½
     Transform player;
-    // ¹æÇâ
+    // ï¿½ï¿½ï¿½ï¿½
     Vector3 dir;
-    // ¸ØÃß´Â ½Ã°£
+    // ï¿½ï¿½ï¿½ß´ï¿½ ï¿½Ã°ï¿½
     float stopTime = 2;
-    // ´Þ¸®´Â ½Ã°£
+    // ï¿½Þ¸ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½
     float runTime = 4;
-    // ÇÃ·¹ÀÌ¾î¿ÍÀÇ ¹æÇâ
+    // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     Vector3 runDir;
-    // y¼Óµµ
+    // yï¿½Óµï¿½
     float yVelocity;
-    // ¸®Áöµå¹Ùµð
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ùµï¿½
     Rigidbody sRigid;
-    // ÇÃ·¹ÀÌ¾î¿ÍÀÇ °Å¸®
+    // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Å¸ï¿½
     float dis;
 
     enum SpiderState
@@ -43,22 +43,22 @@ public class Spider : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // ÇÃ·¹ÀÌ¾î Ã£±â
+        // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ Ã£ï¿½ï¿½
         player = GameObject.Find("Player").GetComponent<Transform>();
         state = SpiderState.Move;
         sRigid = GetComponent<Rigidbody>();
 
-        // Àû Ã¼·Â ¼¼ÆÃ
+        // ï¿½ï¿½ Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         SpiderHP.instance.ENEMYHP = 5;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        // ÇÃ·¹ÀÌ¾î±îÁöÀÇ ¹æÇâ
+        // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         dir = player.position - transform.position;
         dir.Normalize();
-        // Áß·Â ³Ö±â
+        // ï¿½ß·ï¿½ ï¿½Ö±ï¿½
         yVelocity += -9.8f * Time.deltaTime;
 
         if (state == SpiderState.Move)
@@ -103,36 +103,36 @@ public class Spider : MonoBehaviour
         }
     }
 
-    // ±âº»ÀûÀÎ ¿òÁ÷ÀÓ
-    // ÇÃ·¹ÀÌ¾îÂÊÀ¸·Î ÇâÇÏ´Ù°¡ ·£´ý ½Ã°£¿¡ StopÀ¸·Î ¹Ù²ï´Ù
+    // ï¿½âº»ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï´Ù°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ï¿½ï¿½ Stopï¿½ï¿½ï¿½ï¿½ ï¿½Ù²ï¿½ï¿½ï¿½
     private void SpidexrMove()
     {
         Vector3 mySight = new Vector3(player.position.x, transform.position.y, player.position.z);
         transform.LookAt(mySight);
-        // ¿òÁ÷ÀÓ
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         transform.position += dir * speed * Time.deltaTime;
 
-        // ·£´ý ½Ã°£ÀÌ µÇ¸é
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½Ç¸ï¿½
         currentTime += Time.deltaTime;
         int rndTime = Random.Range(2, 8);
         if (currentTime > rndTime)
         {
-            // stopÀ¸·Î ¹Ù²î±â
+            // stopï¿½ï¿½ï¿½ï¿½ ï¿½Ù²ï¿½ï¿½ï¿½
             state = SpiderState.Stop;
             currentTime = 0;
         }
 
     }
 
-    // ±× ÀÚ¸®¿¡ ¼­¼­ ¸ØÃß°í ÇÃ·¹ÀÌ¾î¸¸ ¹Ù¶óº¸´Ù°¡ ÀÏÁ¤ ½Ã°£ÀÌ Áö³­ ÈÄ, ·±ÀÌ³ª Á¡ÇÁ ¸ðµå·Î ¹Ù²ñ
+    // ï¿½ï¿½ ï¿½Ú¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ß°ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾î¸¸ ï¿½Ù¶óº¸´Ù°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½, ï¿½ï¿½ï¿½Ì³ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù²ï¿½
     private void SpiderStop()
     {
         LookPlayer();
-        // ÀÏÁ¤½Ã°£ÀÌ Áö³ª¸é
+        // ï¿½ï¿½ï¿½ï¿½ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         currentTime += Time.deltaTime;
         if(currentTime > stopTime)
         {
-            // ÇÃ·¹ÀÌ¾î ¹æÇâ
+            // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½ï¿½
             runDir = player.position - transform.position;
             runDir.Normalize();
 
@@ -146,11 +146,11 @@ public class Spider : MonoBehaviour
                 state = SpiderState.Jump;
             }
         }
-        
+
     }
     private void SpiderRun()
     {
-        // ÀÏÁ¤½Ã°£µ¿¾È °è¼Ó ´Þ¸² => ÇÃ·¹ÀÌ¾îÀÇ À§Ä¡´Â ¶Ù´Â ¼ø°£ °íÁ¤
+        // ï¿½ï¿½ï¿½ï¿½ï¿½Ã°ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¸ï¿½ => ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½Ù´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         currentTime += Time.deltaTime;
 
         transform.position += runDir * (speed + 3f) * Time.deltaTime;
@@ -163,14 +163,14 @@ public class Spider : MonoBehaviour
     private void SpiderJump()
     {
 
-        // Æ¯Á¤ÁöÁ¡±îÁö Á¡ÇÁÇØ¾ßÇÔ
+        // Æ¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ø¾ï¿½ï¿½ï¿½
         runDir.y = yVelocity;
 
         transform.position += runDir * speed * Time.deltaTime;
 
     }
 
-    // °¡¸¸È÷ ¼­¼­ ÇÃ·¹ÀÌ¾î ¹Ù¶óº¸±â
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½Ù¶óº¸±ï¿½
     private void SpiderSet()
     {
         LookPlayer();
@@ -182,7 +182,7 @@ public class Spider : MonoBehaviour
             currentTime = 0;
         }
     }
-    // ±ÙÁ¢ °ø°ÝÇÏ±â
+    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½
     private void SpiderAttack()
     {
         currentTime += Time.deltaTime;
@@ -196,23 +196,23 @@ public class Spider : MonoBehaviour
         {
             state = SpiderState.Move;
         }
-        
+
     }
     void LookPlayer()
     {
-        // ÇÃ·¹ÀÌ¾î º¸±â
+        // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½ï¿½
         Vector3 mySight = new Vector3(player.position.x, transform.position.y, player.position.z);
         transform.LookAt(mySight);
 
-        // ±× ÀÚ¸®¿¡ ¸ØÃßÁö¸¸, ÇÃ·¹ÀÌ¾î´Â ¹Ù¶óºÁ¾ßÇÔ.
+        // ï¿½ï¿½ ï¿½Ú¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ ï¿½Ù¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
         transform.position += dir * 0 * Time.deltaTime;
     }
 
 
-    // ºÎµúÇûÀ» °æ¿ì,
-    // ³Ë¹é Èû
+    // ï¿½Îµï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½,
+    // ï¿½Ë¹ï¿½ ï¿½ï¿½
     public float backPow = 3;
-    // ³Ë¹é¿ë ÇÔ¼ö
+    // ï¿½Ë¹ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½
     public void NockBack()
     {
         sRigid.AddForce(-dir * backPow, ForceMode.Impulse);
@@ -220,9 +220,10 @@ public class Spider : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.name.Contains("Floor") && state == SpiderState.Jump)
+
+        if (collision.gameObject.name.Contains("Plane") && state == SpiderState.Jump)
         {
-            // set»óÅÂ·Î º¯°æ
+            // setï¿½ï¿½ï¿½Â·ï¿½ ï¿½ï¿½ï¿½ï¿½
             state = SpiderState.Set;
         }
     }
