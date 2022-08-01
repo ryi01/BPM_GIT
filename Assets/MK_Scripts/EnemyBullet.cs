@@ -29,4 +29,12 @@ public class EnemyBullet : MonoBehaviour
         // 움직이기
         transform.position += dir * bulletSpeed * Time.deltaTime;
     }
+    // 플레이어 충돌시 죽기
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.name.Contains("Player"))
+        {
+            Destroy(gameObject);
+        }
+    }
 }

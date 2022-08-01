@@ -57,7 +57,7 @@ public class Boss : MonoBehaviour
     void Start()
     {
         // 플레이어 찾기
-        player = GameObject.Find("Dummy_Player");
+        player = GameObject.Find("Player");
         // 상태설정
         state = BossState.Move;
         // 체력 설정
@@ -68,7 +68,7 @@ public class Boss : MonoBehaviour
     void Update()
     {
         // y축 변경
-        float y = UnityEngine.Random.Range(2, 4);
+        float y = UnityEngine.Random.Range(2, 6);
         // 플레이어까지 방향
         Vector3 pPos = new Vector3(player.transform.position.x, player.transform.position.y + y, player.transform.position.z);
         dir = pPos - transform.position;
@@ -133,7 +133,7 @@ public class Boss : MonoBehaviour
         if (currentTime < 0.01f)
         {
             x = UnityEngine.Random.Range(-20, 20);
-            y = UnityEngine.Random.Range(6, 8);
+            y = UnityEngine.Random.Range(8, 13);
             z = UnityEngine.Random.Range(-20, 20);
         }
         pos = player.transform.position + new Vector3(x, y, z);
@@ -177,7 +177,7 @@ public class Boss : MonoBehaviour
         {
             state = BossState.Attack5;
         }
-        print(rnd);
+
     }
 
     // 공격 후, 움직임 멈추고 플레이어 바라보기

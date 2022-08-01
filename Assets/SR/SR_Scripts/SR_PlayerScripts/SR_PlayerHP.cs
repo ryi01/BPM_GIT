@@ -29,10 +29,11 @@ public class SR_PlayerHP : MonoBehaviour
     }
 
     
-
+    // bullet은 괜찮은데 enemy이름 부분은 이름이 아니라 layer로 비교해서 해야할 듯
+    // bullet -> Bullet으로 변경했어
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.name.Contains("bullet"))
+        if(collision.gameObject.name.Contains("Bullet"))
         {
             hp -= 25;
         }
