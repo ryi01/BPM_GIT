@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class SR_ShotGun : MonoBehaviour
 {
-    // what?
-    // private float damage = 4f;
+    
+    private int damage = 4;
     private float range = 100f;
 
     public Camera fpsCam;
@@ -123,10 +123,18 @@ public class SR_ShotGun : MonoBehaviour
         {
             Debug.Log(hit.transform.name);
 
-            bool target = hit.transform.gameObject.name.Contains("Enemy");
+            GameObject larva = GameObject.Find("Larva");
+            if (hit.transform.name.Contains("Larva")) larva.GetComponent<LarvaHP>().AddDamage(damage);
 
-            //if (target == true) target.TakeDamage(damage);
-            
+            GameObject bat = GameObject.Find("Bat");
+            if (hit.transform.name.Contains("Bat")) bat.GetComponent<BatHP>().AddDamage(damage);
+
+            GameObject spider = GameObject.Find("Spider");
+            if (hit.transform.name.Contains("Spider")) spider.GetComponent<SpiderHP>().AddDamage(damage);
+
+            GameObject boss = GameObject.Find("Boss");
+            if (hit.transform.name.Contains("Boss")) boss.GetComponent<BossHP>().AddDamage(damage);
+
             Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
 
         }

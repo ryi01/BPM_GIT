@@ -11,6 +11,7 @@ public class SR_PlayerHP : MonoBehaviour
     public Text hpText;
     public Text maxHpText;
 
+
     void Start()
     {
         hp = maxHp;
@@ -24,7 +25,7 @@ public class SR_PlayerHP : MonoBehaviour
 
         if(hp<=0)
         {
-            //Game Over
+            hp = 0;
         }
     }
 
@@ -37,7 +38,7 @@ public class SR_PlayerHP : MonoBehaviour
         {
             hp -= 25;
         }
-        if(collision.gameObject.name.Contains("enemy name"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
             hp -= 10;
         }
