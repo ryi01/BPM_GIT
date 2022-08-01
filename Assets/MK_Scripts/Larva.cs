@@ -62,9 +62,5 @@ public class Larva : MonoBehaviour
         {
             rigid.AddForce(Vector3.up * jumpPow, ForceMode.Impulse);
         }
-        if (collision.gameObject.name.Contains("Player"))
-        {
-            NockBack();
-        }
     }
 }
