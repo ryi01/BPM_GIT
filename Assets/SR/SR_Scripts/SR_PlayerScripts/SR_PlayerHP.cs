@@ -11,6 +11,7 @@ public class SR_PlayerHP : MonoBehaviour
     public Text hpText;
     public Text maxHpText;
 
+
     void Start()
     {
         hp = maxHp;
@@ -32,11 +33,11 @@ public class SR_PlayerHP : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.name.Contains("bullet"))
+        if(collision.gameObject.name.Contains("Bullet"))
         {
             hp -= 25;
         }
-        if(collision.gameObject.name.Contains("Larva") || collision.gameObject.name.Contains("Spider"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
             hp -= 10;
         }
