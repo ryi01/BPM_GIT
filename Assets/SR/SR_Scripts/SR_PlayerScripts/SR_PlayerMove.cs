@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SR_PlayerMove : MonoBehaviour
 {
-    public float speed = 3.0f;
+    public float speed = 7.0f;
     float finalSpeed;
     float gravity = -9.8f;
     public float jumpPower = 3;

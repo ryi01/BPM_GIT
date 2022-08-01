@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SR_PlayerRotate : MonoBehaviour
 {
-    public float rotSpeed = 200f;
+    public float rotSpeed = 300f;
 
     float mx = 0;
 

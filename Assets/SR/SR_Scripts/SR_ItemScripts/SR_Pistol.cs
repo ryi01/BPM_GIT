@@ -121,13 +121,22 @@ public class SR_Pistol : MonoBehaviour
             Debug.Log(hit.transform.name);
 
             GameObject larva = GameObject.Find("Larva");
-            if (hit.transform.name.Contains("Larva")) larva.GetComponent<LarvaHP>().AddDamage(damage);
+            if (hit.transform.name.Contains("Larva"))
+            {
+                larva.GetComponent<LarvaHP>().AddDamage(damage);
+                larva.GetComponent<Larva>().NockBack();
+            }
 
             GameObject bat = GameObject.Find("Bat");
             if (hit.transform.name.Contains("Bat")) bat.GetComponent<BatHP>().AddDamage(damage);
 
             GameObject spider = GameObject.Find("Spider");
-            if (hit.transform.name.Contains("Spider")) spider.GetComponent<SpiderHP>().AddDamage(damage);
+            if (hit.transform.name.Contains("Spider"))
+            {
+                spider.GetComponent<SpiderHP>().AddDamage(damage);
+                spider.GetComponent<Spider>().NockBack();
+
+            }
 
             GameObject boss = GameObject.Find("Boss");
             if (hit.transform.name.Contains("Boss")) boss.GetComponent<BossHP>().AddDamage(damage);
