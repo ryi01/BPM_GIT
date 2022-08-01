@@ -16,23 +16,25 @@ public class SR_PlayerHP : MonoBehaviour
         hp = maxHp;
     }
 
-    // Update is called once per frame
     void Update()
     {
         hpSlider.value = (float)hp / (float)maxHp;
         hpText.text = hp + " ";
         maxHpText.text = "/ " + maxHp;
-    }
 
-    public void AddDamage()
-    {
-        if (hp > 0)
-        {
-            hp -= 25;
-        }
-        if (hp <= 0)
+        if(hp<=0)
         {
             //Game Over
+        }
+    }
+
+    
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.name.Contains("bullet"))
+        {
+            hp -= 25;
         }
     }
 
