@@ -349,6 +349,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rifle
       objectReference: {fileID: 0}
+    - target: {fileID: 118234, guid: df8c81ac69aa8004cbbffcad9000c9da, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 453068, guid: df8c81ac69aa8004cbbffcad9000c9da, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -453,7 +457,7 @@ GameObject:
   - component: {fileID: 268955020}
   - component: {fileID: 268955026}
   - component: {fileID: 268955025}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Boss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -599,7 +603,7 @@ GameObject:
   - component: {fileID: 303035280}
   - component: {fileID: 303035286}
   - component: {fileID: 303035285}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Spider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -821,7 +825,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 678295783}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CamPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -852,7 +856,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 686710564}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Weapons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2089,7 +2093,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1285872384}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Orientation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2315,9 +2319,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 686710564}
     m_Modifications:
+    - target: {fileID: 100000, guid: e3da7ddbb6c62984382c6d4bc640a302, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 100002, guid: e3da7ddbb6c62984382c6d4bc640a302, type: 3}
       propertyPath: m_Name
       value: ShotGun
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: e3da7ddbb6c62984382c6d4bc640a302, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: e3da7ddbb6c62984382c6d4bc640a302, type: 3}
       propertyPath: m_RootOrder
@@ -2392,7 +2404,7 @@ GameObject:
   - component: {fileID: 1703500327}
   - component: {fileID: 1703500329}
   - component: {fileID: 1703500330}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2706,7 +2718,7 @@ GameObject:
   - component: {fileID: 1724319562}
   - component: {fileID: 1724319564}
   - component: {fileID: 1724319563}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2888,7 +2900,7 @@ GameObject:
   - component: {fileID: 1775629326}
   - component: {fileID: 1775629328}
   - component: {fileID: 1775629327}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Larva
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3366,9 +3378,33 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 686710564}
     m_Modifications:
+    - target: {fileID: 1071499788552706, guid: 54a7c0cf668b6e947848d7ad0bcad929, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1156877129745062, guid: 54a7c0cf668b6e947848d7ad0bcad929, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1212442343727608, guid: 54a7c0cf668b6e947848d7ad0bcad929, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 1244390726855398, guid: 54a7c0cf668b6e947848d7ad0bcad929, type: 3}
       propertyPath: m_Name
       value: Pistol
+      objectReference: {fileID: 0}
+    - target: {fileID: 1244390726855398, guid: 54a7c0cf668b6e947848d7ad0bcad929, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1441778698606074, guid: 54a7c0cf668b6e947848d7ad0bcad929, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1865690056152054, guid: 54a7c0cf668b6e947848d7ad0bcad929, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4021266016307886, guid: 54a7c0cf668b6e947848d7ad0bcad929, type: 3}
       propertyPath: m_RootOrder

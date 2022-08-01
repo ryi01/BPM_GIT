@@ -65,11 +65,6 @@ public class Larva : MonoBehaviour
         if (collision.gameObject.name.Contains("Player"))
         {
             NockBack();
-            LarvaHP.instance.ENEMYHP--;
-            if(LarvaHP.instance.ENEMYHP <= 0)
-            {
-                Destroy(gameObject);
-            }
         }
     }
 }

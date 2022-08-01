@@ -7,6 +7,7 @@ TagManager:
   - Pistol
   - Rifle
   - ShotGun
+  - FxTemporaire
   layers:
   - Default
   - TransparentFX
@@ -15,10 +16,10 @@ TagManager:
   - Water
   - UI
   - 
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Enemy
+  - EnemyBullet
+  - Room
   - 
   - 
   - 
