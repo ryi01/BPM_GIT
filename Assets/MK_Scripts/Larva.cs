@@ -15,13 +15,24 @@ public class Larva : MonoBehaviour
     public float moveDis = 2;
     // 넉백 힘
     public float backPow = 3;
+    // 공격 시간
+    public float attackTime = 2;
 
+    // FSM
+    enum LarvaState
+    {
+        Move,
+        Attack
+    }
+    LarvaState state;
     // 플레이어 위치
     Transform player;
     // 리지드바디
     Rigidbody rigid;
     // 방향
     Vector3 dir;
+    // 시간
+    float currentTime;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +48,19 @@ public class Larva : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(state == LarvaState.Move)
+        {
+            LarvaMove();
+        }
+        else if(state == LarvaState.Attack)
+        {
+            LarvaAttack();
+        }
+
+    }
+
+    void LarvaMove()
+    {
         Vector3 mySight = new Vector3(player.position.x, transform.position.y, player.position.z);
         transform.LookAt(mySight);
 
@@ -46,6 +70,22 @@ public class Larva : MonoBehaviour
 
         // 플레이어 향하기
         transform.position += dir * speed * Time.deltaTime;
+        float dis = Vector3.Distance(player.transform.position, transform.position);
+        if (dis < 2)
+        {
+            state = LarvaState.Attack;
+        }
+    }
+
+    void LarvaAttack()
+    {
+        currentTime += Time.deltaTime;
+        if(currentTime > attackTime)
+        {
+            player.GetComponent<SR_PlayerHP>().hp -= 25;
+            state = LarvaState.Move;
+            currentTime = 0;
+        }
     }
 
     // 넉백용 함수
@@ -58,7 +98,7 @@ public class Larva : MonoBehaviour
     // 플레이어와 가까우면 공격
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.name.Contains("Floor"))
+        if (collision.gameObject.name.Contains("Plane"))
         {
             rigid.AddForce(Vector3.up * jumpPow, ForceMode.Impulse);
         }

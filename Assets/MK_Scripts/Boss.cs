@@ -46,6 +46,7 @@ public class Boss : MonoBehaviour
     // 시간
     float currentTime;
     float currentTime2;
+    float rhythmTime;
     Vector3 pos;
     float x;
     float y;
@@ -63,7 +64,10 @@ public class Boss : MonoBehaviour
         // 체력 설정
         BossHP.instance.ENEMYHP = 20;
     }
-
+    private void FixedUpdate()
+    {
+        rhythmTime += Time.deltaTime;
+    }
     // Update is called once per frame
     void Update()
     {
@@ -157,7 +161,8 @@ public class Boss : MonoBehaviour
         Vector3 mySight = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
         transform.LookAt(mySight);
         int rnd = UnityEngine.Random.Range(1, 5);
-        if (rnd == 0)
+        state = BossState.Attack4;
+/*        if (rnd == 0)
         {
             state = BossState.Attack1;
         }
@@ -176,7 +181,7 @@ public class Boss : MonoBehaviour
         else if (rnd == 4)
         {
             state = BossState.Attack5;
-        }
+        }*/
 
     }
 
@@ -207,7 +212,9 @@ public class Boss : MonoBehaviour
         // 3초 이후일 때,
         if (currentTime2 > 1)
         {
-            MakingBullet(3, 1f,followBulletFact1);
+            // 총알 만들기
+            MakingBullet(3, rhythmTime, 0.335f * 2, bulletFact);
+            currentTime2 = 0;
         }
     }
 
@@ -215,14 +222,14 @@ public class Boss : MonoBehaviour
     private void BossAttack3()
     {
         // 총알 만들기
-        MakingBullet(4, 0.8f, bulletFact);
+        MakingBullet(4, rhythmTime, 0.335f * 2, bulletFact);
     }
 
     // 패턴 4 : 빠른 속도를 총알 5개 발사
     private void BossAttack4()
     {
         // 총알 만들기
-        MakingBullet(5, 0.1f, fastBulletFact);
+        MakingBullet(5, rhythmTime, 0.335f * 2,fastBulletFact);
     }
     // 패턴 5 : 유도탄 + 빠른 총알 1개 발사
     private void BossAttack5()
@@ -232,20 +239,18 @@ public class Boss : MonoBehaviour
         state = BossState.Stop;
     }
 
-    void MakingBullet(int n, float time,GameObject bulletFactory)
+    void MakingBullet(int n, float curTime,float time,GameObject bulletFactory)
     {
-        // 시간이 흐름
-        currentTime += Time.deltaTime;
         // 유도탄 3개를 만들기
         for (int i = 0; i < n; i++)
         {
             // 0.3초에 한개씩 만들기
-            if (currentTime > time)
+            if (curTime > time)
             {
                 GameObject bullet = Instantiate(bulletFactory);
                 bullet.transform.position = transform.position;
-                currentTime = 0;
                 count++;
+                curTime = 0;
             }
         }
         // 총알이 3개라면
