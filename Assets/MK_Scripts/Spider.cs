@@ -182,7 +182,7 @@ public class Spider : MonoBehaviour
             currentTime = 0;
         }
     }
-    // ���� �����ϱ�
+    // 공격
     private void SpiderAttack()
     {
         currentTime += Time.deltaTime;
@@ -200,19 +200,18 @@ public class Spider : MonoBehaviour
     }
     void LookPlayer()
     {
-        // �÷��̾� ����
+        // 바라보기
         Vector3 mySight = new Vector3(player.position.x, transform.position.y, player.position.z);
         transform.LookAt(mySight);
 
-        // �� �ڸ��� ��������, �÷��̾��� �ٶ�������.
+        // 멈추기
         transform.position += dir * 0 * Time.deltaTime;
     }
 
 
-    // �ε����� ����,
-    // �˹� ��
+    // 넉백
     public float backPow = 3;
-    // �˹��� �Լ�
+    // 넉백용함수
     public void NockBack()
     {
         sRigid.AddForce(-dir * backPow, ForceMode.Impulse);
@@ -223,7 +222,7 @@ public class Spider : MonoBehaviour
 
         if (collision.gameObject.name.Contains("Plane") && state == SpiderState.Jump)
         {
-            // set���·� ����
+            // 스테이트 변경하기
             state = SpiderState.Set;
         }
     }
