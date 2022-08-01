@@ -69,7 +69,7 @@ public class Boss : MonoBehaviour
         rhythmTime += Time.deltaTime;
     }
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
         // y축 변경
         float y = UnityEngine.Random.Range(2, 6);
@@ -140,7 +140,7 @@ public class Boss : MonoBehaviour
             y = UnityEngine.Random.Range(8, 13);
             z = UnityEngine.Random.Range(-20, 20);
         }
-        pos = player.transform.position + new Vector3(x, y, z);
+        pos = player.transform.position + new Vector3(-x, y, -z);
         Vector3 rndDir = pos - transform.position;
         rndDir.Normalize();
         transform.position += rndDir * bossSpeed * Time.deltaTime;
@@ -213,7 +213,7 @@ public class Boss : MonoBehaviour
         if (currentTime2 > 1)
         {
             // 총알 만들기
-            MakingBullet(3, rhythmTime, 0.335f * 2, bulletFact);
+            MakingBullet(3, 0.335f * 2, bulletFact);
             currentTime2 = 0;
         }
     }
@@ -222,14 +222,14 @@ public class Boss : MonoBehaviour
     private void BossAttack3()
     {
         // 총알 만들기
-        MakingBullet(4, rhythmTime, 0.335f * 2, bulletFact);
+        MakingBullet(4, 0.335f * 2, bulletFact);
     }
 
     // 패턴 4 : 빠른 속도를 총알 5개 발사
     private void BossAttack4()
     {
         // 총알 만들기
-        MakingBullet(5, rhythmTime, 0.335f * 2,fastBulletFact);
+        MakingBullet(5, 0.335f,fastBulletFact);
     }
     // 패턴 5 : 유도탄 + 빠른 총알 1개 발사
     private void BossAttack5()
@@ -239,18 +239,18 @@ public class Boss : MonoBehaviour
         state = BossState.Stop;
     }
 
-    void MakingBullet(int n, float curTime,float time,GameObject bulletFactory)
+    void MakingBullet(int n,float time,GameObject bulletFactory)
     {
         // 유도탄 3개를 만들기
         for (int i = 0; i < n; i++)
         {
             // 0.3초에 한개씩 만들기
-            if (curTime > time)
+            if (rhythmTime > time)
             {
                 GameObject bullet = Instantiate(bulletFactory);
                 bullet.transform.position = transform.position;
                 count++;
-                curTime = 0;
+                rhythmTime = 0;
             }
         }
         // 총알이 3개라면
