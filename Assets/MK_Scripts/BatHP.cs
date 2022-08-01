@@ -26,4 +26,8 @@ public class BatHP : MonoBehaviour
             
         }
     }
+    public void AddDamage(int damage)
+    {
+        ENEMYHP -= damage;
+    }
 }

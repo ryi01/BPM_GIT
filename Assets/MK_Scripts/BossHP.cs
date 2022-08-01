@@ -26,4 +26,8 @@ public class SpiderHP : MonoBehaviour
             
         }
     }
+    public void AddDamage(int damage)
+    {
+        ENEMYHP -= damage;
+    }
 }

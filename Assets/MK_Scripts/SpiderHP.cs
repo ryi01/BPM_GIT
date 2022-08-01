@@ -26,4 +26,8 @@ public class BossHP : MonoBehaviour
             
         }
     }
+    public void AddDamage(int damage)
+    {
+        ENEMYHP -= damage;
+    }
 }

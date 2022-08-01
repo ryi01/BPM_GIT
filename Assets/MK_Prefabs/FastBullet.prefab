@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1369358116636158050}
   - component: {fileID: 3991178412031411353}
   - component: {fileID: 4864510905412425095}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: FastBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -26,4 +26,9 @@ public class LarvaHP : MonoBehaviour
             
         }
     }
+
+    public void AddDamage(int damage)
+    {
+        ENEMYHP -= damage;
+    }
 }
