@@ -113,6 +113,7 @@ public class Boss : MonoBehaviour
         {
             BossAttack5();
         }
+        print(state);
     }
 
     // 플레이어를 향해 움직임
