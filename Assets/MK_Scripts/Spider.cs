@@ -220,7 +220,8 @@ public class Spider : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.name.Contains("Floor") && state == SpiderState.Jump)
+
+        if (collision.gameObject.name.Contains("Plane") && state == SpiderState.Jump)
         {
             // set상태로 변경
             state = SpiderState.Set;
