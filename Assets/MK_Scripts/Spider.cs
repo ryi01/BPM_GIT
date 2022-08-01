@@ -44,7 +44,7 @@ public class Spider : MonoBehaviour
     void Start()
     {
         // 플레이어 찾기
-        player = GameObject.Find("Dummy_Player").GetComponent<Transform>();
+        player = GameObject.Find("Player").GetComponent<Transform>();
         state = SpiderState.Move;
         sRigid = GetComponent<Rigidbody>();
 

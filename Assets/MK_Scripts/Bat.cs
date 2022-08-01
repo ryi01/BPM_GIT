@@ -50,7 +50,7 @@ public class Bat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        player = GameObject.Find("Dummy_Player");
+        player = GameObject.Find("Player");
 
         Vector3 mySight = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
         transform.LookAt(mySight);
