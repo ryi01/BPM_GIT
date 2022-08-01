@@ -21,7 +21,9 @@ public class BatHP : MonoBehaviour
             enemyHP = value;
             if (enemyHP <= 0)
             {
-                Destroy(gameObject);
+                Rigidbody rigid = GetComponent<Rigidbody>();
+                rigid.useGravity = true;
+                Destroy(gameObject, 3);
             }
             
         }
