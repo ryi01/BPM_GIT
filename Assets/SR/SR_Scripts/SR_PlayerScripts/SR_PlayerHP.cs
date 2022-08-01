@@ -36,7 +36,7 @@ public class SR_PlayerHP : MonoBehaviour
         {
             hp -= 25;
         }
-        if(collision.gameObject.name.Contains("enemy name"))
+        if(collision.gameObject.name.Contains("Larva") || collision.gameObject.name.Contains("Spider"))
         {
             hp -= 10;
         }
