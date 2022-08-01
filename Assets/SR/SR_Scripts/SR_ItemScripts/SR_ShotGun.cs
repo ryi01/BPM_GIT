@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class SR_ShotGun : MonoBehaviour
 {
-    private float damage = 4f;
+    // what?
+    // private float damage = 4f;
     private float range = 100f;
 
     public Camera fpsCam;
