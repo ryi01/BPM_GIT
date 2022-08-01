@@ -40,11 +40,15 @@ public class SR_PlayerHP : MonoBehaviour
         }
         if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
-            hp -= 10;
+            StartCoroutine(WaitSeconds());
         }
     }
 
-    
+    IEnumerator WaitSeconds()
+    {
+        hp -= 10;
+        yield return new WaitForSeconds(5.4f);
+    }
 
     public void AddHP()
     {

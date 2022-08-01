@@ -141,8 +141,13 @@ public class SR_ShotGun : MonoBehaviour
 
             }
 
+
             GameObject boss = GameObject.Find("Boss");
             if (hit.transform.name.Contains("Boss")) boss.GetComponent<BossHP>().AddDamage(damage);
+
+            
+            GameObject player = GameObject.Find("Player");
+            player.GetComponent<SR_PlayerMove>().NockBack(10000.0f);
 
             Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
 

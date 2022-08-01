@@ -37,8 +37,8 @@ public class SR_Dashing : MonoBehaviour
         currentTime += Time.deltaTime;
         curTime.text = currentTime + " ";
         if (currentTime > 0.3375) currentTime = 0;
-
     }
+
     private void Update()
     {
 

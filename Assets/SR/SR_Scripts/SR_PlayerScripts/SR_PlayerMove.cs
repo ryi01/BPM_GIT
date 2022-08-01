@@ -17,9 +17,14 @@ public class SR_PlayerMove : MonoBehaviour
 
     public bool dashing;
 
+    Rigidbody rigid;
+
+    Vector3 dir;
+
     void Start()
     {
         cc = GetComponent<CharacterController>();
+        rigid = GetComponent<Rigidbody>();
     }
 
     void Update()
@@ -51,7 +56,7 @@ public class SR_PlayerMove : MonoBehaviour
         //모든 움직임
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
-        Vector3 dir = transform.right * h + transform.forward * v;
+        dir = transform.right * h + transform.forward * v;
         dir.Normalize();
         dir.y = yVelocity;
 
@@ -64,5 +69,10 @@ public class SR_PlayerMove : MonoBehaviour
         yVelocity = 0;
         yield return new WaitForSeconds(1.0f);
         yVelocity = -9.8f;
+    }
+
+    public void NockBack(float amount)
+    {
+        rigid.AddForce(-transform.forward*amount,ForceMode.Impulse);
     }
 }
