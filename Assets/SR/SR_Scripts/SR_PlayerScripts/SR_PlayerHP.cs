@@ -36,7 +36,13 @@ public class SR_PlayerHP : MonoBehaviour
         {
             hp -= 25;
         }
+        if(collision.gameObject.name.Contains("enemy name"))
+        {
+            hp -= 10;
+        }
     }
+
+    
 
     public void AddHP()
     {

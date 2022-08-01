@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SR_Dashing : MonoBehaviour
 {
@@ -22,15 +23,27 @@ public class SR_Dashing : MonoBehaviour
     [Header("Input")]
     public KeyCode dashKey = KeyCode.LeftShift;
 
+    private float currentTime = 0;
+    public Text curTime;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         pm = GetComponent<SR_PlayerMove>();
     }
+
+    private void FixedUpdate()
+    {
+        currentTime += Time.deltaTime;
+        curTime.text = currentTime + " ";
+        if (currentTime > 0.3375) currentTime = 0;
+
+    }
     private void Update()
     {
-        if (Input.GetKeyDown(dashKey)) Dash();
+
+
+        if (Input.GetKeyDown(dashKey) && ((currentTime > 0 && currentTime < 0.15f) || (currentTime > 0.1875f && currentTime < 0.3375f))) Dash();
 
         if (dashCdTimer > 0) dashCdTimer -= Time.deltaTime;
     }

@@ -11,7 +11,7 @@ public class SR_CamFollow : MonoBehaviour
         
     }
 
-    void Update()
+    void FixedUpdate()
     {
         transform.position = target.position;
     }

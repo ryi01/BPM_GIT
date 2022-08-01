@@ -21,11 +21,13 @@ public class SR_ShotGun : MonoBehaviour
     private int currentAmmo;
     private int reloadNum = 3;
     private int curNum = 0;
-    private float reloadTime = 1f;
     private bool isReloading = false;
 
     public Text reload;
     public Text already;
+
+    private float currentTime = 0;
+
 
     private void Start()
     {
@@ -33,50 +35,60 @@ public class SR_ShotGun : MonoBehaviour
         reload.gameObject.SetActive(false);
         already.gameObject.SetActive(false);
     }
+    private void FixedUpdate()
+    {
+        currentTime += Time.deltaTime;
+        if (currentTime > 0.3375f) currentTime = 0;
+    }
 
     void Update()
     {
-        if (isReloading) return;
-
-
-
-        if (Input.GetKeyDown(KeyCode.R))
+        if((currentTime > 0 && currentTime < 0.15f) || (currentTime > 0.1875f && currentTime < 0.3375f))
         {
-            if (currentAmmo >= maxAmmo)
+
+
+            if (isReloading) return;
+
+
+
+            if (Input.GetKeyDown(KeyCode.R))
             {
-                StartCoroutine(ShowReloaded());
+                if (currentAmmo >= maxAmmo)
+                {
+                    StartCoroutine(ShowReloaded());
+                }
+                else
+                {
+                    curNum++;
+                    print(curNum);
+                }
             }
-            else
+
+
+
+
+            if (curNum >= reloadNum)
             {
-                curNum++;
-                print(curNum);
+                StartCoroutine(Reload());
+                curNum = 0;
+                return;
             }
-        }
 
+            if (Input.GetButtonDown("Fire1") && currentAmmo <= 0)
+            {
 
+                StartCoroutine(ShowReload());
+            }
 
+            if (Input.GetButtonDown("Fire1") && currentAmmo > 0 && Time.time >= nextTimeToFire)
+            {
+                muzzle = Instantiate(muzzleFactory, muzzlePoint);
 
-        if (curNum >= reloadNum)
-        {
-            StartCoroutine(Reload());
-            curNum = 0;
-            return;
-        }
+                nextTimeToFire = Time.time + 1f / fireRate;
 
-        if (Input.GetButtonDown("Fire1") && currentAmmo <= 0)
-        {
-
-            StartCoroutine(ShowReload());
-        }
-
-        if (Input.GetButtonDown("Fire1") && currentAmmo > 0 && Time.time >= nextTimeToFire)
-        {
-            muzzle = Instantiate(muzzleFactory, muzzlePoint);
-
-            nextTimeToFire = Time.time + 1f / fireRate;
-
-            Shoot();
-            curNum = 0;
+                Shoot();
+                curNum = 0;
+            }
         }
     }
 
@@ -109,14 +121,11 @@ public class SR_ShotGun : MonoBehaviour
         if(Physics.Raycast(fpsCam.transform.position,fpsCam.transform.forward, out hit, range))
         {
             Debug.Log(hit.transform.name);
-            //타겟 데미지 입히는 부분
-            /*
-            Target target = hit.transform.Getcomponent<Target>();
-            if(target!=null)
-            {
-                target.TakeDamage(damage);
-            }
-            */
+
+            bool target = hit.transform.gameObject.name.Contains("Enemy");
+
+            //if (target == true) target.TakeDamage(damage);
+            
             Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
 
         }
