@@ -16,7 +16,7 @@ public class EnemyBullet : MonoBehaviour
     void Start()
     {
         // 플레이어 찾기
-        player = GameObject.Find("Dummy_Player");
+        player = GameObject.Find("Player");
         // 방향
         dir = player.transform.position - transform.position;
     }

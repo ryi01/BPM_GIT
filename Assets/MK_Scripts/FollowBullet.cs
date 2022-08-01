@@ -15,7 +15,7 @@ public class FollowBullet : MonoBehaviour
     void Start()
     {
         // 플레이어 찾기
-        player = GameObject.Find("Dummy_Player");
+        player = GameObject.Find("Player");
     }
 
     // Update is called once per frame
