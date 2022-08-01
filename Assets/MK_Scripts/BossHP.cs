@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // 利 HP 包府 
-public class EnemyHP : MonoBehaviour
+public class SpiderHP : MonoBehaviour
 {
     // 教臂沛
-    public static EnemyHP instance;
+    public static SpiderHP instance;
     private void Awake()
     {
         instance = this;
@@ -19,6 +19,10 @@ public class EnemyHP : MonoBehaviour
         set
         {
             enemyHP = value;
+            if (enemyHP <= 0)
+            {
+                Destroy(gameObject);
+            }
             
         }
     }

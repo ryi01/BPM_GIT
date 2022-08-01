@@ -44,7 +44,7 @@ public class Bat : MonoBehaviour
     void Start()
     {
         // 적 체력 세팅
-        EnemyHP.instance.ENEMYHP = 1;
+        BatHP.instance.ENEMYHP = 1;
     }
 
     // Update is called once per frame

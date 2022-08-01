@@ -31,7 +31,7 @@ public class Larva : MonoBehaviour
         rigid = GetComponent<Rigidbody>();
         // 체력
         // 적 체력 세팅
-        EnemyHP.instance.ENEMYHP = 2;
+        LarvaHP.instance.ENEMYHP = 2;
     }
 
     // Update is called once per frame
@@ -65,6 +65,11 @@ public class Larva : MonoBehaviour
         if (collision.gameObject.name.Contains("Player"))
         {
             NockBack();
+            LarvaHP.instance.ENEMYHP--;
+            if(LarvaHP.instance.ENEMYHP <= 0)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }

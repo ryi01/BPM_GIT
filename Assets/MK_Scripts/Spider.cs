@@ -37,7 +37,6 @@ public class Spider : MonoBehaviour
         Jump,
         Stop,
         Set,
-        Back,
         Attack
     }
     SpiderState state;
@@ -45,12 +44,12 @@ public class Spider : MonoBehaviour
     void Start()
     {
         // 플레이어 찾기
-        player = GameObject.Find("Pos").GetComponent<Transform>();
+        player = GameObject.Find("Dummy_Player").GetComponent<Transform>();
         state = SpiderState.Move;
         sRigid = GetComponent<Rigidbody>();
 
         // 적 체력 세팅
-        EnemyHP.instance.ENEMYHP = 5;
+        SpiderHP.instance.ENEMYHP = 5;
     }
 
     // Update is called once per frame
@@ -81,10 +80,6 @@ public class Spider : MonoBehaviour
         else if (state == SpiderState.Set)
         {
             SpiderSet();
-        }
-        else if (state == SpiderState.Back)
-        {
-            SpiderBack();
         }
         else if(state == SpiderState.Attack)
         {
@@ -203,13 +198,6 @@ public class Spider : MonoBehaviour
         }
         
     }
-    // 넉백
-    void SpiderBack()
-    {
-        NockBack();
-
-        state = SpiderState.Set;
-    }
     void LookPlayer()
     {
         // 플레이어 보기
@@ -228,14 +216,15 @@ public class Spider : MonoBehaviour
     public void NockBack()
     {
         sRigid.AddForce(-dir * backPow, ForceMode.Impulse);
+        state = SpiderState.Set;
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.name.Contains("Player"))
+        if (collision.gameObject.name.Contains("Dummy_Player"))
         {
             // 플레이어랑 부딪히면 넉백 => 플레이어와 부딪히면 넉백이 아니라 공격
-            state = SpiderState.Back;
-
+            NockBack();
+            SpiderHP.instance.ENEMYHP--;
         }
         if (collision.gameObject.name.Contains("Floor") && state == SpiderState.Jump)
         {
