@@ -123,17 +123,17 @@ public class SR_ShotGun : MonoBehaviour
         {
             Debug.Log(hit.transform.name);
 
-            LarvaHP larvaHp = null;
-            BatHP batHp = null;
-            SpiderHP spiderHp = null;
-            BossHP bossHp = null;
+            GameObject larva = GameObject.Find("Larva");
+            if (hit.transform.name.Contains("Larva")) larva.GetComponent<LarvaHP>().AddDamage(damage);
 
-            if(hit.transform.name == "Larva") larvaHp.GetComponent<LarvaHP>().TakeDamage(damage);
-            if (hit.transform.name == "Bat") batHp.GetComponent<BatHP>().TakeDamage(damage);
-            if (hit.transform.name == "Spider") spiderHp.GetComponent<SpiderHP>().TakeDamage(damage);
-            if (hit.transform.name == "Boss") bossHp.GetComponent<BossHP>().TakeDamage(damage);
+            GameObject bat = GameObject.Find("Bat");
+            if (hit.transform.name.Contains("Bat")) bat.GetComponent<BatHP>().AddDamage(damage);
 
-            //Copy and Paste this Lines into Rifle, Pistol.
+            GameObject spider = GameObject.Find("Spider");
+            if (hit.transform.name.Contains("Spider")) spider.GetComponent<SpiderHP>().AddDamage(damage);
+
+            GameObject boss = GameObject.Find("Boss");
+            if (hit.transform.name.Contains("Boss")) boss.GetComponent<BossHP>().AddDamage(damage);
 
             Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
 

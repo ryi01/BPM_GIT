@@ -24,7 +24,7 @@ public class SR_PlayerHP : MonoBehaviour
 
         if(hp<=0)
         {
-            //Game Over
+            hp = 0;
         }
     }
 
