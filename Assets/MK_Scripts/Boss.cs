@@ -125,7 +125,7 @@ public class Boss : MonoBehaviour
     {
         transform.position += dir * bossSpeed  * Time.deltaTime;
         float dis = Vector3.Distance(transform.position, player.transform.position);
-        if(dis < 5f)
+        if(dis < 8f)
         {
             state = BossState.Rand;
         }
@@ -134,7 +134,7 @@ public class Boss : MonoBehaviour
     private void BossRand()
     {
         currentTime += Time.deltaTime;
-        if (currentTime < 0.01f)
+        if (currentTime < 0.3375f * 0.2f)
         {
             x = UnityEngine.Random.Range(-20, 20);
             y = UnityEngine.Random.Range(8, 13);
@@ -191,7 +191,7 @@ public class Boss : MonoBehaviour
         // 공격 후, 멈추기
         transform.position += dir * 0 * Time.deltaTime;
         currentTime += Time.deltaTime;
-        if(currentTime > 2)
+        if(currentTime > 0.3375f * 6)
         {
             currentTime = 0;
             state = BossState.Move;
@@ -210,10 +210,10 @@ public class Boss : MonoBehaviour
         // 시간이 흐름
         currentTime2 += Time.deltaTime;
         // 3초 이후일 때,
-        if (currentTime2 > 1)
+        if (currentTime2 > 0.3375f * 8)
         {
             // 총알 만들기
-            MakingBullet(3, 0.335f * 2, bulletFact);
+            MakingBullet(3, 0.3375f * 2, bulletFact);
             currentTime2 = 0;
         }
     }
@@ -222,14 +222,14 @@ public class Boss : MonoBehaviour
     private void BossAttack3()
     {
         // 총알 만들기
-        MakingBullet(4, 0.335f * 2, bulletFact);
+        MakingBullet(4, 0.3375f, bulletFact);
     }
 
     // 패턴 4 : 빠른 속도를 총알 5개 발사
     private void BossAttack4()
     {
         // 총알 만들기
-        MakingBullet(5, 0.335f,fastBulletFact);
+        MakingBullet(5, 0.3375f * 0.5f,fastBulletFact);
     }
     // 패턴 5 : 유도탄 + 빠른 총알 1개 발사
     private void BossAttack5()
