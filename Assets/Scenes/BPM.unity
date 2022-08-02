@@ -950,8 +950,8 @@ MonoBehaviour:
   muzzleFactory: {fileID: 1746609120020080460, guid: ce1bf0f3b38799140a2f5a2c201a0bd8, type: 3}
   impactEffect: {fileID: 100000, guid: d6ae845422281d64e85e91085c6f5abf, type: 3}
   fireRate: 15
-  reload: {fileID: 0}
-  already: {fileID: 0}
+  reload: {fileID: 1148519180}
+  already: {fileID: 1952936538}
 --- !u!23 &296787919
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1817,8 +1817,8 @@ MonoBehaviour:
   muzzleFactory: {fileID: 1746609120020080460, guid: 2547b86f413720b4a93c4a25c9550ca1, type: 3}
   impactEffect: {fileID: 100000, guid: d6ae845422281d64e85e91085c6f5abf, type: 3}
   fireRate: 15
-  reload: {fileID: 0}
-  already: {fileID: 0}
+  reload: {fileID: 1148519180}
+  already: {fileID: 1952936538}
 --- !u!95 &860597961
 Animator:
   serializedVersion: 4
@@ -2378,8 +2378,8 @@ MonoBehaviour:
   muzzleFactory: {fileID: 1746609120020080460, guid: beba3c5bda0c9da43bd57c471172dd5f, type: 3}
   impactEffect: {fileID: 100000, guid: d6ae845422281d64e85e91085c6f5abf, type: 3}
   fireRate: 1
-  reload: {fileID: 0}
-  already: {fileID: 0}
+  reload: {fileID: 1148519180}
+  already: {fileID: 1952936538}
 --- !u!95 &1158901450
 Animator:
   serializedVersion: 4
@@ -2847,7 +2847,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb6f4b54c808fe44c943c440c1b0cdec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionFactory: {fileID: 0}
+  explosionFactory: {fileID: 100000, guid: bc98890f6028f444eaa7789bde5e2eeb, type: 3}
 --- !u!114 &1650821146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2860,8 +2860,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a2f6fb2684b4a1478f92d30d4660e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyText: {fileID: 0}
-  coinText: {fileID: 0}
+  keyText: {fileID: 424487483}
+  coinText: {fileID: 1459031934}
 --- !u!114 &1650821147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2875,9 +2875,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 100
-  hpSlider: {fileID: 0}
-  hpText: {fileID: 0}
-  maxHpText: {fileID: 0}
+  hpSlider: {fileID: 1968738055}
+  hpText: {fileID: 77846159}
+  maxHpText: {fileID: 1976311638}
 --- !u!114 &1650821148
 MonoBehaviour:
   m_ObjectHideFlags: 0
