@@ -11,6 +11,8 @@ public class BatHP : MonoBehaviour
     {
         instance = this;
     }
+    // 코인
+    public GameObject coinFact;
     // 체력
     int enemyHP;
     public int ENEMYHP
@@ -23,11 +25,21 @@ public class BatHP : MonoBehaviour
             {
                 Rigidbody rigid = GetComponent<Rigidbody>();
                 rigid.useGravity = true;
-                Destroy(gameObject, 2);
+                Destroy(gameObject, 1.5f);
             }
             
         }
     }
+    private void OnDestroy()
+    {
+        int rnd = UnityEngine.Random.Range(0, 2);
+        if (rnd == 0)
+        {
+            GameObject coin = Instantiate(coinFact);
+            coin.transform.position = transform.position;
+        }
+    }
+
     public void AddDamage(int damage)
     {
         ENEMYHP -= damage;

@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // 利 HP 包府 
-public class SpiderHP : MonoBehaviour
+public class BossHP : MonoBehaviour
 {
     // 教臂沛
-    public static SpiderHP instance;
+    public static BossHP instance;
     private void Awake()
     {
         instance = this;

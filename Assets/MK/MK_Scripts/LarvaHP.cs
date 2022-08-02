@@ -13,6 +13,8 @@ public class LarvaHP : MonoBehaviour
     }
     // 체력
     int enemyHP;
+    // 코인
+    public GameObject coinFact;
     public int ENEMYHP
     {
         get { return enemyHP; }
@@ -21,9 +23,18 @@ public class LarvaHP : MonoBehaviour
             enemyHP = value;
             if (enemyHP <= 0)
             {
-                Destroy(gameObject);
+                Destroy(gameObject, 0.5f);
             }
             
+        }
+    }
+    private void OnDestroy()
+    {
+        int rnd = UnityEngine.Random.Range(0, 2);
+        if (rnd == 0)
+        {
+            GameObject coin = Instantiate(coinFact);
+            coin.transform.position = transform.position;
         }
     }
 

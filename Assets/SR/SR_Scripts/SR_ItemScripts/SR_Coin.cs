@@ -11,7 +11,7 @@ public class SR_Coin : MonoBehaviour
         if(playerInventory != null)
         {
             playerInventory.CoinCollected();
-            gameObject.SetActive(false);
+            Destroy(gameObject);
         }
     }
 }

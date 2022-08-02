@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // 利 HP 包府 
-public class BossHP : MonoBehaviour
+public class SpiderHP : MonoBehaviour
 {
     // 教臂沛
-    public static BossHP instance;
+    public static SpiderHP instance;
     private void Awake()
     {
         instance = this;
     }
+    // 内牢
+    public GameObject coinFact;
     // 眉仿
     int enemyHP;
     public int ENEMYHP
@@ -21,9 +23,18 @@ public class BossHP : MonoBehaviour
             enemyHP = value;
             if (enemyHP <= 0)
             {
-                Destroy(gameObject);
+                Destroy(gameObject, 0.5f);
             }
             
+        }
+    }
+    private void OnDestroy()
+    {
+        int rnd = UnityEngine.Random.Range(0, 2);
+        if (rnd == 0)
+        {
+            GameObject coin = Instantiate(coinFact);
+            coin.transform.position = transform.position;
         }
     }
     public void AddDamage(int damage)

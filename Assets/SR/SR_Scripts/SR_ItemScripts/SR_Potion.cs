@@ -13,7 +13,7 @@ public class SR_Potion : MonoBehaviour
             if(playerHP.hp<100)
             {
                 playerHP.AddHP();
-                gameObject.SetActive(false);
+                Destroy(gameObject);
             }
         }
     }
