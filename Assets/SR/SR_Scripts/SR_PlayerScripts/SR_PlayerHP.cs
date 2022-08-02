@@ -38,13 +38,8 @@ public class SR_PlayerHP : MonoBehaviour
         {
             hp -= 25;
         }
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
-        {
-            hp -= 10;
-        }
+        
     }
-
-    
 
     public void AddHP()
     {

@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class SR_CamRotate : MonoBehaviour
 {
-    public float rotSpeed = 200.0f;
+    public float rotSpeed = 300.0f;
 
     float mx = 0;
     float my = 0;
 
-
+    private void Start()
+    {
+        my = -transform.eulerAngles.x;
+        mx = transform.eulerAngles.y;
+    }
     void LateUpdate()
     {
         float mouse_X = Input.GetAxis("Mouse X");
