@@ -24,7 +24,7 @@ public class SR_PlayerInventory : MonoBehaviour
 
     public void ScrollCollected()
     {
-        numberOfScrolls = 1;
+        numberOfScrolls++;
     }
 
     void Update()

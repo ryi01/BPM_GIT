@@ -151,7 +151,8 @@ public class SR_ShotGun : MonoBehaviour
             Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
 
         }
+        //why...? why........? why...
         GameObject player = GameObject.Find("Player");
-        player.GetComponent<SR_PlayerMove>().NockBack(30.0f);
+        player.GetComponent<SR_PlayerMove>().NockBack(10.0f);
     }
 }

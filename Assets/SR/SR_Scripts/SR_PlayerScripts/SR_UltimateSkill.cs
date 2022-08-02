@@ -16,7 +16,7 @@ public class SR_UltimateSkill : MonoBehaviour
     {
         currentTime = 5.4f;
     }
-    private void Update()
+    private void FixedUpdate()
     {
         cnt = GetComponent<SR_PlayerInventory>().numberOfScrolls;
         if(cnt > 0)
