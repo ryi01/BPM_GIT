@@ -978,7 +978,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db7a37fc425559f4da5136a865898dc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinFact: {fileID: 0}
+  coinFact: {fileID: 6995654173540204291, guid: 0aa544d35f1efb0479d32c3ce3d8bf7a, type: 3}
 --- !u!1 &352543844
 GameObject:
   m_ObjectHideFlags: 0
@@ -2919,7 +2919,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be68fd3401222914797aed452bf12d9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinFact: {fileID: 0}
+  coinFact: {fileID: 6995654173540204291, guid: 0aa544d35f1efb0479d32c3ce3d8bf7a, type: 3}
 --- !u!1 &1782685108
 GameObject:
   m_ObjectHideFlags: 0
