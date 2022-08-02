@@ -315,7 +315,7 @@ GameObject:
   - component: {fileID: 87157503}
   - component: {fileID: 87157502}
   m_Layer: 5
-  m_Name: CurTime
+  m_Name: CurrentTime
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1269,7 +1269,7 @@ GameObject:
   - component: {fileID: 770474482}
   - component: {fileID: 770474481}
   m_Layer: 5
-  m_Name: Reload
+  m_Name: needReload
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1685,7 +1685,7 @@ GameObject:
   - component: {fileID: 901586728}
   - component: {fileID: 901586727}
   m_Layer: 5
-  m_Name: Already
+  m_Name: AlreadyReloaded
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3770,7 +3770,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2018777329}
   m_Layer: 5
-  m_Name: Info
+  m_Name: Information
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
