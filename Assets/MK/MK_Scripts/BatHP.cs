@@ -23,7 +23,7 @@ public class BatHP : MonoBehaviour
             {
                 Rigidbody rigid = GetComponent<Rigidbody>();
                 rigid.useGravity = true;
-                Destroy(gameObject, 3);
+                Destroy(gameObject, 2);
             }
             
         }

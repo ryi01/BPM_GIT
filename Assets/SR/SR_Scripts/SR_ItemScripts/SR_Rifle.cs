@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class SR_Rifle : MonoBehaviour
 {
-    private float damage = 2f;
+    private int damage = 2;
     private float range = 100f;
 
     public Camera fpsCam;
@@ -118,14 +118,19 @@ public class SR_Rifle : MonoBehaviour
         if(Physics.Raycast(fpsCam.transform.position,fpsCam.transform.forward, out hit, range))
         {
             Debug.Log(hit.transform.name);
-            //타겟 데미지 입히는 부분
-            /*
-            Target target = hit.transform.Getcomponent<Target>();
-            if(target!=null)
-            {
-                target.TakeDamage(damage);
-            }
-            */
+
+            GameObject larva = GameObject.Find("Larva");
+            if (hit.transform.name.Contains("Larva")) larva.GetComponent<LarvaHP>().AddDamage(damage);
+
+            GameObject bat = GameObject.Find("Bat");
+            if (hit.transform.name.Contains("Bat")) bat.GetComponent<BatHP>().AddDamage(damage);
+
+            GameObject spider = GameObject.Find("Spider");
+            if (hit.transform.name.Contains("Spider")) spider.GetComponent<SpiderHP>().AddDamage(damage);
+
+            GameObject boss = GameObject.Find("Boss");
+            if (hit.transform.name.Contains("Boss")) boss.GetComponent<BossHP>().AddDamage(damage);
+
             Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
         }
     }
