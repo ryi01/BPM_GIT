@@ -45,7 +45,7 @@ public class Boss : MonoBehaviour
     Vector3 dir;
     // 시간
     float currentTime;
-    float currentTime2;
+    // 리듬
     float rhythmTime;
     Vector3 pos;
     float x;
@@ -133,6 +133,7 @@ public class Boss : MonoBehaviour
     // 플레이어를 향하다가 랜덤으로 움직이기
     private void BossRand()
     {
+        // 랜덤한 지점 찾기
         currentTime += Time.deltaTime;
         if (currentTime < 0.3375f * 0.2f)
         {
@@ -140,13 +141,18 @@ public class Boss : MonoBehaviour
             y = UnityEngine.Random.Range(8, 13);
             z = UnityEngine.Random.Range(-20, 20);
         }
+        // 랜덤한 지점 위치 정하기
         pos = player.transform.position + new Vector3(-x, y, -z);
+        // 랜덤지점과 내 지점의 방향 찾기
         Vector3 rndDir = pos - transform.position;
         rndDir.Normalize();
+        // 움직이기
         transform.position += rndDir * bossSpeed * Time.deltaTime;
+        // 랜덤한 지점에 가까워지면
         float dis = Vector3.Distance(pos, transform.position);
         if (dis < 1f)
         {
+            // State 변화주기
             state = BossState.Set;
             currentTime = 0;
         }
@@ -160,9 +166,9 @@ public class Boss : MonoBehaviour
         // 플레이어 바라보기
         Vector3 mySight = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
         transform.LookAt(mySight);
+        // 랜덤한 공격하기
         int rnd = UnityEngine.Random.Range(1, 5);
-        state = BossState.Attack4;
-/*        if (rnd == 0)
+        if (rnd == 0)
         {
             state = BossState.Attack1;
         }
@@ -181,7 +187,7 @@ public class Boss : MonoBehaviour
         else if (rnd == 4)
         {
             state = BossState.Attack5;
-        }*/
+        }
 
     }
 
@@ -190,6 +196,7 @@ public class Boss : MonoBehaviour
     {
         // 공격 후, 멈추기
         transform.position += dir * 0 * Time.deltaTime;
+        // 일정시간 후에 Move로 변경
         currentTime += Time.deltaTime;
         if(currentTime > 0.3375f * 6)
         {
@@ -198,7 +205,7 @@ public class Boss : MonoBehaviour
         }
     }
 
-    // 패턴 1 : 반반 공격
+    // 패턴 1 : 반반 공격 => 쉐이더 사용
     private void BossAttack1()
     {
         Debug.Log("Attak1");
@@ -208,13 +215,13 @@ public class Boss : MonoBehaviour
     private void BossAttack2()
     {
         // 시간이 흐름
-        currentTime2 += Time.deltaTime;
+        currentTime += Time.deltaTime;
         // 3초 이후일 때,
-        if (currentTime2 > 0.3375f * 8)
+        if (currentTime > 0.3375f * 8)
         {
             // 총알 만들기
             MakingBullet(3, 0.3375f * 2, bulletFact);
-            currentTime2 = 0;
+            currentTime = 0;
         }
     }
 
@@ -234,8 +241,11 @@ public class Boss : MonoBehaviour
     // 패턴 5 : 유도탄 + 빠른 총알 1개 발사
     private void BossAttack5()
     {
+        // 총알을 만들고
         GameObject bullet = Instantiate(followBulletFact);
+        // 총알을 내 위치에 가져다 놓음
         bullet.transform.position = transform.position;
+        // State 변경
         state = BossState.Stop;
     }
 
@@ -244,12 +254,16 @@ public class Boss : MonoBehaviour
         // 유도탄 3개를 만들기
         for (int i = 0; i < n; i++)
         {
-            // 0.3초에 한개씩 만들기
+            // 0.3초에
             if (rhythmTime > time)
             {
+                // 총알을 1개 만들고
                 GameObject bullet = Instantiate(bulletFactory);
+                // 위치를 조정하고
                 bullet.transform.position = transform.position;
+                // 총알 개수를 세고
                 count++;
+                // 리듬 타임을 0으로 만든다
                 rhythmTime = 0;
             }
         }
@@ -259,7 +273,6 @@ public class Boss : MonoBehaviour
             count = 0;
             // 스테이트 변경
             state = BossState.Stop;
-            currentTime2 = 0f;
         }
     }
 }
