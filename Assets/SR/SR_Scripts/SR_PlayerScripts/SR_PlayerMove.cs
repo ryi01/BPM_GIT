@@ -27,7 +27,7 @@ public class SR_PlayerMove : MonoBehaviour
         rigid = GetComponent<Rigidbody>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         
 
@@ -73,6 +73,6 @@ public class SR_PlayerMove : MonoBehaviour
 
     public void NockBack(float amount)
     {
-        rigid.AddForce(-transform.forward*amount,ForceMode.Impulse);
+        rigid.AddForce(-transform.forward * amount,ForceMode.Impulse);
     }
 }

@@ -145,5 +145,4 @@ public class SR_Pistol : MonoBehaviour
 
         }
     }
-    
 }

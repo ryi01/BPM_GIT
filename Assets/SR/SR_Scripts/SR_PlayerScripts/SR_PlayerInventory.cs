@@ -7,6 +7,8 @@ public class SR_PlayerInventory : MonoBehaviour
 {
     public int numberOfCoins { get; private set; }
     public int numberOfKeys { get; private set; }
+    public int numberOfScrolls { get; private set; }
+
 
     public Text keyText;
     public Text coinText;
@@ -19,6 +21,12 @@ public class SR_PlayerInventory : MonoBehaviour
     {
         numberOfKeys++;
     }
+
+    public void ScrollCollected()
+    {
+        numberOfScrolls++;
+    }
+
     void Update()
     {
         keyText.text = numberOfKeys + " ";
