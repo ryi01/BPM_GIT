@@ -191,7 +191,6 @@ public class Spider : MonoBehaviour
         {
             player.GetComponent<SR_PlayerHP>().hp -= 25;
             rhythmTime = 0;
-            Debug.Log("Attack");
         }
 
         if(dis >= 3)
