@@ -29,9 +29,13 @@ public class FollowBullet : MonoBehaviour
         transform.position += speed * dir * Time.deltaTime;
     }
     // 플레이어 충돌시 죽기
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.name.Contains("Player"))
+        if (other.gameObject.name.Contains("Player"))
+        {
+            Destroy(gameObject);
+        }
+        if (other.gameObject.layer == LayerMask.NameToLayer("Room"))
         {
             Destroy(gameObject);
         }

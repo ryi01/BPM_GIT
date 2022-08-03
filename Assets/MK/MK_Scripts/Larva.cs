@@ -42,7 +42,8 @@ public class Larva : MonoBehaviour
         rigid = GetComponent<Rigidbody>();
         // 체력
         // 적 체력 세팅
-        LarvaHP.instance.ENEMYHP = 2;
+        LarvaHP hp = GetComponent<LarvaHP>();
+        hp.ENEMYHP = 2;
     }
 
     // Update is called once per frame

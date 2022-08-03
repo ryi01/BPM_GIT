@@ -5,12 +5,7 @@ using UnityEngine;
 // 利 HP 包府 
 public class LarvaHP : MonoBehaviour
 {
-    // 教臂沛
-    public static LarvaHP instance;
-    private void Awake()
-    {
-        instance = this;
-    }
+    Treasure tre;
     // 眉仿
     int enemyHP;
     // 内牢
@@ -24,9 +19,14 @@ public class LarvaHP : MonoBehaviour
             if (enemyHP <= 0)
             {
                 Destroy(gameObject, 0.5f);
+                tre.count++;
             }
             
         }
+    }
+    private void Start()
+    {
+        tre = GameObject.Find("Treasure").GetComponent<Treasure>();
     }
     private void OnDestroy()
     {

@@ -16,12 +16,15 @@ public class Bat : MonoBehaviour
     public float shootTime = 3;
     // 총알 공장
     public GameObject bulletFact;
+    public float change = 0.2f;
 
     // 상태 머신
     enum BatState
     {
         Come,
         Move,
+        Stop,
+        Back
     }
     BatState batState;
     // 플레이어
@@ -32,6 +35,8 @@ public class Bat : MonoBehaviour
     float currentTime;
     // 총알 발사용 시간
     float currentTime2;
+    float currentTime3;
+
     // 랜덤 좌표
     float x;
     float y;
@@ -39,24 +44,33 @@ public class Bat : MonoBehaviour
     // 방향 백터 및 위치
     Vector3 batDir;
     Vector3 pos;
+    private void FixedUpdate()
+    {
+        currentTime += Time.deltaTime;
+        // 총알발사하기
+        currentTime2 += Time.deltaTime;
 
+    }
     // Start is called before the first frame update
     void Start()
     {
         // 적 체력 세팅
-        BatHP.instance.ENEMYHP = 1;
+        BatHP bat = GetComponent<BatHP>();
+        bat.ENEMYHP = 1;
+        float y = UnityEngine.Random.Range(5, 10);
+        transform.position = new Vector3(transform.position.x, y, transform.position.z);
     }
 
     // Update is called once per frame
     void Update()
     {
         player = GameObject.Find("Player");
-
         Vector3 mySight = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
         transform.LookAt(mySight);
-
+        float rnd = UnityEngine.Random.Range(2, 8);
         // 플레이어를 향하는 방향
         dir = player.transform.position - transform.position;
+        dir = new Vector3(dir.x, dir.y + rnd, dir.z);
         dir.Normalize();
         // FSM
         if(batState == BatState.Move)
@@ -67,61 +81,76 @@ public class Bat : MonoBehaviour
         {
             BatCome();
         }
+        else if(batState == BatState.Stop)
+        {
+            BatStop();
+        }
+        else if (batState == BatState.Back)
+        {
+            BatBack();
+        }
 
-        // 총알발사하기
-        currentTime2 += Time.deltaTime;
-        if(currentTime2 > shootTime)
+        if (currentTime2 > shootTime * 0.3375f)
         {
             GameObject bullet = Instantiate(bulletFact);
             bullet.transform.position = transform.position;
             currentTime2 = 0;
         }
-        
     }
     // 플레이어를 향해 특정 부분까지 가까워짐
     private void BatCome()
     {
-        // 플레이어와의 간격 계산
-        float dis = Vector3.Distance(player.transform.position, transform.position);
-        // 플레이어와 멀다면
-        if(dis > pDis)
+        transform.position += dir * bSpeed * Time.deltaTime;
+        float dis = Vector3.Distance(transform.position, player.transform.position);
+        if (dis < pDis)
         {
-            // 플레이어를 향해 움직이기
-            transform.position += dir * bSpeed * Time.deltaTime;
+            batState = BatState.Back;
         }
-        // 플레이어와 가까우면
-        else
-        {
-            // 스테이트 바꾸기
-            batState = BatState.Move;
-        }
-    }
 
+    }
+    int time;
     // 플레이어와 가깝다면 공중에서 랜덤으로 움직임
     private void BatMove()
     {
-        currentTime += Time.deltaTime;
-        // 현재시간이 4초보다 크고 5초보다 작을 때
-        if (currentTime > 4 && currentTime < 5)
+        time++;
+        if(time < 1)
         {
-            // 랜덤 좌표 구하고
-            x = UnityEngine.Random.Range(-4, 4);
-            y = UnityEngine.Random.Range(1, 4);
-            z = UnityEngine.Random.Range(-4, 4);
-            // 플레이어 근처에 배포
-            pos = player.transform.position + new Vector3(x, y, z);
-            // 랜덤 위치 방향 벡터
-            batDir = pos - transform.position;
-            currentTime = 0;
+            x = UnityEngine.Random.Range(-10, 10);
+            y = UnityEngine.Random.Range(3, 6);
+            z = UnityEngine.Random.Range(-10, 10);
         }
-        // 만약 랜덤위치와 멀다면
+        pos = new Vector3(x, y + 2, z);
+        batDir = pos - transform.position;
+        batDir.Normalize();
+        transform.position += batDir * bSpeed * Time.deltaTime;
+
         float dis = Vector3.Distance(transform.position, pos);
-        if (dis > 0.1f)
+        if(dis < 0.1f)
         {
-            // 움직이기
-            transform.position += batDir.normalized * bSpeed * Time.deltaTime;
+            time = 0;
+            batState = BatState.Come;
         }
-        
     }
 
+    void BatStop()
+    {
+        transform.position += batDir * 0 * Time.deltaTime;
+        float dis = Vector3.Distance(transform.position, player.transform.position);
+        if (dis > pDis )
+        {
+            batState = BatState.Move;
+        }
+    }
+    // 가까우면 뒤로 가기
+    void BatBack()
+    {
+        currentTime3 += Time.deltaTime;
+        transform.position += -dir * bSpeed * Time.deltaTime;
+        float dis = Vector3.Distance(transform.position, player.transform.position);
+        if(dis > pDis && currentTime3 > 0.3375f * 6)
+        {
+            currentTime = 0;
+            batState = BatState.Stop;
+        }
+    }
 }

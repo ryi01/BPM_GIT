@@ -8,6 +8,7 @@ TagManager:
   - Rifle
   - ShotGun
   - FxTemporaire
+  - Enemy
   layers:
   - Default
   - TransparentFX

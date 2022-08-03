@@ -9,15 +9,15 @@ public class Spider : MonoBehaviour
     // 필요속성 : 현재 시간
     float currentTime = 0;
     // 속도
-    float speed = 4;
+    public float speed = 4;
     // �÷��̾�
     GameObject player;
     // ����
     Vector3 dir;
     // 멈추는 시간
-    float stopTime = 2;
+    public float stopTime = 2;
     // 달리는 시간
-    float runTime = 4;
+    public float runTime = 4;
     // 플레이어와의 방향
     Vector3 runDir;
     // y속도
@@ -48,7 +48,8 @@ public class Spider : MonoBehaviour
         sRigid = GetComponent<Rigidbody>();
 
         // 적 체력 세팅
-        SpiderHP.instance.ENEMYHP = 5;
+        SpiderHP spider = GetComponent<SpiderHP>();
+        spider.ENEMYHP = 5;
     }
 
     // Update is called once per frame
@@ -101,11 +102,6 @@ public class Spider : MonoBehaviour
 
     }
 
-    private void Update()
-    {
-
-    }
-
     // 기본적인 움직임
     // 플레이어쪽으로 향하다가 랜덤 시간에 Stop으로 바뀐다
     private void SpidexrMove()
@@ -133,7 +129,7 @@ public class Spider : MonoBehaviour
         LookPlayer();
         // 일정시간이 지나면
         currentTime += Time.deltaTime;
-        if (currentTime > stopTime)
+        if (currentTime > stopTime * 0.3375f)
         {
             // �÷��̾� ����
             runDir = player.transform.position - transform.position;
@@ -157,7 +153,7 @@ public class Spider : MonoBehaviour
         currentTime += Time.deltaTime;
 
         transform.position += runDir * (speed + 3f) * Time.deltaTime;
-        if (currentTime >= runTime)
+        if (currentTime >= runTime * 0.3375f)
         {
             currentTime = 0;
             state = SpiderState.Set;
@@ -178,7 +174,7 @@ public class Spider : MonoBehaviour
         LookPlayer();
 
         currentTime += Time.deltaTime;
-        if (currentTime > 3)
+        if (currentTime > 0.3375f * 10)
         {
             state = SpiderState.Move;
             currentTime = 0;
@@ -187,7 +183,7 @@ public class Spider : MonoBehaviour
     // 근접 공격하기
     private void SpiderAttack()
     {
-        if (rhythmTime > 0.3375)
+        if (rhythmTime > 0.3375f)
         {
             player.GetComponent<SR_PlayerHP>().hp -= 25;
             rhythmTime = 0;

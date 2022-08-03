@@ -5,12 +5,7 @@ using UnityEngine;
 // 利 HP 包府 
 public class SpiderHP : MonoBehaviour
 {
-    // 教臂沛
-    public static SpiderHP instance;
-    private void Awake()
-    {
-        instance = this;
-    }
+    Treasure tre;
     // 内牢
     public GameObject coinFact;
     // 眉仿
@@ -24,12 +19,18 @@ public class SpiderHP : MonoBehaviour
             if (enemyHP <= 0)
             {
                 Destroy(gameObject, 0.5f);
+                tre.count++;
             }
             
         }
     }
+    private void Start()
+    {
+        tre = GameObject.Find("Treasure").GetComponent<Treasure>();
+    }
     private void OnDestroy()
     {
+
         int rnd = UnityEngine.Random.Range(0, 2);
         if (rnd == 0)
         {
