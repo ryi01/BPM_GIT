@@ -5502,6 +5502,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   treasure: {fileID: 1037342367}
+  keyFact: {fileID: 4105421840751658426, guid: 82ad1eea848bc814fab81edd0a98bbbb, type: 3}
   count: 0
 --- !u!4 &2070918429
 Transform:
