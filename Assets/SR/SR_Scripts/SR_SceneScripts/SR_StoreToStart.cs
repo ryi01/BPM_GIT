@@ -8,6 +8,7 @@ public class SR_StoreToStart : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
+        
         if(other.name.Contains("Player"))
         {
             SceneManager.LoadScene(1);

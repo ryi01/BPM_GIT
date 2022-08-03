@@ -11,6 +11,7 @@ public class SR_BossToEnding : MonoBehaviour
         if(other.name.Contains("Player"))
         {
             SceneManager.LoadScene(7);
+
         }
     }
 }

@@ -11,6 +11,7 @@ public class SR_BossToEnemy2 : MonoBehaviour
         if(other.name.Contains("Player"))
         {
             SceneManager.LoadScene(5);
+
         }
     }
 }

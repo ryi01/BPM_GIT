@@ -698,10 +698,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9194175017008373388, guid: 8487b87f28a93874a86dfab3138adaa8, type: 3}
       propertyPath: m_Name
-      value: Potion (1)
+      value: Big Potion
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8554375034198105495, guid: 8487b87f28a93874a86dfab3138adaa8, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8487b87f28a93874a86dfab3138adaa8, type: 3}
+--- !u!1 &48792641 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9194175017008373388, guid: 8487b87f28a93874a86dfab3138adaa8, type: 3}
+  m_PrefabInstance: {fileID: 48792640}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &55441987
 GameObject:
   m_ObjectHideFlags: 0
@@ -1843,6 +1849,18 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3225675304768217197, guid: 8487b87f28a93874a86dfab3138adaa8, type: 3}
   m_PrefabInstance: {fileID: 48792640}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &590393607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 48792641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 891bda946a6e86c48a125d83bed200be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &606802532
 GameObject:
   m_ObjectHideFlags: 0
@@ -3832,6 +3850,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 860715205}
     m_Modifications:
+    - target: {fileID: 366186819077009667, guid: 82ad1eea848bc814fab81edd0a98bbbb, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1054469795861559209, guid: 82ad1eea848bc814fab81edd0a98bbbb, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -3879,6 +3901,22 @@ PrefabInstance:
     - target: {fileID: 4105421840751658426, guid: 82ad1eea848bc814fab81edd0a98bbbb, type: 3}
       propertyPath: m_Name
       value: Key
+      objectReference: {fileID: 0}
+    - target: {fileID: 4452051646074800730, guid: 82ad1eea848bc814fab81edd0a98bbbb, type: 3}
+      propertyPath: m_Radius
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4452051646074800730, guid: 82ad1eea848bc814fab81edd0a98bbbb, type: 3}
+      propertyPath: m_Center.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4452051646074800730, guid: 82ad1eea848bc814fab81edd0a98bbbb, type: 3}
+      propertyPath: m_Center.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4452051646074800730, guid: 82ad1eea848bc814fab81edd0a98bbbb, type: 3}
+      propertyPath: m_Center.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82ad1eea848bc814fab81edd0a98bbbb, type: 3}

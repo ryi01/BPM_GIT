@@ -20,7 +20,6 @@ public class SR_UltimateSkill : MonoBehaviour
     {
         
         cnt = GetComponent<SR_PlayerInventory>().numberOfScrolls;
-        print(cnt);
         
         
             currentTime += Time.deltaTime;
