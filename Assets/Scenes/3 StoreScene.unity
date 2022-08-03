@@ -544,7 +544,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -643,7 +643,7 @@ Transform:
   - {fileID: 1741360278}
   - {fileID: 199464641}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &48792640
 PrefabInstance:
@@ -1836,7 +1836,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &590393606 stripped
 Transform:
@@ -2313,7 +2313,7 @@ Transform:
   m_Children:
   - {fileID: 606802533}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &754397617
 Camera:
@@ -2780,8 +2780,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 860715204}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -19.9812, y: 2.0815601, z: 9.805229}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -19.9812, y: -32.91844, z: 59.80523}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2790,8 +2790,8 @@ Transform:
   - {fileID: 590393606}
   - {fileID: 720966163}
   - {fileID: 1842182027}
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_Father: {fileID: 2032385379}
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &872437037
 GameObject:
@@ -2952,7 +2952,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: SR_ShotGun
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7599777032439765447, guid: e8b2695b206e40e43927c4dda4495f42, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e8b2695b206e40e43927c4dda4495f42, type: 3}
 --- !u!4 &992439306 stripped
 Transform:
@@ -3014,7 +3015,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1479820257558834851, guid: a368cb9c074151e479896fcbc5568714, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a368cb9c074151e479896fcbc5568714, type: 3}
 --- !u!1 &1068086498
 GameObject:
@@ -3179,7 +3181,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1139366744
 GameObject:
@@ -3601,7 +3603,7 @@ RectTransform:
   - {fileID: 179758286}
   - {fileID: 1939355773}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -4577,8 +4579,9 @@ Transform:
   - {fileID: 406595390}
   - {fileID: 1197862984}
   - {fileID: 23707313}
+  - {fileID: 860715205}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2055239248
 GameObject:
