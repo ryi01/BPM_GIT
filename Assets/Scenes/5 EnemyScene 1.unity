@@ -1646,12 +1646,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af3725836995dc343b5fa93135277810, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pDis: 4
+  pDis: 8
   bSpeed: 4
   moveTime: 2
-  shootTime: 3
+  shootTime: 5
   bulletFact: {fileID: 4211694878975722198, guid: 6385153cf1071e243a05ab247884f892, type: 3}
-  change: 0.2
+  change: 0.3
 --- !u!65 &704226427
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1793,7 +1793,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af3725836995dc343b5fa93135277810, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pDis: 4
+  pDis: 8
   bSpeed: 4
   moveTime: 2
   shootTime: 3
