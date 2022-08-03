@@ -62,7 +62,8 @@ public class Boss : MonoBehaviour
         // 상태설정
         state = BossState.Move;
         // 체력 설정
-        BossHP.instance.ENEMYHP = 20;
+        BossHP boss = GetComponent<BossHP> ();
+        boss.ENEMYHP = 20;
     }
     private void FixedUpdate()
     {
@@ -117,7 +118,6 @@ public class Boss : MonoBehaviour
         {
             BossAttack5();
         }
-        print(state);
     }
 
     // 플레이어를 향해 움직임

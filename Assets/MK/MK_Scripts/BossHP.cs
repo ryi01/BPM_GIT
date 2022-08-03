@@ -5,12 +5,6 @@ using UnityEngine;
 // 利 HP 包府 
 public class BossHP : MonoBehaviour
 {
-    // 教臂沛
-    public static BossHP instance;
-    private void Awake()
-    {
-        instance = this;
-    }
     // 眉仿
     int enemyHP;
     public int ENEMYHP
@@ -25,6 +19,11 @@ public class BossHP : MonoBehaviour
             }
             
         }
+    }
+    private void OnDestroy()
+    {
+        Treasure tre = GameObject.Find("Treasure").GetComponent<Treasure>();
+        tre.count++;
     }
     public void AddDamage(int damage)
     {
