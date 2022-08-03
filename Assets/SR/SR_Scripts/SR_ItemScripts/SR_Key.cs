@@ -4,14 +4,22 @@ using UnityEngine;
 
 public class SR_Key : MonoBehaviour
 {
-    private void OnTriggerEnter(Collider other)
+    
+    private void OnTriggerStay(Collider other)
     {
-        SR_PlayerInventory playerInventory = other.GetComponent<SR_PlayerInventory>();
+        int wallet = PlayerPrefs.GetInt("Wallet");
 
+        SR_PlayerInventory playerInventory = other.GetComponent<SR_PlayerInventory>();
         if (playerInventory != null)
         {
-            playerInventory.KeyCollected();
-            gameObject.SetActive(false);
+            if (Input.GetKeyDown(KeyCode.F) && wallet > 2)
+            {
+                playerInventory.KeyCollected();
+                Destroy(gameObject);
+                PlayerPrefs.SetInt("Wallet", wallet-2);
+
+
+            }
         }
     }
 }

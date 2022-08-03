@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SR_Potion : MonoBehaviour
+public class SR_BigPotion : MonoBehaviour
 {
     private void OnTriggerStay(Collider other)
     {
@@ -12,13 +12,13 @@ public class SR_Potion : MonoBehaviour
 
         if (playerHP != null)
         {
-            if (Input.GetKeyDown(KeyCode.F) && wallet > 4)
+            if (Input.GetKeyDown(KeyCode.F) && wallet > 6)
             {
                 if (playerHP.hp < 100)
                 {
-                    playerHP.AddHP();
+                    playerHP.AddBigHP();
                     Destroy(gameObject);
-                    PlayerPrefs.SetInt("Wallet", wallet - 4);
+                    PlayerPrefs.SetInt("Wallet", wallet - 6);
 
                 }
             }

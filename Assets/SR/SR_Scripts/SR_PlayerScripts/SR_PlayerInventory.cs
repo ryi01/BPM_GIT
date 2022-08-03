@@ -13,23 +13,30 @@ public class SR_PlayerInventory : MonoBehaviour
     public Text keyText;
     public Text coinText;
 
+
     public void CoinCollected()
     {
         numberOfCoins++;
+        PlayerPrefs.SetInt("Wallet", numberOfCoins);
+
     }
     public void KeyCollected()
     {
         numberOfKeys++;
+        PlayerPrefs.SetInt("Pouch", numberOfKeys);
     }
 
     public void ScrollCollected()
     {
         numberOfScrolls++;
+        PlayerPrefs.SetInt("Skill", numberOfScrolls);
     }
 
     void Update()
     {
-        keyText.text = numberOfKeys + " ";
-        coinText.text = numberOfCoins + " ";
+        int c = PlayerPrefs.GetInt("Wallet");
+        int k = PlayerPrefs.GetInt("Pouch");
+        keyText.text = k + " ";
+        coinText.text = c + " ";
     }
 }
