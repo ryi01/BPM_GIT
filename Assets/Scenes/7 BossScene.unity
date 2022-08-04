@@ -2178,7 +2178,7 @@ GameObject:
   - component: {fileID: 1043224502}
   - component: {fileID: 1043224501}
   m_Layer: 0
-  m_Name: Pistol
+  m_Name: ArmPistol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2518,7 +2518,7 @@ GameObject:
   - component: {fileID: 1268386476}
   - component: {fileID: 1268386475}
   m_Layer: 0
-  m_Name: Rifle
+  m_Name: ArmRifle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3615,7 +3615,7 @@ GameObject:
   - component: {fileID: 1752619606}
   - component: {fileID: 1752619605}
   m_Layer: 0
-  m_Name: ShotGun
+  m_Name: ArmShotGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
