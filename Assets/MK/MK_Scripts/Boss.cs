@@ -41,6 +41,9 @@ public class Boss : MonoBehaviour
     public GameObject fastBulletFact;
     public GameObject followBulletFact;
     public GameObject followBulletFact1;
+    // Attack1번 
+    public GameObject right;
+    public GameObject left;
     #endregion
     // 플레이어
     GameObject player;
@@ -56,6 +59,8 @@ public class Boss : MonoBehaviour
     float z;
     // 총알 개수
     int count;
+    Color r_mat;
+    Color l_mat;
 
     // Start is called before the first frame update
     void Start()
@@ -67,6 +72,11 @@ public class Boss : MonoBehaviour
         // 체력 설정
         BossHP boss = GetComponent<BossHP> ();
         boss.ENEMYHP = 20;
+        right.gameObject.SetActive(false);
+        left.gameObject.SetActive(false);
+        // 메쉬 렌더러 찾기
+        r_mat = right.GetComponent<MeshRenderer>().material.color;
+        l_mat = left.GetComponent<MeshRenderer>().material.color;
     }
     private void FixedUpdate()
     {
@@ -75,15 +85,7 @@ public class Boss : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        // y축 변경
-        float y = UnityEngine.Random.Range(2, 6);
-        // 플레이어까지 방향
-        Vector3 pPos = new Vector3(player.transform.position.x, player.transform.position.y + y, player.transform.position.z);
-        dir = pPos - transform.position;
-        // 플레이어 바라보기
-        Vector3 mySight = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
-        transform.LookAt(mySight);
-        dir.Normalize();
+
         // FSM
         if (state == BossState.Move)
         {
@@ -126,12 +128,21 @@ public class Boss : MonoBehaviour
     // 플레이어를 향해 움직임
     private void BossMove()
     {
-        transform.position += dir * bossSpeed  * Time.deltaTime;
+        // y축 변경
+        float y = UnityEngine.Random.Range(2, 6);
+        // 플레이어까지 방향
+        Vector3 pPos = new Vector3(player.transform.position.x, player.transform.position.y + y, player.transform.position.z);
+        dir = pPos - transform.position;
+        dir.Normalize();
+
+        transform.position += dir * bossSpeed * Time.deltaTime;
         float dis = Vector3.Distance(transform.position, player.transform.position);
         if(dis < 8f)
         {
             state = BossState.Rand;
+            currentTime = 0;
         }
+        
     }
     // 플레이어를 향하다가 랜덤으로 움직이기
     private void BossRand()
@@ -170,7 +181,7 @@ public class Boss : MonoBehaviour
         Vector3 mySight = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
         transform.LookAt(mySight);
         // 랜덤한 공격하기
-        int rnd = UnityEngine.Random.Range(1, 5);
+        int rnd = UnityEngine.Random.Range(0, 5);
         if (rnd == 0)
         {
             state = BossState.Attack1;
@@ -197,6 +208,9 @@ public class Boss : MonoBehaviour
     // 공격 후, 움직임 멈추고 플레이어 바라보기
     private void BossStop()
     {
+        // 플레이어 바라보기
+        Vector3 mySight = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
+        transform.LookAt(mySight);
         // 공격 후, 멈추기
         transform.position += dir * 0 * Time.deltaTime;
         // 일정시간 후에 Move로 변경
@@ -207,11 +221,55 @@ public class Boss : MonoBehaviour
             state = BossState.Move;
         }
     }
-
+    int countAttack = 0;
     // 패턴 1 : 반반 공격 => 쉐이더 사용
     private void BossAttack1()
     {
-        Debug.Log("Attak1");
+        // 플레이어 바라보기
+        Vector3 mySight = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
+
+        currentTime += Time.deltaTime;
+        if(currentTime <= 0.3375f * 10)
+        {
+            left.gameObject.SetActive(false);
+            right.gameObject.SetActive(true);
+            if(currentTime > 0.3375 * 6)
+            {
+                Vector3 point = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+                transform.LookAt(point);
+            }
+            else
+            {
+                transform.LookAt(mySight);
+            }
+        }
+        else if(currentTime > 0.3375f * 10 && currentTime <= 0.3375f * 20)
+        {
+            right.gameObject.SetActive(false);
+            left.gameObject.SetActive(true);
+            if (currentTime > 0.3375 * 16)
+            {
+                Vector3 point = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+                transform.LookAt(point);
+            }
+            else
+            {
+                transform.LookAt(mySight);
+            }
+        }
+        else if(currentTime > 0.3375f * 20)
+        {
+            countAttack++;
+            currentTime = 0;
+        }
+        print(countAttack);
+        if(countAttack == 2)
+        {
+            currentTime = 0;
+            left.gameObject.SetActive(false);
+            countAttack = 0;
+            state = BossState.Move;
+        }
     }
 
     // 패턴 2 : 유도탄 발사
