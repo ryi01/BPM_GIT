@@ -29,9 +29,14 @@ public class SR_PlayerMove : MonoBehaviour
 
     void FixedUpdate()
     {
-        
-
         finalSpeed = speed;
+        
+        //모든 움직임
+        float h = Input.GetAxis("Horizontal");
+        float v = Input.GetAxis("Vertical");
+        dir = transform.right * h + transform.forward * v;
+        dir.Normalize();
+        dir.y = yVelocity;
 
         //짬푸
         yVelocity += gravity * Time.deltaTime;
@@ -53,12 +58,6 @@ public class SR_PlayerMove : MonoBehaviour
             StartCoroutine(FalseGravity());
         }
 
-        //모든 움직임
-        float h = Input.GetAxis("Horizontal");
-        float v = Input.GetAxis("Vertical");
-        dir = transform.right * h + transform.forward * v;
-        dir.Normalize();
-        dir.y = yVelocity;
 
         
 
