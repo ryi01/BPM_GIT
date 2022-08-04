@@ -139,6 +139,9 @@ public class SR_Rifle : MonoBehaviour
 
             if (hit.transform.name.Contains("Boss")) hit.transform.GetComponent<BossHP>().AddDamage(damage);
 
+            if (hit.transform.name.Contains("Slow")) Destroy(hit.transform); // 보스 Slow Bullet 피격처
+
+
             Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
         }
     }
