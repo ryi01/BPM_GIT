@@ -26,14 +26,14 @@ public class SR_WeaponSwitching : MonoBehaviour
         if (selectedWeapon > 4) selectedWeapon = a % 4;
         // when weapon system completed, change this area.
         // change by wheel -> change by selected gun item.
-        //if(Input.GetAxis("Mouse ScrollWheel") > 0f)
+        //if (Input.GetAxis("Mouse ScrollWheel") > 0f)
         //{
         //    if (selectedWeapon >= transform.childCount - 1) selectedWeapon = 0;
         //    else selectedWeapon++;
 
 
         //}
-        //if(Input.GetAxis("Mouse ScrollWheel") < 0f)
+        //if (Input.GetAxis("Mouse ScrollWheel") < 0f)
         //{
         //    if (selectedWeapon <= 0) selectedWeapon = transform.childCount - 1;
         //    else selectedWeapon++;
@@ -42,33 +42,21 @@ public class SR_WeaponSwitching : MonoBehaviour
         //{
         //    SelectedWeapon();
         //}
-        if(rifle > 0)
-        {
-            shotgun = 0;
-            selectedWeapon = 2;
-            SelectedWeapon(2);
-            if (shotgun > 0)
-            {
-                rifle = 0;
-                selectedWeapon = 1;
-                SelectedWeapon(1);
-
-            }
-        }
-
         if (shotgun > 0)
         {
             rifle = 0;
             selectedWeapon = 1;
             SelectedWeapon(1);
-            if (rifle > 0)
-            {
-                shotgun = 0;
-                selectedWeapon = 2;
-                SelectedWeapon(2);
-
-            }
+           
         }
+        if (rifle > 0)
+        {
+            shotgun = 0;
+            selectedWeapon = 2;
+            SelectedWeapon(2);
+           
+        }
+        // 왜 반대는 안 되는지...?
 
 
     }
