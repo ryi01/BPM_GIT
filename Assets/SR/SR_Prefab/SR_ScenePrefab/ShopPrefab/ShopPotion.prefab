@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4499203759482641630}
   - component: {fileID: 8554375034198105515}
   - component: {fileID: 8554375034198105492}
+  - component: {fileID: 8749575397761537979}
   - component: {fileID: 8554375034198105495}
   m_Layer: 0
   m_Name: ShopPotion
@@ -115,6 +116,19 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 2
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!114 &8749575397761537979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9194175017008373388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d7e707e159fe5148b21257da93a3098, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
 --- !u!114 &8554375034198105495
 MonoBehaviour:
   m_ObjectHideFlags: 0

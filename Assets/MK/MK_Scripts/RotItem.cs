@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Key : MonoBehaviour
+public class RotItem : MonoBehaviour
 {
     public float speed = 30;
     // Start is called before the first frame update

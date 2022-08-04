@@ -33,8 +33,8 @@ public class Treasure : MonoBehaviour
 
         if(treasure.gameObject.activeSelf == true && Input.GetKeyDown(KeyCode.F))
         {
-            GameObject key = Instantiate(keyFact);
-            key.transform.position = treasure.transform.position + new Vector3(0, 1.5f, 0);
+            GameObject key = Instantiate(keyFact, gameObject.transform);
+           //  key.transform.position = treasure.transform.position;
         }
     }
 }

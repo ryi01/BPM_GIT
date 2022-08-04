@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // 코인 자전시키기
-public class CoinRot : MonoBehaviour
+public class JumpItem1 : MonoBehaviour
 {
+    // 보물상자
+    GameObject tre;
     // 속도
     public float speed = 5;
     // 점프 파워
@@ -14,6 +16,7 @@ public class CoinRot : MonoBehaviour
 
     private void Start()
     {
+        tre = GameObject.Find("Treasure");
         CreateCoin();
     }
 
@@ -36,12 +39,11 @@ public class CoinRot : MonoBehaviour
         currentTime += Time.deltaTime;
         if (currentTime > 0.005f)
         {
-            x = Random.Range(-3, 3);
-            y = Random.Range(4, 10);
-            z = Random.Range(-3, 3);
+            x = Random.Range(-1, 1);
+            z = Random.Range(-1, 1);
             currentTime = 0;
         }        
-        Vector3 pos = transform.position + new Vector3(x, y, z);
+        Vector3 pos = tre.transform.position + new Vector3(x, 1, z);
         dir = pos - transform.position;
 
         dir.y = jumpPow;

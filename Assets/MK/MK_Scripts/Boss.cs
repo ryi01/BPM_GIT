@@ -14,6 +14,7 @@ using UnityEngine;
 
 public class Boss : MonoBehaviour
 {
+    #region 상태
     // FSM
     enum BossState
     {
@@ -28,7 +29,9 @@ public class Boss : MonoBehaviour
         Attack5,
     }
     BossState state;
+    #endregion
 
+    #region public 변수
     // 움직이는 속도
     public float bossSpeed = 5;
     // 움직이는 시간
@@ -38,7 +41,7 @@ public class Boss : MonoBehaviour
     public GameObject fastBulletFact;
     public GameObject followBulletFact;
     public GameObject followBulletFact1;
-
+    #endregion
     // 플레이어
     GameObject player;
     // 방향
