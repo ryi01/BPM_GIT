@@ -15,8 +15,8 @@ public class SR_StoreKey : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.F) && wallet > 2)
             {
                 playerInventory.KeyCollected();
-                Destroy(gameObject);
                 PlayerPrefs.SetInt("Wallet", wallet-2);
+                Destroy(gameObject);
 
 
             }
