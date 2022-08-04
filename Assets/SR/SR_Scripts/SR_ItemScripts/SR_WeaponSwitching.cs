@@ -44,19 +44,37 @@ public class SR_WeaponSwitching : MonoBehaviour
         //}
         if(rifle > 0)
         {
+            shotgun = 0;
             selectedWeapon = 2;
             SelectedWeapon(2);
+            if (shotgun > 0)
+            {
+                rifle = 0;
+                selectedWeapon = 1;
+                SelectedWeapon(1);
+
+            }
         }
+
         if (shotgun > 0)
         {
+            rifle = 0;
             selectedWeapon = 1;
             SelectedWeapon(1);
+            if (rifle > 0)
+            {
+                shotgun = 0;
+                selectedWeapon = 2;
+                SelectedWeapon(2);
 
+            }
         }
-        
+
+
     }
     void SelectedWeapon(int selectedWeapon)
     {
+        
         int i = 0;
         foreach (Transform weapon in transform)
         {
@@ -65,5 +83,6 @@ public class SR_WeaponSwitching : MonoBehaviour
             i++;
             
         }
+        
     }
 }

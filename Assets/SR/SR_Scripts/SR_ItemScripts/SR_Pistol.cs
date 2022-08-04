@@ -116,7 +116,7 @@ public class SR_Pistol : MonoBehaviour
 
         RaycastHit hit;
 
-        int layer = 1 << gameObject.layer;
+        int layer = 1 << 7;
 
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range, ~layer))
         {
