@@ -119,7 +119,9 @@ public class SR_ShotGun : MonoBehaviour
 
         RaycastHit hit;
 
-        if(Physics.Raycast(fpsCam.transform.position,fpsCam.transform.forward, out hit, range))
+        int layer = 1 << gameObject.layer;
+
+        if (Physics.Raycast(fpsCam.transform.position,fpsCam.transform.forward, out hit, range,~layer))
         {
             Debug.Log(hit.transform.name);
 
