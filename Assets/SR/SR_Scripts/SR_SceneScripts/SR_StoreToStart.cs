@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class SR_StoreToStart : MonoBehaviour
 {
-    
     private void OnTriggerEnter(Collider other)
     {
         
