@@ -12,6 +12,7 @@ public class Treasure : MonoBehaviour
     // Ä«¿îÆ®
     public int count;
     GameObject[] enemy;
+    int countKey;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,10 +32,11 @@ public class Treasure : MonoBehaviour
             treasure.gameObject.SetActive(true);
         }
 
-        if(treasure.gameObject.activeSelf == true && Input.GetKeyDown(KeyCode.F))
+        if(treasure.gameObject.activeSelf == true && Input.GetKeyDown(KeyCode.F) && countKey < 1)
         {
-            GameObject key = Instantiate(keyFact, gameObject.transform);
-           //  key.transform.position = treasure.transform.position;
+            countKey++;
+            GameObject key = Instantiate(keyFact);
+            key.transform.position = transform.position;
         }
     }
 }
