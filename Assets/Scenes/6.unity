@@ -4050,7 +4050,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28ea96037334d414597a0593517f4607, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotSpeed: 300
+  rotSpeed: 600
 --- !u!114 &1572783053
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5098,7 +5098,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46164844009497d4f81e37ba9eb97024, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotSpeed: 300
+  rotSpeed: 600
 --- !u!81 &1906795171
 AudioListener:
   m_ObjectHideFlags: 0
