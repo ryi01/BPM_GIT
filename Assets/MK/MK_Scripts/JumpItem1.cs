@@ -43,7 +43,7 @@ public class JumpItem1 : MonoBehaviour
             z = Random.Range(-1, 1);
             currentTime = 0;
         }        
-        Vector3 pos = tre.transform.position + new Vector3(x, 1, z);
+        Vector3 pos = tre.transform.position + new Vector3(x, 1.8f, z);
         dir = pos - transform.position;
 
         dir.y = jumpPow;
