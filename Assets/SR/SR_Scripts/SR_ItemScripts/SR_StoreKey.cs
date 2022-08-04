@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SR_Key : MonoBehaviour
+public class SR_StoreKey : MonoBehaviour
 {
     
     private void OnTriggerStay(Collider other)
@@ -12,13 +12,14 @@ public class SR_Key : MonoBehaviour
         SR_PlayerInventory playerInventory = other.GetComponent<SR_PlayerInventory>();
         if (playerInventory != null)
         {
-            
-             playerInventory.KeyCollected();
-             Destroy(gameObject);
-             
+            if (Input.GetKeyDown(KeyCode.F) && wallet > 2)
+            {
+                playerInventory.KeyCollected();
+                Destroy(gameObject);
+                PlayerPrefs.SetInt("Wallet", wallet-2);
 
 
-            
+            }
         }
     }
 }
