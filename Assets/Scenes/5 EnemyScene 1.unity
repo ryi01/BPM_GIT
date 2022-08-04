@@ -1700,7 +1700,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2085615397}
-  m_RootOrder: 6
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &704226424
 Rigidbody:
@@ -1746,7 +1746,7 @@ MonoBehaviour:
   pDis: 8
   bSpeed: 4
   moveTime: 2
-  shootTime: 5
+  shootTime: 11
   bulletFact: {fileID: 4211694878975722198, guid: 6385153cf1071e243a05ab247884f892, type: 3}
   change: 0.3
 --- !u!65 &704226427
@@ -1847,7 +1847,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2085615397}
-  m_RootOrder: 5
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &705462460
 Rigidbody:
@@ -1893,7 +1893,7 @@ MonoBehaviour:
   pDis: 8
   bSpeed: 4
   moveTime: 2
-  shootTime: 3
+  shootTime: 9
   bulletFact: {fileID: 4211694878975722198, guid: 6385153cf1071e243a05ab247884f892, type: 3}
   change: 0.2
 --- !u!65 &705462463
@@ -2040,7 +2040,7 @@ MonoBehaviour:
   pDis: 4
   bSpeed: 4
   moveTime: 2
-  shootTime: 3
+  shootTime: 8
   bulletFact: {fileID: 4211694878975722198, guid: 6385153cf1071e243a05ab247884f892, type: 3}
   change: 0.2
 --- !u!65 &709335012
@@ -3521,7 +3521,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2085615397}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &1316573300
 Rigidbody:
@@ -3749,7 +3749,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2085615397}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &1426982946
 Rigidbody:
@@ -4246,7 +4246,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2085615397}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &1796414010
 Rigidbody:
@@ -5245,7 +5245,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2085615397}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &2010566916
 Rigidbody:
@@ -5385,12 +5385,12 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 709335008}
+  - {fileID: 705462459}
+  - {fileID: 704226423}
   - {fileID: 1316573299}
   - {fileID: 1426982945}
   - {fileID: 1796414009}
   - {fileID: 2010566915}
-  - {fileID: 705462459}
-  - {fileID: 704226423}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
