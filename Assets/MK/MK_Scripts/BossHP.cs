@@ -20,11 +20,6 @@ public class BossHP : MonoBehaviour
             
         }
     }
-    private void OnDestroy()
-    {
-        Treasure tre = GameObject.Find("Treasure").GetComponent<Treasure>();
-        tre.count++;
-    }
     public void AddDamage(int damage)
     {
         ENEMYHP -= damage;

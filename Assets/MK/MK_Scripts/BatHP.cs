@@ -20,10 +20,9 @@ public class BatHP : MonoBehaviour
             {
                 Rigidbody rigid = GetComponent<Rigidbody>();
                 rigid.useGravity = true;
-                Destroy(gameObject, 1.5f);
-                tre.count++;
+                Destroy(gameObject, 2f);
             }
-            
+
         }
     }
     private void Start()
@@ -32,7 +31,6 @@ public class BatHP : MonoBehaviour
     }
     private void OnDestroy()
     {
-
         int rnd = UnityEngine.Random.Range(0, 2);
         if (rnd == 0)
         {

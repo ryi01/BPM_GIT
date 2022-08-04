@@ -19,9 +19,9 @@ public class LarvaHP : MonoBehaviour
             if (enemyHP <= 0)
             {
                 Destroy(gameObject, 0.5f);
-                tre.count++;
             }
-            
+
+
         }
     }
     private void Start()

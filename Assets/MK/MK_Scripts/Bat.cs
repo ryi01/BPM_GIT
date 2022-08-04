@@ -44,6 +44,7 @@ public class Bat : MonoBehaviour
     // 방향 백터 및 위치
     Vector3 batDir;
     Vector3 pos;
+    BatHP bat;
     private void FixedUpdate()
     {
         currentTime += Time.deltaTime;
@@ -55,7 +56,7 @@ public class Bat : MonoBehaviour
     void Start()
     {
         // 적 체력 세팅
-        BatHP bat = GetComponent<BatHP>();
+        bat = GetComponent<BatHP>();
         bat.ENEMYHP = 1;
         float y = UnityEngine.Random.Range(5, 10);
         transform.position = new Vector3(transform.position.x, y, transform.position.z);
@@ -90,11 +91,14 @@ public class Bat : MonoBehaviour
             BatBack();
         }
 
-        if (currentTime2 > shootTime * 0.3375f)
+        if (bat.ENEMYHP > 0)
         {
-            GameObject bullet = Instantiate(bulletFact);
-            bullet.transform.position = transform.position;
-            currentTime2 = 0;
+            if (currentTime2 > shootTime * 0.3375f)
+            {
+                GameObject bullet = Instantiate(bulletFact);
+                bullet.transform.position = transform.position;
+                currentTime2 = 0;
+            }
         }
     }
     // 플레이어를 향해 특정 부분까지 가까워짐

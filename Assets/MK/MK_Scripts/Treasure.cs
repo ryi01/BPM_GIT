@@ -27,11 +27,11 @@ public class Treasure : MonoBehaviour
         // 적 태그를 가진 오브젝트 찾기
         enemy = GameObject.FindGameObjectsWithTag("Enemy");
         // 태그가 없으면 보물 on
-        if(enemy.Length == count)
+        if(enemy.Length == 0)
         {
             treasure.gameObject.SetActive(true);
         }
-
+        print(enemy.Length + " " + count);
         if(treasure.gameObject.activeSelf == true && Input.GetKeyDown(KeyCode.F) && countKey < 1)
         {
             countKey++;

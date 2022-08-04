@@ -19,18 +19,17 @@ public class SpiderHP : MonoBehaviour
             if (enemyHP <= 0)
             {
                 Destroy(gameObject, 0.5f);
-                tre.count++;
             }
-            
+
         }
     }
     private void Start()
     {
         tre = GameObject.Find("Treasure").GetComponent<Treasure>();
     }
+
     private void OnDestroy()
     {
-
         int rnd = UnityEngine.Random.Range(0, 2);
         if (rnd == 0)
         {
