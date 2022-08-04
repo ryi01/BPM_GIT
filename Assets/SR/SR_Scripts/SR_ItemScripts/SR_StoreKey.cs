@@ -4,21 +4,31 @@ using UnityEngine;
 
 public class SR_StoreKey : MonoBehaviour
 {
-    
-    private void OnTriggerStay(Collider other)
+    Transform player;
+    Vector3 dis;
+
+    public float senseDis = 3;
+
+    private void Update()
     {
+        player = GameObject.Find("Player").transform;
         int wallet = PlayerPrefs.GetInt("Wallet");
 
-        SR_PlayerInventory playerInventory = other.GetComponent<SR_PlayerInventory>();
-        if (playerInventory != null)
+        SR_PlayerInventory playerInventory = player.GetComponent<SR_PlayerInventory>();
+
+        dis = player.position - gameObject.transform.position;
+        if (dis.magnitude <= senseDis)
         {
-            if (Input.GetKeyDown(KeyCode.F) && wallet > 2)
+            if (playerInventory != null)
             {
-                playerInventory.KeyCollected();
-                PlayerPrefs.SetInt("Wallet", wallet-2);
-                Destroy(gameObject);
+                if (Input.GetKeyDown(KeyCode.F) && wallet > 2)
+                {
+                    playerInventory.KeyCollected();
+                    PlayerPrefs.SetInt("Wallet", wallet - 2);
+                    Destroy(gameObject);
 
 
+                }
             }
         }
     }
