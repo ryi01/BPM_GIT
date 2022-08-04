@@ -1462,7 +1462,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   orientation: {fileID: 1123056232}
   playerCam: {fileID: 980039352}
-  dashForce: 20
+  dashForce: 50
   dashUpwardForce: 0
   dashDuration: 0.25
   dashCd: 0.8

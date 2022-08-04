@@ -44,6 +44,7 @@ public class SR_Dashing : MonoBehaviour
 
 
         if (Input.GetKeyDown(dashKey) && ((currentTime > 0 && currentTime < 0.15f) || (currentTime > 0.1875f && currentTime < 0.3375f))) Dash();
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyUp(dashKey)) pm.dashing = false;
 
         if (dashCdTimer > 0) dashCdTimer -= Time.deltaTime;
     }
@@ -55,7 +56,7 @@ public class SR_Dashing : MonoBehaviour
 
         pm.dashing = true;
 
-        Vector3 forceToApply = orientation.forward * dashForce + orientation.up * dashUpwardForce;
+        Vector3 forceToApply = orientation.forward * dashForce+ orientation.up * dashUpwardForce;
 
         delayedForceToApply = forceToApply;
         Invoke(nameof(DelayedDashForce), 0.025f);
@@ -68,7 +69,7 @@ public class SR_Dashing : MonoBehaviour
 
     private void DelayedDashForce()
     {
-        rb.AddForce(delayedForceToApply, ForceMode.Impulse);
+        rb.AddForce(delayedForceToApply, ForceMode.VelocityChange);
     }
 
     private void ResetDash()

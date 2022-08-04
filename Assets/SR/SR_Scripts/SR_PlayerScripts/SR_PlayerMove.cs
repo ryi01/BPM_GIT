@@ -8,7 +8,7 @@ public class SR_PlayerMove : MonoBehaviour
     float finalSpeed;
     float gravity = -9.8f;
     public float jumpPower = 3;
-    float yVelocity;
+    public float yVelocity;
     int jumpCnt = 0;
 
     public float dashSpeed;
@@ -26,7 +26,21 @@ public class SR_PlayerMove : MonoBehaviour
         cc = GetComponent<CharacterController>();
         rigid = GetComponent<Rigidbody>();
     }
-
+    private void Update()
+    {
+        //«Ǫ
+        yVelocity += gravity * Time.deltaTime;
+        
+        if (dashing == false && Input.GetButtonDown("Jump"))
+        {
+            if (jumpCnt < 1)
+            {
+                jumpCnt++;
+                yVelocity = jumpPower;
+            }
+        }
+        if (cc.isGrounded == true) jumpCnt = 0;
+    }
     void FixedUpdate()
     {
         finalSpeed = speed;
@@ -38,18 +52,7 @@ public class SR_PlayerMove : MonoBehaviour
         dir.Normalize();
         dir.y = yVelocity;
 
-        //«Ǫ
-        yVelocity += gravity * Time.deltaTime;
         
-        if (Input.GetButtonDown("Jump"))
-        {
-            if (jumpCnt < 1)
-            {
-                jumpCnt++;
-                yVelocity = jumpPower;
-            }
-        }
-        if (cc.isGrounded == true) jumpCnt = 0;
 
         //�뽬
         if(dashing)
@@ -66,8 +69,7 @@ public class SR_PlayerMove : MonoBehaviour
     IEnumerator FalseGravity()
     {
         yVelocity = 0;
-        yield return new WaitForSeconds(1.0f);
-        yVelocity = -9.8f;
+        yield return new WaitForSeconds(2.0f);
     }
 
     public void NockBack(float amount)
