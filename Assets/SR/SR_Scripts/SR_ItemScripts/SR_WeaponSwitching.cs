@@ -42,21 +42,19 @@ public class SR_WeaponSwitching : MonoBehaviour
         //{
         //    SelectedWeapon();
         //}
-        if (shotgun > 0)
+
+
+        if (shotgun > 0)  //1      
         {
-            rifle = 0;
             selectedWeapon = 1;
             SelectedWeapon(1);
-           
         }
         if (rifle > 0)
         {
-            shotgun = 0;
             selectedWeapon = 2;
             SelectedWeapon(2);
            
         }
-        // 왜 반대는 안 되는지...?
 
 
     }

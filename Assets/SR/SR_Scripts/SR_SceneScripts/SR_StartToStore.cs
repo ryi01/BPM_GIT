@@ -5,13 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class SR_StartToStore : MonoBehaviour
 {
+       
     
     private void OnTriggerEnter(Collider other)
     {
         if(other.name.Contains("Player"))
         {
             SceneManager.LoadScene(2);
-
+            
         }
     }
 }

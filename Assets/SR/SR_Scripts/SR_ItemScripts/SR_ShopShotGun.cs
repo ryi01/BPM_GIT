@@ -5,6 +5,19 @@ using UnityEngine;
 public class SR_ShopShotGun : MonoBehaviour
 {
     public int k = 0;
+    SR_ShopRifle reRifle;
+    private void Start()
+    {
+        reRifle = GameObject.Find("ShopRifle").GetComponent<SR_ShopRifle>();
+    }
+    private void Update()
+    {
+        if (reRifle)
+        {
+            if (reRifle.k == 1) reRifle.k = 0;
+        }
+    }
+
 
     private void OnTriggerStay(Collider other)
     {
