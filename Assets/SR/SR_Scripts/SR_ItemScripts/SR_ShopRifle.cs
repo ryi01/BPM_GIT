@@ -6,13 +6,15 @@ public class SR_ShopRifle : MonoBehaviour
 {
     public int k = 0;
     SR_ShopShotGun reShotGun;
+    SR_WeaponSwitching count;
     private void Start()
     {
         reShotGun = GameObject.Find("ShopShotGun").GetComponent<SR_ShopShotGun>();
+        count = GameObject.Find("Guns").GetComponent<SR_WeaponSwitching>();
     }
     private void Update()
     {
-        if (reShotGun)
+        if (reShotGun && count.count > 0)
         {
             if (reShotGun.k == 1) reShotGun.k = 0;
         }

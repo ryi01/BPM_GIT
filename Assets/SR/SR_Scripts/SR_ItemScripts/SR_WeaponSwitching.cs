@@ -9,6 +9,8 @@ public class SR_WeaponSwitching : MonoBehaviour
     public GameObject gunRifle;
     public GameObject gubShotGun;
 
+    public int count = 0;
+
     void Start()
     {
         SelectedWeapon(0);
@@ -42,19 +44,19 @@ public class SR_WeaponSwitching : MonoBehaviour
         //{
         //    SelectedWeapon();
         //}
-
-
-        if (shotgun > 0)  //1      
+        if (shotgun > 0)
         {
             selectedWeapon = 1;
             SelectedWeapon(1);
+            count++;
         }
         if (rifle > 0)
         {
             selectedWeapon = 2;
             SelectedWeapon(2);
-           
+            count++;
         }
+        // 왜 반대는 안 되는지...?
 
 
     }
