@@ -13,7 +13,7 @@ public class SR_WeaponSwitching : MonoBehaviour
 
     // 이전 무기 상태
     SR_GunBox preWeapon;
-    int preCount;
+    GameObject[] child;
 
     // 총 찾기
     SR_ShopRifle rifle;
@@ -31,9 +31,16 @@ public class SR_WeaponSwitching : MonoBehaviour
 
 
     void Update()
-    {        
-
-        a = selectedWeapon;
+    {
+        child = gameObject.GetComponentsInChildren<GameObject>();
+        // 현재 내가 들고 있는 총
+        for(int i = 0; i < 3; i++)
+        {
+            if (child[i].gameObject.activeSelf)
+            {
+                preWeapon.count = i;
+            }
+        }
 
         // 총기 확인
         rifle = gunRifle.GetComponent<SR_ShopRifle>();

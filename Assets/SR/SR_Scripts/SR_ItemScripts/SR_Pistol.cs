@@ -27,11 +27,6 @@ public class SR_Pistol : MonoBehaviour
     public Text already;
 
     private float currentTime = 0;
-    private void Awake()
-    {
-        SR_GunBox gun = GameObject.Find("Gun Box 1").GetComponent<SR_GunBox>();
-        gun.count = 0;
-    }
 
     private void Start()
     {
