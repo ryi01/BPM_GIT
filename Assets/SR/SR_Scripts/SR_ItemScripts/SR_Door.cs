@@ -25,7 +25,7 @@ public class SR_Door : MonoBehaviour
 
 
 
-        if (dis.magnitude < senseDis && Input.GetKeyDown(KeyCode.F)/* && pouch > 0*/)
+        if (dis.magnitude < senseDis && Input.GetKeyDown(KeyCode.F) && pouch > 0)
         {
             print("F");
             if (playerInventory != null)

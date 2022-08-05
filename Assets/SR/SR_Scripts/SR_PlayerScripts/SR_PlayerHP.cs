@@ -14,11 +14,12 @@ public class SR_PlayerHP : MonoBehaviour
 
     void Start()
     {
-        hp = PlayerPrefs.GetInt("HP");
+        hp = maxHp;
     }
 
     void Update()
     {
+        hp = PlayerPrefs.GetInt("HP");
         
         hpSlider.value = (float)hp / (float)maxHp;
         hpText.text = hp + " ";
@@ -28,12 +29,14 @@ public class SR_PlayerHP : MonoBehaviour
         {
             hp = 0;
             //GameOver
+            PlayerPrefs.DeleteAll();
+            PlayerPrefs.SetInt("HP", maxHp);
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name.Contains("Bullet") || other.gameObject.name.Contains("Box"))
+        if (other.gameObject.name.Contains("Bullet") || other.gameObject.name.Contains("Right") || other.gameObject.name.Contains("Left"))
         {
             hp -= 25;
             PlayerPrefs.SetInt("HP", hp);
