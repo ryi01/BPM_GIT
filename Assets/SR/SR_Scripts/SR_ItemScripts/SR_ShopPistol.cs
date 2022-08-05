@@ -7,8 +7,8 @@ public class SR_ShopPistol : MonoBehaviour
     public int k = 0;
     SR_ShopRifle reRifle;
     SR_ShopShotGun reShotGun;
-    SR_GunBox preWeapon;
     SR_WeaponSwitching count;
+    SR_WeaponSwitching1 count1;
 
     Transform player;
     Vector3 dis;
@@ -22,11 +22,11 @@ public class SR_ShopPistol : MonoBehaviour
         reRifle = GameObject.Find("ShopRifle").GetComponent<SR_ShopRifle>();
         reShotGun = GameObject.Find("ShopShotGun").GetComponent<SR_ShopShotGun>();
         count = GameObject.Find("Guns").GetComponent<SR_WeaponSwitching>();
-        preWeapon = GameObject.Find("Gun Box 1").GetComponent<SR_GunBox>();
+        count1 = GameObject.Find("Guns").GetComponent<SR_WeaponSwitching1>();
     }
     private void Update()
     {
-        if (count.count > 0 && (reShotGun || reRifle))
+        if ((count.count > 0 || count1.count > 0) && (reShotGun || reRifle))
         {
             if (reShotGun.k == 1)
             {
@@ -41,9 +41,10 @@ public class SR_ShopPistol : MonoBehaviour
         player = GameObject.Find("Player").transform;
         int wallet = PlayerPrefs.GetInt("Wallet");
 
-        dis = player.position - gameObject.transform.position;
+        dis = player.position - transform.position;
         if (dis.magnitude <= senseDis)
         {
+
             if (Input.GetKeyDown(KeyCode.F))
             {
                 if (/* && wallet > 15 && */ cnt <= 0)
@@ -53,8 +54,8 @@ public class SR_ShopPistol : MonoBehaviour
                     cnt++;
                 }
                 gameObject.SetActive(false);
-                preWeapon.count = 1;
                 k = 1;
+                
             }
         }
     }

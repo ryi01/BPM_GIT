@@ -8,6 +8,7 @@ public class SR_ShopRifle : MonoBehaviour
     SR_ShopShotGun reShotGun;
     SR_ShopPistol rePistol;
     SR_WeaponSwitching count;
+    SR_WeaponSwitching1 count1;
 
     Transform player;
     Vector3 dis;
@@ -19,12 +20,13 @@ public class SR_ShopRifle : MonoBehaviour
     private void Start()
     {
         reShotGun = GameObject.Find("ShopShotGun").GetComponent<SR_ShopShotGun>();
-        rePistol = GameObject.Find("ShopShotGun").GetComponent<SR_ShopPistol>();
+        rePistol = GameObject.Find("ShopPistol").GetComponent<SR_ShopPistol>();
         count = GameObject.Find("Guns").GetComponent<SR_WeaponSwitching>();
+        count1 = GameObject.Find("Guns").GetComponent<SR_WeaponSwitching1>();
     }
     private void Update()
     {
-        if (count.count > 0 && (reShotGun || rePistol))
+        if ((count.count > 0 || count1.count > 0) && (reShotGun || rePistol))
         {
             if (rePistol.k == 1)
             {
@@ -39,7 +41,7 @@ public class SR_ShopRifle : MonoBehaviour
         player = GameObject.Find("Player").transform;
         int wallet = PlayerPrefs.GetInt("Wallet");
 
-        dis = player.position - gameObject.transform.position;
+        dis = player.position - transform.position;
         if (dis.magnitude <= senseDis)
         {
 
@@ -49,10 +51,10 @@ public class SR_ShopRifle : MonoBehaviour
                 {
                     // ShotGun À¸·Î ¹Ù²Û´Ù
                     PlayerPrefs.SetInt("Wallet", wallet - 5);
+                    cnt++;
                 }
                 gameObject.SetActive(false);
                 k = 1;
-                cnt++;
             }
 
         }

@@ -5,10 +5,11 @@ using UnityEngine;
 public class SR_ShopShotGun : MonoBehaviour
 {
     public int k = 0;
+
     SR_ShopRifle reRifle;
     SR_ShopPistol rePistol;
     SR_WeaponSwitching count;
-    SR_GunBox preWeapon;
+    SR_WeaponSwitching1 count1;
     Transform player;
     Vector3 dis;
 
@@ -19,13 +20,13 @@ public class SR_ShopShotGun : MonoBehaviour
     private void Start()
     {
         reRifle = GameObject.Find("ShopRifle").GetComponent<SR_ShopRifle>();
-        rePistol = GameObject.Find("ShopShotGun").GetComponent<SR_ShopPistol>();
+        rePistol = GameObject.Find("ShopPistol").GetComponent<SR_ShopPistol>();
         count = GameObject.Find("Guns").GetComponent<SR_WeaponSwitching>();
-        preWeapon = GameObject.Find("Gun Box 1").GetComponent<SR_GunBox>();
+        count1 = GameObject.Find("Guns").GetComponent<SR_WeaponSwitching1>();
     }
     private void Update()
     {
-        if(count.count > 0 && (reRifle || rePistol))
+        if((count.count > 0 || count1.count > 0) && (reRifle || rePistol))
         {
             if(rePistol.k == 1)
             {
@@ -40,7 +41,7 @@ public class SR_ShopShotGun : MonoBehaviour
         player = GameObject.Find("Player").transform;
         int wallet = PlayerPrefs.GetInt("Wallet");
 
-        dis = player.position - gameObject.transform.position;
+        dis = player.position - transform.position;
         if (dis.magnitude <= senseDis)
         {
             if (Input.GetKeyDown(KeyCode.F))
@@ -49,10 +50,10 @@ public class SR_ShopShotGun : MonoBehaviour
                 {
                     // ShotGun À¸·Î ¹Ù²Û´Ù
                     PlayerPrefs.SetInt("Wallet", wallet - 15);
+                    cnt++;
                 }
                 gameObject.SetActive(false);
                 k = 1;
-                cnt++;
             }
         }
     }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SR_WeaponSwitching : MonoBehaviour
+public class SR_WeaponSwitching1 : MonoBehaviour
 {
     public int selectedWeapon = 1;
 
@@ -29,13 +29,13 @@ public class SR_WeaponSwitching : MonoBehaviour
     void Start()
     {
         SelectedWeapon(0);
-        preWeapon = GameObject.Find("Gun Box 1");
+
+        preWeapon = GameObject.Find("Gun Box 2");
     }
 
 
     void Update()
     {
-        print(gunShotGun);
         // √—±‚ »Æ¿Œ
         rifle = gunRifle.GetComponent<SR_ShopRifle>();
         shotgun = gunShotGun.GetComponent<SR_ShopShotGun>();
@@ -55,7 +55,6 @@ public class SR_WeaponSwitching : MonoBehaviour
             }
             if (shotgun)
             {
-                print(shotgun.k);
                 if (shotgun.k > 0)
                 {
                     selectedWeapon = 1;
@@ -67,14 +66,12 @@ public class SR_WeaponSwitching : MonoBehaviour
             {
                 if (rifle.k > 0)
                 {
-                    print(rifle.k);
                     selectedWeapon = 2;
                     SelectedWeapon(2);
                     count++;
                 }
             }
         }
-
     }
     void SelectedWeapon(int selectedWeapon)
     {
