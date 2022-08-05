@@ -31,7 +31,7 @@ public class SR_Door : MonoBehaviour
             if (playerInventory != null)
             {
                 PlayerPrefs.SetInt("Pouch", pouch - 1);
-                opening = true;
+                if(door.transform.rotation.z >= 0 && door.transform.rotation.z<90) opening = true;
             }
         }
 
