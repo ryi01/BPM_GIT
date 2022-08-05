@@ -2503,8 +2503,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedWeapon: 0
-  gunRifle: {fileID: 0}
-  gubShotGun: {fileID: 0}
+  gunPistol: {fileID: 75156204786095000, guid: df0438102fb806e48ae4067c5af8cd8c, type: 3}
+  gunRifle: {fileID: 1479820257556868254, guid: aef0824bec9575240aa4a4b49a337108, type: 3}
+  gunShotGun: {fileID: 7599777032430414342, guid: de52fd791deb8d54086ddbb6cdf920d3, type: 3}
+  count: 0
 --- !u!1 &1268386473
 GameObject:
   m_ObjectHideFlags: 0
@@ -3657,6 +3659,7 @@ MonoBehaviour:
   fireRate: 1
   reload: {fileID: 1112667887}
   already: {fileID: 138971211}
+  preWeapon: {fileID: 0}
 --- !u!95 &1752619606
 Animator:
   serializedVersion: 4
@@ -4208,6 +4211,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 15
   jumpPower: 5
+  yVelocity: 0
   dashSpeed: 40
   dashing: 0
 --- !u!23 &1948024574

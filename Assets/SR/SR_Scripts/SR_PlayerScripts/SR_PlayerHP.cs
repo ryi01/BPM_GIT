@@ -33,7 +33,7 @@ public class SR_PlayerHP : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name.Contains("Bullet"))
+        if (other.gameObject.name.Contains("Bullet") || other.gameObject.name.Contains("Box"))
         {
             hp -= 25;
             PlayerPrefs.SetInt("HP", hp);

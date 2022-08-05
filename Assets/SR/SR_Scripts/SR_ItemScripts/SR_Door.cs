@@ -31,15 +31,16 @@ public class SR_Door : MonoBehaviour
             if (playerInventory != null)
             {
                 PlayerPrefs.SetInt("Pouch", pouch - 1);
-                if(door.transform.rotation.z >= 0 && door.transform.rotation.z<90) opening = true;
+                if (door.transform.rotation.z >= 0 && door.transform.rotation.z < 90) opening = true;
             }
         }
 
-        if (door.transform.rotation.z >= 90) opening = false;
+        if (door.transform.rotation.z >= 0.55f) opening = false;
 
-        if(opening == true)
+        if (opening == true)
         {
-            door.transform.RotateAround(gameObject.transform.position, new Vector3(0, 1, 0), 20f * Time.deltaTime);
+            door.transform.RotateAround(gameObject.transform.position, new Vector3(0, 1, 0), 50f * Time.deltaTime);
         }
     }
+    
 }
