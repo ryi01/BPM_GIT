@@ -30,12 +30,6 @@ public class SR_ShotGun : MonoBehaviour
     private float currentTime = 0;
 
     public SR_GunBox preWeapon;
-    private void Awake()
-    {
-        preWeapon = GameObject.Find("Gun Box 1").GetComponent<SR_GunBox>();
-        preWeapon.preGuns = 1;
-    }
-
 
     private void Start()
     {

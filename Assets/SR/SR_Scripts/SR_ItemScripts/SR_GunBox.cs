@@ -33,7 +33,11 @@ public class SR_GunBox : MonoBehaviour
         }
         if(guns.count > 0 )
         {
-            SelectedWeapon(preGuns);
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                SelectedWeapon(count);
+                count = 0;
+            }
         }
     }
     void SelectedWeapon(int selectedWeapon)
