@@ -6,6 +6,7 @@ public class SR_ShopRifle : MonoBehaviour
 {
     public int k = 0;
     SR_ShopShotGun reShotGun;
+    SR_ShopPistol rePistol;
     SR_WeaponSwitching count;
 
     Transform player;
@@ -18,13 +19,21 @@ public class SR_ShopRifle : MonoBehaviour
     private void Start()
     {
         reShotGun = GameObject.Find("ShopShotGun").GetComponent<SR_ShopShotGun>();
+        rePistol = GameObject.Find("ShopShotGun").GetComponent<SR_ShopPistol>();
         count = GameObject.Find("Guns").GetComponent<SR_WeaponSwitching>();
     }
     private void Update()
     {
-        if (reShotGun && count.count > 0)
+        if (count.count > 0 && (reShotGun || rePistol))
         {
-            if (reShotGun.k == 1) reShotGun.k = 0;
+            if (rePistol.k == 1)
+            {
+                rePistol.k = 0;
+            }
+            if (reShotGun.k == 1)
+            {
+                reShotGun.k = 0;
+            }
         }
 
         player = GameObject.Find("Player").transform;
@@ -34,10 +43,13 @@ public class SR_ShopRifle : MonoBehaviour
         if (dis.magnitude <= senseDis)
         {
 
-            if (Input.GetKeyDown(KeyCode.F) /*&& wallet > 5 */&& cnt <= 0)
+            if (Input.GetKeyDown(KeyCode.F))
             {
-                // Rifle ·Î ¹Ù²Û´Ù
-                PlayerPrefs.SetInt("Wallet", wallet - 5);
+                if (/* && wallet > 5*/ cnt <= 0)
+                {
+                    // ShotGun À¸·Î ¹Ù²Û´Ù
+                    PlayerPrefs.SetInt("Wallet", wallet - 5);
+                }
                 gameObject.SetActive(false);
                 k = 1;
                 cnt++;

@@ -52,17 +52,12 @@ public class SR_PlayerMove : MonoBehaviour
         dir.Normalize();
         dir.y = yVelocity;
 
-        
-
         //´ë½¬
         if(dashing)
         {
             finalSpeed = dashSpeed;
             StartCoroutine(FalseGravity());
         }
-
-
-        
 
         cc.Move(dir * finalSpeed * Time.deltaTime);
     }

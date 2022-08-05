@@ -6,58 +6,69 @@ public class SR_WeaponSwitching : MonoBehaviour
 {
     public int selectedWeapon = 1;
 
+    // 스토어 총들
+    public GameObject gunPistol;
     public GameObject gunRifle;
-    public GameObject gubShotGun;
+    public GameObject gunShotGun;
+
+    // 이전 무기 상태
+    SR_GunBox preWeapon;
+    int preCount;
+
+    // 총 찾기
+    SR_ShopRifle rifle;
+    SR_ShopShotGun shotgun;
+    SR_ShopPistol pistol;
 
     public int count = 0;
+    int a;
 
     void Start()
     {
         SelectedWeapon(0);
+        preWeapon = GameObject.Find("Gun Box 1").GetComponent<SR_GunBox>();
     }
 
-    
-    void Update()
-    {
-        int previousSelectedWeapon = selectedWeapon;
-        int a = selectedWeapon;
 
-        int rifle = gunRifle.GetComponent<SR_ShopRifle>().k;
-        int shotgun = gubShotGun.GetComponent<SR_ShopShotGun>().k;
+    void Update()
+    {        
+
+        a = selectedWeapon;
+
+        // 총기 확인
+        rifle = gunRifle.GetComponent<SR_ShopRifle>();
+        shotgun = gunShotGun.GetComponent<SR_ShopShotGun>();
+        pistol = gunPistol.GetComponent<SR_ShopPistol>();
 
         if (selectedWeapon > 4) selectedWeapon = a % 4;
-        // when weapon system completed, change this area.
-        // change by wheel -> change by selected gun item.
-        //if (Input.GetAxis("Mouse ScrollWheel") > 0f)
-        //{
-        //    if (selectedWeapon >= transform.childCount - 1) selectedWeapon = 0;
-        //    else selectedWeapon++;
 
-
-        //}
-        //if (Input.GetAxis("Mouse ScrollWheel") < 0f)
-        //{
-        //    if (selectedWeapon <= 0) selectedWeapon = transform.childCount - 1;
-        //    else selectedWeapon++;
-        //}
-        //if(previousSelectedWeapon != selectedWeapon)
-        //{
-        //    SelectedWeapon();
-        //}
-        if (shotgun > 0)
+        if (pistol)
         {
-            selectedWeapon = 1;
-            SelectedWeapon(1);
-            count++;
+            if (pistol.k > 0)
+            {
+                selectedWeapon = 0;
+                SelectedWeapon(0);
+                count++;
+            }
         }
-        if (rifle > 0)
+        if (shotgun)
         {
-            selectedWeapon = 2;
-            SelectedWeapon(2);
-            count++;
+            if (shotgun.k > 0)
+            {
+                selectedWeapon = 1;
+                SelectedWeapon(1);
+                count++;
+            }
         }
-        // 왜 반대는 안 되는지...?
-
+        if (rifle)
+        {
+            if (rifle.k > 0)
+            {
+                selectedWeapon = 2;
+                SelectedWeapon(2);
+                count++;
+            }
+        }  
 
     }
     void SelectedWeapon(int selectedWeapon)
@@ -66,7 +77,10 @@ public class SR_WeaponSwitching : MonoBehaviour
         int i = 0;
         foreach (Transform weapon in transform)
         {
-            if (i == selectedWeapon) weapon.gameObject.SetActive(true);
+            if (i == selectedWeapon) 
+            { 
+                weapon.gameObject.SetActive(true);
+            }
             else weapon.gameObject.SetActive(false);
             i++;
             
