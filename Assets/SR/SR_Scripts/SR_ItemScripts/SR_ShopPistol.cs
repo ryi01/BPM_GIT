@@ -5,8 +5,11 @@ using UnityEngine;
 public class SR_ShopPistol : MonoBehaviour
 {
     public int k = 0;
+    public int k1 = 0;
+
     SR_ShopRifle reRifle;
     SR_ShopShotGun reShotGun;
+
     SR_WeaponSwitching count;
     SR_WeaponSwitching1 count1;
 
@@ -21,24 +24,15 @@ public class SR_ShopPistol : MonoBehaviour
     {
         reRifle = GameObject.Find("ShopRifle").GetComponent<SR_ShopRifle>();
         reShotGun = GameObject.Find("ShopShotGun").GetComponent<SR_ShopShotGun>();
+
         count = GameObject.Find("Guns").GetComponent<SR_WeaponSwitching>();
         count1 = GameObject.Find("Guns").GetComponent<SR_WeaponSwitching1>();
     }
     private void Update()
     {
-        if ((count.count > 0 || count1.count > 0) && (reShotGun || reRifle))
-        {
-            if (reShotGun.k == 1)
-            {
-                reShotGun.k = 0;
-            }
-            if (reRifle.k == 1)
-            {
-                reRifle.k = 0;
-            }
-        }
 
         player = GameObject.Find("Player").transform;
+
         int wallet = PlayerPrefs.GetInt("Wallet");
 
         dis = player.position - transform.position;
@@ -53,11 +47,19 @@ public class SR_ShopPistol : MonoBehaviour
                     PlayerPrefs.SetInt("Wallet", wallet - 15);
                     cnt++;
                 }
+
                 gameObject.SetActive(false);
-                k = 1;
+                
+                if(gameObject.transform.parent.name == "Gun Box 1")
+                {
+                    k++;
+                }           
+                if(gameObject.transform.parent.name == "Gun Box 2")
+                {
+                    k1++;
+                }
                 
             }
         }
     }
-
 }

@@ -5,6 +5,9 @@ using UnityEngine;
 public class SR_ShopRifle : MonoBehaviour
 {
     public int k = 0;
+    public int k1 = 0;
+
+
     SR_ShopShotGun reShotGun;
     SR_ShopPistol rePistol;
     SR_WeaponSwitching count;
@@ -26,22 +29,12 @@ public class SR_ShopRifle : MonoBehaviour
     }
     private void Update()
     {
-        if ((count.count > 0 || count1.count > 0) && (reShotGun || rePistol))
-        {
-            if (rePistol.k == 1)
-            {
-                rePistol.k = 0;
-            }
-            if (reShotGun.k == 1)
-            {
-                reShotGun.k = 0;
-            }
-        }
 
         player = GameObject.Find("Player").transform;
-        int wallet = PlayerPrefs.GetInt("Wallet");
 
         dis = player.position - transform.position;
+
+        int wallet = PlayerPrefs.GetInt("Wallet");
         if (dis.magnitude <= senseDis)
         {
 
@@ -54,7 +47,15 @@ public class SR_ShopRifle : MonoBehaviour
                     cnt++;
                 }
                 gameObject.SetActive(false);
-                k = 1;
+
+                if (gameObject.transform.parent.name == "Gun Box 1")
+                {
+                    k++;
+                }
+                if (gameObject.transform.parent.name == "Gun Box 2")
+                {
+                    k1++;
+                }
             }
 
         }

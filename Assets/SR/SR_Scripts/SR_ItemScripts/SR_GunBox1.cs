@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // 스토어 총기 박스 : 
-public class SR_GunBox : MonoBehaviour
+public class SR_GunBox1 : MonoBehaviour
 {
     // SR_WeaponSwitching에서 selectedWeapon 변수 가져와서 켜기
-    SR_WeaponSwitching guns;
-    SR_WeaponSwitching1 guns1;
+    SR_WeaponSwitching1 guns;
+
     // 들고 있는 총
     public int preGuns = 0;
     public int count;
@@ -16,35 +16,22 @@ public class SR_GunBox : MonoBehaviour
     void Start()
     {
         // SR_WeaponSwitching 찾기
-        guns = GameObject.Find("Guns").GetComponent<SR_WeaponSwitching>();
-        guns1 = GameObject.Find("Guns").GetComponent<SR_WeaponSwitching1>();
+        guns = GameObject.Find("Guns").GetComponent<SR_WeaponSwitching1>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (gameObject.name == "Gun Box 1")
+
+        if(guns.count <= 0)
         {
-            if (guns.count <= 0)
-            {
-                SelectedWeapon(1);
-            }
-            if (guns.count > 0)
-            {
-                SelectedWeapon(count);
-            }
+            SelectedWeapon(2);
         }
-        if (gameObject.name == "Gun Box 2")
+        if (guns.count > 0)
         {
-            if(guns1.count <= 0)
-            {
-                SelectedWeapon(2);
-            }
-            if (guns1.count > 0)
-            {
-                SelectedWeapon(count);
-            }
+            SelectedWeapon(count);
         }
+        
     }
     void SelectedWeapon(int selectedWeapon)
     {

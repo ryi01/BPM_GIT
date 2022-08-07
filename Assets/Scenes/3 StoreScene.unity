@@ -1229,6 +1229,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   k: 0
+  k1: 0
   senseDis: 3
 --- !u!1 &248660834
 GameObject:
@@ -1911,7 +1912,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 406595386}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed6aa065c6f7b204c99ec1c07e5b67f1, type: 3}
   m_Name: 
@@ -2233,6 +2234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   k: 0
+  k1: 0
   senseDis: 3
 --- !u!135 &629918050
 SphereCollider:
@@ -2259,6 +2261,7 @@ GameObject:
   - component: {fileID: 666323696}
   - component: {fileID: 666323695}
   - component: {fileID: 666323694}
+  - component: {fileID: 666323698}
   - component: {fileID: 666323697}
   m_Layer: 0
   m_Name: Gun Box 2
@@ -2355,9 +2358,23 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 666323692}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed6aa065c6f7b204c99ec1c07e5b67f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  preGuns: 0
+  count: 0
+--- !u!114 &666323698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 666323692}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d6841b88c06897418d4d93616e1c7b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   preGuns: 0
@@ -2540,6 +2557,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   k: 0
+  k1: 0
   senseDis: 3
 --- !u!135 &809561055
 SphereCollider:
@@ -3543,6 +3561,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   k: 0
+  k1: 0
   senseDis: 3
 --- !u!135 &1093001195
 SphereCollider:
@@ -3555,7 +3574,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1123056231
 GameObject:
@@ -4267,6 +4286,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   k: 0
+  k1: 0
   senseDis: 3
 --- !u!135 &1517659799
 SphereCollider:
@@ -4276,10 +4296,10 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1517659796}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 4
+  m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1587932034
 GameObject:
@@ -4324,7 +4344,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1587932034}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8deb3c1570ba2d842972eb8c19417f82, type: 3}
   m_Name: 
@@ -5073,6 +5093,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   k: 0
+  k1: 0
   senseDis: 3
 --- !u!135 &1832408114
 SphereCollider:

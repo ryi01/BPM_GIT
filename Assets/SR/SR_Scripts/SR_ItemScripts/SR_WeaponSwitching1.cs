@@ -42,36 +42,35 @@ public class SR_WeaponSwitching1 : MonoBehaviour
         pistol = gunPistol.GetComponent<SR_ShopPistol>();
 
         dis = Vector3.Distance(transform.position, preWeapon.transform.position);
-        if (dis < 3)
+ 
+        if (pistol)
         {
-            if (pistol)
+            if (pistol.k1 > 0)
             {
-                if (pistol.k > 0)
-                {
-                    selectedWeapon = 0;
-                    SelectedWeapon(0);
-                    count++;
-                }
-            }
-            if (shotgun)
-            {
-                if (shotgun.k > 0)
-                {
-                    selectedWeapon = 1;
-                    SelectedWeapon(1);
-                    count++;
-                }
-            }
-            if (rifle)
-            {
-                if (rifle.k > 0)
-                {
-                    selectedWeapon = 2;
-                    SelectedWeapon(2);
-                    count++;
-                }
+                selectedWeapon = 0;
+                SelectedWeapon(0);
+                count = 1;
             }
         }
+        if (shotgun)
+        {
+            if (shotgun.k1 > 0)
+            {
+                selectedWeapon = 1;
+                SelectedWeapon(1);
+                count = 1;
+            }
+        }
+        if (rifle)
+        {
+            if (rifle.k1 > 0)
+            {
+                selectedWeapon = 2;
+                SelectedWeapon(2);
+                count = 1;
+            }
+        }
+        
     }
     void SelectedWeapon(int selectedWeapon)
     {
