@@ -11,6 +11,8 @@ public class SR_CamRotate : MonoBehaviour
 
     private void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+
         my = -transform.eulerAngles.x;
         mx = transform.eulerAngles.y;
     }

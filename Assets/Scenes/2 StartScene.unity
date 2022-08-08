@@ -1190,6 +1190,7 @@ MonoBehaviour:
   fireRate: 1
   reload: {fileID: 1767500304}
   already: {fileID: 260360716}
+  preWeapon: {fileID: 0}
 --- !u!95 &836353093
 Animator:
   serializedVersion: 4
@@ -1432,8 +1433,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedWeapon: 0
+  gunPistol: {fileID: 0}
   gunRifle: {fileID: 0}
-  gubShotGun: {fileID: 0}
+  gunShotGun: {fileID: 0}
+  count: 0
 --- !u!1 &1058570592
 GameObject:
   m_ObjectHideFlags: 0
@@ -2028,6 +2031,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 100
+  maxHp: 100
   hpSlider: {fileID: 2082694164}
   hpText: {fileID: 476759060}
   maxHpText: {fileID: 1291015989}
@@ -2112,6 +2116,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 15
   jumpPower: 5
+  yVelocity: 0
   dashSpeed: 40
   dashing: 0
 --- !u!23 &1280788471
@@ -2535,7 +2540,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1604542763
 RectTransform:
   m_ObjectHideFlags: 0

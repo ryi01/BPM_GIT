@@ -10,7 +10,7 @@ public class SR_Enemy2ToBoss : MonoBehaviour
     {
         if(other.name.Contains("Player"))
         {
-            SceneManager.LoadScene(5);
+            SceneManager.LoadScene("7 BossScene");
 
         }
     }

@@ -40,6 +40,22 @@ public class SR_PlayerMove : MonoBehaviour
             }
         }
         if (cc.isGrounded == true) jumpCnt = 0;
+
+
+        //ġƮ###
+        GameObject boss = GameObject.Find("Boss");
+        GameObject enemy = GameObject.Find("EnemyManager");
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            if (boss)
+            {
+
+                 Destroy(boss.gameObject);
+            }
+            if(enemy) Destroy(enemy.gameObject);
+        }
+
+
     }
     void FixedUpdate()
     {

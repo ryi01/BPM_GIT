@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class SR_PlayerHP : MonoBehaviour
 {
     public int hp=100;
-    int maxHp = 100;
+    public int maxHp = 100;
     public Slider hpSlider;
     public Text hpText;
     public Text maxHpText;
@@ -38,7 +38,7 @@ public class SR_PlayerHP : MonoBehaviour
     {
         if (other.gameObject.name.Contains("Bullet") || other.gameObject.name.Contains("Right") || other.gameObject.name.Contains("Left"))
         {
-            hp -= 25;
+            //hp -= 25;
             PlayerPrefs.SetInt("HP", hp);
 
         }

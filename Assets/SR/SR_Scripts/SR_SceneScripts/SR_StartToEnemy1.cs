@@ -10,7 +10,7 @@ public class SR_StartToEnemy1 : MonoBehaviour
     {
         if(other.name.Contains("Player"))
         {
-            SceneManager.LoadScene(4);
+            SceneManager.LoadScene("5 EnemyScene1");
 
         }
     }

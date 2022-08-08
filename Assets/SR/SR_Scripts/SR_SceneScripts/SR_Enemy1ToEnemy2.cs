@@ -10,7 +10,7 @@ public class SR_Enemy1ToEnemy2 : MonoBehaviour
     {
         if(other.name.Contains("Player"))
         {
-            SceneManager.LoadScene(4);
+            SceneManager.LoadScene("6 EnemyScene2");
 
         }
     }

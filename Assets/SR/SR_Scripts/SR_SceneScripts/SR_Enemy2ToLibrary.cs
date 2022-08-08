@@ -10,7 +10,7 @@ public class SR_Enemy2ToLibrary : MonoBehaviour
     {
         if(other.name.Contains("Player"))
         {
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene("4 Library");
 
         }
     }

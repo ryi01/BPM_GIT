@@ -11,7 +11,7 @@ public class SR_StartToStore : MonoBehaviour
     {
         if(other.name.Contains("Player"))
         {
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene("3 StoreScene");
             
         }
     }

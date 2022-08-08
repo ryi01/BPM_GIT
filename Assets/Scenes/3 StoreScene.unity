@@ -1543,6 +1543,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 100
+  maxHp: 100
   hpSlider: {fileID: 1034840444}
   hpText: {fileID: 1820747581}
   maxHpText: {fileID: 200637572}
@@ -1877,8 +1878,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 809561047}
-  - {fileID: 629918045}
   - {fileID: 1832408110}
+  - {fileID: 629918045}
   m_Father: {fileID: 2032385379}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3690,6 +3691,7 @@ MonoBehaviour:
   fireRate: 1
   reload: {fileID: 1712028008}
   already: {fileID: 1754354101}
+  preWeapon: {fileID: 0}
 --- !u!95 &1203543068
 Animator:
   serializedVersion: 4
@@ -4279,8 +4281,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedWeapon: 0
+  gunPistol: {fileID: 0}
   gunRifle: {fileID: 809561046}
-  gubShotGun: {fileID: 1517659796}
+  gunShotGun: {fileID: 0}
   count: 0
 --- !u!1 &1615292546
 GameObject:
@@ -5001,6 +5004,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6f9923d0532e124c9669697bc5edd3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  k: 0
+  senseDis: 3
 --- !u!1 &1981747572
 GameObject:
   m_ObjectHideFlags: 0
@@ -5114,7 +5119,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2027128263
 RectTransform:
   m_ObjectHideFlags: 0

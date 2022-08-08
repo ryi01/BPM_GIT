@@ -10,7 +10,7 @@ public class SR_StoreToStart : MonoBehaviour
         
         if(other.name.Contains("Player"))
         {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene("2 StartScene");
         }
     }
 }
