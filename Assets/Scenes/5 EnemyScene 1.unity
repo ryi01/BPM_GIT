@@ -652,6 +652,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 15
   jumpPower: 5
+  yVelocity: 0
   dashSpeed: 40
   dashing: 0
 --- !u!23 &321788380
@@ -2158,6 +2159,7 @@ GameObject:
   - component: {fileID: 770370347}
   - component: {fileID: 770370346}
   - component: {fileID: 770370345}
+  - component: {fileID: 770370349}
   m_Layer: 0
   m_Name: Enemy1ToEnemy2
   m_TagString: Untagged
@@ -2243,6 +2245,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &770370349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 770370344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5724928608309a34eaaf1c6ab31b0be0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &799952994
 GameObject:
   m_ObjectHideFlags: 0
@@ -3712,8 +3726,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedWeapon: 0
+  gunPistol: {fileID: 0}
   gunRifle: {fileID: 0}
-  gubShotGun: {fileID: 0}
+  gunShotGun: {fileID: 0}
+  count: 0
 --- !u!1 &1426982944
 GameObject:
   m_ObjectHideFlags: 0
@@ -5190,6 +5206,7 @@ MonoBehaviour:
   fireRate: 1
   reload: {fileID: 1829305619}
   already: {fileID: 1143652590}
+  preWeapon: {fileID: 0}
 --- !u!95 &2010249803
 Animator:
   serializedVersion: 4
