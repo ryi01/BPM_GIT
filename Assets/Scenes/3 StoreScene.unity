@@ -1912,7 +1912,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 406595386}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed6aa065c6f7b204c99ec1c07e5b67f1, type: 3}
   m_Name: 
@@ -2262,7 +2262,6 @@ GameObject:
   - component: {fileID: 666323695}
   - component: {fileID: 666323694}
   - component: {fileID: 666323698}
-  - component: {fileID: 666323697}
   m_Layer: 0
   m_Name: Gun Box 2
   m_TagString: Untagged
@@ -2351,20 +2350,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 666323692}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &666323697
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 666323692}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed6aa065c6f7b204c99ec1c07e5b67f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  preGuns: 0
-  count: 0
 --- !u!114 &666323698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2372,7 +2357,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 666323692}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0d6841b88c06897418d4d93616e1c7b7, type: 3}
   m_Name: 
@@ -4371,7 +4356,6 @@ MonoBehaviour:
   gunPistol: {fileID: 211574710}
   gunRifle: {fileID: 1093001193}
   gunShotGun: {fileID: 1517659796}
-  dis: 0
   count: 0
 --- !u!1 &1615292546
 GameObject:

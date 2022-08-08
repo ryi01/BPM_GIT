@@ -17,33 +17,18 @@ public class SR_GunBox : MonoBehaviour
     {
         // SR_WeaponSwitching Ã£±â
         guns = GameObject.Find("Guns").GetComponent<SR_WeaponSwitching>();
-        guns1 = GameObject.Find("Guns").GetComponent<SR_WeaponSwitching1>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (gameObject.name == "Gun Box 1")
+        if (guns.count <= 0)
         {
-            if (guns.count <= 0)
-            {
-                SelectedWeapon(1);
-            }
-            if (guns.count > 0)
-            {
-                SelectedWeapon(count);
-            }
+            SelectedWeapon(1);
         }
-        if (gameObject.name == "Gun Box 2")
+        if (guns.count > 0)
         {
-            if(guns1.count <= 0)
-            {
-                SelectedWeapon(2);
-            }
-            if (guns1.count > 0)
-            {
-                SelectedWeapon(count);
-            }
+            SelectedWeapon(count);
         }
     }
     void SelectedWeapon(int selectedWeapon)

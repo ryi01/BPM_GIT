@@ -32,7 +32,31 @@ public class SR_ShopShotGun : MonoBehaviour
     }
     private void Update()
     {
-
+        if (count.count + count1.count > 0)
+        {
+            if (gameObject.transform.parent.name == "Gun Box 1")
+            {
+                if (rePistol.k == 1)
+                {
+                    rePistol.k = 0;
+                }
+                if (reRifle.k == 1)
+                {
+                    reRifle.k = 0;
+                }
+            }
+            if (gameObject.transform.parent.name == "Gun Box 2")
+            {
+                if (rePistol.k1 == 1)
+                {
+                    rePistol.k1 = 0;
+                }
+                if (reRifle.k1 == 1)
+                {
+                    reRifle.k1 = 0;
+                }
+            }
+        }
         player = GameObject.Find("Player").transform;
 
         dis = player.position - transform.position;
@@ -65,5 +89,4 @@ public class SR_ShopShotGun : MonoBehaviour
         }
     }
 
-   
 }

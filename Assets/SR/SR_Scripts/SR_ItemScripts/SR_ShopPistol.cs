@@ -30,6 +30,31 @@ public class SR_ShopPistol : MonoBehaviour
     }
     private void Update()
     {
+        if (count.count + count1.count > 0)
+        {
+            if (gameObject.transform.parent.name == "Gun Box 1" )
+            {
+                if (reRifle.k == 1)
+                {
+                    reRifle.k = 0;
+                }
+                if (reShotGun.k == 1)
+                {
+                    reShotGun.k = 0;
+                }
+            }
+            if (gameObject.transform.parent.name == "Gun Box 2")
+            {
+                if (reRifle.k1 == 1)
+                {
+                    reRifle.k1 = 0;
+                }
+                if (reShotGun.k1 == 1)
+                {
+                    reShotGun.k1 = 0;
+                }
+            }
+        }
 
         player = GameObject.Find("Player").transform;
 
