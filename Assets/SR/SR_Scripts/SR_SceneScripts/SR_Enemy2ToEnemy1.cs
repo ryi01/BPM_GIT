@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SR_StartToEnemy1 : MonoBehaviour
+public class SR_Enemy2ToEnemy1 : MonoBehaviour
 {
 
     private void OnTriggerEnter(Collider other)
