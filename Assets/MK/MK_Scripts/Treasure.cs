@@ -36,7 +36,7 @@ public class Treasure : MonoBehaviour
         {
             countKey++;
             GameObject key = Instantiate(keyFact);
-            key.transform.position = transform.position;
+            key.transform.position = transform.position + new Vector3(0, 0f, 0);
         }
     }
 }

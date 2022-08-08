@@ -1684,7 +1684,7 @@ GameObject:
   - component: {fileID: 704226424}
   m_Layer: 8
   m_Name: Bat (2)
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1831,7 +1831,7 @@ GameObject:
   - component: {fileID: 705462460}
   m_Layer: 8
   m_Name: Bat (1)
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1978,7 +1978,7 @@ GameObject:
   - component: {fileID: 709335009}
   m_Layer: 8
   m_Name: Bat
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3518,7 +3518,7 @@ GameObject:
   - component: {fileID: 1316573300}
   m_Layer: 8
   m_Name: Larva
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3748,7 +3748,7 @@ GameObject:
   - component: {fileID: 1426982946}
   m_Layer: 8
   m_Name: Larva (1)
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4245,7 +4245,7 @@ GameObject:
   - component: {fileID: 1796414010}
   m_Layer: 8
   m_Name: Spider
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5245,7 +5245,7 @@ GameObject:
   - component: {fileID: 2010566916}
   m_Layer: 8
   m_Name: Spider (1)
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
