@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class SR_PlayerMove : MonoBehaviour
 {
-    public float speed = 7.0f;
+    public float speed = 15.0f;
     float finalSpeed;
     float gravity = -9.8f;
-    public float jumpPower = 3;
+    public float jumpPower = 4;
     public float yVelocity;
     int jumpCnt = 0;
 
-    public float dashSpeed;
+    public float dashSpeed = 40;
 
     CharacterController cc;
 

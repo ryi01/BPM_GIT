@@ -4955,7 +4955,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 15
-  jumpPower: 5
+  jumpPower: 4
   yVelocity: 0
   dashSpeed: 40
   dashing: 0
