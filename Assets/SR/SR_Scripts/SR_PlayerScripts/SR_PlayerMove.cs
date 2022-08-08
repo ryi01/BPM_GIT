@@ -11,7 +11,7 @@ public class SR_PlayerMove : MonoBehaviour
     public float yVelocity;
     int jumpCnt = 0;
 
-    public float dashSpeed = 40;
+    public float dashSpeed = 100;
 
     CharacterController cc;
 
