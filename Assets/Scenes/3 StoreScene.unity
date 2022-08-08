@@ -1627,9 +1627,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 15
-  jumpPower: 5
+  jumpPower: 4
   yVelocity: 0
-  dashSpeed: 40
+  dashSpeed: 100
   dashing: 0
 --- !u!23 &333242763
 MeshRenderer:
@@ -1638,7 +1638,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 333242754}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
