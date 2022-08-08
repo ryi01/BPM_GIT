@@ -281,7 +281,7 @@ public class Boss : MonoBehaviour
         if (currentTime > 0.3375f * 8)
         {
             // 총알 만들기
-            MakingBullet(3, 0.3375f * 2, bulletFact);
+            MakingBullet(3, 0.3375f * 2, followBulletFact);
             currentTime = 0;
         }
     }
@@ -303,7 +303,7 @@ public class Boss : MonoBehaviour
     private void BossAttack5()
     {
         // 총알을 만들고
-        GameObject bullet = Instantiate(followBulletFact);
+        GameObject bullet = Instantiate(followBulletFact1);
         // 총알을 내 위치에 가져다 놓음
         bullet.transform.position = transform.position;
         // State 변경
