@@ -37,8 +37,9 @@ public class SR_PlayerHP : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.name.Contains("Bullet"))
-        {
-            hp -= 25;
+        {   
+            //ġƮ
+            //hp -= 25;
             PlayerPrefs.SetInt("HP", hp);
 
         }
@@ -46,7 +47,7 @@ public class SR_PlayerHP : MonoBehaviour
         {
             float currentTime = 0;
             currentTime += Time.deltaTime;
-            if (currentTime > 0.3375f) hp -= 25;
+            //if (currentTime > 0.3375f) hp -= 25;
         }
     }
 

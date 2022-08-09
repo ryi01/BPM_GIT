@@ -4,20 +4,30 @@ using UnityEngine;
 
 public class SR_Scroll : MonoBehaviour
 {
-    private void OnTriggerStay(Collider other)
+    Transform player;
+    Vector3 dis;
+
+    public float senseDis = 3;
+
+    private void Update()
     {
+        player = GameObject.Find("Player").transform;
         int skill = PlayerPrefs.GetInt("Skill");
 
-        SR_PlayerInventory playerInventory = other.GetComponent<SR_PlayerInventory>();
+        SR_PlayerInventory playerInventory = player.GetComponent<SR_PlayerInventory>();
 
-        if(playerInventory != null)
+        dis = player.position - gameObject.transform.position;
+        if (dis.magnitude <= senseDis)
         {
-            if(Input.GetKeyDown(KeyCode.F))
+            if (playerInventory != null)
             {
-                playerInventory.ScrollCollected();
-                Destroy(gameObject);
-                PlayerPrefs.SetInt("Skill", 1);
+                if (Input.GetKeyDown(KeyCode.F))
+                {
+                    playerInventory.ScrollCollected();
+                    Destroy(gameObject);
+                    PlayerPrefs.SetInt("Skill", 1);
 
+                }
             }
         }
     }
