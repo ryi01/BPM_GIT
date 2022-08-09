@@ -38,7 +38,7 @@ public class SR_ShopRifle : MonoBehaviour
     {
         if (count.count + count1.count > 0)
         {
-            if (gameObject.transform.parent.name == "Gun Box 1")
+/*            if (gameObject.transform.parent.name == "Gun Box 1")
             {
                 if (rePistol.k == 1)
                 {
@@ -48,7 +48,7 @@ public class SR_ShopRifle : MonoBehaviour
                 {
                     reShotGun.k = 0;
                 }
-            }
+            }*/
             if (gameObject.transform.parent.name == "Gun Box 2")
             {
                 if (rePistol.k1 == 1)
