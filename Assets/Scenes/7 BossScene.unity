@@ -1914,9 +1914,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bossSpeed: 25
   moveTime: 4
-  bulletFact: {fileID: 1887281569896803947, guid: 269aa245592d06142a9042d958ee9302, type: 3}
+  bulletFact: {fileID: 1887281569896803947, guid: 31f1eff1096da4d498848d87522bc835, type: 3}
   fastBulletFact: {fileID: 1887281569896803947, guid: ccee31f25b1300a4fb6e509cb481f99e, type: 3}
-  followBulletFact: {fileID: 3419723232597975128, guid: 527f278deca8f3940bb3320e191e080c, type: 3}
+  followBulletFact: {fileID: 3419723232597975128, guid: 269aa245592d06142a9042d958ee9302, type: 3}
   followBulletFact1: {fileID: 3419723232597975128, guid: 8a73cccd038208f4b93e00e46f7a4e25, type: 3}
   right: {fileID: 2121754019}
   left: {fileID: 955643961}
@@ -2497,7 +2497,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1179774759}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8deb3c1570ba2d842972eb8c19417f82, type: 3}
   m_Name: 

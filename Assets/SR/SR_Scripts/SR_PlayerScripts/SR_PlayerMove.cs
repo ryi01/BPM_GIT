@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class SR_PlayerMove : MonoBehaviour
 {
@@ -42,7 +44,7 @@ public class SR_PlayerMove : MonoBehaviour
         if (cc.isGrounded == true) jumpCnt = 0;
 
 
-        //치트###
+        //치트###적 없애기
         GameObject boss = GameObject.Find("Boss");
         GameObject enemy = GameObject.Find("EnemyManager");
         if (Input.GetKeyDown(KeyCode.V))
@@ -54,6 +56,15 @@ public class SR_PlayerMove : MonoBehaviour
             }
             if(enemy) Destroy(enemy.gameObject);
         }
+        //
+        //치트###방 옮기기
+        if(Input.GetKeyDown(KeyCode.Keypad1)) SceneManager.LoadScene("2 StartScene");
+        if (Input.GetKeyDown(KeyCode.Keypad2)) SceneManager.LoadScene("3 StoreScene");
+        if (Input.GetKeyDown(KeyCode.Keypad3)) SceneManager.LoadScene("4 LibraryScene");
+        if (Input.GetKeyDown(KeyCode.Keypad4)) SceneManager.LoadScene("5 EnemyScene 1");
+        if (Input.GetKeyDown(KeyCode.Keypad5)) SceneManager.LoadScene("6 EnemyScene 2");
+        if (Input.GetKeyDown(KeyCode.Keypad6)) SceneManager.LoadScene("7 BossScene");
+        //
 
 
     }
