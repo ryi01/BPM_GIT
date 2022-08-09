@@ -29,13 +29,21 @@ public class SR_ShotGun : MonoBehaviour
 
     private float currentTime = 0;
 
-    public SR_GunBox preWeapon;
+    SR_GunBox gun;
+    SR_GunBox1 gun1;
+
+    float dis;
+    float dis1;
+
 
     private void Start()
     {
         currentAmmo = maxAmmo;
         reload.gameObject.SetActive(false);
         already.gameObject.SetActive(false);
+
+        gun = GameObject.Find("Gun Box 1").GetComponent<SR_GunBox>();
+        gun1 = GameObject.Find("Gun Box 2").GetComponent<SR_GunBox1>();
     }
     private void FixedUpdate()
     {
@@ -45,7 +53,12 @@ public class SR_ShotGun : MonoBehaviour
 
     void Update()
     {
-        if((currentTime > 0 && currentTime < 0.15f) || (currentTime > 0.1875f && currentTime < 0.3375f))
+
+        // 거리 확인
+        dis = Vector3.Distance(transform.position, gun.gameObject.transform.position);
+        dis1 = Vector3.Distance(transform.position, gun1.gameObject.transform.position);
+
+        if ((currentTime > 0 && currentTime < 0.15f) || (currentTime > 0.1875f && currentTime < 0.3375f))
         {
 
 
@@ -149,5 +162,17 @@ public class SR_ShotGun : MonoBehaviour
         }
         GameObject player = GameObject.Find("Player");
         player.GetComponent<SR_PlayerMove>().NockBack(10.0f);
+    }
+
+    private void OnDisable()
+    {
+        if (dis < 2)
+        {
+            gun.count = 1;
+        }
+        if (dis1 < 2)
+        {
+            gun1.count = 1;
+        }
     }
 }

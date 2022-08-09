@@ -5,10 +5,13 @@ using UnityEngine;
 public class SR_ShopPistol : MonoBehaviour
 {
     public int k = 0;
+    public int k1 = 0;
+
     SR_ShopRifle reRifle;
     SR_ShopShotGun reShotGun;
-    SR_GunBox preWeapon;
+
     SR_WeaponSwitching count;
+    SR_WeaponSwitching1 count1;
 
     Transform player;
     Vector3 dis;
@@ -21,29 +24,46 @@ public class SR_ShopPistol : MonoBehaviour
     {
         reRifle = GameObject.Find("ShopRifle").GetComponent<SR_ShopRifle>();
         reShotGun = GameObject.Find("ShopShotGun").GetComponent<SR_ShopShotGun>();
+
         count = GameObject.Find("Guns").GetComponent<SR_WeaponSwitching>();
-        preWeapon = GameObject.Find("Gun Box 1").GetComponent<SR_GunBox>();
+        count1 = GameObject.Find("Guns").GetComponent<SR_WeaponSwitching1>();
     }
     private void Update()
     {
-        if (count.count > 0 && (reShotGun || reRifle))
+        if (count.count + count1.count > 0)
         {
-            if (reShotGun.k == 1)
+/*            if (gameObject.transform.parent.name == "Gun Box 1")
             {
-                reShotGun.k = 0;
-            }
-            if (reRifle.k == 1)
+                if (reRifle.k == 1)
+                {
+                    reRifle.k = 0;
+                }
+                if (reShotGun.k == 1)
+                {
+                    reShotGun.k = 0;
+                }
+            }*/
+            if (gameObject.transform.parent.name == "Gun Box 2")
             {
-                reRifle.k = 0;
+                if (reRifle.k1 == 1)
+                {
+                    reRifle.k1 = 0;
+                }
+                if (reShotGun.k1 == 1)
+                {
+                    reShotGun.k1 = 0;
+                }
             }
         }
 
         player = GameObject.Find("Player").transform;
+
         int wallet = PlayerPrefs.GetInt("Wallet");
 
-        dis = player.position - gameObject.transform.position;
+        dis = player.position - transform.position;
         if (dis.magnitude <= senseDis)
         {
+
             if (Input.GetKeyDown(KeyCode.F))
             {
                 if (/* && wallet > 15 && */ cnt <= 0)
@@ -52,11 +72,19 @@ public class SR_ShopPistol : MonoBehaviour
                     PlayerPrefs.SetInt("Wallet", wallet - 15);
                     cnt++;
                 }
+
                 gameObject.SetActive(false);
-                preWeapon.count = 1;
-                k = 1;
+                
+                if(gameObject.transform.parent.name == "Gun Box 1")
+                {
+                    k++;
+                }           
+                if(gameObject.transform.parent.name == "Gun Box 2")
+                {
+                    k1++;
+                }
+                
             }
         }
     }
-
 }
