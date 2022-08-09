@@ -5324,7 +5324,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 95e215d82c10a4a4a9d98989e02dff50, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5644,7 +5644,6 @@ MonoBehaviour:
   fireRate: 1
   reload: {fileID: 1950732770}
   already: {fileID: 1706675646}
-  preWeapon: {fileID: 0}
 --- !u!95 &1818106945
 Animator:
   serializedVersion: 4
@@ -6486,7 +6485,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2020472498}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8deb3c1570ba2d842972eb8c19417f82, type: 3}
   m_Name: 
@@ -6495,6 +6494,7 @@ MonoBehaviour:
   gunPistol: {fileID: 0}
   gunRifle: {fileID: 0}
   gunShotGun: {fileID: 0}
+  dis: 0
   count: 0
 --- !u!1 &2037768887
 GameObject:

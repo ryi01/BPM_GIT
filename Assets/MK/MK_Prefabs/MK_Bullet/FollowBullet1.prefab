@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 3419723232597975132}
   - component: {fileID: 3419723232597975133}
   - component: {fileID: 3419723232597975134}
-  - component: {fileID: 3419723232597975135}
   - component: {fileID: 8642708943085017634}
+  - component: {fileID: -5248916397580282273}
   m_Layer: 9
   m_Name: FollowBullet1
   m_TagString: Untagged
@@ -99,19 +99,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3419723232597975135
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3419723232597975128}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0deb0501ccb73b74e8bc0ec5501e8543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 3
 --- !u!54 &8642708943085017634
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -128,3 +115,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-5248916397580282273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3419723232597975128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa9a17f0600ade4bbf59f7bf7ef9b4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 150

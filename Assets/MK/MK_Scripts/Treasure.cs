@@ -13,6 +13,7 @@ public class Treasure : MonoBehaviour
     public int count;
     GameObject[] enemy;
     int countKey;
+    GameObject key;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,12 +32,15 @@ public class Treasure : MonoBehaviour
         {
             treasure.gameObject.SetActive(true);
         }
-        print(enemy.Length + " " + count);
-        if(treasure.gameObject.activeSelf == true && Input.GetKeyDown(KeyCode.F) && countKey < 1)
+        GameObject player = GameObject.Find("Player");
+        float dis = Vector3.Distance(transform.position, player.transform.position);
+        if(treasure.gameObject.activeSelf == true && Input.GetKeyDown(KeyCode.F) && countKey < 1 && dis < 3)
         {
             countKey++;
-            GameObject key = Instantiate(keyFact);
+            key = Instantiate(keyFact);
             key.transform.position = transform.position + new Vector3(0, 0f, 0);
+
         }
+
     }
 }

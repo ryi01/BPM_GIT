@@ -180,6 +180,7 @@ public class Boss : MonoBehaviour
         // 플레이어 바라보기
         Vector3 mySight = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
         transform.LookAt(mySight);
+
         // 랜덤한 공격하기
         int rnd = UnityEngine.Random.Range(0, 5);
         if (rnd == 0)
@@ -262,7 +263,7 @@ public class Boss : MonoBehaviour
             countAttack++;
             currentTime = 0;
         }
-        print(countAttack);
+
         if(countAttack == 2)
         {
             currentTime = 0;
@@ -275,15 +276,13 @@ public class Boss : MonoBehaviour
     // 패턴 2 : 유도탄 발사
     private void BossAttack2()
     {
-        // 시간이 흐름
         currentTime += Time.deltaTime;
-        // 3초 이후일 때,
-        if (currentTime > 0.3375f * 8)
+        if (currentTime > 0.3375f * 4)
         {
-            // 총알 만들기
-            MakingBullet(3, 0.3375f * 2, followBulletFact);
+            MakingBullet(3, 0.3375f * 0.5f, followBulletFact);
             currentTime = 0;
         }
+
     }
 
     // 패턴 3 : 느린 총알 4개 발사
@@ -296,18 +295,24 @@ public class Boss : MonoBehaviour
     // 패턴 4 : 빠른 속도를 총알 5개 발사
     private void BossAttack4()
     {
+        int n = UnityEngine.Random.Range(5, 9);
         // 총알 만들기
-        MakingBullet(5, 0.3375f * 0.5f,fastBulletFact);
+        MakingBullet(n, 0.3375f * 0.5f, fastBulletFact);
+        currentTime = 0;
     }
     // 패턴 5 : 유도탄 + 빠른 총알 1개 발사
     private void BossAttack5()
     {
-        // 총알을 만들고
-        GameObject bullet = Instantiate(followBulletFact1);
-        // 총알을 내 위치에 가져다 놓음
-        bullet.transform.position = transform.position;
-        // State 변경
-        state = BossState.Stop;
+        if (rhythmTime > 0.3375f * 10)
+        {
+            // 총알을 만들고
+            GameObject bullet = Instantiate(followBulletFact1);
+            // 총알을 내 위치에 가져다 놓음
+            bullet.transform.position = transform.position;
+            // State 변경
+            state = BossState.Stop;
+            rhythmTime = 0;
+        }
     }
 
     void MakingBullet(int n,float time,GameObject bulletFactory)

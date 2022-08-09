@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class SR_Key : MonoBehaviour
 {
-    
     private void OnTriggerStay(Collider other)
     {
 
@@ -14,10 +13,8 @@ public class SR_Key : MonoBehaviour
             
              playerInventory.KeyCollected();
              Destroy(gameObject);
-             
 
 
-            
         }
     }
 }

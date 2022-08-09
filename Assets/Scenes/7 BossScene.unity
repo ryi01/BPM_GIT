@@ -2042,7 +2042,7 @@ MeshRenderer:
   m_GameObject: {fileID: 955643961}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
@@ -2497,7 +2497,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1179774759}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8deb3c1570ba2d842972eb8c19417f82, type: 3}
   m_Name: 
@@ -2506,6 +2506,7 @@ MonoBehaviour:
   gunPistol: {fileID: 75156204786095000, guid: df0438102fb806e48ae4067c5af8cd8c, type: 3}
   gunRifle: {fileID: 1479820257556868254, guid: aef0824bec9575240aa4a4b49a337108, type: 3}
   gunShotGun: {fileID: 7599777032430414342, guid: de52fd791deb8d54086ddbb6cdf920d3, type: 3}
+  dis: 0
   count: 0
 --- !u!1 &1268386473
 GameObject:
@@ -3659,7 +3660,6 @@ MonoBehaviour:
   fireRate: 1
   reload: {fileID: 1112667887}
   already: {fileID: 138971211}
-  preWeapon: {fileID: 0}
 --- !u!95 &1752619606
 Animator:
   serializedVersion: 4
@@ -4406,7 +4406,7 @@ MeshRenderer:
   m_GameObject: {fileID: 2121754019}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
