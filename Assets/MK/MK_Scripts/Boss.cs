@@ -183,6 +183,7 @@ public class Boss : MonoBehaviour
 
         // 랜덤한 공격하기
         int rnd = UnityEngine.Random.Range(0, 5);
+
         if (rnd == 0)
         {
             state = BossState.Attack1;

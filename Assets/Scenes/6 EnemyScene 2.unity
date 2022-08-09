@@ -411,10 +411,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpPow: 1.5
-  speed: 10
+  speed: 12
   stopTime: 6
   runTime: 23
-  backPow: 3
+  backPow: 6
 --- !u!23 &218657299
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3105,10 +3105,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpPow: 1.5
-  speed: 10
+  speed: 12
   stopTime: 9
   runTime: 25
-  backPow: 3
+  backPow: 6
 --- !u!23 &1193077791
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4170,7 +4170,7 @@ MonoBehaviour:
   speed: 7
   stopTime: 12
   runTime: 12
-  backPow: 3
+  backPow: 5
 --- !u!23 &1375934727
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6633,7 +6633,7 @@ MonoBehaviour:
   speed: 7
   stopTime: 10
   runTime: 6
-  backPow: 3
+  backPow: 5
 --- !u!23 &2053162371
 MeshRenderer:
   m_ObjectHideFlags: 0

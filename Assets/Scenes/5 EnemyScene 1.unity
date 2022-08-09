@@ -4324,7 +4324,7 @@ MonoBehaviour:
   speed: 7
   stopTime: 8
   runTime: 12
-  backPow: 3
+  backPow: 5
 --- !u!23 &1796414014
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5323,7 +5323,7 @@ MonoBehaviour:
   speed: 7
   stopTime: 10
   runTime: 8
-  backPow: 3
+  backPow: 5
 --- !u!23 &2010566920
 MeshRenderer:
   m_ObjectHideFlags: 0

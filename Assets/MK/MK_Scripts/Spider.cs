@@ -152,7 +152,7 @@ public class Spider : MonoBehaviour
         // 일정시간동안 계속 달림 => 플레이어의 위치는 뛰는 순간 고정
         currentTime += Time.deltaTime;
 
-        transform.position += runDir * (speed + 3f) * Time.deltaTime;
+        transform.position += runDir * (speed + 5f) * Time.deltaTime;
         if (currentTime >= runTime * 0.3375f)
         {
             currentTime = 0;
