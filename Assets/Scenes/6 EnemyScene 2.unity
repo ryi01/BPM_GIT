@@ -411,7 +411,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpPow: 1.5
-  speed: 8
+  speed: 10
   stopTime: 6
   runTime: 23
   backPow: 3
@@ -754,7 +754,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6ba05fa7b6858845a1676f0c1a7c039, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 5
   jumpPow: 2
   jumpTime: 1
   moveDis: 2
@@ -1465,7 +1465,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6ba05fa7b6858845a1676f0c1a7c039, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 5
   jumpPow: 2
   jumpTime: 1
   moveDis: 2
@@ -1707,7 +1707,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pDis: 8
-  bSpeed: 4
+  bSpeed: 6
   moveTime: 2
   shootTime: 6
   bulletFact: {fileID: 4211694878975722198, guid: 6385153cf1071e243a05ab247884f892, type: 3}
@@ -1853,7 +1853,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6ba05fa7b6858845a1676f0c1a7c039, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 5
   jumpPow: 2
   jumpTime: 1
   moveDis: 2
@@ -3105,7 +3105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpPow: 1.5
-  speed: 8
+  speed: 10
   stopTime: 9
   runTime: 25
   backPow: 3
@@ -4167,7 +4167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpPow: 2
-  speed: 6
+  speed: 7
   stopTime: 12
   runTime: 12
   backPow: 3
@@ -4300,7 +4300,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pDis: 8
-  bSpeed: 4
+  bSpeed: 6
   moveTime: 2
   shootTime: 8.5
   bulletFact: {fileID: 4211694878975722198, guid: 6385153cf1071e243a05ab247884f892, type: 3}
@@ -4447,7 +4447,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pDis: 8
-  bSpeed: 4
+  bSpeed: 6
   moveTime: 2
   shootTime: 7
   bulletFact: {fileID: 4211694878975722198, guid: 6385153cf1071e243a05ab247884f892, type: 3}
@@ -4736,7 +4736,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpPow: 2
-  speed: 6
+  speed: 7
   stopTime: 8
   runTime: 8
   backPow: 3
@@ -5203,7 +5203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6ba05fa7b6858845a1676f0c1a7c039, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 5
   jumpPow: 2
   jumpTime: 1
   moveDis: 2
@@ -6176,7 +6176,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pDis: 8
-  bSpeed: 4
+  bSpeed: 6
   moveTime: 2
   shootTime: 8
   bulletFact: {fileID: 4211694878975722198, guid: 6385153cf1071e243a05ab247884f892, type: 3}
@@ -6630,7 +6630,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpPow: 2
-  speed: 6
+  speed: 7
   stopTime: 10
   runTime: 6
   backPow: 3
