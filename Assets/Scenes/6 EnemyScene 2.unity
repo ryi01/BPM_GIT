@@ -6485,15 +6485,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2020472498}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8deb3c1570ba2d842972eb8c19417f82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   selectedWeapon: 0
-  gunPistol: {fileID: 0}
-  gunRifle: {fileID: 0}
-  gunShotGun: {fileID: 0}
+  gunPistol: {fileID: 75156204786095000, guid: df0438102fb806e48ae4067c5af8cd8c, type: 3}
+  gunRifle: {fileID: 1479820257556868254, guid: aef0824bec9575240aa4a4b49a337108, type: 3}
+  gunShotGun: {fileID: 7599777032430414342, guid: de52fd791deb8d54086ddbb6cdf920d3, type: 3}
   dis: 0
   count: 0
 --- !u!1 &2037768887

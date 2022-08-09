@@ -21,7 +21,7 @@ public class SR_BigPotion : MonoBehaviour
         {
             if (playerHP != null)
             {
-                if (Input.GetKeyDown(KeyCode.F) && wallet > 4)
+                if (Input.GetKeyDown(KeyCode.F) && wallet >= 4)
                 {
                     if (playerHP.hp < 100)
                     {

@@ -21,7 +21,7 @@ public class SR_StoreKey : MonoBehaviour
         {
             if (playerInventory != null)
             {
-                if (Input.GetKeyDown(KeyCode.F) && wallet > 2)
+                if (Input.GetKeyDown(KeyCode.F) && wallet >= 2)
                 {
                     playerInventory.KeyCollected();
                     PlayerPrefs.SetInt("Wallet", wallet - 2);
