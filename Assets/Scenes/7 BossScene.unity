@@ -1916,7 +1916,7 @@ MonoBehaviour:
   moveTime: 4
   bulletFact: {fileID: 1887281569896803947, guid: 31f1eff1096da4d498848d87522bc835, type: 3}
   fastBulletFact: {fileID: 1887281569896803947, guid: ccee31f25b1300a4fb6e509cb481f99e, type: 3}
-  followBulletFact: {fileID: 3419723232597975128, guid: 269aa245592d06142a9042d958ee9302, type: 3}
+  followBulletFact: {fileID: 3419723232597975128, guid: 527f278deca8f3940bb3320e191e080c, type: 3}
   followBulletFact1: {fileID: 3419723232597975128, guid: 8a73cccd038208f4b93e00e46f7a4e25, type: 3}
   right: {fileID: 2121754019}
   left: {fileID: 955643961}

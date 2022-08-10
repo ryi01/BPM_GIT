@@ -28,7 +28,7 @@ public class SR_WeaponSwitching1 : MonoBehaviour
 
     void Update()
     {
-        if (SceneManager.GetActiveScene().name == "3 StpreScene")
+        if (SceneManager.GetActiveScene().name == "3 StoreScene")
         {
             // √—±‚ »Æ¿Œ
             rifle = gunRifle.GetComponent<SR_ShopRifle>();
