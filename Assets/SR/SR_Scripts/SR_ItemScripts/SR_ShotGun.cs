@@ -36,6 +36,7 @@ public class SR_ShotGun : MonoBehaviour
     float dis;
     float dis1;
 
+    AudioSource audio;
 
     private void Start()
     {
@@ -48,6 +49,9 @@ public class SR_ShotGun : MonoBehaviour
             gun = GameObject.Find("Gun Box 1").GetComponent<SR_GunBox>();
             gun1 = GameObject.Find("Gun Box 2").GetComponent<SR_GunBox1>();
         }
+
+        audio = GetComponent<AudioSource>();
+
     }
     private void FixedUpdate()
     {
@@ -107,6 +111,8 @@ public class SR_ShotGun : MonoBehaviour
                 nextTimeToFire = Time.time + 1f / fireRate;
 
                 Shoot();
+                audio.Play();
+
                 curNum = 0;
             }
         }
