@@ -66,7 +66,7 @@ public class SR_PlayerMove : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Keypad6)) SceneManager.LoadScene("7 BossScene");
         //
 
-
+        
     }
     void FixedUpdate()
     {
