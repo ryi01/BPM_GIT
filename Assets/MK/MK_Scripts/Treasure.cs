@@ -34,7 +34,7 @@ public class Treasure : MonoBehaviour
         }
         GameObject player = GameObject.Find("Player");
         float dis = Vector3.Distance(transform.position, player.transform.position);
-        if(treasure.gameObject.activeSelf == true && Input.GetKeyDown(KeyCode.F) && countKey < 1 && dis < 5ssssssssssssssssssssssss)
+        if(treasure.gameObject.activeSelf == true && Input.GetKeyDown(KeyCode.F) && countKey < 1 && dis < 5)
         {
             countKey++;
             key = Instantiate(keyFact);
