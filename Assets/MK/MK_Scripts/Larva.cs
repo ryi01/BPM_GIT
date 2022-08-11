@@ -59,7 +59,7 @@ public class Larva : MonoBehaviour
         }
 
     }
-
+    // 플레이어를 향해 움직임
     void LarvaMove()
     {
         Vector3 mySight = new Vector3(player.position.x, transform.position.y, player.position.z);
@@ -77,7 +77,7 @@ public class Larva : MonoBehaviour
             state = LarvaState.Attack;
         }
     }
-
+    // 플레이어 공격
     void LarvaAttack()
     {
         currentTime += Time.deltaTime;

@@ -235,29 +235,13 @@ public class Boss : MonoBehaviour
         {
             left.gameObject.SetActive(false);
             right.gameObject.SetActive(true);
-            if(currentTime > 0.3375 * 6)
-            {
-                Vector3 point = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-                transform.LookAt(point);
-            }
-            else
-            {
-                transform.LookAt(mySight);
-            }
+            LookBoss(mySight);
         }
         else if(currentTime > 0.3375f * 10 && currentTime <= 0.3375f * 20)
         {
             right.gameObject.SetActive(false);
             left.gameObject.SetActive(true);
-            if (currentTime > 0.3375 * 16)
-            {
-                Vector3 point = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-                transform.LookAt(point);
-            }
-            else
-            {
-                transform.LookAt(mySight);
-            }
+            LookBoss(mySight);
         }
         else if(currentTime > 0.3375f * 20)
         {
@@ -340,6 +324,19 @@ public class Boss : MonoBehaviour
             count = 0;
             // 스테이트 변경
             state = BossState.Stop;
+        }
+    }
+
+    void LookBoss(Vector3 mySight)
+    {
+        if (currentTime > 0.3375 * 6)
+        {
+            Vector3 point = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+            transform.LookAt(point);
+        }
+        else
+        {
+            transform.LookAt(mySight);
         }
     }
 }

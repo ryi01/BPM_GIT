@@ -31,7 +31,6 @@ public class JumpItem1 : MonoBehaviour
     }
     float currentTime;
     float x;
-    float y;
     float z;
     // 持失 鞠切原切
     void CreateCoin()
