@@ -112,7 +112,6 @@ public class SR_Pistol : MonoBehaviour
             
                 Shoot();
                 audio.Play();
-
                 curNum = 0;
             }
         }
