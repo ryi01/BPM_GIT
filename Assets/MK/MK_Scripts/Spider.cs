@@ -229,5 +229,9 @@ public class Spider : MonoBehaviour
             // set���·� ����
             state = SpiderState.Set;
         }
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Room"))
+        {
+            state = SpiderState.Set;
+        }
     }
 }

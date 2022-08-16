@@ -157,4 +157,13 @@ public class Bat : MonoBehaviour
             batState = BatState.Stop;
         }
     }
+
+    // º®¿¡ ºÎµúÇûÀ» °æ¿ì
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.layer == LayerMask.NameToLayer("Room"))
+        {
+            batState = BatState.Stop;
+        }
+    }
 }

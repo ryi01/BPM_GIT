@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SR_UltimateSkill : MonoBehaviour
 {
@@ -12,8 +13,12 @@ public class SR_UltimateSkill : MonoBehaviour
     int drumrollDamage = 2;
     int cnt=0;
 
+    // 스킬 이미지
+    public Image skill;
+
     private void Start()
     {
+        skill.gameObject.SetActive(false);
         currentTime = 5.4f;
     }
     private void FixedUpdate()
@@ -31,6 +36,7 @@ public class SR_UltimateSkill : MonoBehaviour
     {
         if (cnt > 0)
         {
+            skill.gameObject.SetActive(true);
             if (other.gameObject.name.Contains("Larva") && currentTime == 0)
             {
                 other.GetComponent<LarvaHP>().AddDamage(drumrollDamage);

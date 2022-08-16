@@ -38,11 +38,32 @@ public class SR_ShotGun : MonoBehaviour
 
     AudioSource audio;
 
+    // 총알 개수
+    public Text curBullet;
+    public Text totalBullet;
+    // 총알 이미지
+    public Image[] bullet;
+
+    [SerializeField]
+    // 총기 UI
+    public GameObject pistol;
+    public GameObject shotGun;
+    public GameObject rifle;
+
     private void Start()
     {
         currentAmmo = maxAmmo;
         reload.gameObject.SetActive(false);
         already.gameObject.SetActive(false);
+
+        // 총기 이미지 활성화 및 비활성화
+        pistol.SetActive(false);
+        shotGun.SetActive(true);
+        rifle.SetActive(false);
+
+        // 최대 총알 개수
+        totalBullet.text = maxAmmo.ToString();
+        curBullet.text = currentAmmo.ToString();
 
         if (SceneManager.GetActiveScene().name == "3 StoreScene")
         {
@@ -82,6 +103,8 @@ public class SR_ShotGun : MonoBehaviour
             {
                 if (currentAmmo >= maxAmmo)
                 {
+                    curBullet.text = maxAmmo.ToString();
+                    ImageBullet();
                     StartCoroutine(ShowReloaded());
                 }
                 else
@@ -138,9 +161,23 @@ public class SR_ShotGun : MonoBehaviour
         yield return new WaitForSeconds(2f);
         already.gameObject.SetActive(false);
     }
+
+    // 이미지 활성화
+    void ImageBullet()
+    {
+        for (int i = 0; i < maxAmmo; i++)
+        {
+            bullet[i].gameObject.SetActive(true);
+        }
+    }
+
     void Shoot()
     {
         currentAmmo--;
+
+        // 총알 이미지 및 텍스트
+        curBullet.text = (currentAmmo).ToString();
+        bullet[currentAmmo].gameObject.SetActive(false);
 
         RaycastHit hit;
 

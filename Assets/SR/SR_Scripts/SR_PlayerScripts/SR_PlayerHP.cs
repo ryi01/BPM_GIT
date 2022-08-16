@@ -21,9 +21,9 @@ public class SR_PlayerHP : MonoBehaviour
     {
         hp = PlayerPrefs.GetInt("HP");
         
-        hpSlider.value = (float)hp / (float)maxHp;
-        hpText.text = hp + " ";
-        maxHpText.text = "/ " + maxHp;
+        // hpSlider.value = (float)hp / (float)maxHp;
+        // hpText.text = hp + " ";
+        // maxHpText.text = "/ " + maxHp;
 
         if(hp<=0)
         {

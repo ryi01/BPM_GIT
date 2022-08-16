@@ -32,6 +32,11 @@ public class Boss : MonoBehaviour
     #endregion
 
     #region public 변수
+
+    [SerializeField]
+    public Transform[] followPos = new Transform[3];
+    public Transform[] attack4Pos = new Transform[2];
+
     // 움직이는 속도
     public float bossSpeed = 5;
     // 움직이는 시간
@@ -59,8 +64,6 @@ public class Boss : MonoBehaviour
     float z;
     // 총알 개수
     int count;
-    Color r_mat;
-    Color l_mat;
 
     // Start is called before the first frame update
     void Start()
@@ -69,14 +72,9 @@ public class Boss : MonoBehaviour
         player = GameObject.Find("Player");
         // 상태설정
         state = BossState.Move;
-        // 체력 설정
-        BossHP boss = GetComponent<BossHP> ();
-        boss.ENEMYHP = 20;
+        // 공격 1
         right.gameObject.SetActive(false);
         left.gameObject.SetActive(false);
-        // 메쉬 렌더러 찾기
-        r_mat = right.GetComponent<MeshRenderer>().material.color;
-        l_mat = left.GetComponent<MeshRenderer>().material.color;
     }
     private void FixedUpdate()
     {
@@ -183,6 +181,7 @@ public class Boss : MonoBehaviour
 
         // 랜덤한 공격하기
         int rnd = UnityEngine.Random.Range(0, 5);
+        //state = BossState.Attack4;
 
         if (rnd == 0)
         {
@@ -264,7 +263,29 @@ public class Boss : MonoBehaviour
         currentTime += Time.deltaTime;
         if (currentTime > 0.3375f * 4)
         {
-            MakingBullet(3, 0.3375f * 0.5f, followBulletFact);
+            // 유도탄 3개를 만들기
+            for (int i = 0; i < 3; i++)
+            {
+                // 0.3초에
+                if (rhythmTime > 0.3375f * 0.5f)
+                {
+                    // 총알을 1개 만들고
+                    GameObject bullet = Instantiate(followBulletFact);
+                    // 위치를 조정하고
+                    bullet.transform.position = followPos[count].position;
+                    // 총알 개수를 세고
+                    count++;
+                    // 리듬 타임을 0으로 만든다
+                    rhythmTime = 0;
+                }
+            }
+            // 총알이 3개라면
+            if (count == 3)
+            {
+                count = 0;
+                // 스테이트 변경
+                state = BossState.Stop;
+            }
             currentTime = 0;
         }
 
@@ -293,7 +314,7 @@ public class Boss : MonoBehaviour
             // 총알을 만들고
             GameObject bullet = Instantiate(followBulletFact1);
             // 총알을 내 위치에 가져다 놓음
-            bullet.transform.position = transform.position;
+            bullet.transform.position = transform.position + new Vector3(0, 5, 0);
             // State 변경
             state = BossState.Stop;
             rhythmTime = 0;
@@ -310,8 +331,15 @@ public class Boss : MonoBehaviour
             {
                 // 총알을 1개 만들고
                 GameObject bullet = Instantiate(bulletFactory);
-                // 위치를 조정하고
-                bullet.transform.position = transform.position;
+                if (state == BossState.Attack4)
+                {
+                    bullet.transform.position = attack4Pos[count % 2].position;
+                }
+                else
+                {
+                    // 위치를 조정하고
+                    bullet.transform.position = transform.position;
+                }
                 // 총알 개수를 세고
                 count++;
                 // 리듬 타임을 0으로 만든다
@@ -326,7 +354,6 @@ public class Boss : MonoBehaviour
             state = BossState.Stop;
         }
     }
-
     void LookBoss(Vector3 mySight)
     {
         if (currentTime > 0.3375 * 6)
@@ -337,6 +364,39 @@ public class Boss : MonoBehaviour
         else
         {
             transform.LookAt(mySight);
+        }
+    }
+
+    // 벽에 부딪히면 멈추고 공격하기
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.layer == LayerMask.NameToLayer("Room"))
+        {
+            transform.position += dir * 0 * Time.deltaTime;
+            // 랜덤한 공격하기
+            int rnd = UnityEngine.Random.Range(0, 5);
+            //state = BossState.Attack4;
+
+            if (rnd == 0)
+            {
+                state = BossState.Attack1;
+            }
+            if (rnd == 1)
+            {
+                state = BossState.Attack2;
+            }
+            else if (rnd == 2)
+            {
+                state = BossState.Attack3;
+            }
+            else if (rnd == 3)
+            {
+                state = BossState.Attack4;
+            }
+            else if (rnd == 4)
+            {
+                state = BossState.Attack5;
+            }
         }
     }
 }
