@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -716,11 +716,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fpsCam: {fileID: 250251474}
   muzzlePoint: {fileID: 2072882460}
-  muzzleFactory: {fileID: 1746609120020080460, guid: beba3c5bda0c9da43bd57c471172dd5f, type: 3}
+  muzzleFactory: {fileID: 1746609120020080460, guid: beba3c5bda0c9da43bd57c471172dd5f,
+    type: 3}
   impactEffect: {fileID: 100000, guid: d6ae845422281d64e85e91085c6f5abf, type: 3}
   fireRate: 1
   reload: {fileID: 741080818}
   already: {fileID: 522713470}
+  curBullet: {fileID: 0}
+  totalBullet: {fileID: 0}
+  bullet: []
+  pistol: {fileID: 0}
+  shotGun: {fileID: 0}
+  rifle: {fileID: 0}
 --- !u!95 &186077696
 Animator:
   serializedVersion: 4
@@ -1687,6 +1694,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionFactory: {fileID: 100000, guid: 03e0d203cfeab2445adffef5cda4666e, type: 3}
+  skill: {fileID: 0}
 --- !u!135 &519883824
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2075,11 +2083,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fpsCam: {fileID: 250251474}
   muzzlePoint: {fileID: 63396315}
-  muzzleFactory: {fileID: 1746609120020080460, guid: ce1bf0f3b38799140a2f5a2c201a0bd8, type: 3}
+  muzzleFactory: {fileID: 1746609120020080460, guid: ce1bf0f3b38799140a2f5a2c201a0bd8,
+    type: 3}
   impactEffect: {fileID: 100000, guid: d6ae845422281d64e85e91085c6f5abf, type: 3}
   fireRate: 15
   reload: {fileID: 741080818}
   already: {fileID: 522713470}
+  curBullet: {fileID: 0}
+  totalBullet: {fileID: 0}
+  bullet: []
+  pistol: {fileID: 0}
+  shotGun: {fileID: 0}
+  rifle: {fileID: 0}
 --- !u!23 &703889488
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3522,6 +3537,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionFactory: {fileID: 100000, guid: bc98890f6028f444eaa7789bde5e2eeb, type: 3}
+  skill: {fileID: 0}
 --- !u!114 &1347630616
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4295,51 +4311,63 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1299046681}
     m_Modifications:
-    - target: {fileID: 2215642136548397950, guid: 5ad7f9d6fa219d742bc5ef560bddcec2, type: 3}
+    - target: {fileID: 2215642136548397950, guid: 5ad7f9d6fa219d742bc5ef560bddcec2,
+        type: 3}
       propertyPath: m_Name
       value: SR_Scroll
       objectReference: {fileID: 0}
-    - target: {fileID: 2215642136548397951, guid: 5ad7f9d6fa219d742bc5ef560bddcec2, type: 3}
+    - target: {fileID: 2215642136548397951, guid: 5ad7f9d6fa219d742bc5ef560bddcec2,
+        type: 3}
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2215642136548397951, guid: 5ad7f9d6fa219d742bc5ef560bddcec2, type: 3}
+    - target: {fileID: 2215642136548397951, guid: 5ad7f9d6fa219d742bc5ef560bddcec2,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2215642136548397951, guid: 5ad7f9d6fa219d742bc5ef560bddcec2, type: 3}
+    - target: {fileID: 2215642136548397951, guid: 5ad7f9d6fa219d742bc5ef560bddcec2,
+        type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2215642136548397951, guid: 5ad7f9d6fa219d742bc5ef560bddcec2, type: 3}
+    - target: {fileID: 2215642136548397951, guid: 5ad7f9d6fa219d742bc5ef560bddcec2,
+        type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2215642136548397951, guid: 5ad7f9d6fa219d742bc5ef560bddcec2, type: 3}
+    - target: {fileID: 2215642136548397951, guid: 5ad7f9d6fa219d742bc5ef560bddcec2,
+        type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 2215642136548397951, guid: 5ad7f9d6fa219d742bc5ef560bddcec2, type: 3}
+    - target: {fileID: 2215642136548397951, guid: 5ad7f9d6fa219d742bc5ef560bddcec2,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 2215642136548397951, guid: 5ad7f9d6fa219d742bc5ef560bddcec2, type: 3}
+    - target: {fileID: 2215642136548397951, guid: 5ad7f9d6fa219d742bc5ef560bddcec2,
+        type: 3}
       propertyPath: m_LocalRotation.y
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 2215642136548397951, guid: 5ad7f9d6fa219d742bc5ef560bddcec2, type: 3}
+    - target: {fileID: 2215642136548397951, guid: 5ad7f9d6fa219d742bc5ef560bddcec2,
+        type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 2215642136548397951, guid: 5ad7f9d6fa219d742bc5ef560bddcec2, type: 3}
+    - target: {fileID: 2215642136548397951, guid: 5ad7f9d6fa219d742bc5ef560bddcec2,
+        type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2215642136548397951, guid: 5ad7f9d6fa219d742bc5ef560bddcec2, type: 3}
+    - target: {fileID: 2215642136548397951, guid: 5ad7f9d6fa219d742bc5ef560bddcec2,
+        type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2215642136548397951, guid: 5ad7f9d6fa219d742bc5ef560bddcec2, type: 3}
+    - target: {fileID: 2215642136548397951, guid: 5ad7f9d6fa219d742bc5ef560bddcec2,
+        type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
@@ -4347,7 +4375,8 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: 5ad7f9d6fa219d742bc5ef560bddcec2, type: 3}
 --- !u!4 &1495036977 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 2215642136548397951, guid: 5ad7f9d6fa219d742bc5ef560bddcec2, type: 3}
+  m_CorrespondingSourceObject: {fileID: 2215642136548397951, guid: 5ad7f9d6fa219d742bc5ef560bddcec2,
+    type: 3}
   m_PrefabInstance: {fileID: 1495036976}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1603907203
@@ -4399,8 +4428,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectedWeapon: 0
   gunPistol: {fileID: 75156204786095000, guid: df0438102fb806e48ae4067c5af8cd8c, type: 3}
-  gunRifle: {fileID: 1479820257556868254, guid: aef0824bec9575240aa4a4b49a337108, type: 3}
-  gunShotGun: {fileID: 7599777032430414342, guid: de52fd791deb8d54086ddbb6cdf920d3, type: 3}
+  gunRifle: {fileID: 1479820257556868254, guid: aef0824bec9575240aa4a4b49a337108,
+    type: 3}
+  gunShotGun: {fileID: 7599777032430414342, guid: de52fd791deb8d54086ddbb6cdf920d3,
+    type: 3}
   dis: 0
   count: 0
 --- !u!1 &1694219954
@@ -4560,11 +4591,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fpsCam: {fileID: 250251474}
   muzzlePoint: {fileID: 116153915}
-  muzzleFactory: {fileID: 1746609120020080460, guid: 2547b86f413720b4a93c4a25c9550ca1, type: 3}
+  muzzleFactory: {fileID: 1746609120020080460, guid: 2547b86f413720b4a93c4a25c9550ca1,
+    type: 3}
   impactEffect: {fileID: 100000, guid: d6ae845422281d64e85e91085c6f5abf, type: 3}
   fireRate: 15
   reload: {fileID: 741080818}
   already: {fileID: 522713470}
+  curBullet: {fileID: 0}
+  totalBullet: {fileID: 0}
+  bullet: []
+  pistol: {fileID: 0}
+  shotGun: {fileID: 0}
+  rifle: {fileID: 0}
 --- !u!95 &1703738612
 Animator:
   serializedVersion: 4
@@ -5295,14 +5333,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2040943641}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0.016536916, y: -0.025162578, z: -0.0011420135, w: 0.999546}
   m_LocalPosition: {x: 0, y: 10, z: -66}
   m_LocalScale: {x: 20, y: 20, z: 20}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -1.898, y: -2.883, z: -0.083}
 --- !u!114 &2040943646
 MonoBehaviour:
   m_ObjectHideFlags: 0
