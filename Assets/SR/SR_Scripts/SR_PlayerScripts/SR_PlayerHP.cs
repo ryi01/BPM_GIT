@@ -11,6 +11,8 @@ public class SR_PlayerHP : MonoBehaviour
     public Text hpText;
     public Text maxHpText;
 
+    public Image[] hpImage;
+
 
     void Start()
     {
@@ -19,6 +21,21 @@ public class SR_PlayerHP : MonoBehaviour
 
     void Update()
     {
+        for(int i=0;i<4;i++)
+        {
+            if(hp == 25 * (i+1))
+            {
+                for(int j=0;j<i+1;j++)
+                {
+                    hpImage[j].gameObject.SetActive(true);
+                }
+                for(int j=i+1;j<4;j++)
+                {
+                    hpImage[j].gameObject.SetActive(false);
+                }
+            }
+        }
+
         hp = PlayerPrefs.GetInt("HP");
 
 
@@ -38,9 +55,11 @@ public class SR_PlayerHP : MonoBehaviour
     {
         if (other.gameObject.name.Contains("Bullet"))
         {   
-            // ##cheat!!
+            
             hp -= 25;
             PlayerPrefs.SetInt("HP", hp);
+            
+
 
         }
         if(other.gameObject.name.Contains("Right") || other.gameObject.name.Contains("Left"))

@@ -49,6 +49,8 @@ public class SR_ShotGun : MonoBehaviour
     public GameObject shotGun;
     public GameObject rifle;
 
+    public Image redCenter;
+
     private void Start()
     {
         currentAmmo = maxAmmo;
@@ -131,6 +133,13 @@ public class SR_ShotGun : MonoBehaviour
                 audio.Play();
 
                 curNum = 0;
+            }
+        }
+        else
+        {
+            if (Input.GetButtonDown("Fire1") || Input.GetKeyDown(KeyCode.R))
+            {
+                StartCoroutine(Blink());
             }
         }
     }
@@ -219,5 +228,12 @@ public class SR_ShotGun : MonoBehaviour
             gun1.count = 1;
         }
         
+    }
+    IEnumerator Blink()
+    {
+        redCenter.gameObject.SetActive(true);
+        yield return new WaitForSeconds(0.3409f);
+        redCenter.gameObject.SetActive(false);
+
     }
 }
