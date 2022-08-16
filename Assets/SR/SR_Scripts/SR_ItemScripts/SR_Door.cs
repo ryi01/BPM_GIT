@@ -25,11 +25,11 @@ public class SR_Door : MonoBehaviour
 
 
         print(door.transform.rotation.y);
-        if (dis.magnitude < senseDis && Input.GetKeyDown(KeyCode.F))// && pouch > 0)
+        if (dis.magnitude < senseDis && Input.GetKeyDown(KeyCode.F) && pouch > 0)
         {
             print("F");
             
-                //PlayerPrefs.SetInt("Pouch", pouch - 1);
+                PlayerPrefs.SetInt("Pouch", pouch - 1);
                 if (door.transform.rotation.z >= 0 && door.transform.rotation.z < 90) opening = true;
             
         }
