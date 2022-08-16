@@ -13,6 +13,9 @@ public class BossHP : MonoBehaviour
 
     // 체력
     float enemyHP;
+    // 리지드바디
+    Rigidbody rigid;
+
     public float ENEMYHP
     {
         get { return enemyHP; }
@@ -28,13 +31,14 @@ public class BossHP : MonoBehaviour
             
         }
     }
-    public void AddDamage(int damage)
+    public void AddDamage(int damage, Vector3 dir)
     {
         ENEMYHP -= damage;
-
+        rigid.AddForce(-dir * 1.5f, ForceMode.Impulse);
     }
     private void Start()
     {
         ENEMYHP = maxHP;
+        rigid = GetComponent<Rigidbody>();
     }
 }

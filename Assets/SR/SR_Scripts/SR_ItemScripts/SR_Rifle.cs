@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class SR_Rifle : MonoBehaviour
@@ -65,11 +64,9 @@ public class SR_Rifle : MonoBehaviour
         totalBullet.text = maxAmmo.ToString();
         curBullet.text = currentAmmo.ToString();
 
-        if (SceneManager.GetActiveScene().name == "3 StoreScene")
-        {
-            gun = GameObject.Find("Gun Box 1").GetComponent<SR_GunBox>();
-            gun1 = GameObject.Find("Gun Box 2").GetComponent<SR_GunBox1>();
-        }
+        gun = GameObject.Find("Gun Box 1").GetComponent<SR_GunBox>();
+        gun1 = GameObject.Find("Gun Box 2").GetComponent<SR_GunBox1>();
+        
 
         audio = GetComponent<AudioSource>();
     }
@@ -83,15 +80,10 @@ public class SR_Rifle : MonoBehaviour
     void Update()
     {
 
-
-        if (SceneManager.GetActiveScene().name == "3 StoreScene")
-        {
-            // 거리 확인
-            dis = Vector3.Distance(transform.position, gun.gameObject.transform.position);
-            dis1 = Vector3.Distance(transform.position, gun1.gameObject.transform.position);
-        }
-
-
+        // 거리 확인
+        dis = Vector3.Distance(transform.position, gun.gameObject.transform.position);
+        dis1 = Vector3.Distance(transform.position, gun1.gameObject.transform.position);
+        
         if ((currentTime > 0.3f && currentTime < 0.4f) || (currentTime > 0.5409f && currentTime < 0.6409f))
         {
             if (isReloading) return;
@@ -200,12 +192,10 @@ public class SR_Rifle : MonoBehaviour
 
             }
 
-            if (SceneManager.GetActiveScene().name == "7 BossScene")
-            {
-                if (hit.transform.name.Contains("Boss")) hit.transform.GetComponent<BossHP>().AddDamage(damage);
+            if (hit.transform.name.Contains("Boss")) hit.transform.GetComponent<BossHP>().AddDamage(damage, fpsCam.transform.forward);
 
-                if (hit.transform.name.Contains("Slow")) Destroy(hit.transform.gameObject); // 보스 Slow Bullet 피격처
-            }
+            if (hit.transform.name.Contains("Slow")) Destroy(hit.transform.gameObject); // 보스 Slow Bullet 피격처
+            
 
             Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
         }
@@ -219,16 +209,15 @@ public class SR_Rifle : MonoBehaviour
 
     private void OnDisable()
     {
-        if (SceneManager.GetActiveScene().name == "3 StoreScene")
+
+        if (dis < 3)
         {
-            if (dis < 3)
-            {
-                gun.count = 2;
-            }
-            if (dis1 < 3)
-            {
-                gun1.count = 2;
-            }
+            gun.count = 2;
         }
+        if (dis1 < 3)
+        {
+            gun1.count = 2;
+        }
+        
     }
 }

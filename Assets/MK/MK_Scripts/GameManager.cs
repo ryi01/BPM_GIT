@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
 
     // 일시정지용
     bool isPause = false;
+    // UI 제어
+    public GameObject pauseUI;
     // enum
     public enum GameState
     {
@@ -99,6 +101,7 @@ public class GameManager : MonoBehaviour
         {
             Time.timeScale = 0;
             isPause = true;
+            pauseUI.SetActive(true);
             return;
         }
         if(isPause == true)
@@ -106,6 +109,7 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 1;
             isPause = false;
             m_state = GameState.Playing;
+            pauseUI.SetActive(false);
             return;
         }
     }

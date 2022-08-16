@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class SR_WeaponSwitching1 : MonoBehaviour
 {
@@ -28,41 +27,40 @@ public class SR_WeaponSwitching1 : MonoBehaviour
 
     void Update()
     {
-        if (SceneManager.GetActiveScene().name == "3 StoreScene")
-        {
-            // √—±‚ »Æ¿Œ
-            rifle = gunRifle.GetComponent<SR_ShopRifle>();
-            shotgun = gunShotGun.GetComponent<SR_ShopShotGun>();
-            pistol = gunPistol.GetComponent<SR_ShopPistol>();
 
-            if (pistol)
+        // √—±‚ »Æ¿Œ
+        rifle = gunRifle.GetComponent<SR_ShopRifle>();
+        shotgun = gunShotGun.GetComponent<SR_ShopShotGun>();
+        pistol = gunPistol.GetComponent<SR_ShopPistol>();
+
+        if (pistol)
+        {
+            if (pistol.k1 > 0)
             {
-                if (pistol.k1 > 0)
-                {
-                    selectedWeapon = 0;
-                    SelectedWeapon(0);
-                    count = 1;
-                }
-            }
-            if (shotgun)
-            {
-                if (shotgun.k1 > 0)
-                {
-                    selectedWeapon = 1;
-                    SelectedWeapon(1);
-                    count = 1;
-                }
-            }
-            if (rifle)
-            {
-                if (rifle.k1 > 0)
-                {
-                    selectedWeapon = 2;
-                    SelectedWeapon(2);
-                    count = 1;
-                }
+                selectedWeapon = 0;
+                SelectedWeapon(0);
+                count = 1;
             }
         }
+        if (shotgun)
+        {
+            if (shotgun.k1 > 0)
+            {
+                selectedWeapon = 1;
+                SelectedWeapon(1);
+                count = 1;
+            }
+        }
+        if (rifle)
+        {
+            if (rifle.k1 > 0)
+            {
+                selectedWeapon = 2;
+                SelectedWeapon(2);
+                count = 1;
+            }
+        }
+        
         
     }
     void SelectedWeapon(int selectedWeapon)

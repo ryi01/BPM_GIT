@@ -49,7 +49,7 @@ public class SR_UltimateSkill : MonoBehaviour
             }
             if (other.gameObject.name.Contains("Boss") && currentTime == 0)
             {
-                other.GetComponent<BossHP>().AddDamage(drumrollDamage);
+                other.GetComponent<BossHP>().AddDamage(drumrollDamage, new Vector3(0, 0, 0));
                 GameObject explosion = Instantiate(explosionFactory, other.transform);
             }
             if (other.gameObject.name.Contains("Bat") && currentTime == 0)
