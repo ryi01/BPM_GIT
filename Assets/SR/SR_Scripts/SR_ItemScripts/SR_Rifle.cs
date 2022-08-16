@@ -76,8 +76,8 @@ public class SR_Rifle : MonoBehaviour
 
     private void FixedUpdate()
     {
-        currentTime += Time.deltaTime;
-        if (currentTime > 0.3409f) currentTime -= 0.3409f;
+        currentTime += Time.fixedDeltaTime;
+        if (currentTime > 0.3409f + 0.3f) currentTime -= 0.3409f;
     }
 
     void Update()
@@ -92,7 +92,7 @@ public class SR_Rifle : MonoBehaviour
         }
 
 
-        if ((currentTime > 0 && currentTime < 0.15f) || (currentTime > 0.1909f && currentTime < 0.3409f))
+        if ((currentTime > 0.3f && currentTime < 0.4f) || (currentTime > 0.5409f && currentTime < 0.6409f))
         {
             if (isReloading) return;
 
@@ -134,6 +134,7 @@ public class SR_Rifle : MonoBehaviour
                 nextTimeToFire = Time.time + 1f / fireRate;
 
                 Shoot();
+                audio.Stop();
                 audio.Play();
 
                 curNum = 0;
