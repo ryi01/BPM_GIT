@@ -20,12 +20,12 @@ public class SR_PlayerHP : MonoBehaviour
     void Update()
     {
         hp = PlayerPrefs.GetInt("HP");
-        
-        // hpSlider.value = (float)hp / (float)maxHp;
-        // hpText.text = hp + " ";
-        // maxHpText.text = "/ " + maxHp;
 
-        if(hp<=0)
+
+        hpText.text = hp + " ";
+        maxHpText.text = " " + maxHp;
+
+        if (hp<=0)
         {
             hp = 0;
             //GameOver
@@ -38,8 +38,8 @@ public class SR_PlayerHP : MonoBehaviour
     {
         if (other.gameObject.name.Contains("Bullet"))
         {   
-            //ġƮ
-            //hp -= 25;
+            // ##cheat!!
+            hp -= 25;
             PlayerPrefs.SetInt("HP", hp);
 
         }

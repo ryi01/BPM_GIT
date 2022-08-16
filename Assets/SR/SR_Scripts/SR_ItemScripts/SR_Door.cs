@@ -24,18 +24,21 @@ public class SR_Door : MonoBehaviour
         dis = player.position - gameObject.transform.position;
 
 
-
+        print(door.transform.rotation.y);
         if (dis.magnitude < senseDis && Input.GetKeyDown(KeyCode.F) && pouch > 0)
         {
             print("F");
-            if (playerInventory != null)
-            {
+            
                 PlayerPrefs.SetInt("Pouch", pouch - 1);
                 if (door.transform.rotation.z >= 0 && door.transform.rotation.z < 90) opening = true;
-            }
+            
         }
 
-        if (door.transform.rotation.z >= 0.55f) opening = false;
+        if (door.transform.rotation.y >= 0.2f)
+        {
+            
+            opening = false;
+        }
 
         if (opening == true)
         {
