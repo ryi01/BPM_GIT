@@ -7,7 +7,7 @@ public class SR_PlayerHP : MonoBehaviour
 {
     public int hp=100;
     public int maxHp = 100;
-    public Slider hpSlider;
+    // public Slider hpSlider;
     public Text hpText;
     public Text maxHpText;
 
