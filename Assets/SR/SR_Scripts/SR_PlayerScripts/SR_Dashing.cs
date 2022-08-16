@@ -26,31 +26,49 @@ public class SR_Dashing : MonoBehaviour
     private float currentTime = 0;
     public Text curTime;
 
+    public Image redCenter;
+    public Image dashImage;
+    float fillAmount;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         pm = GetComponent<SR_PlayerMove>();
+        redCenter.gameObject.SetActive(false);
     }
 
     private void FixedUpdate()
     {
         currentTime += Time.deltaTime;
         curTime.text = currentTime + " ";
-        if (currentTime > 0.3375) currentTime = 0;
+        if (currentTime > 0.3409f + 0.3f) currentTime -= 0.3409f;
     }
 
     private void Update()
     {
+        fillAmount = dashImage.fillAmount;
+        if (fillAmount >= 1) fillAmount = 1;
+        fillAmount += 1/0.6818f*Time.deltaTime;
 
+        if (Input.GetKeyDown(dashKey))
+        {
+            if ((currentTime > 0.3f && currentTime < 0.4f) || (currentTime > 0.5409f && currentTime < 0.6409f)) Dash();
+            else StartCoroutine(Blink());
 
-        if (Input.GetKeyDown(dashKey) && ((currentTime > 0 && currentTime < 0.15f) || (currentTime > 0.1875f && currentTime < 0.3375f))) Dash();
+            
+        }
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyUp(dashKey)) pm.dashing = false;
 
         if (dashCdTimer > 0) dashCdTimer -= Time.deltaTime;
+
+        dashImage.fillAmount = fillAmount;
     }
 
     private void Dash()
     {
+        fillAmount = 0;
+        print(fillAmount);
+
         if (dashCdTimer > 0) return;
         else dashCdTimer = dashCd;
 
@@ -77,5 +95,12 @@ public class SR_Dashing : MonoBehaviour
         pm.dashing = false;
     }
 
-    
+    IEnumerator Blink()
+    {
+        redCenter.gameObject.SetActive(true);
+        yield return new WaitForSeconds(0.3409f);
+        redCenter.gameObject.SetActive(false);
+
+    }
+
 }

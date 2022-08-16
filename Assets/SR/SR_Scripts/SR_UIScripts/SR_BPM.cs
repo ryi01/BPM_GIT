@@ -24,7 +24,7 @@ public class SR_BPM : MonoBehaviour
     public float nodeSpeed;
 
     public Image centerImage;
-    
+
     private void Start()
     {
         centerImage.enabled = false;

@@ -49,6 +49,7 @@ public class SR_Pistol : MonoBehaviour
     public GameObject shotGun;
     public GameObject rifle;
 
+    public Image redCenter;
 
     private void Start()
     {
@@ -139,6 +140,13 @@ public class SR_Pistol : MonoBehaviour
                 curNum = 0;
             }
         }
+        else
+        {
+            if (Input.GetButtonDown("Fire1") || Input.GetKeyDown(KeyCode.R))
+            {
+                StartCoroutine(Blink());
+            }
+        }
     }
     IEnumerator Reload()
     {
@@ -225,5 +233,12 @@ public class SR_Pistol : MonoBehaviour
                 gun1.count = 0;
             }
         }
+    }
+    IEnumerator Blink()
+    {
+        redCenter.gameObject.SetActive(true);
+        yield return new WaitForSeconds(0.3409f);
+        redCenter.gameObject.SetActive(false);
+
     }
 }
