@@ -129,7 +129,7 @@ public class Spider : MonoBehaviour
         LookPlayer();
         // 일정시간이 지나면
         currentTime += Time.deltaTime;
-        if (currentTime > stopTime * 0.3375f)
+        if (currentTime > stopTime * 0.3409f)
         {
             // �÷��̾� ����
             runDir = player.transform.position - transform.position;
@@ -153,9 +153,9 @@ public class Spider : MonoBehaviour
         currentTime += Time.deltaTime;
 
         transform.position += runDir * (speed + 5f) * Time.deltaTime;
-        if (currentTime >= runTime * 0.3375f)
+        if (currentTime >= runTime * 0.3409f)
         {
-            currentTime = 0;
+            currentTime -= 0.3409f;
             state = SpiderState.Set;
         }
     }
@@ -174,19 +174,19 @@ public class Spider : MonoBehaviour
         LookPlayer();
 
         currentTime += Time.deltaTime;
-        if (currentTime > 0.3375f * 10)
+        if (currentTime > 0.3409f * 10)
         {
             state = SpiderState.Move;
-            currentTime = 0;
+            currentTime -= 0.3409f;
         }
     }
     // 근접 공격하기
     private void SpiderAttack()
     {
-        if (rhythmTime > 0.3375f)
+        if (rhythmTime > 0.3409f)
         {
             player.GetComponent<SR_PlayerHP>().hp -= 25;
-            rhythmTime = 0;
+            rhythmTime -= 0.3409f;
         }
 
         if(dis >= 3)
