@@ -6,6 +6,8 @@ public class SR_PlayerRotate : MonoBehaviour
 {
     public float rotSpeed = 300f;
 
+    public float x = 0;
+
     float mx = 0;
 
     void Update()
@@ -13,6 +15,6 @@ public class SR_PlayerRotate : MonoBehaviour
         float mouse_X = Input.GetAxis("Mouse X");
         mx += mouse_X * rotSpeed * Time.deltaTime;
 
-        transform.eulerAngles = new Vector3(0, mx, 0);
+        transform.eulerAngles = new Vector3(x, mx, 0);
     }
 }

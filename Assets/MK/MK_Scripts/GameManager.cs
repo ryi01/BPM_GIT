@@ -14,21 +14,18 @@ public class GameManager : MonoBehaviour
         Instance = this;
     }
 
+    // 일시정지용
+    bool isPause = false;
     // enum
     public enum GameState
     {
         Ready,
         Playing,
-        Stop
+        Stop,
+        Pause
     }
     // 초반에는 ready상태로
     public GameState m_state = GameState.Ready;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -44,6 +41,12 @@ public class GameManager : MonoBehaviour
             case GameState.Stop:
                 StopState();
                 break;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            m_state = GameState.Pause;
+            PauseState();
         }
     }
 
@@ -67,7 +70,7 @@ public class GameManager : MonoBehaviour
 
     private void PlayingState()
     {
-        throw new NotImplementedException();
+        
     }
 
     // 플레이어가 장소를 넘어갈 때, 사용됨
@@ -88,4 +91,23 @@ public class GameManager : MonoBehaviour
             m_state = GameState.Playing;
         }
     }
+
+    // 일시정지
+    private void PauseState()
+    {
+        if(isPause == false)
+        {
+            Time.timeScale = 0;
+            isPause = true;
+            return;
+        }
+        if(isPause == true)
+        {
+            Time.timeScale = 1;
+            isPause = false;
+            m_state = GameState.Playing;
+            return;
+        }
+    }
+
 }
