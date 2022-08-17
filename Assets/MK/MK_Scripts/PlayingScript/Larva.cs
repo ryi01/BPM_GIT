@@ -99,9 +99,14 @@ public class Larva : MonoBehaviour
     // 플레이어와 가까우면 공격
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.name.Contains("Plane"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Floor"))
         {
             rigid.AddForce(Vector3.up * jumpPow, ForceMode.Impulse);
+        }
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Room"))
+        {
+            transform.position += dir * 0 * Time.deltaTime;
+            state = LarvaState.Move;
         }
     }
 }

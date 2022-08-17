@@ -33,12 +33,13 @@ public class Treasure : MonoBehaviour
             treasure.gameObject.SetActive(true);
         }
         GameObject player = GameObject.Find("Player");
-        float dis = Vector3.Distance(transform.position, player.transform.position);
-        if(treasure.gameObject.activeSelf == true && Input.GetKeyDown(KeyCode.F) && countKey < 1 && dis < 5)
+        float dis = Vector3.Distance(treasure.transform.position, player.transform.position);
+        print(dis);
+        if(treasure.gameObject.activeSelf == true && Input.GetKeyDown(KeyCode.F) && count < 1 && dis < 5)
         {
-            countKey++;
             key = Instantiate(keyFact);
-            key.transform.position = transform.position + new Vector3(0, 0f, 0);
+            key.transform.position = treasure.transform.position;
+            count++;
 
         }
 

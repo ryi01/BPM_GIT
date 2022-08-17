@@ -161,7 +161,7 @@ public class Bat : MonoBehaviour
     // º®¿¡ ºÎµúÇûÀ» °æ¿ì
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.layer == LayerMask.NameToLayer("Room"))
+        if(collision.gameObject.layer == LayerMask.NameToLayer("Room") || collision.gameObject.layer == LayerMask.NameToLayer("Floor"))
         {
             batState = BatState.Stop;
         }

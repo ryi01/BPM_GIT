@@ -218,7 +218,7 @@ public class Spider : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
 
-        if (collision.gameObject.name.Contains("Plane") && state == SpiderState.Jump)
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Floor") && state == SpiderState.Jump)
         {
             // set상태로 변경
             state = SpiderState.Set;
@@ -229,12 +229,9 @@ public class Spider : MonoBehaviour
             // set���·� ����
             state = SpiderState.Set;
         }
-        if (state == SpiderState.Jump)
+        if(collision.gameObject.layer == LayerMask.NameToLayer("Room"))
         {
-            if (collision.gameObject.layer == LayerMask.NameToLayer("Room"))
-            {
-
-            }
+            state = SpiderState.Set;
         }
     }
 }
