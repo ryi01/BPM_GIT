@@ -66,11 +66,10 @@ public class SR_Dashing : MonoBehaviour
 
     private void Dash()
     {
-        fillAmount = 0;
-        print(fillAmount);
-
+        
+        
         if (dashCdTimer > 0) return;
-        else dashCdTimer = dashCd;
+        else dashCdTimer = dashCd; fillAmount = 0;
 
         pm.dashing = true;
 
