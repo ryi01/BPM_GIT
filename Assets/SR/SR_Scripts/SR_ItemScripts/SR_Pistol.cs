@@ -87,7 +87,7 @@ public class SR_Pistol : MonoBehaviour
         dis1 = Vector3.Distance(transform.position, gun1.gameObject.transform.position);*/
 
 
-        if ((currentTime >0 && currentTime < 0.4f) || (currentTime > 0.5409f && currentTime < 0.6409f))
+        if ((currentTime >0 && currentTime < 0.1f) || (currentTime > 0.2409f && currentTime < 0.3409f))
         {
 
             if (isReloading) return;
