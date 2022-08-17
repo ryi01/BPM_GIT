@@ -12,6 +12,14 @@ public class SR_Enemy1ToEnemy2 : MonoBehaviour
 
     public int cnt = 0;
 
+
+    public GameObject enemy2;
+    public GameObject enemy1;
+
+    public GameObject enemy1Tre;
+
+    public GameObject enemyManager;
+
     private void Start()
     {
         color = black.GetComponent<Image>().color;
@@ -52,6 +60,10 @@ public class SR_Enemy1ToEnemy2 : MonoBehaviour
         {
             StartCoroutine(FadeIn());
             StartCoroutine(FadeOut());
+            enemy2.SetActive(true);
+            enemy1.SetActive(false);
+            enemy1Tre.SetActive(false);
+            enemyManager.SetActive(true);
             other.GetComponent<Transform>().position = newPos.position;
         }
         cnt++;

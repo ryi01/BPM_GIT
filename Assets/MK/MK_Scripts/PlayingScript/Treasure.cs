@@ -11,6 +11,10 @@ public class Treasure : MonoBehaviour
     public GameObject keyFact;
     // Ä«¿îÆ®
     public int count;
+
+    public GameObject notClear;
+    public GameObject clear;
+
     GameObject[] enemy;
     int countKey;
     GameObject key;
@@ -31,6 +35,8 @@ public class Treasure : MonoBehaviour
         if(enemy.Length == 0)
         {
             treasure.gameObject.SetActive(true);
+            clear.SetActive(true);
+            notClear.SetActive(false);
         }
         GameObject player = GameObject.Find("Player");
         float dis = Vector3.Distance(treasure.transform.position, player.transform.position);
@@ -40,7 +46,7 @@ public class Treasure : MonoBehaviour
             key = Instantiate(keyFact);
             key.transform.position = treasure.transform.position;
             count++;
-
+            
         }
 
     }
