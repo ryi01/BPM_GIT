@@ -10,6 +10,9 @@ public class SR_Enemy2ToBoss : MonoBehaviour
     Transform player;
     public Transform newPos;
 
+
+    public int cnt = 0;
+
     private void Start()
     {
         color = black.GetComponent<Image>().color;
@@ -52,6 +55,7 @@ public class SR_Enemy2ToBoss : MonoBehaviour
             StartCoroutine(FadeOut());
             other.GetComponent<Transform>().position = newPos.position;
         }
+        cnt++;
     }
-    
+
 }

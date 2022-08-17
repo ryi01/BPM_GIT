@@ -10,6 +10,8 @@ public class SR_StartToEnemy1 : MonoBehaviour
     Transform player;
     public Transform newPos;
 
+    public int cnt = 0;
+
     private void Start()
     {
         color = black.GetComponent<Image>().color;
@@ -52,6 +54,8 @@ public class SR_StartToEnemy1 : MonoBehaviour
             StartCoroutine(FadeOut());
             other.GetComponent<Transform>().position = newPos.position;
         }
+        cnt++;
     }
+    
     
 }
