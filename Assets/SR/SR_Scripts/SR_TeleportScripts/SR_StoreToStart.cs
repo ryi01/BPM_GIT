@@ -10,6 +10,9 @@ public class SR_StartToStore : MonoBehaviour
     Transform player;
     public Transform newPos;
 
+    public GameObject startCanvas;
+    public GameObject storeCanvas;
+
     private void Start()
     {
         color = black.GetComponent<Image>().color;
@@ -46,8 +49,10 @@ public class SR_StartToStore : MonoBehaviour
         //StartCoroutine(FadeOut());
         //player.GetComponent<Transform>().position = newPos.position;
 
-        if(other.name.Contains("Player"))
+        if(other.name == "Player")
         {
+            startCanvas.SetActive(true);
+            storeCanvas.SetActive(false);
             StartCoroutine(FadeIn());
             StartCoroutine(FadeOut());
             other.GetComponent<Transform>().position = newPos.position;
