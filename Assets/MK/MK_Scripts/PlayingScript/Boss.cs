@@ -65,6 +65,8 @@ public class Boss : MonoBehaviour
     // 총알 개수
     int count;
 
+    public float time = 0.3409f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -138,7 +140,7 @@ public class Boss : MonoBehaviour
         if(dis < 8f)
         {
             state = BossState.Rand;
-            currentTime = 0;
+            currentTime -= time;
         }
         
     }
@@ -147,7 +149,7 @@ public class Boss : MonoBehaviour
     {
         // 랜덤한 지점 찾기
         currentTime += Time.deltaTime;
-        if (currentTime < 0.3375f * 0.2f)
+        if (currentTime < time * 0.2f)
         {
             x = UnityEngine.Random.Range(-20, 20);
             y = UnityEngine.Random.Range(8, 13);
@@ -166,7 +168,7 @@ public class Boss : MonoBehaviour
         {
             // State 변화주기
             state = BossState.Set;
-            currentTime = 0;
+            currentTime -= time;
         }
     }
 
@@ -216,9 +218,9 @@ public class Boss : MonoBehaviour
         transform.position += dir * 0 * Time.deltaTime;
         // 일정시간 후에 Move로 변경
         currentTime += Time.deltaTime;
-        if(currentTime > 0.3375f * 6)
+        if(currentTime > time * 6)
         {
-            currentTime = 0;
+            currentTime -= time;
             state = BossState.Move;
         }
     }
@@ -230,22 +232,22 @@ public class Boss : MonoBehaviour
         Vector3 mySight = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
 
         currentTime += Time.deltaTime;
-        if(currentTime <= 0.3375f * 10)
+        if(currentTime <= time * 10)
         {
             left.gameObject.SetActive(false);
             right.gameObject.SetActive(true);
             LookBoss(mySight);
         }
-        else if(currentTime > 0.3375f * 10 && currentTime <= 0.3375f * 20)
+        else if(currentTime > time * 10 && currentTime <= time * 20)
         {
             right.gameObject.SetActive(false);
             left.gameObject.SetActive(true);
             LookBoss(mySight);
         }
-        else if(currentTime > 0.3375f * 20)
+        else if(currentTime > time * 20)
         {
             countAttack++;
-            currentTime = 0;
+            currentTime -= time * 20;
         }
 
         if(countAttack == 2)
@@ -261,13 +263,13 @@ public class Boss : MonoBehaviour
     private void BossAttack2()
     {
         currentTime += Time.deltaTime;
-        if (currentTime > 0.3375f * 4)
+        if (currentTime > time * 4)
         {
             // 유도탄 3개를 만들기
             for (int i = 0; i < 3; i++)
             {
                 // 0.3초에
-                if (rhythmTime > 0.3375f * 0.5f)
+                if (rhythmTime > time * 0.5f)
                 {
                     // 총알을 1개 만들고
                     GameObject bullet = Instantiate(followBulletFact);
@@ -295,7 +297,7 @@ public class Boss : MonoBehaviour
     private void BossAttack3()
     {
         // 총알 만들기
-        MakingBullet(4, 0.3375f, bulletFact);
+        MakingBullet(4, time, bulletFact);
     }
 
     // 패턴 4 : 빠른 속도를 총알 5개 발사
@@ -303,13 +305,13 @@ public class Boss : MonoBehaviour
     {
         int n = UnityEngine.Random.Range(5, 9);
         // 총알 만들기
-        MakingBullet(n, 0.3375f * 0.5f, fastBulletFact);
+        MakingBullet(n, time * 0.5f, fastBulletFact);
         currentTime = 0;
     }
     // 패턴 5 : 유도탄 + 빠른 총알 1개 발사
     private void BossAttack5()
     {
-        if (rhythmTime > 0.3375f * 10)
+        if (rhythmTime > time * 10)
         {
             // 총알을 만들고
             GameObject bullet = Instantiate(followBulletFact1);
@@ -356,7 +358,7 @@ public class Boss : MonoBehaviour
     }
     void LookBoss(Vector3 mySight)
     {
-        if (currentTime > 0.3375 * 6)
+        if (currentTime > time * 6)
         {
             Vector3 point = new Vector3(transform.position.x, transform.position.y, transform.position.z);
             transform.LookAt(point);

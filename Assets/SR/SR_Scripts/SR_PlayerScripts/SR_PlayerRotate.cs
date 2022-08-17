@@ -8,7 +8,7 @@ public class SR_PlayerRotate : MonoBehaviour
 
     public float x = 0;
 
-    float mx = 0;
+    public float mx = 0;
 
     void Update()
     {
