@@ -75,7 +75,7 @@ public class SR_Rifle : MonoBehaviour
     private void FixedUpdate()
     {
         currentTime += Time.fixedDeltaTime;
-        if (currentTime > 0.3409f + 0) currentTime -= 0.3409f;
+        if (currentTime > 0.3409f) currentTime -= 0.3409f;
     }
 
     void Update()
@@ -85,7 +85,7 @@ public class SR_Rifle : MonoBehaviour
         dis = Vector3.Distance(transform.position, gun.gameObject.transform.position);
         dis1 = Vector3.Distance(transform.position, gun1.gameObject.transform.position);
         
-        if ((currentTime > 0 && currentTime < 0.1f) || (currentTime > 0.2409f && currentTime < 0.3409f))
+        if ((currentTime > 0 && currentTime < 0.15f) || (currentTime > 0.1909f && currentTime < 0.3409f))
         {
             if (isReloading) return;
 
