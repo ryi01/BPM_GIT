@@ -33,8 +33,7 @@ public class SR_Pistol : MonoBehaviour
 
     float dis;
     float dis1;
-
-    AudioSource audio;
+    new AudioSource audio;
 
     // ÃÑ¾Ë °³¼ö
     public Text curBullet;
@@ -188,7 +187,7 @@ public class SR_Pistol : MonoBehaviour
 
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range, ~layer))
         {
-            Debug.Log(hit.transform.name);
+            //Debug.Log(hit.transform.name);
 
             if (hit.transform.name.Contains("Larva"))
             {

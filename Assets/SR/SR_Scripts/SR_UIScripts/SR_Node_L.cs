@@ -13,7 +13,7 @@ public class SR_Node_L : MonoBehaviour
         {
             if(isCheck)
             {
-                SR_BPM.instance.Shot();
+                //SR_BPM.instance.Shot();
                 Destroy(gameObject);
             }
         }
