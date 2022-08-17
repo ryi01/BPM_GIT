@@ -41,7 +41,7 @@ public class SR_Dashing : MonoBehaviour
     {
         currentTime += Time.deltaTime;
         curTime.text = currentTime + " ";
-        if (currentTime > 0.3409f + 0.3f) currentTime -= 0.3409f;
+        if (currentTime > 0.3409f) currentTime -= 0.3409f;
     }
 
     private void Update()
@@ -52,7 +52,7 @@ public class SR_Dashing : MonoBehaviour
 
         if (Input.GetKeyDown(dashKey))
         {
-            if ((currentTime > 0.3f && currentTime < 0.4f) || (currentTime > 0.5409f && currentTime < 0.6409f)) Dash();
+            if ((currentTime > 0 && currentTime < 0.1f) || (currentTime > 0.2409f && currentTime < 0.3409f)) Dash();
             else StartCoroutine(Blink());
 
             
