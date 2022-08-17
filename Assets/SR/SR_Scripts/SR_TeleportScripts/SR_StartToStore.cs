@@ -9,12 +9,15 @@ public class SR_StoreToStart : MonoBehaviour
     Color color;
     Transform player;
     public Transform newPos;
+    int cnt;
+    public GameObject bgm;
 
     private void Start()
     {
         color = black.GetComponent<Image>().color;
         color.a = 0;
         black.GetComponent<Image>().color = color;
+        cnt = bgm.GetComponent<SR_BackgroundMusic>().cnt;
     }
 
 
@@ -52,6 +55,8 @@ public class SR_StoreToStart : MonoBehaviour
             StartCoroutine(FadeOut());
             other.GetComponent<Transform>().position = newPos.position;
         }
+        cnt=0;
+        bgm.GetComponent<SR_BackgroundMusic>().cnt = cnt;
     }
     
 }
