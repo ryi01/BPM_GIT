@@ -76,7 +76,7 @@ public class SR_ShotGun : MonoBehaviour
     private void FixedUpdate()
     {
         currentTime += Time.fixedDeltaTime;
-        if (currentTime > 0.3409f + 0.3f) currentTime -= 0.3409f;
+        if (currentTime > 0.3409f + 0) currentTime -= 0.3409f;
     }
 
     void Update()
@@ -86,7 +86,7 @@ public class SR_ShotGun : MonoBehaviour
         dis = Vector3.Distance(transform.position, gun.gameObject.transform.position);
         dis1 = Vector3.Distance(transform.position, gun1.gameObject.transform.position);
         
-        if ((currentTime > 0.3f && currentTime < 0.4f) || (currentTime > 0.5409f && currentTime < 0.6409f))
+        if ((currentTime > 0 && currentTime < 0.4f) || (currentTime > 0.5409f && currentTime < 0.6409f))
         {
 
 
