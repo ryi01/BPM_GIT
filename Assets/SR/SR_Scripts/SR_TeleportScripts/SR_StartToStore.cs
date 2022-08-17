@@ -12,8 +12,7 @@ public class SR_StoreToStart : MonoBehaviour
     int cnt;
     public GameObject bgm;
 
-    public GameObject startCanvas;
-    public GameObject storeCanvas;
+    
 
     private void Start()
     {
@@ -54,8 +53,8 @@ public class SR_StoreToStart : MonoBehaviour
 
         if(other.name == "Player")
         {
-            startCanvas.SetActive(false);
-            storeCanvas.SetActive(true);
+            //startCanvas.SetActive(false);
+            //storeCanvas.SetActive(true);
             StartCoroutine(FadeIn());
             StartCoroutine(FadeOut());
             other.GetComponent<Transform>().position = newPos.position;
