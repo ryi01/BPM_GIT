@@ -83,7 +83,7 @@ public class Boss : MonoBehaviour
         rhythmTime += Time.deltaTime;
     }
     // Update is called once per frame
-    void LateUpdate()
+    void Update()
     {
 
         // FSM
@@ -129,7 +129,7 @@ public class Boss : MonoBehaviour
     private void BossMove()
     {
         // y축 변경
-        float y = UnityEngine.Random.Range(2, 6);
+        float y = UnityEngine.Random.Range(4, 6);
         // 플레이어까지 방향
         Vector3 pPos = new Vector3(player.transform.position.x, player.transform.position.y + y, player.transform.position.z);
         dir = pPos - transform.position;
@@ -137,7 +137,7 @@ public class Boss : MonoBehaviour
 
         transform.position += dir * bossSpeed * Time.deltaTime;
         float dis = Vector3.Distance(transform.position, player.transform.position);
-        if(dis < 8f)
+        if(dis < 7f)
         {
             state = BossState.Rand;
             currentTime -= time;
@@ -152,7 +152,7 @@ public class Boss : MonoBehaviour
         if (currentTime < time * 0.2f)
         {
             x = UnityEngine.Random.Range(-20, 20);
-            y = UnityEngine.Random.Range(8, 13);
+            y = UnityEngine.Random.Range(6, 12);
             z = UnityEngine.Random.Range(-20, 20);
         }
         // 랜덤한 지점 위치 정하기
@@ -164,11 +164,11 @@ public class Boss : MonoBehaviour
         transform.position += rndDir * bossSpeed * Time.deltaTime;
         // 랜덤한 지점에 가까워지면
         float dis = Vector3.Distance(pos, transform.position);
-        if (dis < 1f)
+        if (dis < 0.1f)
         {
             // State 변화주기
             state = BossState.Set;
-            currentTime -= time;
+            currentTime -= time * 0.2f;
         }
     }
 
@@ -220,7 +220,7 @@ public class Boss : MonoBehaviour
         currentTime += Time.deltaTime;
         if(currentTime > time * 6)
         {
-            currentTime -= time;
+            currentTime -= time * 6;
             state = BossState.Move;
         }
     }
@@ -247,12 +247,11 @@ public class Boss : MonoBehaviour
         else if(currentTime > time * 20)
         {
             countAttack++;
-            currentTime -= time * 20;
         }
 
         if(countAttack == 2)
         {
-            currentTime = 0;
+            currentTime -= time * 20;
             left.gameObject.SetActive(false);
             countAttack = 0;
             state = BossState.Move;
@@ -278,7 +277,7 @@ public class Boss : MonoBehaviour
                     // 총알 개수를 세고
                     count++;
                     // 리듬 타임을 0으로 만든다
-                    rhythmTime = 0;
+                    rhythmTime -= time * 0.5f;
                 }
             }
             // 총알이 3개라면
@@ -288,7 +287,7 @@ public class Boss : MonoBehaviour
                 // 스테이트 변경
                 state = BossState.Stop;
             }
-            currentTime = 0;
+            currentTime -= time * 4;
         }
 
     }
@@ -306,7 +305,6 @@ public class Boss : MonoBehaviour
         int n = UnityEngine.Random.Range(5, 9);
         // 총알 만들기
         MakingBullet(n, time * 0.5f, fastBulletFact);
-        currentTime = 0;
     }
     // 패턴 5 : 유도탄 + 빠른 총알 1개 발사
     private void BossAttack5()
@@ -319,7 +317,7 @@ public class Boss : MonoBehaviour
             bullet.transform.position = transform.position + new Vector3(0, 5, 0);
             // State 변경
             state = BossState.Stop;
-            rhythmTime = 0;
+            rhythmTime -= time * 10;
         }
     }
 
@@ -345,7 +343,7 @@ public class Boss : MonoBehaviour
                 // 총알 개수를 세고
                 count++;
                 // 리듬 타임을 0으로 만든다
-                rhythmTime = 0;
+                rhythmTime -= time;
             }
         }
         // 총알이 3개라면
