@@ -13,7 +13,13 @@ public class SR_StartToStore : MonoBehaviour
     public GameObject bgm;
 
     public GameObject start;
+    public GameObject enemy1Clear;
     public GameObject store;
+    public GameObject storeClear;
+
+    public GameObject enemy1;
+
+    int clear;
 
     private void Start()
     {
@@ -21,8 +27,13 @@ public class SR_StartToStore : MonoBehaviour
         color.a = 0;
         black.GetComponent<Image>().color = color;
         cnt = bgm.GetComponent<SR_BackgroundMusic>().cnt;
+
     }
 
+    private void Update()
+    {
+        clear = enemy1.GetComponent<SR_Enemy1ToStart>().clear;
+    }
 
     IEnumerator FadeIn()
     {
@@ -56,8 +67,17 @@ public class SR_StartToStore : MonoBehaviour
         {
             StartCoroutine(FadeIn());
             StartCoroutine(FadeOut());
-            store.SetActive(true);
-            start.SetActive(false);
+           
+            if (clear == 0)
+            {
+                store.SetActive(true);
+                start.SetActive(false);
+            }
+            else
+            {
+                storeClear.SetActive(true);
+                enemy1Clear.SetActive(false);
+            }
             other.GetComponent<Transform>().position = newPos.position;
             cnt=1;
             bgm.GetComponent<SR_BackgroundMusic>().cnt = cnt;
