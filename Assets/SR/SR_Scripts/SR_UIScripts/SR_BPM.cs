@@ -20,9 +20,14 @@ public class SR_BPM : MonoBehaviour
     public GameObject nodeFactory_L,nodeFactory_R;
     public GameObject s_nodeFactory_L, s_nodeFactory_R;
 
+    public Transform left;
+    public Transform right;
+
     public float nodeSpeed;
 
     public Image centerImage;
+
+    float mx, my;
 
     private void Start()
     {
@@ -33,7 +38,7 @@ public class SR_BPM : MonoBehaviour
     {
         instance = this;
         oneBit = 60 / bpm;
-        nodeSpeed = 100 / oneBit;
+        nodeSpeed = 1  / oneBit;
     }
 
     private void Update()
@@ -61,6 +66,9 @@ public class SR_BPM : MonoBehaviour
                 if (cnt >= 2) cnt = 0;
             }
         //}
+
+        mx = Camera.main.GetComponent<SR_CamRotate>().mx;
+        my = Camera.main.GetComponent<SR_CamRotate>().my;
     }
 
     //public void Shot()
@@ -71,9 +79,9 @@ public class SR_BPM : MonoBehaviour
     {
         Transform centre = GameObject.Find("Center").transform;
 
-        GameObject node_R = Instantiate(nodeFactory_R, centre.position + new Vector3(172,0,0), Quaternion.identity, GameObject.Find("Center").transform);
+        GameObject node_R = Instantiate(nodeFactory_R, right.position, Quaternion.Euler(-my, mx, 0), GameObject.Find("CenterNote").transform);
         node_R.GetComponent<SR_Node_R>().dir = -1;
-        GameObject node_L = Instantiate(nodeFactory_L, centre.position - new Vector3(172,0,0), Quaternion.identity, GameObject.Find("Center").transform);
+        GameObject node_L = Instantiate(nodeFactory_L, left.position, Quaternion.Euler(-my, mx, 0), GameObject.Find("CenterNote").transform);
         node_L.GetComponent<SR_Node_L>().dir = 1;
         
     }
@@ -81,9 +89,9 @@ public class SR_BPM : MonoBehaviour
     {
         Transform centre = GameObject.Find("Center").transform;
 
-        GameObject s_node_R = Instantiate(s_nodeFactory_R, centre.position + new Vector3(172, 0, 0), Quaternion.identity, GameObject.Find("Center").transform);
+        GameObject s_node_R = Instantiate(s_nodeFactory_R, right.position, Quaternion.Euler(-my, mx, 0), GameObject.Find("CenterNote").transform);
         s_node_R.GetComponent<SR_Node_R>().dir = -1;
-        GameObject s_node_L = Instantiate(s_nodeFactory_L, centre.position - new Vector3(172, 0, 0), Quaternion.identity, GameObject.Find("Center").transform);
+        GameObject s_node_L = Instantiate(s_nodeFactory_L, left.position, Quaternion.Euler(-my, mx, 0), GameObject.Find("CenterNote").transform);
         s_node_L.GetComponent<SR_Node_L>().dir = 1;
 
     }
