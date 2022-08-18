@@ -33,8 +33,7 @@ public class SR_Pistol : MonoBehaviour
 
     float dis;
     float dis1;
-
-    AudioSource audio;
+    new AudioSource audio;
 
     // ÃÑ¾Ë °³¼ö
     public Text curBullet;
@@ -87,7 +86,7 @@ public class SR_Pistol : MonoBehaviour
         dis1 = Vector3.Distance(transform.position, gun1.gameObject.transform.position);*/
 
 
-        if ((currentTime >0 && currentTime < 0.1f) || (currentTime > 0.2409f && currentTime < 0.3409f))
+        if ((currentTime >0 && currentTime < 0.15f) || (currentTime > 0.1909f && currentTime < 0.3409f))
         {
 
             if (isReloading) return;
@@ -188,7 +187,7 @@ public class SR_Pistol : MonoBehaviour
 
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range, ~layer))
         {
-            Debug.Log(hit.transform.name);
+            //Debug.Log(hit.transform.name);
 
             if (hit.transform.name.Contains("Larva"))
             {

@@ -9,15 +9,18 @@ public class SR_StartToStore : MonoBehaviour
     Color color;
     Transform player;
     public Transform newPos;
+    int cnt;
+    public GameObject bgm;
 
-    public GameObject startCanvas;
-    public GameObject storeCanvas;
+   
 
     private void Start()
     {
         color = black.GetComponent<Image>().color;
         color.a = 0;
         black.GetComponent<Image>().color = color;
+        cnt = bgm.GetComponent<SR_BackgroundMusic>().cnt;
+
     }
 
 
@@ -51,12 +54,14 @@ public class SR_StartToStore : MonoBehaviour
 
         if(other.name == "Player")
         {
-            startCanvas.SetActive(true);
-            storeCanvas.SetActive(false);
+            //startCanvas.SetActive(true);
+            //storeCanvas.SetActive(false);
             StartCoroutine(FadeIn());
             StartCoroutine(FadeOut());
             other.GetComponent<Transform>().position = newPos.position;
         }
+        cnt=1;
+        bgm.GetComponent<SR_BackgroundMusic>().cnt = cnt;
     }
     
 }

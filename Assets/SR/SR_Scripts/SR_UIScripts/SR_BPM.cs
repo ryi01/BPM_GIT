@@ -7,8 +7,7 @@ using UnityEngine.UI;
 public class SR_BPM : MonoBehaviour
 {
     public static SR_BPM instance;
-    public AudioSource bgm;
-    public AudioSource eft;
+    
     float curTime;
     bool canFire = true;
 
@@ -41,8 +40,8 @@ public class SR_BPM : MonoBehaviour
     {
         centerImage.enabled = false;
 
-        if (bgm.isPlaying)
-        {
+        //if (bgm.isPlaying)
+        //{
             curTime += Time.deltaTime;
 
             if (curTime >= oneBit && cnt == 0)
@@ -61,13 +60,13 @@ public class SR_BPM : MonoBehaviour
                 cnt++;
                 if (cnt >= 2) cnt = 0;
             }
-        }
+        //}
     }
 
-    public void Shot()
-    {
-        eft.PlayOneShot(eft.clip);
-    }
+    //public void Shot()
+    //{
+    //    eft.PlayOneShot(eft.clip);
+    //}
     public void CreateNode()
     {
         Transform centre = GameObject.Find("Center").transform;
