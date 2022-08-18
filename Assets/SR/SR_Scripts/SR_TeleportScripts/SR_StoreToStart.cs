@@ -13,7 +13,13 @@ public class SR_StoreToStart : MonoBehaviour
     public GameObject bgm;
 
     public GameObject start;
+    public GameObject enemy1Clear;
     public GameObject store;
+    public GameObject storeClear;
+
+    public GameObject enemy1;
+
+    int clear;
 
     private void Start()
     {
@@ -24,6 +30,10 @@ public class SR_StoreToStart : MonoBehaviour
 
     }
 
+    private void Update()
+    {
+        clear = enemy1.GetComponent<SR_Enemy1ToStart>().clear;
+    }
 
     IEnumerator FadeIn()
     {
@@ -59,8 +69,25 @@ public class SR_StoreToStart : MonoBehaviour
             //storeCanvas.SetActive(false);
             StartCoroutine(FadeIn());
             StartCoroutine(FadeOut());
-            store.SetActive(false);
-            start.SetActive(true);
+
+            if (clear == 0)
+            {
+                // 클리어되지 않은 맵이 켜지고
+                store.SetActive(false);
+                // 스타트 부분도 클리어 되지 않음
+                start.SetActive(true);
+
+                start.GetComponentInChildren<SR_PlayerRotate>().y = 180;
+            }
+            else
+            {
+                // 클리어된 맵이 켜짐
+                storeClear.SetActive(false);
+                enemy1Clear.SetActive(true);
+
+                enemy1Clear.GetComponentInChildren<SR_PlayerRotate>().y = 180;
+            }
+
             other.GetComponent<Transform>().position = newPos.position;
             cnt=0;
             bgm.GetComponent<SR_BackgroundMusic>().cnt = cnt;
