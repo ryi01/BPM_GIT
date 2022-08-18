@@ -55,6 +55,8 @@ public class SR_Enemy2ToBoss : MonoBehaviour
         {
             StartCoroutine(FadeIn());
             StartCoroutine(FadeOut());
+            boss.SetActive(true);
+            enemy2.SetActive(false);
             other.GetComponent<Transform>().position = newPos.position;
         }
         cnt++;

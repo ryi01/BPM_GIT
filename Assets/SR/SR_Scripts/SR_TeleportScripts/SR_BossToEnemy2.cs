@@ -53,10 +53,12 @@ public class SR_BossToEnemy2 : MonoBehaviour
         {
             StartCoroutine(FadeIn());
             StartCoroutine(FadeOut());
+            boss.SetActive(false);
+            enemy2.SetActive(true);
             other.GetComponent<Transform>().position = newPos.position;
         }
         _cnt = 0;
         bgm.GetComponent<SR_BackgroundMusic>().cnt = _cnt;
     }
-    
+
 }

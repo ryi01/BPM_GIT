@@ -9,6 +9,9 @@ public class SR_LibraryToEnemy2 : MonoBehaviour
     Color color;
     Transform player;
     public Transform newPos;
+    
+    public GameObject enemy2;
+    public GameObject libarary;
 
     private void Start()
     {
@@ -50,6 +53,8 @@ public class SR_LibraryToEnemy2 : MonoBehaviour
         {
             StartCoroutine(FadeIn());
             StartCoroutine(FadeOut());
+            enemy2.SetActive(true);
+            libarary.SetActive(false);
             other.GetComponent<Transform>().position = newPos.position;
         }
     }

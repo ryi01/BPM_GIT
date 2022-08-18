@@ -12,6 +12,11 @@ public class SR_StartToEnemy1 : MonoBehaviour
 
     public int cnt = 0;
 
+    public GameObject start;
+    public GameObject enemy1;
+
+    public GameObject enemyManager;
+
     private void Start()
     {
         color = black.GetComponent<Image>().color;
@@ -52,6 +57,9 @@ public class SR_StartToEnemy1 : MonoBehaviour
         {
             StartCoroutine(FadeIn());
             StartCoroutine(FadeOut());
+            start.SetActive(false);
+            enemy1.SetActive(true);
+            enemyManager.SetActive(true);
             other.GetComponent<Transform>().position = newPos.position;
         }
         cnt++;
