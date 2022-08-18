@@ -12,7 +12,11 @@ public class SR_Enemy2ToBoss : MonoBehaviour
     int _cnt;
     public GameObject bgm;
     public GameObject boss;
+    public GameObject _boss;
     public GameObject enemy2;
+
+    public GameObject enemy2Tre;
+
 
     public int cnt = 0;
 
@@ -58,7 +62,9 @@ public class SR_Enemy2ToBoss : MonoBehaviour
             StartCoroutine(FadeIn());
             StartCoroutine(FadeOut());
             boss.SetActive(true);
+            _boss.SetActive(true);
             enemy2.SetActive(false);
+            enemy2Tre.SetActive(false);
             other.GetComponent<Transform>().position = newPos.position;
         }
         cnt++;

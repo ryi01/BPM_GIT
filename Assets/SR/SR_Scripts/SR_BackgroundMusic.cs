@@ -17,7 +17,7 @@ public class SR_BackgroundMusic : MonoBehaviour
 
     private void Update()
     {
-        
+
         if (cnt == 0)
         {
             //audio.Stop();

@@ -13,6 +13,7 @@ public class SR_BossToEnemy2 : MonoBehaviour
     public GameObject bgm;
     public GameObject boss;
     public GameObject enemy2;
+    public GameObject enemy2Tre;
     private void Start()
     {
         color = black.GetComponent<Image>().color;
@@ -57,6 +58,7 @@ public class SR_BossToEnemy2 : MonoBehaviour
             StartCoroutine(FadeOut());
             boss.SetActive(false);
             enemy2.SetActive(true);
+            enemy2Tre.SetActive(true);
             other.GetComponent<Transform>().position = newPos.position;
         }
         _cnt = 0;
