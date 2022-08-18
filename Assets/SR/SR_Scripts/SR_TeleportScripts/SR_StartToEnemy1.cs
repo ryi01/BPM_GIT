@@ -16,6 +16,7 @@ public class SR_StartToEnemy1 : MonoBehaviour
     public int clearEnemy = 0;
 
     public GameObject start;
+    public GameObject start1;
     public GameObject enemy1NotClear;
     public GameObject clearEnemy1;
     public GameObject enemy1Tre;
@@ -66,17 +67,18 @@ public class SR_StartToEnemy1 : MonoBehaviour
             // 플레이어가 스타트 부분에서 넘어오게 되면 enemy1의 notClear 맵이 켜진다.
             if (clearEnemy == 0)
             {
+                enemyManager.SetActive(true);
                 enemy1NotClear.SetActive(true);
-                clearEnemy++;
             }
             // 하지만 treasure의 clearEnemy1이 0이 아니라면 clear맵이 켜진다
             else
             {
                 clearEnemy1.SetActive(true);
+                start1.SetActive(false);
                 enemy1Tre.SetActive(true);
             }
+            clearEnemy++;
 
-            enemyManager.SetActive(true);
             other.GetComponent<Transform>().position = newPos.position;
         }
         cnt++;

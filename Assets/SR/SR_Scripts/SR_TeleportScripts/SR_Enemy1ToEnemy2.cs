@@ -12,6 +12,7 @@ public class SR_Enemy1ToEnemy2 : MonoBehaviour
 
     public int cnt = 0;
 
+    public GameObject start;
 
     public GameObject enemy2;
     public GameObject enemy1;
@@ -63,6 +64,7 @@ public class SR_Enemy1ToEnemy2 : MonoBehaviour
             enemy2.SetActive(true);
             enemy1.SetActive(false);
             enemy1Tre.SetActive(false);
+            start.SetActive(false);
             enemyManager.SetActive(true);
             other.GetComponent<Transform>().position = newPos.position;
         }
