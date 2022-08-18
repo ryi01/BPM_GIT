@@ -20,22 +20,32 @@ public class SR_BackgroundMusic : MonoBehaviour
 
         if (cnt == 0)
         {
-            //audio.Stop();
-            audio.clip = bgm[0];
-            audio.Play();
-
+            if (audio.clip != bgm[0])
+            {
+                //audio.Stop();
+                audio.clip = bgm[0];
+                audio.Play();
+            }
         }
-        else if(cnt == 1)
+        else if (cnt == 1)
         {
-            //audio.Stop();
+            if (audio.clip != bgm[1])
+            {
+                //audio.Stop();
 
-            audio.clip = bgm[1];
-            audio.Play();
+                audio.clip = bgm[1];
+                audio.Play();
+            }
         }
         else
         {
-            audio.clip = bgm[2];
-            audio.Play(335);
+            if (audio.clip != bgm[2])
+            {
+
+
+                audio.clip = bgm[2];
+                audio.Play(335);
+            }
         }
         //audio.Stop();
         if (audio.isPlaying) print("Playing");
