@@ -11,6 +11,8 @@ public class SR_Enemy2ToBoss : MonoBehaviour
     public Transform newPos;
     int _cnt;
     public GameObject bgm;
+    public GameObject boss;
+    public GameObject enemy2;
 
     public int cnt = 0;
 
