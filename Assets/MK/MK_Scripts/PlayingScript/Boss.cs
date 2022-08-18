@@ -83,7 +83,7 @@ public class Boss : MonoBehaviour
         rhythmTime += Time.deltaTime;
     }
     // Update is called once per frame
-    void LateUpdate()
+    void Update()
     {
 
         // FSM

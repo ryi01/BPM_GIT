@@ -34,7 +34,7 @@ public class BossHP : MonoBehaviour
     public void AddDamage(int damage, Vector3 dir)
     {
         ENEMYHP -= damage;
-        rigid.AddForce(-dir * 1.5f, ForceMode.Impulse);
+        rigid.AddForce(-dir * 0.3f, ForceMode.Impulse);
     }
     private void Start()
     {
