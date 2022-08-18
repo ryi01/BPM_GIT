@@ -59,9 +59,9 @@ public class SR_StartToStore : MonoBehaviour
             StartCoroutine(FadeIn());
             StartCoroutine(FadeOut());
             other.GetComponent<Transform>().position = newPos.position;
+            cnt=1;
+            bgm.GetComponent<SR_BackgroundMusic>().cnt = cnt;
         }
-        cnt=1;
-        bgm.GetComponent<SR_BackgroundMusic>().cnt = cnt;
     }
     
 }

@@ -60,10 +60,10 @@ public class SR_Enemy2ToBoss : MonoBehaviour
             boss.SetActive(true);
             enemy2.SetActive(false);
             other.GetComponent<Transform>().position = newPos.position;
+            _cnt = 2;
+            bgm.GetComponent<SR_BackgroundMusic>().cnt = _cnt;
         }
         cnt++;
-        _cnt = 2;
-        bgm.GetComponent<SR_BackgroundMusic>().cnt = _cnt;
     }
 
 }
