@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SR_StartToStore : MonoBehaviour
+public class SR_StoreToStart : MonoBehaviour
 {
     public Image black;
     Color color;
@@ -12,7 +12,8 @@ public class SR_StartToStore : MonoBehaviour
     int cnt;
     public GameObject bgm;
 
-   
+    public GameObject start;
+    public GameObject store;
 
     private void Start()
     {
@@ -54,10 +55,10 @@ public class SR_StartToStore : MonoBehaviour
 
         if(other.name == "Player")
         {
-            //startCanvas.SetActive(true);
-            //storeCanvas.SetActive(false);
             StartCoroutine(FadeIn());
             StartCoroutine(FadeOut());
+            store.SetActive(false);
+            start.SetActive(true);
             other.GetComponent<Transform>().position = newPos.position;
         }
         cnt=1;
