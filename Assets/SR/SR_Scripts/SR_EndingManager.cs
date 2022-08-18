@@ -31,7 +31,7 @@ public class SR_EndingManager : MonoBehaviour
     {
         bpm.gameObject.SetActive(true);
         yield return new WaitForSeconds(2.0f);
-        bpm.gameObject.SetActive(false);
+        Destroy(bpm);
         victory.gameObject.SetActive(true);
     }
 }
