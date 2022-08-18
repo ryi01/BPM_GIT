@@ -62,7 +62,7 @@ public class SR_StoreToStart : MonoBehaviour
             store.SetActive(false);
             start.SetActive(true);
             other.GetComponent<Transform>().position = newPos.position;
-            cnt=1;
+            cnt=0;
             bgm.GetComponent<SR_BackgroundMusic>().cnt = cnt;
         }
     }
