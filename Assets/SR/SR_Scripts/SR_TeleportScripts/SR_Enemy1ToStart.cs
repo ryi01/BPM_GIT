@@ -14,6 +14,8 @@ public class SR_Enemy1ToStart : MonoBehaviour
     public GameObject enemy1Tre;
     public GameObject start;
 
+    public GameObject storeIcon;
+
     public int clear;
 
     private void Start()
@@ -60,6 +62,8 @@ public class SR_Enemy1ToStart : MonoBehaviour
             start.SetActive(true);
             enemy1.SetActive(false);
             enemy1Tre.SetActive(false);
+
+            storeIcon.GetComponent<SR_PlayerRotate>().y = -90;
 
             clear++;
 

@@ -85,7 +85,7 @@ public class SR_StoreToStart : MonoBehaviour
                 storeClear.SetActive(false);
                 enemy1Clear.SetActive(true);
 
-                enemy1Clear.GetComponentInChildren<SR_PlayerRotate>().y = 180;
+                enemy1Clear.GetComponentInChildren<SR_PlayerRotate>().y = 85;
             }
 
             other.GetComponent<Transform>().position = newPos.position;

@@ -67,6 +67,11 @@ public class SR_Enemy2ToBoss : MonoBehaviour
             enemy2.SetActive(false);
             enemy2Tre.SetActive(false);
             bossHP.SetActive(true);
+            SR_PlayerRotate[] y = boss.GetComponentsInChildren<SR_PlayerRotate>();
+            for (int i = 0; i < y.Length; i++)
+            {
+                y[i].y = 180;
+            }
             other.GetComponent<Transform>().position = newPos.position;
             _cnt = 2;
             bgm.GetComponent<SR_BackgroundMusic>().cnt = _cnt;

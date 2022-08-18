@@ -74,6 +74,7 @@ public class SR_StartToEnemy1 : MonoBehaviour
             else
             {
                 clearEnemy1.SetActive(true);
+                clearEnemy1.GetComponentInChildren<SR_PlayerRotate>().y = 273;
                 start1.SetActive(false);
                 enemy1Tre.SetActive(true);
             }
