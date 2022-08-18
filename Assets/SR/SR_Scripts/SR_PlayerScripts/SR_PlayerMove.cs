@@ -45,7 +45,7 @@ public class SR_PlayerMove : MonoBehaviour
 
 
         //치트###적 없애기
-        GameObject boss = GameObject.Find("Boss");
+        GameObject boss = GameObject.Find("_Boss");
         GameObject enemy = GameObject.Find("EnemyManager");
         if (Input.GetKeyDown(KeyCode.V))
         {

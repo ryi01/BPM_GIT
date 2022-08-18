@@ -8,7 +8,7 @@ public class SR_BackgroundMusic : MonoBehaviour
 
     public AudioClip[] bgm;
 
-    AudioSource audio;
+    new AudioSource audio;
 
     private void Start()
     {
@@ -22,15 +22,22 @@ public class SR_BackgroundMusic : MonoBehaviour
         {
             //audio.Stop();
             audio.clip = bgm[0];
-            
+            audio.Play();
+
         }
-        else
+        else if(cnt == 1)
         {
             //audio.Stop();
 
             audio.clip = bgm[1];
+            audio.Play();
+        }
+        else
+        {
+            audio.clip = bgm[2];
+            audio.Play(335);
         }
         //audio.Stop();
-        audio.Play();
+        
     }
 }
