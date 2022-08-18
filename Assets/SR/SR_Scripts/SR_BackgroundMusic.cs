@@ -22,19 +22,24 @@ public class SR_BackgroundMusic : MonoBehaviour
         {
             if (audio.clip != bgm[0])
             {
+                StartCoroutine(FadeOut());
                 //audio.Stop();
                 audio.clip = bgm[0];
                 audio.Play();
+                StartCoroutine(FadeIn());
             }
         }
         else if (cnt == 1)
         {
             if (audio.clip != bgm[1])
             {
+                StartCoroutine(FadeOut());
                 //audio.Stop();
 
                 audio.clip = bgm[1];
                 audio.Play();
+                StartCoroutine(FadeIn());
+
             }
         }
         else
@@ -42,13 +47,35 @@ public class SR_BackgroundMusic : MonoBehaviour
             if (audio.clip != bgm[2])
             {
 
-
+                StartCoroutine(FadeOut());
                 audio.clip = bgm[2];
                 audio.Play(335);
+                StartCoroutine(FadeIn());
             }
         }
         //audio.Stop();
         if (audio.isPlaying) print("Playing");
         print(audio.clip.name);
+    }
+
+    IEnumerator FadeIn()
+    {
+        float fadeCount = 0;
+        while (fadeCount < 1.0f)
+        {
+            fadeCount += 0.01f;
+            yield return new WaitForSeconds(0.01f);
+            audio.volume = fadeCount;
+        }
+    }
+    IEnumerator FadeOut()
+    {
+        float fadeCount = 1.0f;
+        while (fadeCount >= 0)
+        {
+            fadeCount -= 0.01f;
+            yield return new WaitForSeconds(0.01f);
+            audio.volume = fadeCount;
+        }
     }
 }

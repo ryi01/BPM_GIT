@@ -15,9 +15,13 @@ public class Treasure : MonoBehaviour
     public GameObject notClear;
     public GameObject clear;
 
+    public GameObject enemy1ToStart;
+
     GameObject[] enemy;
     int countKey;
     GameObject key;
+
+    int clearCount = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,21 +35,23 @@ public class Treasure : MonoBehaviour
     {
         // 적 태그를 가진 오브젝트 찾기
         enemy = GameObject.FindGameObjectsWithTag("Enemy");
+
         // 태그가 없으면 보물 on
-        if(enemy.Length == 0)
+        if (enemy.Length == 0)
         {
             treasure.gameObject.SetActive(true);
-            clear.SetActive(true);
             notClear.SetActive(false);
+            clear.SetActive(true);
         }
         GameObject player = GameObject.Find("Player");
         float dis = Vector3.Distance(treasure.transform.position, player.transform.position);
-        print(dis);
+        
         if(treasure.gameObject.activeSelf == true && Input.GetKeyDown(KeyCode.F) && count < 1 && dis < 5)
         {
             key = Instantiate(keyFact);
             key.transform.position = treasure.transform.position;
             count++;
+            
             
         }
 

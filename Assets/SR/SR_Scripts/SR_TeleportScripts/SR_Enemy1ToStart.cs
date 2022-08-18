@@ -14,6 +14,10 @@ public class SR_Enemy1ToStart : MonoBehaviour
     public GameObject enemy1Tre;
     public GameObject start;
 
+    public GameObject storeIcon;
+
+    public int clear;
+
     private void Start()
     {
         color = black.GetComponent<Image>().color;
@@ -54,9 +58,15 @@ public class SR_Enemy1ToStart : MonoBehaviour
         {
             StartCoroutine(FadeIn());
             StartCoroutine(FadeOut());
+
             start.SetActive(true);
             enemy1.SetActive(false);
             enemy1Tre.SetActive(false);
+
+            storeIcon.GetComponent<SR_PlayerRotate>().y = -90;
+
+            clear++;
+
             other.GetComponent<Transform>().position = newPos.position;
         }
     }

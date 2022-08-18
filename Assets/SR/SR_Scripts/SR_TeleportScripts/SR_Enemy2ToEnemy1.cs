@@ -12,9 +12,12 @@ public class SR_Enemy2ToEnemy1 : MonoBehaviour
 
     public GameObject enemy2;
     public GameObject enemy1;
+    public GameObject enemy1Clear;
 
     public GameObject enemy1Tre;
     public GameObject enemy2Tre;
+
+    public int clearEnemy2;
 
     private void Start()
     {
@@ -57,10 +60,18 @@ public class SR_Enemy2ToEnemy1 : MonoBehaviour
             StartCoroutine(FadeIn());
             StartCoroutine(FadeOut());
             enemy2.SetActive(false);
-            enemy1.SetActive(true);
+            if (clearEnemy2 == 0)
+            {
+                enemy1.SetActive(true);
+            }
+            else
+            {
+                enemy1Clear.SetActive(false);
+            }
             enemy1Tre.SetActive(true);
             enemy2Tre.SetActive(false);
             other.GetComponent<Transform>().position = newPos.position;
+            clearEnemy2++;
         }
     }
     
