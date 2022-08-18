@@ -6,8 +6,8 @@ public class SR_CamRotate : MonoBehaviour
 {
     public float rotSpeed = 300.0f;
 
-    float mx = 0;
-    float my = 0;
+    public float mx = 0;
+    public float my = 0;
 
     private void Start()
     {

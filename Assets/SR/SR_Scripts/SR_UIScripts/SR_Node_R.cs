@@ -6,6 +6,12 @@ public class SR_Node_R : MonoBehaviour
 {
     public int dir;
     public bool isCheck;
+    Transform right;
+
+    private void Start()
+    {
+        right = GameObject.Find("RightPop").transform;
+    }
 
     private void Update()
     {
@@ -17,8 +23,7 @@ public class SR_Node_R : MonoBehaviour
                 Destroy(gameObject);
             }
         }
-        transform.position += transform.right * dir * SR_BPM.instance.nodeSpeed * Time.deltaTime;
-        if ((gameObject.transform.position - new Vector3(960, 540, 0)).magnitude < 70)
+        transform.position += (gameObject.transform.position - right.position) * dir * SR_BPM.instance.nodeSpeed * Time.deltaTime; if ((gameObject.transform.position - right.position).magnitude <= 0.035f)
         {
             Destroy(gameObject);
         }
