@@ -13,6 +13,8 @@ public class SR_LibraryToEnemy2 : MonoBehaviour
     public GameObject enemy2;
     public GameObject libarary;
 
+    public GameObject enemy2Tre;
+
     private void Start()
     {
         color = black.GetComponent<Image>().color;
@@ -55,6 +57,7 @@ public class SR_LibraryToEnemy2 : MonoBehaviour
             StartCoroutine(FadeOut());
             enemy2.SetActive(true);
             libarary.SetActive(false);
+            enemy2Tre.SetActive(true);
             other.GetComponent<Transform>().position = newPos.position;
         }
     }

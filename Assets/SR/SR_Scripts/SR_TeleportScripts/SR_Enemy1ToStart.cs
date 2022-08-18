@@ -11,6 +11,7 @@ public class SR_Enemy1ToStart : MonoBehaviour
     public Transform newPos;
 
     public GameObject enemy1;
+    public GameObject enemy1Tre;
     public GameObject start;
 
     private void Start()
@@ -55,6 +56,7 @@ public class SR_Enemy1ToStart : MonoBehaviour
             StartCoroutine(FadeOut());
             start.SetActive(true);
             enemy1.SetActive(false);
+            enemy1Tre.SetActive(false);
             other.GetComponent<Transform>().position = newPos.position;
         }
     }
