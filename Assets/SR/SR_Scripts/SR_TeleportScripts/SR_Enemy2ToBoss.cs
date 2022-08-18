@@ -9,10 +9,8 @@ public class SR_Enemy2ToBoss : MonoBehaviour
     Color color;
     Transform player;
     public Transform newPos;
-
-    public GameObject enemy2;
-    public GameObject boss;
-
+    int _cnt;
+    public GameObject bgm;
 
     public int cnt = 0;
 
@@ -21,6 +19,7 @@ public class SR_Enemy2ToBoss : MonoBehaviour
         color = black.GetComponent<Image>().color;
         color.a = 0;
         black.GetComponent<Image>().color = color;
+        _cnt = bgm.GetComponent<SR_BackgroundMusic>().cnt;
     }
 
 
@@ -61,6 +60,8 @@ public class SR_Enemy2ToBoss : MonoBehaviour
             other.GetComponent<Transform>().position = newPos.position;
         }
         cnt++;
+        _cnt = 2;
+        bgm.GetComponent<SR_BackgroundMusic>().cnt = _cnt;
     }
 
 }
