@@ -51,8 +51,7 @@ public class SR_PlayerMove : MonoBehaviour
         {
             if (boss)
             {
-
-                 Destroy(boss.gameObject);
+                boss.GetComponent<BossHP>().ENEMYHP = 0;
             }
             if(enemy) Destroy(enemy.gameObject);
         }

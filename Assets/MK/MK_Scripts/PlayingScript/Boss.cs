@@ -27,6 +27,7 @@ public class Boss : MonoBehaviour
         Attack3,
         Attack4,
         Attack5,
+        Die
     }
     BossState state;
     #endregion
@@ -85,43 +86,46 @@ public class Boss : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GetComponent<BossHP>().ENEMYHP > 0)
+        {
 
-        // FSM
-        if (state == BossState.Move)
-        {
-            BossMove();
-        }
-        else if(state == BossState.Rand)
-        {
-            BossRand();
-        }
-        else if(state == BossState.Set)
-        {
-            BossSet();
-        }
-        else if(state == BossState.Stop)
-        {
-            BossStop();
-        }
-        else if (state == BossState.Attack1)
-        {
-            BossAttack1();
-        }
-        else if (state == BossState.Attack2)
-        {
-            BossAttack2();
-        }
-        else if (state == BossState.Attack3)
-        {
-            BossAttack3();
-        }
-        else if (state == BossState.Attack4)
-        {
-            BossAttack4();
-        }
-        else if (state == BossState.Attack5)
-        {
-            BossAttack5();
+            // FSM
+            if (state == BossState.Move)
+            {
+                BossMove();
+            }
+            else if (state == BossState.Rand)
+            {
+                BossRand();
+            }
+            else if (state == BossState.Set)
+            {
+                BossSet();
+            }
+            else if (state == BossState.Stop)
+            {
+                BossStop();
+            }
+            else if (state == BossState.Attack1)
+            {
+                BossAttack1();
+            }
+            else if (state == BossState.Attack2)
+            {
+                BossAttack2();
+            }
+            else if (state == BossState.Attack3)
+            {
+                BossAttack3();
+            }
+            else if (state == BossState.Attack4)
+            {
+                BossAttack4();
+            }
+            else if (state == BossState.Attack5)
+            {
+                BossAttack5();
+            }
         }
     }
 
@@ -168,7 +172,7 @@ public class Boss : MonoBehaviour
         {
             // State 변화주기
             state = BossState.Set;
-            currentTime -= time * 0.2f;
+            currentTime = 0;
         }
     }
 
@@ -220,7 +224,7 @@ public class Boss : MonoBehaviour
         currentTime += Time.deltaTime;
         if(currentTime > time * 6)
         {
-            currentTime -= time * 6;
+            currentTime = 0;
             state = BossState.Move;
         }
     }
@@ -251,7 +255,7 @@ public class Boss : MonoBehaviour
 
         if(countAttack == 2)
         {
-            currentTime -= time * 20;
+            currentTime = 0;
             left.gameObject.SetActive(false);
             countAttack = 0;
             state = BossState.Move;
@@ -268,7 +272,7 @@ public class Boss : MonoBehaviour
             for (int i = 0; i < 3; i++)
             {
                 // 0.3초에
-                if (rhythmTime > time * 0.5f)
+                if (rhythmTime > time)
                 {
                     // 총알을 1개 만들고
                     GameObject bullet = Instantiate(followBulletFact);
@@ -277,7 +281,7 @@ public class Boss : MonoBehaviour
                     // 총알 개수를 세고
                     count++;
                     // 리듬 타임을 0으로 만든다
-                    rhythmTime -= time * 0.5f;
+                    rhythmTime = 0;
                 }
             }
             // 총알이 3개라면
@@ -287,7 +291,7 @@ public class Boss : MonoBehaviour
                 // 스테이트 변경
                 state = BossState.Stop;
             }
-            currentTime -= time * 4;
+            currentTime = 0;
         }
 
     }
@@ -317,7 +321,7 @@ public class Boss : MonoBehaviour
             bullet.transform.position = transform.position + new Vector3(0, 5, 0);
             // State 변경
             state = BossState.Stop;
-            rhythmTime -= time * 10;
+            rhythmTime = 0;
         }
     }
 
@@ -343,7 +347,7 @@ public class Boss : MonoBehaviour
                 // 총알 개수를 세고
                 count++;
                 // 리듬 타임을 0으로 만든다
-                rhythmTime -= time;
+                rhythmTime = 0;
             }
         }
         // 총알이 3개라면
@@ -366,7 +370,11 @@ public class Boss : MonoBehaviour
             transform.LookAt(mySight);
         }
     }
-
+    public void Die()
+    {
+        right.gameObject.SetActive(false);
+        left.gameObject.SetActive(false);
+    }
     // 벽에 부딪히면 멈추고 공격하기
     private void OnCollisionEnter(Collision collision)
     {

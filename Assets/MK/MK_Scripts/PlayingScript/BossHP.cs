@@ -24,7 +24,12 @@ public class BossHP : MonoBehaviour
             enemyHP = value;
             bossBar.fillAmount = enemyHP / maxHP;
 
-            if (enemyHP <= 0)
+            if(enemyHP <= 0 && enemyHP > -6)
+            {
+                GetComponent<Boss>().Die();
+                rigid.velocity = new Vector3(0, 0, 0);
+            }
+            if (enemyHP <= -6)
             {
                 Destroy(gameObject);
             }
@@ -34,7 +39,7 @@ public class BossHP : MonoBehaviour
     public void AddDamage(int damage, Vector3 dir)
     {
         ENEMYHP -= damage;
-        rigid.AddForce(-dir * 0.3f, ForceMode.Impulse);
+        rigid.AddForce(-dir * 0.1f, ForceMode.Impulse);
     }
     private void Start()
     {
