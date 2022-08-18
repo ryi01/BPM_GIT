@@ -136,11 +136,11 @@ public class Boss : MonoBehaviour
         dir.Normalize();
 
         transform.position += dir * bossSpeed * Time.deltaTime;
-        float dis = Vector3.Distance(transform.position, player.transform.position);
-        if(dis < 7f)
+        float dis = Vector3.Distance(transform.position, pPos);
+        if(dis < 10f)
         {
             state = BossState.Rand;
-            currentTime -= time;
+            currentTime = 0;
         }
         
     }
