@@ -9,43 +9,54 @@ public class SR_toEnding : MonoBehaviour
     GameObject boss;
     Image white;
     private bool checkbool = false;
+    int count=0;
+    public GameObject quad;
 
     private void Start()
     {
         white = GetComponent<Image>();
-        white.gameObject.SetActive(false);
+        white.color = new(255, 255, 255, 0);
+
     }
     private void Update()
     {
-        boss = GameObject.Find("_Boss");
+        count = quad.GetComponent<SR_Enemy2ToBoss>().count;
 
 
-        if (boss == null)
+        if(count==1)
         {
-            print("111111");
-            white.color = new (255,255,255,0);
-            white.gameObject.SetActive(true);
-            checkbool = true;
-            print("222222");
-            StartCoroutine("MainSplash");
-            print("555555");
+            boss = GameObject.Find("_Boss");
+
+            if (boss == null)
+            {
+                checkbool = true;
+                StopAllCoroutines();
+                StartCoroutine("MainSplash");
+                
+            }
+
+            else checkbool = false;
+            
+
         }
-        else checkbool = false;
-        SceneManager.LoadScene("Ending");
+        
     }
 
     IEnumerator MainSplash()
     {
         Color color = white.color;
-        print("3333333");
-        for(int i=0;i<=100;i++)
+
+        //yield return new WaitForSeconds(1.0f);
+
+        while (color.a <=1) 
         {
-            print("44444444");
-            color.a += Time.deltaTime * 0.01f;
+            color.a += 0.01f;
             white.color = color;
             if (white.color.a >= 0) checkbool = true;
+            yield return null;
         }
-        yield return null;
         
+        SceneManager.LoadScene("Ending");
+
     }
 }

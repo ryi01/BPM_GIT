@@ -21,6 +21,8 @@ public class SR_Enemy2ToBoss : MonoBehaviour
 
     public int cnt = 0;
 
+    public int count = 0;
+
     private void Start()
     {
         color = black.GetComponent<Image>().color;
@@ -69,9 +71,11 @@ public class SR_Enemy2ToBoss : MonoBehaviour
             bossHP.SetActive(true);
             other.GetComponent<Transform>().position = newPos.position;
             _cnt = 2;
+            count++;
             bgm.GetComponent<SR_BackgroundMusic>().cnt = _cnt;
         }
         cnt++;
+        
     }
 
 }
