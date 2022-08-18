@@ -38,6 +38,7 @@ public class SR_BackgroundMusic : MonoBehaviour
             audio.Play(335);
         }
         //audio.Stop();
-        
+        if (audio.isPlaying) print("Playing");
+        print(audio.clip.name);
     }
 }
