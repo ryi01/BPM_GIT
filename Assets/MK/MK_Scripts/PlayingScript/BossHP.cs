@@ -24,8 +24,9 @@ public class BossHP : MonoBehaviour
             enemyHP = value;
             bossBar.fillAmount = enemyHP / maxHP;
 
-            if(enemyHP <= 0 && enemyHP > -6)
+            if(enemyHP <= 0 && enemyHP > -5)
             {
+                bossBar.gameObject.SetActive(false);
                 GetComponent<Boss>().Die();
                 rigid.velocity = new Vector3(0, 0, 0);
             }

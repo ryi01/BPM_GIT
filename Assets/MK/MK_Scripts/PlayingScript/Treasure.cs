@@ -49,7 +49,7 @@ public class Treasure : MonoBehaviour
         if(treasure.gameObject.activeSelf == true && Input.GetKeyDown(KeyCode.F) && count < 1 && dis < 5)
         {
             key = Instantiate(keyFact);
-            key.transform.position = treasure.transform.position;
+            key.transform.position = transform.position;
             count++;
 
 
