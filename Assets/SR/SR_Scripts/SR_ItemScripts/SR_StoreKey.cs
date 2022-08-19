@@ -9,10 +9,13 @@ public class SR_StoreKey : MonoBehaviour
 
     public float senseDis = 3;
 
+    int nCoin;
+
     private void Update()
     {
         player = GameObject.Find("Player").transform;
-        int wallet = PlayerPrefs.GetInt("Wallet");
+        //int wallet = PlayerPrefs.GetInt("Wallet");
+        nCoin = player.GetComponent<SR_PlayerInventory>().numberOfCoins;
 
         SR_PlayerInventory playerInventory = player.GetComponent<SR_PlayerInventory>();
 
@@ -21,10 +24,12 @@ public class SR_StoreKey : MonoBehaviour
         {
             if (playerInventory != null)
             {
-                if (Input.GetKeyDown(KeyCode.F) && wallet >= 2)
+                if (Input.GetKeyDown(KeyCode.F) && nCoin >= 2)
                 {
                     playerInventory.KeyCollected();
-                    PlayerPrefs.SetInt("Wallet", wallet - 2);
+                    nCoin -= 2;
+                    player.GetComponent<SR_PlayerInventory>().numberOfCoins = nCoin;
+                    //PlayerPrefs.SetInt("Wallet", wallet - 2);
                     Destroy(gameObject);
 
 

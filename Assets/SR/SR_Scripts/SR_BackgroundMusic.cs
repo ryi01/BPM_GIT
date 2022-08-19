@@ -10,6 +10,9 @@ public class SR_BackgroundMusic : MonoBehaviour
 
     new AudioSource audio;
 
+    GameObject boss;
+    float bossHP;
+
     private void Start()
     {
         audio = GetComponent<AudioSource>();
@@ -17,6 +20,7 @@ public class SR_BackgroundMusic : MonoBehaviour
 
     private void Update()
     {
+        
 
         if (cnt == 0)
         {
@@ -46,16 +50,31 @@ public class SR_BackgroundMusic : MonoBehaviour
         {
             if (audio.clip != bgm[2])
             {
+                
 
                 StartCoroutine(FadeOut());
                 audio.clip = bgm[2];
-                audio.Play(335);
+                audio.Play();
                 StartCoroutine(FadeIn());
+
+                
             }
         }
+
+        if (cnt == 2)
+        {
+            boss = GameObject.Find("_Boss");
+            if (boss.activeSelf == true)
+            {
+                bossHP = boss.GetComponent<BossHP>().enemyHP;
+                if (bossHP <= 0) audio.Stop();
+            }
+        }
+
         //audio.Stop();
         //if (audio.isPlaying) print("Playing");
         //print(audio.clip.name);
+
     }
 
     IEnumerator FadeIn()

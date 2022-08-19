@@ -15,24 +15,29 @@ public class SR_ShopShotGun : MonoBehaviour
 
     public float senseDis = 3;
 
+    int nCoin;
+
     private void Update()
     {
 
         player = GameObject.Find("Player").transform;
+        nCoin = player.GetComponent<SR_PlayerInventory>().numberOfCoins;
 
         dis = player.position - transform.position;
 
-        int wallet = PlayerPrefs.GetInt("Wallet");
+        //int wallet = PlayerPrefs.GetInt("Wallet");
 
         if (dis.magnitude <= senseDis)
         {
 
             if (Input.GetKeyDown(KeyCode.F))
             {
-                if (/* && wallet > 15*/ cnt <= 0)
+                if (nCoin >= 15 && cnt <= 0)
                 {
                     // ShotGun À¸·Î ¹Ù²Û´Ù
-                    PlayerPrefs.SetInt("Wallet", wallet - 15);
+                    //PlayerPrefs.SetInt("Wallet", nCoin - 15);
+                    nCoin -= 15;
+                    player.GetComponent<SR_PlayerInventory>().numberOfCoins = nCoin;
                     cnt++;
                 }
 

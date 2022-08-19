@@ -12,10 +12,11 @@ public class BossHP : MonoBehaviour
     public float maxHP = 20;
 
     // 체력
-    float enemyHP;
+    public float enemyHP;
     // 리지드바디
     Rigidbody rigid;
 
+    
     public float ENEMYHP
     {
         get { return enemyHP; }
@@ -30,9 +31,11 @@ public class BossHP : MonoBehaviour
                 GetComponent<Boss>().Die();
                 rigid.velocity = new Vector3(0, 0, 0);
             }
-            if (enemyHP <= -6)
+
+            
+            if (enemyHP <= -5)
             {
-                Destroy(gameObject);
+                Destroy(gameObject,5.0f);
             }
             
         }
