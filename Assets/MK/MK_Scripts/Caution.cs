@@ -5,6 +5,8 @@ using UnityEngine;
 public class Caution : MonoBehaviour
 {
     public GameObject butt;
+    public GameObject menu;
+
     // Start is called before the first frame update
     void Start()
     {
