@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// ´ë½¬¸¦ ½èÀ» ¶§, UI°¡ È®´ëµÊ => 0.00055, 0.00055
+// ï¿½ë½¬ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½, UIï¿½ï¿½ È®ï¿½ï¿½ï¿½ï¿½ => 0.00055, 0.00055
 public class UIShake : MonoBehaviour
 {
     public enum Shake
@@ -14,16 +14,16 @@ public class UIShake : MonoBehaviour
         ZoomOut,
     }
 
-    // ´ë½¬¸¦ ½è´ÂÁö ¾È½è´ÂÁö ¾Ë¾Æº¸±â
+    // ï¿½ë½¬ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½È½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ë¾Æºï¿½ï¿½ï¿½
     GameObject player;
-    // UI RectTransform°¡Á®¿À±â
+    // UI RectTransformï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     RectTransform ui;
 
     public float sinSpeed = 2;
     public float amp = 0.5f;
     Vector3 origin;
     float theta = 0;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,6 +42,16 @@ public class UIShake : MonoBehaviour
             UIZoomIn();
         }
 
+        if (Input.GetButtonDown("Jump"))
+        {
+            Shaking();
+        }
+
+        if(Input.GetButtonDown("Fire1") || Input.GetKeyDown(KeyCode.R))
+        {
+            UIZoomIn();
+        }
+
     }
 
     private void UINormal()
@@ -53,7 +63,7 @@ public class UIShake : MonoBehaviour
     void UIZoomIn()
     {
         StartCoroutine(ZoomUI());
-    }  
+    }
 
     public void Shaking()
     {
@@ -64,7 +74,7 @@ public class UIShake : MonoBehaviour
     {
         float currentTime = 0;
 
-        while (currentTime < 0.00003f)
+        while (currentTime < 0.00005f)
         {
             currentTime += 0.000005f;
             ui.localScale += new Vector3(currentTime, currentTime, 0);
@@ -82,14 +92,14 @@ public class UIShake : MonoBehaviour
 
         }
         yield return new WaitForSeconds(0.001f);
-        while (currentTime > 0) 
+        while (currentTime > 0)
         {
             currentTime -= 0.002f;
             ui.anchoredPosition -= new Vector2(0, currentTime);
             yield return null;
         }
-        yield return new WaitForSeconds(0.001f); 
+        yield return new WaitForSeconds(0.001f);
         ui.anchoredPosition = new Vector2(0, 0);
-    }  
+    }
 
 }
