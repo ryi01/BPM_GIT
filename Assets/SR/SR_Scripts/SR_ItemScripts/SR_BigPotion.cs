@@ -9,10 +9,13 @@ public class SR_BigPotion : MonoBehaviour
 
     public float senseDis = 3;
 
+    int nCoin;
+
     private void Update()
     {
         player = GameObject.Find("Player").transform;
-        int wallet = PlayerPrefs.GetInt("Wallet");
+        //int wallet = PlayerPrefs.GetInt("Wallet");
+        nCoin = player.GetComponent<SR_PlayerInventory>().numberOfCoins;
 
         SR_PlayerHP playerHP = player.GetComponent<SR_PlayerHP>();
 
@@ -21,13 +24,15 @@ public class SR_BigPotion : MonoBehaviour
         {
             if (playerHP != null)
             {
-                if (Input.GetKeyDown(KeyCode.F) && wallet >= 4)
+                if (Input.GetKeyDown(KeyCode.F) && nCoin >= 4)
                 {
                     if (playerHP.hp < 100)
                     {
                         playerHP.AddBigHP();
                         Destroy(gameObject);
-                        PlayerPrefs.SetInt("Wallet", wallet - 4);
+                        nCoin -= 4;
+                        player.GetComponent<SR_PlayerInventory>().numberOfCoins = nCoin;
+                        //PlayerPrefs.SetInt("Wallet", wallet - 4);
 
                     }
                 }

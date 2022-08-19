@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class SR_PlayerInventory : MonoBehaviour
 {
-    public int numberOfCoins { get; private set; }
-    public int numberOfKeys { get; private set; }
-    public int numberOfScrolls { get; private set; }
+    public int numberOfCoins { get; set; }
+    public int numberOfKeys { get; set; }
+    public int numberOfScrolls { get; set; }
 
 
     public Text keyText;
@@ -17,25 +17,25 @@ public class SR_PlayerInventory : MonoBehaviour
     public void CoinCollected()
     {
         numberOfCoins++;
-        PlayerPrefs.SetInt("Wallet", numberOfCoins);
+        //PlayerPrefs.SetInt("Wallet", numberOfCoins);
 
     }
     public void KeyCollected()
     {
         numberOfKeys++;
-        PlayerPrefs.SetInt("Pouch", numberOfKeys);
+       // PlayerPrefs.SetInt("Pouch", numberOfKeys);
     }
 
     public void ScrollCollected()
     {
         numberOfScrolls++;
-        PlayerPrefs.SetInt("Skill", numberOfScrolls);
+        //PlayerPrefs.SetInt("Skill", numberOfScrolls);
     }
 
     void Update()
     {
-        int c = PlayerPrefs.GetInt("Wallet");
-        int k = PlayerPrefs.GetInt("Pouch");
+        int c = numberOfCoins; // PlayerPrefs.GetInt("Wallet");
+        int k = numberOfKeys; // PlayerPrefs.GetInt("Pouch");
         keyText.text = k + " ";
         coinText.text = c + " ";
     }

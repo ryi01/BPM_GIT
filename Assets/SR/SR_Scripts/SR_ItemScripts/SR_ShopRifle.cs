@@ -13,22 +13,28 @@ public class SR_ShopRifle : MonoBehaviour
     int cnt = 0;
 
     public float senseDis = 3;
+
+    int nCoin;
+
     private void Update()
     {
         player = GameObject.Find("Player").transform;
+        nCoin = player.GetComponent<SR_PlayerInventory>().numberOfCoins;
 
         dis = player.position - transform.position;
 
-        int wallet = PlayerPrefs.GetInt("Wallet");
+        //int wallet = PlayerPrefs.GetInt("Wallet");
         if (dis.magnitude <= senseDis)
         {
 
             if (Input.GetKeyDown(KeyCode.F))
             {
-                if (/* && wallet > 5*/ cnt <= 0)
+                if (nCoin >= 5 && cnt <= 0)
                 {
                     // ShotGun À¸·Î ¹Ù²Û´Ù
-                    PlayerPrefs.SetInt("Wallet", wallet - 5);
+                    //PlayerPrefs.SetInt("Wallet", wallet - 5);
+                    nCoin -= 5;
+                    player.GetComponent<SR_PlayerInventory>().numberOfCoins = nCoin;
                     cnt++;
                 }
                 gameObject.SetActive(false);

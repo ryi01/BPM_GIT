@@ -9,10 +9,14 @@ public class SR_Scroll : MonoBehaviour
 
     public float senseDis = 3;
 
+    int nScroll;
+
     private void Update()
     {
         player = GameObject.Find("Player").transform;
-        int skill = PlayerPrefs.GetInt("Skill");
+        nScroll = player.GetComponent<SR_PlayerInventory>().numberOfScrolls;
+
+        //int skill = PlayerPrefs.GetInt("Skill");
 
         SR_PlayerInventory playerInventory = player.GetComponent<SR_PlayerInventory>();
 
@@ -25,7 +29,9 @@ public class SR_Scroll : MonoBehaviour
                 {
                     playerInventory.ScrollCollected();
                     Destroy(gameObject);
-                    PlayerPrefs.SetInt("Skill", 1);
+                    //PlayerPrefs.SetInt("Skill", 1);
+                    nScroll = 1;
+                    player.GetComponent<SR_PlayerInventory>().numberOfScrolls = nScroll;
 
                 }
             }
