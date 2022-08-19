@@ -12,6 +12,8 @@ public class SR_PlayerMove : MonoBehaviour
     public float jumpPower = 4;
     public float yVelocity;
     int jumpCnt = 0;
+    int shake = 0;
+    bool jump = false;
 
     public float dashSpeed = 100;
 
@@ -23,25 +25,36 @@ public class SR_PlayerMove : MonoBehaviour
 
     Vector3 dir;
 
+    UIShake ui;
+
     void Start()
     {
         cc = GetComponent<CharacterController>();
         rigid = GetComponent<Rigidbody>();
+        ui = GameObject.Find("Main Camera").GetComponentInChildren<UIShake>();
     }
     private void Update()
     {
+        bool ground = cc.isGrounded;
         //Â«Çª
         yVelocity += gravity * Time.deltaTime;
-        
         if (dashing == false && Input.GetButtonDown("Jump"))
         {
-            if (jumpCnt < 1)
+            jumpCnt++;
+            if (jumpCnt < 2)
             {
-                jumpCnt++;
                 yVelocity = jumpPower;
             }
+            ground = false;
         }
-        if (cc.isGrounded == true) jumpCnt = 0;
+       
+        if (ground == true && jumpCnt > 0)
+        {
+            jumpCnt = 0;
+            shake = 0;
+            ui.Shaking();
+
+        }
 
 
         //Ä¡Æ®###Àû ¾ø¾Ö±â

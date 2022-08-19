@@ -58,7 +58,7 @@ public class Bat : MonoBehaviour
         // 적 체력 세팅
         bat = GetComponent<BatHP>();
         bat.ENEMYHP = 1;
-        float y = UnityEngine.Random.Range(5, 10);
+        float y = UnityEngine.Random.Range(6, 10);
         transform.position = new Vector3(transform.position.x, y, transform.position.z);
     }
 
@@ -66,9 +66,11 @@ public class Bat : MonoBehaviour
     void Update()
     {
         player = GameObject.Find("Player");
+        // 플레이어보기
         Vector3 mySight = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
         transform.LookAt(mySight);
-        float rnd = UnityEngine.Random.Range(2, 8);
+
+        float rnd = UnityEngine.Random.Range(5, 8);
         // 플레이어를 향하는 방향
         dir = player.transform.position - transform.position;
         dir = new Vector3(dir.x, dir.y + rnd, dir.z);
@@ -120,7 +122,7 @@ public class Bat : MonoBehaviour
         if(time < 1)
         {
             x = UnityEngine.Random.Range(-10, 10);
-            y = UnityEngine.Random.Range(3, 6);
+            y = UnityEngine.Random.Range(4, 7);
             z = UnityEngine.Random.Range(-10, 10);
         }
         pos = new Vector3(x, y + 2, z);
