@@ -64,11 +64,13 @@ public class SR_BackgroundMusic : MonoBehaviour
         if (cnt == 2)
         {
             boss = GameObject.Find("_Boss");
-            if (boss.activeSelf == true)
+
+            if (boss != null)
             {
                 bossHP = boss.GetComponent<BossHP>().enemyHP;
                 if (bossHP <= 0) audio.Stop();
             }
+            //else cnt++;
         }
 
         //audio.Stop();

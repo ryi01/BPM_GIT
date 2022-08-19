@@ -30,6 +30,7 @@ public class SR_toEnding : MonoBehaviour
             if (boss == null)
             {
                 checkbool = true;
+                print("11111111");
                 StopAllCoroutines();
                 StartCoroutine("MainSplash");
                 
