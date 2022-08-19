@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// º¸¹° »óÀÚ : ÀûÀÌ ¸ðµÎ Á×À¸¸é setactiveµÇ±â
+// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ : ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ setactiveï¿½Ç±ï¿½
 public class Treasure : MonoBehaviour
 {
-    // ÇÊ¿ä ¼Ó¼º : Àû, º¸¹° »óÀÚ
+    // ï¿½Ê¿ï¿½ ï¿½Ó¼ï¿½ : ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     public GameObject treasure;
-    // ÇÊ¿ä¼Ó¼º : Å°°øÀå
+    // ï¿½Ê¿ï¿½ï¿½Ó¼ï¿½ : Å°ï¿½ï¿½ï¿½ï¿½
     public GameObject keyFact;
-    // Ä«¿îÆ®
+    // Ä«ï¿½ï¿½Æ®
     public int count;
 
     public GameObject notClear;
@@ -25,7 +25,7 @@ public class Treasure : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // º¸¹° »óÀÚ off
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ off
         treasure.gameObject.SetActive(false);
 
     }
@@ -33,10 +33,10 @@ public class Treasure : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Àû ÅÂ±×¸¦ °¡Áø ¿ÀºêÁ§Æ® Ã£±â
+        // ï¿½ï¿½ ï¿½Â±×¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® Ã£ï¿½ï¿½
         enemy = GameObject.FindGameObjectsWithTag("Enemy");
 
-        // ÅÂ±×°¡ ¾øÀ¸¸é º¸¹° on
+        // ï¿½Â±×°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ on
         if (enemy.Length == 0)
         {
             treasure.gameObject.SetActive(true);
@@ -45,13 +45,14 @@ public class Treasure : MonoBehaviour
         }
         GameObject player = GameObject.Find("Player");
         float dis = Vector3.Distance(treasure.transform.position, player.transform.position);
-        
+        //print(dis);
         if(treasure.gameObject.activeSelf == true && Input.GetKeyDown(KeyCode.F) && count < 1 && dis < 5)
         {
             key = Instantiate(keyFact);
             key.transform.position = transform.position;
             count++;
-            print(count);
+
+
         }
 
     }

@@ -54,8 +54,8 @@ public class SR_BackgroundMusic : MonoBehaviour
             }
         }
         //audio.Stop();
-        if (audio.isPlaying) print("Playing");
-        print(audio.clip.name);
+        //if (audio.isPlaying) print("Playing");
+        //print(audio.clip.name);
     }
 
     IEnumerator FadeIn()
