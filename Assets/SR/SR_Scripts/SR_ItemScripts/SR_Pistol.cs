@@ -205,7 +205,7 @@ public class SR_Pistol : MonoBehaviour
             }
 
 
-            if (hit.transform.name == "Boss") hit.transform.GetComponent<BossHP>().AddDamage(damage, fpsCam.transform.forward);
+            if (hit.transform.name == "_Boss") hit.transform.GetComponent<BossHP>().AddDamage(damage, fpsCam.transform.forward);
 
             if (hit.transform.name.Contains("Slow")) Destroy(hit.transform.gameObject); // 보스 Slow Bullet 피격처
             

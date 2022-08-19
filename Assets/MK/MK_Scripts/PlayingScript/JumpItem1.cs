@@ -23,9 +23,9 @@ public class JumpItem1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(transform.position.y <= 8.5f)
+        if(transform.position.y <= tre.transform.position.y + 2)
         {
-            transform.position = new Vector3(transform.position.x, 8.5f, transform.position.z);
+            transform.position = new Vector3(transform.position.x, tre.transform.position.y + 2, transform.position.z);
         }
         transform.Rotate(Vector3.forward * speed * Time.deltaTime);
     }
@@ -38,11 +38,11 @@ public class JumpItem1 : MonoBehaviour
         currentTime += Time.deltaTime;
         if (currentTime > 0.005f)
         {
-            x = Random.Range(-2, 2);
-            z = Random.Range(-2, 2);
+            x = Random.Range(-1, 1);
+            z = Random.Range(-1, 1);
             currentTime = 0;
         }        
-        Vector3 pos = tre.transform.position + new Vector3(x, 0, z);
+        Vector3 pos = transform.position + new Vector3(x, 0, z);
         dir = pos - transform.position;
 
         dir.y = jumpPow;

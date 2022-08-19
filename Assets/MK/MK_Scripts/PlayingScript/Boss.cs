@@ -251,6 +251,7 @@ public class Boss : MonoBehaviour
         else if(currentTime > time * 20)
         {
             countAttack++;
+            currentTime = 0;
         }
 
         if(countAttack == 2)
