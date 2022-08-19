@@ -102,6 +102,7 @@ public class SR_Rifle : MonoBehaviour
                     curNum++;
                     print(curNum);
                 }
+                
             }
 
 
