@@ -13,23 +13,28 @@ public class SR_Door : MonoBehaviour
 
     bool opening = false;
 
+    int nKey;
+
     private void Update()
     {
         door = GameObject.Find("Door");
         player = GameObject.Find("Player").transform;
-        int pouch = PlayerPrefs.GetInt("Pouch");
+        //int pouch = PlayerPrefs.GetInt("Pouch");
+        nKey = player.GetComponent<SR_PlayerInventory>().numberOfKeys;
 
         SR_PlayerInventory playerInventory = player.GetComponent<SR_PlayerInventory>();
 
         dis = player.position - gameObject.transform.position;
 
 
-        if (dis.magnitude < senseDis && Input.GetKeyDown(KeyCode.F) && pouch > 0)
+        if (dis.magnitude < senseDis && Input.GetKeyDown(KeyCode.F) && nKey>0)
         {
             print("F");
-            
-                PlayerPrefs.SetInt("Pouch", pouch - 1);
-                if (door.transform.rotation.z >= 0 && door.transform.rotation.z < 90) opening = true;
+
+            //PlayerPrefs.SetInt("Pouch", nKey-1);
+            nKey -= 1;
+            player.GetComponent<SR_PlayerInventory>().numberOfKeys = nKey;
+            if (door.transform.rotation.z >= 0 && door.transform.rotation.z < 90) opening = true;
             
         }
 
