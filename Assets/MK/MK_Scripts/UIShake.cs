@@ -46,6 +46,11 @@ public class UIShake : MonoBehaviour
         {
             Shaking();
         }
+
+        if(Input.GetButtonDown("Fire1") || Input.GetKeyDown(KeyCode.R))
+        {
+            UIZoomIn();
+        }
         
     }
 
@@ -70,9 +75,9 @@ public class UIShake : MonoBehaviour
     {
         float currentTime = 0;
 
-        while (currentTime < 0.00007f)
+        while (currentTime < 0.00005f)
         {
-            currentTime += 0.0000045f;
+            currentTime += 0.000005f;
             ui.localScale += new Vector3(currentTime, currentTime, 0);
             yield return null;
         }
