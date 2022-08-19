@@ -141,6 +141,7 @@ public class Bat : MonoBehaviour
     void BatStop()
     {
         transform.position += batDir * 0 * Time.deltaTime;
+        GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
         float dis = Vector3.Distance(transform.position, player.transform.position);
         if (dis > pDis )
         {
