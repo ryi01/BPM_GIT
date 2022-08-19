@@ -41,6 +41,7 @@ public class SR_PlayerMove : MonoBehaviour
         if (dashing == false && Input.GetButtonDown("Jump"))
         {
             jumpCnt++;
+            ui.Shaking();
             if (jumpCnt < 2)
             {
                 yVelocity = jumpPower;

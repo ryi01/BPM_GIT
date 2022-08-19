@@ -38,15 +38,10 @@ public class UIShake : MonoBehaviour
         UINormal();
 
         if (player.GetComponent<SR_PlayerMove>().dashing)
-         {
+        {
             UIZoomIn();
         }
 
-        if (Input.GetButtonDown("Jump"))
-        {
-            Shaking();
-        }
-        
     }
 
     private void UINormal()
@@ -55,9 +50,8 @@ public class UIShake : MonoBehaviour
         ui.localScale = new Vector3(0.0005f, 0.0005f, 0);
     }
 
-    private void UIZoomIn()
+    void UIZoomIn()
     {
-        StopAllCoroutines();
         StartCoroutine(ZoomUI());
     }  
 
@@ -70,9 +64,9 @@ public class UIShake : MonoBehaviour
     {
         float currentTime = 0;
 
-        while (currentTime < 0.00007f)
+        while (currentTime < 0.00003f)
         {
-            currentTime += 0.0000045f;
+            currentTime += 0.000005f;
             ui.localScale += new Vector3(currentTime, currentTime, 0);
             yield return null;
         }
