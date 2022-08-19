@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class StartButton : MonoBehaviour
 {
+    public GameObject menu;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +18,7 @@ public class StartButton : MonoBehaviour
         if (Input.anyKeyDown)
         {
             gameObject.SetActive(false);
+            menu.gameObject.SetActive(true);
         }
     }
 }
