@@ -106,7 +106,7 @@ public class SR_Pistol : MonoBehaviour
                 else
                 {
                     curNum++;
-                    print(curNum);
+                    //print(curNum);
                 }
             }
 
