@@ -55,17 +55,7 @@ public class SR_PlayerMove : MonoBehaviour
             }
             if(enemy) Destroy(enemy.gameObject);
         }
-        //
-        //치트###방 옮기기
-        if(Input.GetKeyDown(KeyCode.Keypad1)) SceneManager.LoadScene("2 StartScene");
-        if (Input.GetKeyDown(KeyCode.Keypad2)) SceneManager.LoadScene("3 StoreScene");
-        if (Input.GetKeyDown(KeyCode.Keypad3)) SceneManager.LoadScene("4 LibraryScene");
-        if (Input.GetKeyDown(KeyCode.Keypad4)) SceneManager.LoadScene("5 EnemyScene 1");
-        if (Input.GetKeyDown(KeyCode.Keypad5)) SceneManager.LoadScene("6 EnemyScene 2");
-        if (Input.GetKeyDown(KeyCode.Keypad6)) SceneManager.LoadScene("7 BossScene");
-        //
 
-        
     }
     void FixedUpdate()
     {

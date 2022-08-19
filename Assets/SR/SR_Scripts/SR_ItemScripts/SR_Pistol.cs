@@ -48,6 +48,8 @@ public class SR_Pistol : MonoBehaviour
     public GameObject rifle;
 
     public Image redCenter;
+    // ÃÑ ½î´Â Áß ³Ñ±â±â
+    public bool isAttack = false;
 
     private void Start()
     {
@@ -140,6 +142,7 @@ public class SR_Pistol : MonoBehaviour
         {
             if (Input.GetButtonDown("Fire1") || Input.GetKeyDown(KeyCode.R))
             {
+                isAttack = true;
                 StartCoroutine(Blink());
             }
         }
