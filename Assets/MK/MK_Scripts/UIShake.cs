@@ -35,6 +35,10 @@ public class UIShake : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameManager.Instance.m_state != GameManager.GameState.Playing)
+        {
+            return;
+        }
         UINormal();
 
         if (player.GetComponent<SR_PlayerMove>().dashing)
@@ -74,7 +78,7 @@ public class UIShake : MonoBehaviour
     {
         float currentTime = 0;
 
-        while (currentTime < 0.00005f)
+        while (currentTime < 0.00003f)
         {
             currentTime += 0.000005f;
             ui.localScale += new Vector3(currentTime, currentTime, 0);

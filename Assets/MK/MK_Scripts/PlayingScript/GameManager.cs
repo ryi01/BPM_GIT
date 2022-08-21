@@ -18,6 +18,10 @@ public class GameManager : MonoBehaviour
     bool isPause = false;
     // UI 제어
     public GameObject pauseUI;
+    // UI
+    public GameObject playingUI;
+    public GameObject noteUI;
+    public GameObject readyUI;
     // enum
     public enum GameState
     {
@@ -61,6 +65,9 @@ public class GameManager : MonoBehaviour
     {
         // 시간이 흐르고
         currentTime += Time.deltaTime;
+        readyUI.SetActive(true);
+        playingUI.SetActive(false);
+        noteUI.SetActive(false);
         // 일정 시간이 흐르게 되면
         if (currentTime > readyTime)
         {
@@ -72,7 +79,9 @@ public class GameManager : MonoBehaviour
 
     private void PlayingState()
     {
-        
+        readyUI.SetActive(false);
+        playingUI.SetActive(true);
+        noteUI.SetActive(true);
     }
 
     // 플레이어가 장소를 넘어갈 때, 사용됨

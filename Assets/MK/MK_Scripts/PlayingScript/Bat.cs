@@ -45,6 +45,9 @@ public class Bat : MonoBehaviour
     Vector3 batDir;
     Vector3 pos;
     BatHP bat;
+
+    // 리지드바디
+    Rigidbody rigid;
     private void FixedUpdate()
     {
         currentTime += Time.deltaTime;
@@ -60,6 +63,7 @@ public class Bat : MonoBehaviour
         bat.ENEMYHP = 1;
         float y = UnityEngine.Random.Range(6, 10);
         transform.position = new Vector3(transform.position.x, y, transform.position.z);
+        rigid = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -110,7 +114,7 @@ public class Bat : MonoBehaviour
         float dis = Vector3.Distance(transform.position, player.transform.position);
         if (dis < pDis)
         {
-            batState = BatState.Back;
+            batState = BatState.Stop;
         }
 
     }
@@ -134,7 +138,7 @@ public class Bat : MonoBehaviour
         if(dis < 0.1f)
         {
             time = 0;
-            batState = BatState.Come;
+            batState = BatState.Stop;
         }
     }
 
@@ -143,9 +147,17 @@ public class Bat : MonoBehaviour
         transform.position += batDir * 0 * Time.deltaTime;
         GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
         float dis = Vector3.Distance(transform.position, player.transform.position);
-        if (dis > pDis )
+        if(dis < 3)
+        {
+            batState = BatState.Back;
+        }
+        else if(dis >= 3 && dis < pDis)
         {
             batState = BatState.Move;
+        }
+        else if(dis >= pDis)
+        {
+            batState = BatState.Come;
         }
     }
     // 가까우면 뒤로 가기
@@ -154,18 +166,19 @@ public class Bat : MonoBehaviour
         currentTime3 += Time.deltaTime;
         transform.position += -dir * bSpeed * Time.deltaTime;
         float dis = Vector3.Distance(transform.position, player.transform.position);
-        if(dis > pDis && currentTime3 > 0.3375f * 6)
+        if(dis >= pDis)
         {
             currentTime = 0;
-            batState = BatState.Stop;
+            batState = BatState.Move;
         }
     }
 
     // 벽에 부딪혔을 경우
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.layer == LayerMask.NameToLayer("Room") || collision.gameObject.layer == LayerMask.NameToLayer("Floor"))
+        if(collision.gameObject.layer == LayerMask.NameToLayer("Room"))
         {
+            rigid.velocity = new Vector3(0, 0, 0);
             batState = BatState.Stop;
         }
     }

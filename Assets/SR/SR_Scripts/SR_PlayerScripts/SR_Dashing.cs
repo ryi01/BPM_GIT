@@ -46,6 +46,10 @@ public class SR_Dashing : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.Instance.m_state != GameManager.GameState.Playing)
+        {
+            return;
+        }
         fillAmount = dashImage.fillAmount;
         if (fillAmount >= 1) fillAmount = 1;
         fillAmount += 1/0.6818f*Time.deltaTime;

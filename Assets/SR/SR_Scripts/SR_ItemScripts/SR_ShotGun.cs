@@ -81,7 +81,10 @@ public class SR_ShotGun : MonoBehaviour
 
     void Update()
     {
-
+        if (GameManager.Instance.m_state != GameManager.GameState.Playing)
+        {
+            return;
+        }
         // 거리 확인
         dis = Vector3.Distance(transform.position, gun.gameObject.transform.position);
         dis1 = Vector3.Distance(transform.position, gun1.gameObject.transform.position);

@@ -35,6 +35,10 @@ public class SR_PlayerMove : MonoBehaviour
     }
     private void Update()
     {
+        if(GameManager.Instance.m_state != GameManager.GameState.Playing)
+        {
+            return;
+        }
         bool ground = cc.isGrounded;
         //Â«Çª
         yVelocity += gravity * Time.deltaTime;
@@ -73,6 +77,10 @@ public class SR_PlayerMove : MonoBehaviour
     }
     void FixedUpdate()
     {
+        if (GameManager.Instance.m_state != GameManager.GameState.Playing)
+        {
+            return;
+        }
         finalSpeed = speed;
         
         //¸ðµç ¿òÁ÷ÀÓ
