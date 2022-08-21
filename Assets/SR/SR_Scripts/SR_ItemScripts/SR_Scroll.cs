@@ -7,7 +7,7 @@ public class SR_Scroll : MonoBehaviour
     Transform player;
     Vector3 dis;
 
-    public float senseDis = 3;
+    public float senseDis = 5;
 
     int nScroll;
 
@@ -27,12 +27,13 @@ public class SR_Scroll : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.F))
                 {
+                    print("F");
                     playerInventory.ScrollCollected();
                     Destroy(gameObject);
                     //PlayerPrefs.SetInt("Skill", 1);
                     nScroll = 1;
                     player.GetComponent<SR_PlayerInventory>().numberOfScrolls = nScroll;
-
+                    Destroy(gameObject);
                 }
             }
         }

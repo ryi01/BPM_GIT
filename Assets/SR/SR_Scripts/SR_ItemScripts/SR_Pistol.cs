@@ -51,6 +51,8 @@ public class SR_Pistol : MonoBehaviour
     // 총 쏘는 중 넘기기
     public bool isAttack = false;
 
+    public AudioClip[] gunSounds;
+
     private void Start()
     {
         currentAmmo = maxAmmo;
@@ -101,11 +103,16 @@ public class SR_Pistol : MonoBehaviour
                     curBullet.text = maxAmmo.ToString();
                     ImageBullet();
                     StartCoroutine(ShowReloaded());
+                    // 팅팅소리
+                    audio.clip = gunSounds[2]; audio.Play();
                 }
                 else
                 {
                     curNum++;
                     //print(curNum);
+                    //재장전 소리
+                    if (curNum == 1) audio.clip = gunSounds[1]; audio.Play();
+                    if (curNum == 2) audio.clip = gunSounds[3]; audio.Play();
                 }
             }
 
@@ -132,6 +139,7 @@ public class SR_Pistol : MonoBehaviour
                 nextTimeToFire = Time.time + 1f / fireRate;
             
                 Shoot();
+                audio.clip = gunSounds[0];
                 audio.Stop();
                 audio.Play();
                 curNum = 0;
