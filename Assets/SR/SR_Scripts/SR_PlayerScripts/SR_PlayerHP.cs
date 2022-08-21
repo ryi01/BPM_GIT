@@ -36,7 +36,7 @@ public class SR_PlayerHP : MonoBehaviour
             }
         }
 
-        hp = PlayerPrefs.GetInt("HP");
+        //hp = PlayerPrefs.GetInt("HP");
 
 
         hpText.text = hp + " ";
@@ -46,8 +46,7 @@ public class SR_PlayerHP : MonoBehaviour
         {
             hp = 0;
             //GameOver
-            PlayerPrefs.DeleteAll();
-            PlayerPrefs.SetInt("HP", maxHp);
+            
         }
     }
 
@@ -57,7 +56,7 @@ public class SR_PlayerHP : MonoBehaviour
         {   
             
             hp -= 25;
-            PlayerPrefs.SetInt("HP", hp);
+            //PlayerPrefs.SetInt("HP", hp);
             
 
 
@@ -66,7 +65,7 @@ public class SR_PlayerHP : MonoBehaviour
         {
             float currentTime = 0;
             currentTime += Time.deltaTime;
-            //if (currentTime > 0.3375f) hp -= 25;
+            if (currentTime > 0.3375f) hp -= 25;
         }
     }
 
@@ -74,14 +73,14 @@ public class SR_PlayerHP : MonoBehaviour
     {
         hp += 25;
         if (hp > 100) hp = 100;
-        PlayerPrefs.SetInt("HP", hp);
+        //PlayerPrefs.SetInt("HP", hp);
 
     }
     public void AddBigHP()
     {
         hp += 50;
         if (hp > 100) hp = 100;
-        PlayerPrefs.SetInt("HP", hp);
+        //PlayerPrefs.SetInt("HP", hp);
 
     }
 }
