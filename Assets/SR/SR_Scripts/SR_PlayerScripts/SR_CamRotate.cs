@@ -18,10 +18,6 @@ public class SR_CamRotate : MonoBehaviour
     }
     void LateUpdate()
     {
-        if (GameManager.Instance.m_state != GameManager.GameState.Playing)
-        {
-            return;
-        }
         float mouse_X = Input.GetAxis("Mouse X");
         float mouse_Y = Input.GetAxis("Mouse Y");
 

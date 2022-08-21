@@ -13,10 +13,6 @@ public class SR_PlayerRotate : MonoBehaviour
 
     void Update()
     {
-        if (GameManager.Instance.m_state != GameManager.GameState.Playing)
-        {
-            return;
-        }
         float mouse_X = Input.GetAxis("Mouse X");
         mx += mouse_X * rotSpeed * Time.deltaTime;
 
