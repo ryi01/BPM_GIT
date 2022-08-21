@@ -34,13 +34,16 @@ public class SR_PlayerHP : MonoBehaviour
                     hpImage[j].gameObject.SetActive(false);
                 }
             }
+            else if(hp == 0)
+            {
+                for(int j=0;j<4;j++)
+                {
+                    hpImage[j].gameObject.SetActive(false);
+                }
+            }
         }
 
         //hp = PlayerPrefs.GetInt("HP");
-
-
-        hpText.text = hp + " ";
-        maxHpText.text = " " + maxHp;
 
         if (hp<=0)
         {
@@ -48,14 +51,20 @@ public class SR_PlayerHP : MonoBehaviour
             //GameOver
             
         }
+
+        hpText.text = hp + " ";
+        maxHpText.text = " " + maxHp;
+
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.name.Contains("Bullet"))
-        {   
+        {
+
+            if (hp >= 25) hp -= 25;
+            else hp = 0;
             
-            hp -= 25;
             //PlayerPrefs.SetInt("HP", hp);
             
 
@@ -65,7 +74,10 @@ public class SR_PlayerHP : MonoBehaviour
         {
             float currentTime = 0;
             currentTime += Time.deltaTime;
-            if (currentTime > 0.3375f) hp -= 25;
+            if (currentTime > 0.3375f) 
+            {
+                hp -= 25;
+            }
         }
     }
 
