@@ -29,7 +29,7 @@ public class SR_Scroll : MonoBehaviour
                 {
                     print("F");
                     playerInventory.ScrollCollected();
-                    Destroy(gameObject);
+                    //Destroy(gameObject);
                     //PlayerPrefs.SetInt("Skill", 1);
                     nScroll = 1;
                     player.GetComponent<SR_PlayerInventory>().numberOfScrolls = nScroll;

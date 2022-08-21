@@ -23,8 +23,9 @@ public class SR_UltimateSkill : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        
-        cnt = PlayerPrefs.GetInt("Skill");
+
+        cnt = GetComponent<SR_PlayerInventory>().numberOfScrolls;
+        print(cnt);
 
 
         currentTime += Time.deltaTime;
