@@ -29,7 +29,7 @@ public class SR_Door : MonoBehaviour
 
         if (dis.magnitude < senseDis && Input.GetKeyDown(KeyCode.F) && nKey>0)
         {
-            print("F");
+            //print("F");
 
             //PlayerPrefs.SetInt("Pouch", nKey-1);
             nKey -= 1;
