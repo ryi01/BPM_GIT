@@ -26,7 +26,7 @@ public class SR_PlayerInventory : MonoBehaviour
        // PlayerPrefs.SetInt("Pouch", numberOfKeys);
     }
 
-    public void ScrollCollected()w
+    public void ScrollCollected()
     {
         numberOfScrolls++;
         //PlayerPrefs.SetInt("Skill", numberOfScrolls);
