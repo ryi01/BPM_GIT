@@ -68,7 +68,7 @@ public class SR_PlayerHP : MonoBehaviour
 
             if (hp >= 25) hp -= 25;
             else hp = 0;
-            
+            Destroy(other.gameObject);
             //PlayerPrefs.SetInt("HP", hp);
             
 
