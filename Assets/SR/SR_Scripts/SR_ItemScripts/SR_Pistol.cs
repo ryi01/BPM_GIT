@@ -18,7 +18,7 @@ public class SR_Pistol : MonoBehaviour
     private float nextTimeToFire = 0f;
 
     private int maxAmmo = 6;
-    private int currentAmmo;
+    public int currentAmmo;
     private int reloadNum=2;
     private int curNum=0;
     private bool isReloading = false;
@@ -52,6 +52,7 @@ public class SR_Pistol : MonoBehaviour
     public bool isAttack = false;
 
     public AudioClip[] gunSounds;
+
 
     private void Start()
     {
@@ -103,7 +104,6 @@ public class SR_Pistol : MonoBehaviour
                     curBullet.text = maxAmmo.ToString();
                     ImageBullet();
                     StartCoroutine(ShowReloaded());
-                    // 팅팅소리
                     audio.clip = gunSounds[2]; audio.Play();
                 }
                 else
@@ -128,7 +128,8 @@ public class SR_Pistol : MonoBehaviour
 
             if (Input.GetButtonDown("Fire1") && currentAmmo <= 0)
             {
-
+                audio.clip = gunSounds[4];
+                audio.Play();
                 StartCoroutine(ShowReload());
             }
 
@@ -151,6 +152,8 @@ public class SR_Pistol : MonoBehaviour
             {
                 isAttack = true;
                 StartCoroutine(Blink());
+                audio.clip = gunSounds[5];
+                audio.Play();
             }
         }
     }

@@ -27,11 +27,16 @@ public class SR_PlayerMove : MonoBehaviour
 
     UIShake ui;
 
+    AudioSource audio;
+
+    
+
     void Start()
     {
         cc = GetComponent<CharacterController>();
         rigid = GetComponent<Rigidbody>();
         ui = GameObject.Find("Main Camera").GetComponentInChildren<UIShake>();
+        audio = GetComponent<AudioSource>();
     }
     private void Update()
     {
@@ -41,6 +46,8 @@ public class SR_PlayerMove : MonoBehaviour
         if (dashing == false && Input.GetButtonDown("Jump"))
         {
             jumpCnt++;
+            audio.clip = GetComponent<SR_PlayerSound>().playerSounds[0];
+            audio.Play();
             ui.Shaking();
             if (jumpCnt < 2)
             {
@@ -83,10 +90,17 @@ public class SR_PlayerMove : MonoBehaviour
         dir.y = yVelocity;
 
         //´ë½¬
-        if(dashing)
+        if (dashing)
         {
+            audio.clip = GetComponent<SR_PlayerSound>().playerSounds[1];
+            audio.Play();
             finalSpeed = dashSpeed;
             StartCoroutine(FalseGravity());
+        }
+        else if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            audio.clip = GetComponent<SR_PlayerSound>().playerSounds[2];
+            audio.Play();
         }
 
         cc.Move(dir * finalSpeed * Time.deltaTime);
