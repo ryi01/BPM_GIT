@@ -19,17 +19,11 @@ public class UIShake : MonoBehaviour
     // UI RectTransform��������
     RectTransform ui;
 
-    public float sinSpeed = 2;
-    public float amp = 0.5f;
-    Vector3 origin;
-    float theta = 0;
-
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("Player");
         ui = GetComponent<RectTransform>();
-        origin = new Vector3(0, 0, 0.49f);
     }
 
     // Update is called once per frame
@@ -89,18 +83,20 @@ public class UIShake : MonoBehaviour
     IEnumerator JumpUI()
     {
         float currentTime = 0;
-        while(currentTime < 0.01f)
+        while(currentTime >= -0.02f)
         {
-            currentTime += 0.002f;
-            ui.anchoredPosition += new Vector2(0, currentTime);
+            print(currentTime);
+            currentTime -= 0.005f;
+            ui.anchoredPosition = new Vector2(0, currentTime);
             yield return null;
 
         }
+        ui.anchoredPosition = new Vector2(0, -0.02f);
         yield return new WaitForSeconds(0.001f);
-        while (currentTime > 0)
+        while (currentTime < 0 && currentTime > 0.02f)
         {
-            currentTime -= 0.002f;
-            ui.anchoredPosition -= new Vector2(0, currentTime);
+            currentTime += 0.005f;
+            ui.anchoredPosition = new Vector2(0, currentTime);
             yield return null;
         }
         yield return new WaitForSeconds(0.001f);
