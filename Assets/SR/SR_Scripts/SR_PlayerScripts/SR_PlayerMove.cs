@@ -40,13 +40,14 @@ public class SR_PlayerMove : MonoBehaviour
         yVelocity += gravity * Time.deltaTime;
         if (dashing == false && Input.GetButtonDown("Jump"))
         {
+            ground = false;
             jumpCnt++;
             ui.Shaking();
             if (jumpCnt < 2)
             {
                 yVelocity = jumpPower;
             }
-            ground = false;
+
         }
        
         if (ground == true && jumpCnt > 0)

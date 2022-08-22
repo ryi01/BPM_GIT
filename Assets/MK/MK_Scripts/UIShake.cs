@@ -45,12 +45,12 @@ public class UIShake : MonoBehaviour
         {
             UIZoomIn();
         }
-
+/*
         if (Input.GetButtonDown("Jump"))
         {
             Shaking();
         }
-
+*/
         if(Input.GetButtonDown("Fire1") || Input.GetKeyDown(KeyCode.R))
         {
             UIZoomIn();
@@ -71,6 +71,7 @@ public class UIShake : MonoBehaviour
 
     public void Shaking()
     {
+        StopCoroutine(JumpUI());
         StartCoroutine(JumpUI());
     }
 
