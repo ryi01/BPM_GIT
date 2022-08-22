@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class SR_PlayerMove : MonoBehaviour
 {
     public float speed = 15.0f;
-    float finalSpeed;
+    public float finalSpeed;
     float gravity = -9.8f;
     public float jumpPower = 4;
     public float yVelocity;
