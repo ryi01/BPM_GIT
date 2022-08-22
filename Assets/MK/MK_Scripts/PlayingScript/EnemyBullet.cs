@@ -32,10 +32,7 @@ public class EnemyBullet : MonoBehaviour
     // 플레이어 충돌시 죽기
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name.Contains("Player"))
-        {
-            Destroy(gameObject);
-        }
+
         if (other.gameObject.layer == LayerMask.NameToLayer("Room"))
         {
             Destroy(gameObject);
