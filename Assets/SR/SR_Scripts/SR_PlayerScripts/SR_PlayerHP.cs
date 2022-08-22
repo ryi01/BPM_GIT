@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class SR_PlayerHP : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class SR_PlayerHP : MonoBehaviour
     void Start()
     {
         hp = maxHp;
+        
     }
 
     void Update()
@@ -49,6 +51,8 @@ public class SR_PlayerHP : MonoBehaviour
         {
             hp = 0;
             //GameOver
+            Cursor.lockState = CursorLockMode.Confined;
+            SceneManager.LoadScene("GameOver");
             
         }
 
