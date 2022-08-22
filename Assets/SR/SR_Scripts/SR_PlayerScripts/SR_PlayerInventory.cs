@@ -26,7 +26,7 @@ public class SR_PlayerInventory : MonoBehaviour
        // PlayerPrefs.SetInt("Pouch", numberOfKeys);
     }
 
-    public void ScrollCollected()
+    public void ScrollCollected()w
     {
         numberOfScrolls++;
         //PlayerPrefs.SetInt("Skill", numberOfScrolls);
@@ -38,5 +38,7 @@ public class SR_PlayerInventory : MonoBehaviour
         int k = numberOfKeys; // PlayerPrefs.GetInt("Pouch");
         keyText.text = k + " ";
         coinText.text = c + " ";
+
+        if (Input.GetKeyDown(KeyCode.C)) numberOfCoins++;
     }
 }

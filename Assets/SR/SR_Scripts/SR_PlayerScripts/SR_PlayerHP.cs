@@ -78,10 +78,9 @@ public class SR_PlayerHP : MonoBehaviour
         {
             float currentTime = 0;
             currentTime += Time.deltaTime;
-            if (currentTime > 0.3375f) 
-            {
-                hp -= 25;
-            }
+            
+            hp -= 25;
+            
         }
     }
 
