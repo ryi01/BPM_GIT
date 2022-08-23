@@ -85,7 +85,6 @@ public class UIShake : MonoBehaviour
         float currentTime = 0;
         while(currentTime >= -0.02f)
         {
-            print(currentTime);
             currentTime -= 0.005f;
             ui.anchoredPosition = new Vector2(0, currentTime);
             yield return null;

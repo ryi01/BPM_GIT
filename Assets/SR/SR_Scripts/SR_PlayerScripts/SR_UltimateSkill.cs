@@ -25,7 +25,7 @@ public class SR_UltimateSkill : MonoBehaviour
     {
 
         cnt = GetComponent<SR_PlayerInventory>().numberOfScrolls;
-        print(cnt);
+        // print(cnt);
 
 
         currentTime += Time.deltaTime;

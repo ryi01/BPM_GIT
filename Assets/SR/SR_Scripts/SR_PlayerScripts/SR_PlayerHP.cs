@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class SR_PlayerHP : MonoBehaviour
 {
-    public int hp=100;
+    public int hp = 100;
     public int maxHp = 100;
     // public Slider hpSlider;
     public Text hpText;
@@ -14,16 +14,22 @@ public class SR_PlayerHP : MonoBehaviour
 
     public Image[] hpImage;
 
+    public GameObject bossRoom;
+    Boss boss;
 
     void Start()
     {
         hp = maxHp;
-        
+
     }
 
     void Update()
     {
-        for(int i=0;i<4;i++)
+        if (bossRoom.activeSelf == true)
+        {
+            boss = GameObject.Find("_Boss").GetComponent<Boss>();
+        }
+        for (int i=0;i<4;i++)
         {
             if(hp == 25 * (i+1))
             {
@@ -70,17 +76,18 @@ public class SR_PlayerHP : MonoBehaviour
             else hp = 0;
             Destroy(other.gameObject);
             //PlayerPrefs.SetInt("HP", hp);
-            
-
-
         }
-        if(other.gameObject.name.Contains("Right") || other.gameObject.name.Contains("Left"))
+
+    }
+    private void OnTriggerStay(Collider other)
+    {
+        if ((other.gameObject.name.Contains("Right") || other.gameObject.name.Contains("Left")))
         {
-            float currentTime = 0;
-            currentTime += Time.deltaTime;
-            
-            hp -= 25;
-            
+            if (boss.attack == 1 || boss.attack1 == 1)
+            {
+                hp -= 25;
+            }
+
         }
     }
 
