@@ -14,11 +14,14 @@ public class Caution : MonoBehaviour
         gameObject.SetActive(true);
     }
 
+    float currentTime = 0;
     // Update is called once per frame
     void Update()
     {
-        if (Input.anyKeyDown)
+        currentTime += Time.deltaTime;
+        if (currentTime > 2)
         {
+            currentTime = 0;
             gameObject.SetActive(false);
             butt.gameObject.SetActive(true);
         }
