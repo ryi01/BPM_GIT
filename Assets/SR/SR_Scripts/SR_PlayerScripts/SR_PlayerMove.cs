@@ -29,7 +29,6 @@ public class SR_PlayerMove : MonoBehaviour
 
     AudioSource audio;
 
-    
 
     void Start()
     {
