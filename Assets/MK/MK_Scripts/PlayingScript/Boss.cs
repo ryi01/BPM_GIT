@@ -68,6 +68,9 @@ public class Boss : MonoBehaviour
 
     public float time = 0.3409f;
 
+    int pattern = 0;
+
+    Rigidbody rigid;
     // Start is called before the first frame update
     void Start()
     {
@@ -78,6 +81,7 @@ public class Boss : MonoBehaviour
         // 공격 1
         right.gameObject.SetActive(false);
         left.gameObject.SetActive(false);
+        rigid = GetComponent<Rigidbody>();
     }
     private void FixedUpdate()
     {
@@ -181,35 +185,63 @@ public class Boss : MonoBehaviour
     {
         // 멈추고
         transform.position += dir * 0 * Time.deltaTime;
+        rigid.velocity = new Vector3(0, 0, 0);
+        
         // 플레이어 바라보기
         Vector3 mySight = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
         transform.LookAt(mySight);
 
-        // 랜덤한 공격하기
-        int rnd = UnityEngine.Random.Range(0, 5);
-        //state = BossState.Attack4;
-
-        if (rnd == 0)
+        if (pattern == 0)
         {
             state = BossState.Attack1;
+            pattern++;
         }
-        if (rnd == 1)
+        else if (pattern == 1)
         {
             state = BossState.Attack2;
+            pattern++;
         }
-        else if (rnd == 2)
+        else if (pattern == 2)
         {
             state = BossState.Attack3;
+            pattern++;
         }
-        else if (rnd == 3)
+        else if (pattern == 3)
         {
             state = BossState.Attack4;
+            pattern++;
         }
-        else if (rnd == 4)
+        else if (pattern == 4)
         {
             state = BossState.Attack5;
+            pattern++;
         }
-
+        //state = BossState.Attack4;
+        else if (pattern >= 5)
+        {
+            // 랜덤한 공격하기
+            int rnd = UnityEngine.Random.Range(0, 5);
+            if (rnd == 0)
+            {
+                state = BossState.Attack1;
+            }
+            if (rnd == 1)
+            {
+                state = BossState.Attack2;
+            }
+            else if (rnd == 2)
+            {
+                state = BossState.Attack3;
+            }
+            else if (rnd == 3)
+            {
+                state = BossState.Attack4;
+            }
+            else if (rnd == 4)
+            {
+                state = BossState.Attack5;
+            }
+        }
     }
 
     // 공격 후, 움직임 멈추고 플레이어 바라보기
@@ -220,6 +252,7 @@ public class Boss : MonoBehaviour
         transform.LookAt(mySight);
         // 공격 후, 멈추기
         transform.position += dir * 0 * Time.deltaTime;
+        rigid.velocity = new Vector3(0, 0, 0);
         // 일정시간 후에 Move로 변경
         currentTime += Time.deltaTime;
         if(currentTime > time * 6)
@@ -229,6 +262,8 @@ public class Boss : MonoBehaviour
         }
     }
     int countAttack = 0;
+    public int attack = 0;
+    public int attack1 = 0;
     // 패턴 1 : 반반 공격 => 쉐이더 사용
     private void BossAttack1()
     {
@@ -236,30 +271,45 @@ public class Boss : MonoBehaviour
         Vector3 mySight = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
 
         currentTime += Time.deltaTime;
-        if(currentTime <= time * 10)
+        if(currentTime <= time * 10f)
         {
+            attack1 = 0;
             left.gameObject.SetActive(false);
             right.gameObject.SetActive(true);
             LookBoss(mySight);
+            if (currentTime >= 9.95f * time && currentTime <= time * 10)
+            {
+                attack = 1;
+            }
         }
-        else if(currentTime > time * 10 && currentTime <= time * 20)
+        else if(currentTime > time * 10 && currentTime < time * 20f)
         {
+            attack = 0;
             right.gameObject.SetActive(false);
             left.gameObject.SetActive(true);
             LookBoss(mySight);
+            if (currentTime >= 19.95f * time && currentTime <= time * 20)
+            {
+                attack1 = 1;
+            }
+
         }
+
         else if(currentTime > time * 20)
         {
+            attack = 0;
+            attack1 = 0;
             countAttack++;
             currentTime = 0;
         }
+
 
         if(countAttack == 2)
         {
             currentTime = 0;
             left.gameObject.SetActive(false);
             countAttack = 0;
-            state = BossState.Move;
+            state = BossState.Stop;
         }
     }
 
@@ -381,8 +431,10 @@ public class Boss : MonoBehaviour
     {
         if(collision.gameObject.layer == LayerMask.NameToLayer("Room"))
         {
+            rigid.velocity = new Vector3(0, 0, 0);
             transform.position += dir * 0 * Time.deltaTime;
-            // 랜덤한 공격하기
+            state = BossState.Stop;
+/*            // 랜덤한 공격하기
             int rnd = UnityEngine.Random.Range(0, 5);
             //state = BossState.Attack4;
 
@@ -405,7 +457,7 @@ public class Boss : MonoBehaviour
             else if (rnd == 4)
             {
                 state = BossState.Attack5;
-            }
+            }*/
         }
     }
 }
