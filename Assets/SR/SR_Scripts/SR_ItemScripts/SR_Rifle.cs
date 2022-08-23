@@ -17,7 +17,7 @@ public class SR_Rifle : MonoBehaviour
     public float fireRate = 15f;
     private float nextTimeToFire = 0f;
 
-    private int maxAmmo = 5;
+    private int maxAmmo = 10;
     public int currentAmmo;
     private int reloadNum = 3;
     private int curNum = 0;
@@ -177,18 +177,21 @@ public class SR_Rifle : MonoBehaviour
     // 이미지 활성화
     void ImageBullet()
     {
-        for (int i = 0; i < maxAmmo; i++)
+        for (int i = 0; i < maxAmmo / 2; i++)
         {
+            n = 4;
             bullet[i].gameObject.SetActive(true);
         }
     }
+    int n = 4;
     void Shoot()
     {
-        currentAmmo--;
+        currentAmmo -= 2;
 
         // 총알 이미지 및 텍스트
         curBullet.text = (currentAmmo).ToString();
-        bullet[currentAmmo].gameObject.SetActive(false);
+        bullet[n].gameObject.SetActive(false);
+        n--;
 
         RaycastHit hit;
 
