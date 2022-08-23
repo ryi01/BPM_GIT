@@ -438,15 +438,7 @@ public class Boss : MonoBehaviour
         {
             rigid.velocity = new Vector3(0, 0, 0);
             transform.position += dir * 0 * Time.deltaTime;
-            int rnd = UnityEngine.Random.Range(0, 2);
-            if (rnd == 0)
-            {
-                state = BossState.Set;
-            }
-            else
-            {
-                state = BossState.Move;
-            }
+            state = BossState.Stop;
         }
     }
 }

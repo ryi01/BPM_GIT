@@ -35,9 +35,6 @@ public class FollowBullet : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        if (other.gameObject.layer == LayerMask.NameToLayer("Room"))
-        {
-            Destroy(gameObject);
-        }
+
     }
 }
