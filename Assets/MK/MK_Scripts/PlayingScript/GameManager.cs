@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     public GameObject playingUI;
     public GameObject noteUI;
     public GameObject readyUI;
+    public GameObject bossUI;
     // enum
     public enum GameState
     {
@@ -92,11 +93,16 @@ public class GameManager : MonoBehaviour
 
     private void StopState()
     {
+        bossUI.SetActive(true);
+        playingUI.SetActive(false);
         // 시간이 흐르고
         currentTime += Time.deltaTime;
+        
         // 일정 시간이 흐르게 되면
         if (currentTime > stopTime)
         {
+            bossUI.SetActive(false);
+            playingUI.SetActive(true);
             // 상태를 플레잉으로 바뀜
             currentTime = 0;
             m_state = GameState.Playing;

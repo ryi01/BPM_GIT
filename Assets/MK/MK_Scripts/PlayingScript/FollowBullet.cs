@@ -24,7 +24,7 @@ public class FollowBullet : MonoBehaviour
         // 방향
         dir = player.transform.position - transform.position;
         dir.Normalize();
-
+        transform.forward = dir;
         // 움직이기
         transform.position += speed * dir * Time.deltaTime;
     }

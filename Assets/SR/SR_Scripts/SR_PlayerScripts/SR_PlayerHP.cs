@@ -17,6 +17,10 @@ public class SR_PlayerHP : MonoBehaviour
     AudioSource audio;
     public AudioClip damagedSound;
 
+    public GameObject bossRoom;
+    Boss boss;
+
+
     void Start()
     {
         hp = maxHp;
@@ -25,8 +29,6 @@ public class SR_PlayerHP : MonoBehaviour
 
     }
 
-    public GameObject bossRoom;
-    Boss boss;
     void Update()
     {
         if (bossRoom.activeSelf == true)
@@ -94,14 +96,16 @@ public class SR_PlayerHP : MonoBehaviour
     {
         if ((other.gameObject.name.Contains("Right") || other.gameObject.name.Contains("Left")))
         {
-            float currentTime = 0;
-            currentTime += Time.deltaTime;
 
-            hp -= 25;
+            if (boss.attack == 1 || boss.attack1 == 1)
+            {
+                hp -= 25;
+                audio.clip = damagedSound;
+                audio.Play();
+            }
             //minus = true;
             //minus = false;
-            audio.clip = damagedSound;
-            audio.Play();
+
         }
     }
 

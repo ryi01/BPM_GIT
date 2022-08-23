@@ -82,6 +82,7 @@ public class Boss : MonoBehaviour
         right.gameObject.SetActive(false);
         left.gameObject.SetActive(false);
         rigid = GetComponent<Rigidbody>();
+        GameManager.Instance.m_state = GameManager.GameState.Stop;
     }
     private void FixedUpdate()
     {
@@ -90,6 +91,10 @@ public class Boss : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(GameManager.Instance.m_state != GameManager.GameState.Playing)
+        {
+            return;
+        }
         if (GetComponent<BossHP>().ENEMYHP > 0)
         {
 
@@ -277,7 +282,7 @@ public class Boss : MonoBehaviour
             left.gameObject.SetActive(false);
             right.gameObject.SetActive(true);
             LookBoss(mySight);
-            if (currentTime >= 9.95f * time && currentTime <= time * 10)
+            if (currentTime >= 9.98f * time && currentTime <= time * 10)
             {
                 attack = 1;
             }
@@ -288,7 +293,7 @@ public class Boss : MonoBehaviour
             right.gameObject.SetActive(false);
             left.gameObject.SetActive(true);
             LookBoss(mySight);
-            if (currentTime >= 19.95f * time && currentTime <= time * 20)
+            if (currentTime >= 19.98f * time && currentTime <= time * 20)
             {
                 attack1 = 1;
             }
@@ -433,31 +438,15 @@ public class Boss : MonoBehaviour
         {
             rigid.velocity = new Vector3(0, 0, 0);
             transform.position += dir * 0 * Time.deltaTime;
-            state = BossState.Stop;
-/*            // 랜덤한 공격하기
-            int rnd = UnityEngine.Random.Range(0, 5);
-            //state = BossState.Attack4;
-
+            int rnd = UnityEngine.Random.Range(0, 2);
             if (rnd == 0)
             {
-                state = BossState.Attack1;
+                state = BossState.Set;
             }
-            if (rnd == 1)
+            else
             {
-                state = BossState.Attack2;
+                state = BossState.Move;
             }
-            else if (rnd == 2)
-            {
-                state = BossState.Attack3;
-            }
-            else if (rnd == 3)
-            {
-                state = BossState.Attack4;
-            }
-            else if (rnd == 4)
-            {
-                state = BossState.Attack5;
-            }*/
         }
     }
 }

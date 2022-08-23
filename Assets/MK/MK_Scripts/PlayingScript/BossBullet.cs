@@ -23,6 +23,7 @@ public class BossBullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        transform.forward = dir;
         // 움직이기
         transform.position += speed * dir * Time.deltaTime;
     }
