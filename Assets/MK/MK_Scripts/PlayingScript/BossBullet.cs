@@ -17,13 +17,13 @@ public class BossBullet : MonoBehaviour
         // 플레이어 찾기 
         player = GameObject.Find("Player");
         dir = player.transform.position - transform.position;
+        transform.forward = dir;
         dir.Normalize();
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.forward = dir;
         // 움직이기
         transform.position += speed * dir * Time.deltaTime;
     }
