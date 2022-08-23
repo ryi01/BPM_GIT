@@ -14,10 +14,14 @@ public class SR_PlayerHP : MonoBehaviour
 
     public Image[] hpImage;
 
+    AudioSource audio;
+    public AudioClip damagedSound;
 
     void Start()
     {
         hp = maxHp;
+        audio = GetComponent<AudioSource>();
+       
         
     }
 
@@ -66,8 +70,15 @@ public class SR_PlayerHP : MonoBehaviour
         if (other.gameObject.name.Contains("Bullet"))
         {
 
-            if (hp >= 25) hp -= 25;
+            if (hp >= 25)
+            {
+                hp -= 25;
+                audio.clip = damagedSound;
+                audio.Play();
+            }
             else hp = 0;
+            //minus = true;
+            //minus = false;
             Destroy(other.gameObject);
             //PlayerPrefs.SetInt("HP", hp);
             
@@ -80,7 +91,10 @@ public class SR_PlayerHP : MonoBehaviour
             currentTime += Time.deltaTime;
             
             hp -= 25;
-            
+            //minus = true;
+            //minus = false;
+            audio.clip = damagedSound;
+            audio.Play();
         }
     }
 

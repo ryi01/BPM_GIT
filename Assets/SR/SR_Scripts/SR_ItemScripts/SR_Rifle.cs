@@ -18,7 +18,7 @@ public class SR_Rifle : MonoBehaviour
     private float nextTimeToFire = 0f;
 
     private int maxAmmo = 5;
-    private int currentAmmo;
+    public int currentAmmo;
     private int reloadNum = 3;
     private int curNum = 0;
     private bool isReloading = false;
@@ -50,6 +50,8 @@ public class SR_Rifle : MonoBehaviour
 
     
     public Image redCenter;
+
+    public AudioClip[] gunSounds;
     private void Start()
     { 
         currentAmmo = maxAmmo;
@@ -99,11 +101,14 @@ public class SR_Rifle : MonoBehaviour
                     curBullet.text = maxAmmo.ToString();
                     ImageBullet();
                     StartCoroutine(ShowReloaded());
+                    audio.clip = gunSounds[2]; audio.Play();
                 }
                 else
                 {
                     curNum++;
-                    print(curNum);
+                    //print(curNum);
+                    if (curNum == 1) audio.clip = gunSounds[1]; audio.Play();
+                    if (curNum == 2) audio.clip = gunSounds[3]; audio.Play();
                 }
                 
             }
@@ -120,7 +125,8 @@ public class SR_Rifle : MonoBehaviour
 
             if (Input.GetButtonDown("Fire1") && currentAmmo <= 0)
             {
-
+                audio.clip = gunSounds[4];
+                audio.Play();
                 StartCoroutine(ShowReload());
             }
 
@@ -131,6 +137,7 @@ public class SR_Rifle : MonoBehaviour
                 nextTimeToFire = Time.time + 1f / fireRate;
 
                 Shoot();
+                audio.clip = gunSounds[0];
                 audio.Stop();
                 audio.Play();
 
@@ -142,6 +149,8 @@ public class SR_Rifle : MonoBehaviour
             if(Input.GetButtonDown("Fire1") || Input.GetKeyDown(KeyCode.R))
             {
                 StartCoroutine(Blink());
+                audio.clip = gunSounds[5];
+                audio.Play();
             }
         }
     }
