@@ -25,11 +25,19 @@ public class Treasure : MonoBehaviour
     GameObject key;
 
     int clearCount = 0;
+
+    public GameObject effectFactory;
+    
+    public GameObject closedBox;
+    public GameObject openedBox;
+
+    int h = 0;
     // Start is called before the first frame update
     void Start()
     {
         // ���� ���� off
         treasure.gameObject.SetActive(false);
+        
     }
 
     // Update is called once per frame
@@ -41,20 +49,29 @@ public class Treasure : MonoBehaviour
         int a = enemy2ToEnemy1.GetComponent<SR_Enemy2ToEnemy1>().clearEnemy2;
 
         // �±װ� ������ ���� on
-        if (enemy.Length == 0)
+        if (enemy.Length == 0 && h==0)
         {
             treasure.gameObject.SetActive(true);
+            
+            for(int i=0;i<3;i++) Instantiate(effectFactory, transform); 
+            
+
+
             if (a <= 0)
             {
                 notClear.SetActive(false);
                 clear.SetActive(true);
+                closedBox.SetActive(true);
+                //openedBox.SetActive(false);
             }
             else
             {
                 notClear.SetActive(false);
                 clear.SetActive(false);
                 enemy2notClear.SetActive(false);
+
             }
+            h++;
         }
         GameObject player = GameObject.Find("Player");
         float dis = Vector3.Distance(treasure.transform.position, player.transform.position);
@@ -64,9 +81,17 @@ public class Treasure : MonoBehaviour
             key = Instantiate(keyFact);
             key.transform.position = transform.position;
             count++;
+            for (int i = 0; i < 3; i++) Instantiate(effectFactory, transform);
+
+            closedBox.SetActive(false);
+            openedBox.SetActive(true);
+            
+            
 
 
         }
 
     }
+
+    
 }
