@@ -47,6 +47,8 @@ public class Bat : MonoBehaviour
     Vector3 pos;
     BatHP bat;
 
+    BoxCollider collider;
+
     // 리지드바디
     Rigidbody rigid;
     private void FixedUpdate()
@@ -65,6 +67,7 @@ public class Bat : MonoBehaviour
         float y = UnityEngine.Random.Range(6, 10);
         transform.position = new Vector3(transform.position.x, y, transform.position.z);
         rigid = GetComponent<Rigidbody>();
+        collider = GetComponent<BoxCollider>();
     }
 
     // Update is called once per frame
@@ -114,6 +117,7 @@ public class Bat : MonoBehaviour
         else
         {
             batState = BatState.Die;
+            collider.enabled = false;
         }
     }
     // 플레이어를 향해 특정 부분까지 가까워짐
