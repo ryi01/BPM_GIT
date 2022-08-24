@@ -24,7 +24,7 @@ public class BatHP : MonoBehaviour
                 rigid.useGravity = true;
                 rigid.velocity = new Vector3(0, 0, 0);
                 anim.SetTrigger("Die");
-                Destroy(gameObject, 2f);
+                Destroy(gameObject, 1.3f);
             }
 
         }
