@@ -64,7 +64,6 @@ public class SR_Enemy2ToEnemy1 : MonoBehaviour
             if (clearEnemy2 == 0)
             {
                 enemy1.SetActive(true);
-                storeIcon.GetComponent<SR_PlayerRotate>().y = 180;
             }
             else
             {
