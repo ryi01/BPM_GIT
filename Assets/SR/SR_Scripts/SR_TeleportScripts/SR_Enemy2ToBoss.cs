@@ -23,6 +23,9 @@ public class SR_Enemy2ToBoss : MonoBehaviour
 
     public int count = 0;
 
+    public int doorCnt = 0;
+
+
     private void Start()
     {
         color = black.GetComponent<Image>().color;
@@ -75,6 +78,7 @@ public class SR_Enemy2ToBoss : MonoBehaviour
                 y[i].y = 180;
             }
             other.GetComponent<Transform>().position = newPos.position;
+            doorCnt++;
             _cnt = 2;
             count++;
             bgm.GetComponent<SR_BackgroundMusic>().cnt = _cnt;

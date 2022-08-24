@@ -23,6 +23,8 @@ public class SR_StartToEnemy1 : MonoBehaviour
 
     public GameObject enemyManager;
 
+    public int doorCnt = 0;
+
     private void Start()
     {
         color = black.GetComponent<Image>().color;
@@ -81,6 +83,7 @@ public class SR_StartToEnemy1 : MonoBehaviour
             clearEnemy++;
 
             other.GetComponent<Transform>().position = newPos.position;
+            doorCnt++;
         }
         cnt++;
     }

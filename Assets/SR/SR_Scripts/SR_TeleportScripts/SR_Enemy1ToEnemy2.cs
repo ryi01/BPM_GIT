@@ -21,6 +21,9 @@ public class SR_Enemy1ToEnemy2 : MonoBehaviour
 
     public GameObject enemyManager;
 
+    public int doorCnt = 0;
+
+
     private void Start()
     {
         color = black.GetComponent<Image>().color;
@@ -67,6 +70,7 @@ public class SR_Enemy1ToEnemy2 : MonoBehaviour
             start.SetActive(false);
             enemyManager.SetActive(true);
             other.GetComponent<Transform>().position = newPos.position;
+            doorCnt++;
         }
         cnt++;
     }
