@@ -38,8 +38,8 @@ public class JumpItem1 : MonoBehaviour
         currentTime += Time.deltaTime;
         if (currentTime > 0.005f)
         {
-            x = Random.Range(-1, 1);
-            z = Random.Range(-1, 1);
+            x = Random.Range(0, 4);
+            z = Random.Range(-1, 2);
             currentTime = 0;
         }        
         Vector3 pos = transform.position + new Vector3(x, 0, z);

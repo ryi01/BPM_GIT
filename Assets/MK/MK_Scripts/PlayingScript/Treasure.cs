@@ -64,8 +64,6 @@ public class Treasure : MonoBehaviour
             key = Instantiate(keyFact);
             key.transform.position = transform.position;
             count++;
-
-
         }
 
     }
