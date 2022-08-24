@@ -20,7 +20,7 @@ public class SR_ShopRifle : MonoBehaviour
     {
         player = GameObject.Find("Player");
         nCoin = player.GetComponent<SR_PlayerInventory>().numberOfCoins;
-        print(nCoin);
+        // print(nCoin);
 
         dis = player.transform.position - transform.position;
 
