@@ -80,6 +80,7 @@ public class SR_PlayerHP : MonoBehaviour
 
             if (hp >= 25)
             {
+                print("25");
                 hp -= 25;
                 audio.clip = damagedSound;
                 audio.Play();
