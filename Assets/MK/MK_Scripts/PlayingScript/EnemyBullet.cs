@@ -33,7 +33,7 @@ public class EnemyBullet : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
 
-        if (other.gameObject.layer == LayerMask.NameToLayer("Room"))
+        if (other.gameObject.layer == LayerMask.NameToLayer("Floor") || other.gameObject.layer == LayerMask.NameToLayer("Room"))
         {
             Destroy(gameObject);
         }

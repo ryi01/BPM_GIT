@@ -35,7 +35,7 @@ public class BossBullet : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        if (other.gameObject.layer == LayerMask.NameToLayer("Room"))
+        if (other.gameObject.layer == LayerMask.NameToLayer("Floor") || other.gameObject.layer == LayerMask.NameToLayer("Room"))
         {
             Destroy(gameObject);
         }

@@ -18,6 +18,7 @@ public class SR_Enemy2ToEnemy1 : MonoBehaviour
     public GameObject enemy2Tre;
 
     public int clearEnemy2;
+    public GameObject storeIcon;
 
     private void Start()
     {
@@ -63,6 +64,7 @@ public class SR_Enemy2ToEnemy1 : MonoBehaviour
             if (clearEnemy2 == 0)
             {
                 enemy1.SetActive(true);
+                storeIcon.GetComponent<SR_PlayerRotate>().y = 180;
             }
             else
             {

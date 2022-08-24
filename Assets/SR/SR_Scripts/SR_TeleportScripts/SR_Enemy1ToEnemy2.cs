@@ -17,6 +17,8 @@ public class SR_Enemy1ToEnemy2 : MonoBehaviour
     public GameObject enemy2;
     public GameObject enemy1;
 
+    public GameObject enemy1Enemy2Clear;
+
     public GameObject enemy1Tre;
 
     public GameObject enemyManager;
@@ -65,14 +67,21 @@ public class SR_Enemy1ToEnemy2 : MonoBehaviour
             StartCoroutine(FadeIn());
             StartCoroutine(FadeOut());
             enemy2.SetActive(true);
-            enemy1.SetActive(false);
             enemy1Tre.SetActive(false);
-            start.SetActive(false);
             enemyManager.SetActive(true);
+            if (cnt < 1)
+            {
+                enemy1.SetActive(false);
+                start.SetActive(false);
+                cnt++;
+            }
+            else
+            {
+                enemy1Enemy2Clear.SetActive(false);
+            }
             other.GetComponent<Transform>().position = newPos.position;
             doorCnt++;
         }
-        cnt++;
     }
     
 }
