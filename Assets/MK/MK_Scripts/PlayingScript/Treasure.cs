@@ -27,7 +27,7 @@ public class Treasure : MonoBehaviour
     int clearCount = 0;
 
     public GameObject effectFactory;
-    
+
     public GameObject closedBox;
     public GameObject openedBox;
 
@@ -37,7 +37,7 @@ public class Treasure : MonoBehaviour
     {
         // ���� ���� off
         treasure.gameObject.SetActive(false);
-        
+
     }
 
     // Update is called once per frame
@@ -52,9 +52,9 @@ public class Treasure : MonoBehaviour
         if (enemy.Length == 0 && h==0)
         {
             treasure.gameObject.SetActive(true);
-            
-            for(int i=0;i<3;i++) Instantiate(effectFactory, transform); 
-            
+
+            for(int i=0;i<3;i++) Instantiate(effectFactory, transform);
+
 
 
             if (a <= 0)
@@ -85,13 +85,13 @@ public class Treasure : MonoBehaviour
 
             closedBox.SetActive(false);
             openedBox.SetActive(true);
-            
-            
+
+
 
 
         }
 
     }
 
-    
+
 }
