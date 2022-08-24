@@ -20,12 +20,14 @@ public class SR_PlayerHP : MonoBehaviour
     public GameObject bossRoom;
     Boss boss;
 
+    public Image white;
+
 
     void Start()
     {
         hp = maxHp;
         audio = GetComponent<AudioSource>();
-
+        white.gameObject.SetActive(false);
 
     }
 
@@ -82,6 +84,7 @@ public class SR_PlayerHP : MonoBehaviour
             {
                 print("25");
                 hp -= 25;
+                StartCoroutine("Damaged");
                 audio.clip = damagedSound;
                 audio.Play();
             }
@@ -101,6 +104,7 @@ public class SR_PlayerHP : MonoBehaviour
             if (boss.attack == 1 || boss.attack1 == 1)
             {
                 hp -= 25;
+                StartCoroutine("Damaged");
                 audio.clip = damagedSound;
                 audio.Play();
             }
@@ -123,5 +127,23 @@ public class SR_PlayerHP : MonoBehaviour
         if (hp > 100) hp = 100;
         //PlayerPrefs.SetInt("HP", hp);
 
+    }
+    
+    IEnumerator Damaged()
+    {
+        white.gameObject.SetActive(true);
+        Color color = white.color;
+        color.a = 0.8f;
+        white.color = color;
+
+        while(color.a >=0)
+        {
+            color.a -= 0.05f;
+            white.color = color;
+            print("00");
+            yield return null;
+        }
+        
+        white.gameObject.SetActive(false);
     }
 }
