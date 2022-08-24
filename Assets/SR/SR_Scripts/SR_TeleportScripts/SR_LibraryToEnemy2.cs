@@ -61,7 +61,7 @@ public class SR_LibraryToEnemy2 : MonoBehaviour
             SR_PlayerRotate[] y = enemy2.GetComponentsInChildren<SR_PlayerRotate>();
             for(int i = 0; i < y.Length; i++)
             {
-                y[i].y = 180;
+                y[i].y = -90;
             }
             other.GetComponent<Transform>().position = newPos.position;
         }
