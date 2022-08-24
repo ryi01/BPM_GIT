@@ -7,7 +7,7 @@ public class SR_ShopPistol : MonoBehaviour
     public int k = 0;
     public int k1 = 0;
 
-    Transform player;
+    GameObject player;
     Vector3 dis;
 
     int cnt = 0;
@@ -19,12 +19,12 @@ public class SR_ShopPistol : MonoBehaviour
     private void Update()
     {
 
-        player = GameObject.Find("Player").transform;
+        player = GameObject.Find("Player");
         nCoin = player.GetComponent<SR_PlayerInventory>().numberOfCoins;
 
         //int wallet = PlayerPrefs.GetInt("Wallet");
 
-        dis = player.position - transform.position;
+        dis = player.transform.position - transform.position;
         if (dis.magnitude <= senseDis)
         {
 

@@ -57,7 +57,7 @@ public class SR_ShotGun : MonoBehaviour
     Animator anim;
 
     public GameObject player;
-    float speed;
+    //float speed;
 
     private void Start()
     {
@@ -80,7 +80,7 @@ public class SR_ShotGun : MonoBehaviour
 
         audio = GetComponent<AudioSource>();
 
-        anim = animTarget.GetComponent<Animator>();
+        
 
     }
     private void FixedUpdate()
@@ -91,12 +91,17 @@ public class SR_ShotGun : MonoBehaviour
 
     void Update()
     {
-        speed = player.GetComponent<SR_PlayerMove>().finalSpeed;
+
+        
 
         if (GameManager.Instance.m_state != GameManager.GameState.Playing)
         {
             return;
         }
+
+        if(gameObject.activeSelf == true) anim = animTarget.GetComponent<Animator>();
+
+
         // 거리 확인
         dis = Vector3.Distance(transform.position, gun.gameObject.transform.position);
         dis1 = Vector3.Distance(transform.position, gun1.gameObject.transform.position);
@@ -116,7 +121,7 @@ public class SR_ShotGun : MonoBehaviour
                     curBullet.text = maxAmmo.ToString();
                     ImageBullet();
                     StartCoroutine(ShowReloaded());
-                    audio.clip = gunSounds[2]; audio.Play(); anim.StopPlayback(); anim.Play("Reload4");
+                    audio.clip = gunSounds[2]; audio.Play();  anim.Play("Reload4");
                 }
                 else
                 {
@@ -126,21 +131,18 @@ public class SR_ShotGun : MonoBehaviour
                     {
                         audio.clip = gunSounds[1];
                         audio.Play();
-                        anim.StopPlayback();
                         anim.Play("Reload1");
                     }
                     if (curNum == 2)
                     {
                         audio.clip = gunSounds[3];
                         audio.Play();
-                        anim.StopPlayback();
                         anim.Play("Reload2");
                     }
                     if (curNum == 3)
                     {
                         audio.clip = gunSounds[1];
                         audio.Play();
-                        anim.StopPlayback();
                         anim.Play("Reload3");
                     }
                 }
@@ -158,7 +160,6 @@ public class SR_ShotGun : MonoBehaviour
                 audio.clip = gunSounds[4];
                 audio.Play();
                 StartCoroutine(ShowReload());
-                anim.StopPlayback();
                 anim.Play("Empty");
             }
 
@@ -169,7 +170,6 @@ public class SR_ShotGun : MonoBehaviour
                 nextTimeToFire = Time.time + 1f / fireRate;
 
                 Shoot();
-                anim.StopPlayback();
                 anim.Play("Shot");
                 audio.clip = gunSounds[0];
                 audio.Stop();
@@ -188,14 +188,13 @@ public class SR_ShotGun : MonoBehaviour
             }
         }
 
+        //speed = player.GetComponent<SR_PlayerMove>().finalSpeed;
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            anim.StopPlayback();
             anim.Play("Dash");
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            anim.StopPlayback();
             anim.Play("Jump");
         }
     }

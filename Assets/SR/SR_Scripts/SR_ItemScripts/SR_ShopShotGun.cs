@@ -7,7 +7,7 @@ public class SR_ShopShotGun : MonoBehaviour
     public int k = 0;
     public int k1 = 0;
 
-    Transform player;
+    GameObject player;
 
     Vector3 dis;
 
@@ -20,10 +20,10 @@ public class SR_ShopShotGun : MonoBehaviour
     private void Update()
     {
 
-        player = GameObject.Find("Player").transform;
+        player = GameObject.Find("Player");
         nCoin = player.GetComponent<SR_PlayerInventory>().numberOfCoins;
 
-        dis = player.position - transform.position;
+        dis = player.transform.position - transform.position;
 
         //int wallet = PlayerPrefs.GetInt("Wallet");
 
@@ -39,15 +39,15 @@ public class SR_ShopShotGun : MonoBehaviour
                     nCoin -= 15;
                     player.GetComponent<SR_PlayerInventory>().numberOfCoins = nCoin;
                     cnt++;
+                    gameObject.SetActive(false);
                 }
 
-                gameObject.SetActive(false);
                 // 부모 객체의 이름에 따라 증가하는 k값이 다름
-                if (gameObject.transform.parent.name == "Gun Box 1")
+                if (gameObject.transform.parent.name == "Gun Box 1" && cnt>0)
                 {
                     k++;
                 }
-                if (gameObject.transform.parent.name == "Gun Box 2")
+                if (gameObject.transform.parent.name == "Gun Box 2" && cnt>0)
                 {
                     k1++;
                 }

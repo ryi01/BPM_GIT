@@ -57,7 +57,7 @@ public class SR_Rifle : MonoBehaviour
     Animator anim;
 
     public GameObject player;
-    float speed;
+    //float speed;
 
     private void Start()
     { 
@@ -79,7 +79,6 @@ public class SR_Rifle : MonoBehaviour
         
         audio = GetComponent<AudioSource>();
 
-        anim = animTarget.GetComponent<Animator>();
 
     }
 
@@ -99,7 +98,10 @@ public class SR_Rifle : MonoBehaviour
         dis = Vector3.Distance(transform.position, gun.gameObject.transform.position);
         dis1 = Vector3.Distance(transform.position, gun1.gameObject.transform.position);
 
-        speed = player.GetComponent<SR_PlayerMove>().finalSpeed;
+        //speed = player.GetComponent<SR_PlayerMove>().finalSpeed;
+
+        if (gameObject.activeSelf == true) anim = animTarget.GetComponent<Animator>();
+
 
         if ((currentTime > 0 && currentTime < 0.15f) || (currentTime > 0.1909f && currentTime < 0.3409f))
         {
@@ -112,7 +114,7 @@ public class SR_Rifle : MonoBehaviour
                     curBullet.text = maxAmmo.ToString();
                     ImageBullet();
                     StartCoroutine(ShowReloaded());
-                    audio.clip = gunSounds[2]; audio.Play(); anim.StopPlayback(); anim.Play("Reload4");
+                    audio.clip = gunSounds[2]; audio.Play(); anim.Play("Reload4");
                 }
                 else
                 {
@@ -122,21 +124,18 @@ public class SR_Rifle : MonoBehaviour
                     {
                         audio.clip = gunSounds[1];
                         audio.Play();
-                        anim.StopPlayback();
                         anim.Play("Reload1");
                     }
                     if (curNum == 2)
                     {
                         audio.clip = gunSounds[3];
                         audio.Play();
-                        anim.StopPlayback();
                         anim.Play("Reload2");
                     }
                     if (curNum == 3)
                     {
                         audio.clip = gunSounds[1];
                         audio.Play();
-                        anim.StopPlayback();
                         anim.Play("Reload3");
                     }
                 }
@@ -158,7 +157,6 @@ public class SR_Rifle : MonoBehaviour
                 audio.clip = gunSounds[4];
                 audio.Play();
                 StartCoroutine(ShowReload());
-                anim.StopPlayback();
                 anim.Play("Empty");
             }
 
@@ -169,7 +167,6 @@ public class SR_Rifle : MonoBehaviour
                 nextTimeToFire = Time.time + 1f / fireRate;
 
                 Shoot();
-                anim.StopPlayback();
                 anim.Play("Shot");
                 audio.clip = gunSounds[0];
                 audio.Stop();
@@ -190,12 +187,10 @@ public class SR_Rifle : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            anim.StopPlayback();
             anim.Play("Dash");
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            anim.StopPlayback();
             anim.Play("Jump");
         }
     }
