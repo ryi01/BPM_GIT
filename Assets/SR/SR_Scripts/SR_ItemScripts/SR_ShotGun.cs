@@ -53,6 +53,12 @@ public class SR_ShotGun : MonoBehaviour
 
     public AudioClip[] gunSounds;
 
+    public GameObject animTarget;
+    Animator anim;
+
+    public GameObject player;
+    float speed;
+
     private void Start()
     {
         currentAmmo = maxAmmo;
@@ -74,6 +80,8 @@ public class SR_ShotGun : MonoBehaviour
 
         audio = GetComponent<AudioSource>();
 
+        anim = animTarget.GetComponent<Animator>();
+
     }
     private void FixedUpdate()
     {
@@ -83,6 +91,8 @@ public class SR_ShotGun : MonoBehaviour
 
     void Update()
     {
+        speed = player.GetComponent<SR_PlayerMove>().finalSpeed;
+
         if (GameManager.Instance.m_state != GameManager.GameState.Playing)
         {
             return;
@@ -106,14 +116,33 @@ public class SR_ShotGun : MonoBehaviour
                     curBullet.text = maxAmmo.ToString();
                     ImageBullet();
                     StartCoroutine(ShowReloaded());
-                    audio.clip = gunSounds[2]; audio.Play();
+                    audio.clip = gunSounds[2]; audio.Play(); anim.StopPlayback(); anim.Play("Reload4");
                 }
                 else
                 {
                     curNum++;
                     //print(curNum);
-                    if (curNum == 1) audio.clip = gunSounds[1]; audio.Play();
-                    if (curNum == 2) audio.clip = gunSounds[3]; audio.Play();
+                    if (curNum == 1)
+                    {
+                        audio.clip = gunSounds[1];
+                        audio.Play();
+                        anim.StopPlayback();
+                        anim.Play("Reload1");
+                    }
+                    if (curNum == 2)
+                    {
+                        audio.clip = gunSounds[3];
+                        audio.Play();
+                        anim.StopPlayback();
+                        anim.Play("Reload2");
+                    }
+                    if (curNum == 3)
+                    {
+                        audio.clip = gunSounds[1];
+                        audio.Play();
+                        anim.StopPlayback();
+                        anim.Play("Reload3");
+                    }
                 }
             }
 
@@ -129,6 +158,8 @@ public class SR_ShotGun : MonoBehaviour
                 audio.clip = gunSounds[4];
                 audio.Play();
                 StartCoroutine(ShowReload());
+                anim.StopPlayback();
+                anim.Play("Empty");
             }
 
             if (Input.GetButtonDown("Fire1") && currentAmmo > 0 && Time.time >= nextTimeToFire)
@@ -138,6 +169,8 @@ public class SR_ShotGun : MonoBehaviour
                 nextTimeToFire = Time.time + 1f / fireRate;
 
                 Shoot();
+                anim.StopPlayback();
+                anim.Play("Shot");
                 audio.clip = gunSounds[0];
                 audio.Stop();
                 audio.Play();
@@ -154,7 +187,20 @@ public class SR_ShotGun : MonoBehaviour
                 audio.Play();
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            anim.StopPlayback();
+            anim.Play("Dash");
+        }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            anim.StopPlayback();
+            anim.Play("Jump");
+        }
     }
+
+
 
     IEnumerator Reload()
     {
