@@ -24,7 +24,8 @@ public class Bat : MonoBehaviour
         Come,
         Move,
         Stop,
-        Back
+        Back,
+        Die
     }
     BatState batState;
     // 플레이어
@@ -96,6 +97,10 @@ public class Bat : MonoBehaviour
         {
             BatBack();
         }
+        else if (batState == BatState.Die)
+        {
+            transform.position += dir * 0 * bSpeed * Time.deltaTime;
+        }
 
         if (bat.ENEMYHP > 0)
         {
@@ -105,6 +110,10 @@ public class Bat : MonoBehaviour
                 bullet.transform.position = transform.position;
                 currentTime2 = 0;
             }
+        }
+        else
+        {
+            batState = BatState.Die;
         }
     }
     // 플레이어를 향해 특정 부분까지 가까워짐

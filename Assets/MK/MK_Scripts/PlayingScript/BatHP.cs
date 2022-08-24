@@ -8,6 +8,8 @@ public class BatHP : MonoBehaviour
     Treasure tre;
     // 코인
     public GameObject coinFact;
+    // 애니메이터
+    Animator anim;
     // 체력
     int enemyHP;
     public int ENEMYHP
@@ -20,6 +22,8 @@ public class BatHP : MonoBehaviour
             {
                 Rigidbody rigid = GetComponent<Rigidbody>();
                 rigid.useGravity = true;
+                rigid.velocity = new Vector3(0, 0, 0);
+                anim.SetTrigger("Die");
                 Destroy(gameObject, 2f);
             }
 
@@ -28,6 +32,7 @@ public class BatHP : MonoBehaviour
     private void Start()
     {
         tre = GameObject.Find("Treasure").GetComponent<Treasure>();
+        anim = GetComponentInChildren<Animator>();
     }
     private void OnDestroy()
     {

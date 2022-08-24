@@ -14,8 +14,11 @@ public class Treasure : MonoBehaviour
 
     public GameObject notClear;
     public GameObject clear;
+    public GameObject enemy2notClear;
 
     public GameObject enemy1ToStart;
+
+    public GameObject enemy2ToEnemy1;
 
     GameObject[] enemy;
     int countKey;
@@ -27,7 +30,6 @@ public class Treasure : MonoBehaviour
     {
         // ���� ���� off
         treasure.gameObject.SetActive(false);
-
     }
 
     // Update is called once per frame
@@ -35,13 +37,24 @@ public class Treasure : MonoBehaviour
     {
         // �� �±׸� ���� ������Ʈ ã��
         enemy = GameObject.FindGameObjectsWithTag("Enemy");
+        GameObject room = GameObject.Find("EnemyManager");
+        int a = enemy2ToEnemy1.GetComponent<SR_Enemy2ToEnemy1>().clearEnemy2;
 
         // �±װ� ������ ���� on
         if (enemy.Length == 0)
         {
             treasure.gameObject.SetActive(true);
-            notClear.SetActive(false);
-            clear.SetActive(true);
+            if (a <= 0)
+            {
+                notClear.SetActive(false);
+                clear.SetActive(true);
+            }
+            else
+            {
+                notClear.SetActive(false);
+                clear.SetActive(false);
+                enemy2notClear.SetActive(false);
+            }
         }
         GameObject player = GameObject.Find("Player");
         float dis = Vector3.Distance(treasure.transform.position, player.transform.position);

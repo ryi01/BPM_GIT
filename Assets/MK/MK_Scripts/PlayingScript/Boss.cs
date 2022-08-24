@@ -188,13 +188,13 @@ public class Boss : MonoBehaviour
     // 움직임 멈추고 플레이어 바라보기
     private void BossSet()
     {
-        // 멈추고
-        transform.position += dir * 0 * Time.deltaTime;
-        rigid.velocity = new Vector3(0, 0, 0);
         
         // 플레이어 바라보기
         Vector3 mySight = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
         transform.LookAt(mySight);
+        // 멈추고
+        transform.position += dir * 0 * Time.deltaTime;
+        rigid.velocity = new Vector3(0, 0, 0);
 
         if (pattern == 0)
         {
@@ -282,7 +282,7 @@ public class Boss : MonoBehaviour
             left.gameObject.SetActive(false);
             right.gameObject.SetActive(true);
             LookBoss(mySight);
-            if (currentTime >= 9.98f * time && currentTime <= time * 10)
+            if (currentTime >= 9.95f * time && currentTime <= time * 10)
             {
                 attack = 1;
             }
@@ -293,7 +293,7 @@ public class Boss : MonoBehaviour
             right.gameObject.SetActive(false);
             left.gameObject.SetActive(true);
             LookBoss(mySight);
-            if (currentTime >= 19.98f * time && currentTime <= time * 20)
+            if (currentTime >= 19.95f * time && currentTime <= time * 20)
             {
                 attack1 = 1;
             }
@@ -355,6 +355,7 @@ public class Boss : MonoBehaviour
     // 패턴 3 : 느린 총알 4개 발사
     private void BossAttack3()
     {
+
         // 총알 만들기
         MakingBullet(4, time, bulletFact);
     }
@@ -369,12 +370,15 @@ public class Boss : MonoBehaviour
     // 패턴 5 : 유도탄 + 빠른 총알 1개 발사
     private void BossAttack5()
     {
+        // 플레이어 바라보기
+        Vector3 mySight = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
+        transform.LookAt(mySight);
         if (rhythmTime > time * 10)
         {
             // 총알을 만들고
             GameObject bullet = Instantiate(followBulletFact1);
             // 총알을 내 위치에 가져다 놓음
-            bullet.transform.position = transform.position + new Vector3(0, 5, 0);
+            bullet.transform.position = followPos[1].transform.position;
             // State 변경
             state = BossState.Stop;
             rhythmTime = 0;
@@ -383,6 +387,9 @@ public class Boss : MonoBehaviour
 
     void MakingBullet(int n,float time,GameObject bulletFactory)
     {
+        // 플레이어 바라보기
+        Vector3 mySight = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
+        transform.LookAt(mySight);
         // 유도탄 3개를 만들기
         for (int i = 0; i < n; i++)
         {

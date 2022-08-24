@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1153728305003894410}
   - component: {fileID: 5625169469206300598}
   - component: {fileID: 499752924156583777}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: FastBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 1887281569896803947}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.309, y: 3.999, z: -2.64}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6658435318555909671}
@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fa9a17f0600ade4bbf59f7bf7ef9b4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 30
+  speed: 50
 --- !u!54 &1153728305003894410
 Rigidbody:
   m_ObjectHideFlags: 0
