@@ -44,7 +44,7 @@ public class SR_PlayerMove : MonoBehaviour
         yVelocity += gravity * Time.deltaTime;
         if (dashing == false && Input.GetButtonDown("Jump"))
         {
-            ground = false;
+            //ground = false;
             jumpCnt++;
             audio.clip = GetComponent<SR_PlayerSound>().playerSounds[0];
             audio.Play();

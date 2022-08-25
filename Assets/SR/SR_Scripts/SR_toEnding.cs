@@ -25,6 +25,7 @@ public class SR_toEnding : MonoBehaviour
 
         if(count==1)
         {
+            print("cnt++");
             boss = GameObject.Find("_Boss");
 
             if (boss == null)
@@ -52,6 +53,7 @@ public class SR_toEnding : MonoBehaviour
         while (color.a <=1) 
         {
             color.a += 0.01f;
+            print("aaa");
             white.color = color;
             if (white.color.a >= 0) checkbool = true;
             yield return null;
