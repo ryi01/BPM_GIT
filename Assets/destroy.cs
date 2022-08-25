@@ -7,6 +7,6 @@ public class destroy : MonoBehaviour
     float currentTime = 0;
     private void Update()
     {
-        Destroy(gameObject, 1.5f);
+        Destroy(gameObject,0.3f);
     }
 }
