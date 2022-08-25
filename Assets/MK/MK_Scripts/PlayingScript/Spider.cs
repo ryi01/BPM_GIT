@@ -28,6 +28,7 @@ public class Spider : MonoBehaviour
     float dis;
     // ����
     float rhythmTime;
+    Animator anim;
 
     enum SpiderState
     {
@@ -46,6 +47,7 @@ public class Spider : MonoBehaviour
         player = GameObject.Find("Player");
         state = SpiderState.Move;
         sRigid = GetComponent<Rigidbody>();
+        anim = GetComponentInChildren<Animator>();
 
         // 적 체력 세팅
         SpiderHP spider = GetComponent<SpiderHP>();
@@ -95,11 +97,15 @@ public class Spider : MonoBehaviour
         }
 
         dis = Vector3.Distance(player.transform.position, transform.position);
-        if (dis < 3)
+        if (state == SpiderState.Move)
         {
-            state = SpiderState.Attack;
-        }
+            if (dis < 2)
+            {
+                anim.SetTrigger("Attack");
 
+                state = SpiderState.Attack;
+            }
+        }
     }
 
     // 기본적인 움직임
@@ -113,7 +119,7 @@ public class Spider : MonoBehaviour
 
         // 랜덤 시간이 되면
         currentTime += Time.deltaTime;
-        int rndTime = Random.Range(2, 8);
+        int rndTime = Random.Range(5, 10);
         if (currentTime > rndTime)
         {
             // stop으로 바뀌기
@@ -138,10 +144,12 @@ public class Spider : MonoBehaviour
             int rndAttack = Random.Range(0, 2);
             if (rndAttack == 0)
             {
+                anim.SetTrigger("Run");
                 state = SpiderState.Run;
             }
             else
             {
+                anim.SetTrigger("Jump");
                 state = SpiderState.Jump;
             }
         }
@@ -155,17 +163,18 @@ public class Spider : MonoBehaviour
         transform.position += runDir * (speed + 5f) * Time.deltaTime;
         if (currentTime >= runTime * 0.3409f)
         {
+            anim.SetTrigger("Walk");
             currentTime -= 0.3409f;
-            state = SpiderState.Set;
+            state = SpiderState.Move;
         }
     }
+    int k = 0;
     private void SpiderJump()
     {
         // Ư���������� �����ؾ���
         runDir.y = yVelocity;
 
         transform.position += runDir * speed * Time.deltaTime;
-
     }
 
     // 가만히 서서 플레이어 바라보기
@@ -174,23 +183,25 @@ public class Spider : MonoBehaviour
         LookPlayer();
 
         currentTime += Time.deltaTime;
-        if (currentTime > 0.3409f * 10)
+        if (currentTime > 0.3409f * 6)
         {
             state = SpiderState.Move;
-            currentTime -= 0.3409f;
+            anim.SetTrigger("Walk");
+            currentTime = 0;
         }
     }
     // 근접 공격하기
     private void SpiderAttack()
     {
-        if (rhythmTime > 0.3409f)
+        if (rhythmTime > 0.3409f * 4)
         {
             player.GetComponent<SR_PlayerHP>().hp -= 25;
-            rhythmTime -= 0.3409f;
+            rhythmTime -= 0.3409f * 4;
         }
 
-        if(dis >= 3)
+        if(dis >= 2)
         {
+            anim.SetTrigger("Walk");
             state = SpiderState.Move;
         }
 
@@ -213,25 +224,30 @@ public class Spider : MonoBehaviour
     public void NockBack()
     {
         sRigid.AddForce(-dir * backPow, ForceMode.Impulse);
+
+        anim.SetTrigger("Idle");
         state = SpiderState.Set;
     }
     private void OnCollisionEnter(Collision collision)
     {
-
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Floor") && state == SpiderState.Jump)
+        if(state == SpiderState.Jump && collision.gameObject.layer == LayerMask.NameToLayer("Floor"))
         {
-            // set상태로 변경
+            currentTime = 0;
+            anim.SetTrigger("Idle");
             state = SpiderState.Set;
         }
+
         if (collision.gameObject.name.Contains("Player") && (state == SpiderState.Jump || state == SpiderState.Run))
         {
             player.GetComponent<SR_PlayerHP>().hp -= 25;
             // set���·� ����
-            state = SpiderState.Set;
+            state = SpiderState.Move;
+            anim.SetTrigger("Walk");
         }
-        if(collision.gameObject.layer == LayerMask.NameToLayer("Room"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Room"))
         {
             state = SpiderState.Set;
+            anim.SetTrigger("Idle");
         }
     }
 }
