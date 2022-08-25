@@ -15,12 +15,14 @@ public class SR_BossSound : MonoBehaviour
 
     private void Update()
     {
+        print(bossHP);
         bossHP = GetComponent<BossHP>().enemyHP;
 
         if (bossHP <= -5)
         {
             if(audio.clip != endingSound[5])
             {
+                audio.Stop();
                 audio.clip = endingSound[5];
                 audio.Play();
             }
@@ -29,6 +31,7 @@ public class SR_BossSound : MonoBehaviour
         {
             if (audio.clip != endingSound[4])
             {
+                audio.Stop();
                 audio.clip = endingSound[4];
                 audio.Play();
             }
@@ -37,6 +40,7 @@ public class SR_BossSound : MonoBehaviour
         {
             if (audio.clip != endingSound[3])
             {
+                audio.Stop();
                 audio.clip = endingSound[3];
                 audio.Play();
             }
@@ -45,6 +49,7 @@ public class SR_BossSound : MonoBehaviour
         {
             if (audio.clip != endingSound[2])
             {
+                audio.Stop();
                 audio.clip = endingSound[2];
                 audio.Play();
             }
@@ -53,6 +58,7 @@ public class SR_BossSound : MonoBehaviour
         {
             if (audio.clip != endingSound[1])
             {
+                audio.Stop();
                 audio.clip = endingSound[1];
                 audio.Play();
             }
@@ -61,6 +67,7 @@ public class SR_BossSound : MonoBehaviour
         {
             if (audio.clip != endingSound[0])
             {
+                audio.Stop();
                 audio.clip = endingSound[0];
                 audio.Play();
             }
