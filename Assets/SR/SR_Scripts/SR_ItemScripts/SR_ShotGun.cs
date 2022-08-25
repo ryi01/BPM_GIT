@@ -217,6 +217,7 @@ public class SR_ShotGun : MonoBehaviour
     }
     IEnumerator ShowReloaded()
     {
+        reload.gameObject.SetActive(false);
         already.gameObject.SetActive(true);
         yield return new WaitForSeconds(2f);
         already.gameObject.SetActive(false);
