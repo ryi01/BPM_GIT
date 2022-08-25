@@ -168,7 +168,6 @@ public class Spider : MonoBehaviour
             state = SpiderState.Move;
         }
     }
-    int k = 0;
     private void SpiderJump()
     {
         // Ư���������� �����ؾ���
