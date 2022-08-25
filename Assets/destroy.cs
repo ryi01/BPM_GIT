@@ -5,9 +5,8 @@ using UnityEngine;
 public class destroy : MonoBehaviour
 {
     float currentTime = 0;
-    private void OnTriggerStay(Collider other)
+    private void Update()
     {
-        currentTime += Time.deltaTime;
-        if (currentTime > 1.0f) Destroy(gameObject);
+        Destroy(gameObject, 1.5f);
     }
 }
