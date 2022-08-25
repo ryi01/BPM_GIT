@@ -18,6 +18,8 @@ public class Larva : MonoBehaviour
     // 공격 시간
     public float attackTime = 2;
 
+    Animator anim;
+
     // FSM
     enum LarvaState
     {
@@ -40,10 +42,12 @@ public class Larva : MonoBehaviour
         player = GameObject.Find("Player").transform;
         // 리지드바디 가져오기
         rigid = GetComponent<Rigidbody>();
+        anim = GetComponentInChildren<Animator>();
         // 체력
         // 적 체력 세팅
         LarvaHP hp = GetComponent<LarvaHP>();
         hp.ENEMYHP = 2;
+        
     }
 
     // Update is called once per frame
@@ -101,10 +105,13 @@ public class Larva : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Floor"))
         {
+            anim.StopPlayback();
+            anim.Play("Jump");
             rigid.AddForce(Vector3.up * jumpPow, ForceMode.Impulse);
         }
         if (collision.gameObject.layer == LayerMask.NameToLayer("Room"))
         {
+            anim.StopPlayback();
             transform.position += dir * 0 * Time.deltaTime;
             state = LarvaState.Move;
         }

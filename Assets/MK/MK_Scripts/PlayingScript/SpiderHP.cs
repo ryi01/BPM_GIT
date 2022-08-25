@@ -8,6 +8,7 @@ public class SpiderHP : MonoBehaviour
     Treasure tre;
     // 코인
     public GameObject coinFact;
+    Animator anim;
     // 체력
     int enemyHP;
     public int ENEMYHP
@@ -18,13 +19,15 @@ public class SpiderHP : MonoBehaviour
             enemyHP = value;
             if (enemyHP <= 0)
             {
-                Destroy(gameObject, 0.5f);
+                anim.SetTrigger("Die");
+                Destroy(gameObject, 1f);
             }
 
         }
     }
     private void Start()
     {
+        anim = GetComponentInChildren<Animator>();
         tre = GameObject.Find("Treasure").GetComponent<Treasure>();
     }
 
