@@ -98,11 +98,12 @@ public class SR_PlayerHP : MonoBehaviour
     }
     private void OnTriggerStay(Collider other)
     {
-        if ((other.gameObject.name.Contains("Right") || other.gameObject.name.Contains("Left")))
+        if ((other.gameObject.name.Contains("Right")))
         {
 
-            if (boss.attack == 1 || boss.attack1 == 1)
+            if (boss.attack == 1)
             {
+                boss.attack = 0;
                 hp -= 25;
                 StartCoroutine("Damaged");
                 audio.clip = damagedSound;
@@ -111,6 +112,17 @@ public class SR_PlayerHP : MonoBehaviour
             //minus = true;
             //minus = false;
 
+        }
+        if (other.gameObject.name.Contains("Left"))
+        {
+            if(boss.attack1 == 1)
+            {
+                boss.attack1 = 0;
+                hp -= 25;
+                StartCoroutine("Damaged");
+                audio.clip = damagedSound;
+                audio.Play();
+            }
         }
     }
 
