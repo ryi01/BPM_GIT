@@ -58,6 +58,7 @@ public class SR_LibraryToEnemy2 : MonoBehaviour
             enemy2.SetActive(true);
             libarary.SetActive(false);
             enemy2Tre.SetActive(true);
+            enemy2Tre.GetComponentInChildren<AudioSource>().mute = true;
             SR_PlayerRotate[] y = enemy2.GetComponentsInChildren<SR_PlayerRotate>();
             for(int i = 0; i < y.Length; i++)
             {

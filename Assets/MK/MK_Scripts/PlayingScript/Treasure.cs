@@ -31,13 +31,15 @@ public class Treasure : MonoBehaviour
     public GameObject closedBox;
     public GameObject openedBox;
 
+    AudioSource audio;
+
     int h = 0;
     // Start is called before the first frame update
     void Start()
     {
         // ���� ���� off
         treasure.gameObject.SetActive(false);
-
+        audio = GetComponentInChildren<AudioSource>();
     }
 
     // Update is called once per frame

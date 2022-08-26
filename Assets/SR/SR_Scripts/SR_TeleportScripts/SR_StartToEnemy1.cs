@@ -79,6 +79,7 @@ public class SR_StartToEnemy1 : MonoBehaviour
                 clearEnemy1.GetComponentInChildren<SR_PlayerRotate>().y = 183;
                 start1.SetActive(false);
                 enemy1Tre.SetActive(true);
+                enemy1Tre.GetComponentInChildren<AudioSource>().mute = true;
             }
             clearEnemy++;
 
