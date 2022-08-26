@@ -71,6 +71,7 @@ public class Boss : MonoBehaviour
     int pattern = 0;
 
     Rigidbody rigid;
+    Animator anim;
     // Start is called before the first frame update
     void Start()
     {
@@ -83,7 +84,10 @@ public class Boss : MonoBehaviour
         left.gameObject.SetActive(false);
         rigid = GetComponent<Rigidbody>();
         GameManager.Instance.m_state = GameManager.GameState.Stop;
+
+        anim = GetComponentInChildren<Animator>();
     }
+
     private void FixedUpdate()
     {
         rhythmTime += Time.deltaTime;
@@ -155,6 +159,7 @@ public class Boss : MonoBehaviour
             state = BossState.Rand;
             currentTime = 0;
         }
+        anim.Play("Move");
         
     }
     // 플레이어를 향하다가 랜덤으로 움직이기
@@ -272,6 +277,7 @@ public class Boss : MonoBehaviour
     // 패턴 1 : 반반 공격 => 쉐이더 사용
     private void BossAttack1()
     {
+        anim.Play("BoxAttack");
         // 플레이어 바라보기
         Vector3 mySight = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
 
@@ -321,6 +327,7 @@ public class Boss : MonoBehaviour
     // 패턴 2 : 유도탄 발사
     private void BossAttack2()
     {
+        anim.Play("Attack");
         currentTime += Time.deltaTime;
         if (currentTime > time * 4)
         {
@@ -355,7 +362,7 @@ public class Boss : MonoBehaviour
     // 패턴 3 : 느린 총알 4개 발사
     private void BossAttack3()
     {
-
+        anim.Play("Attack");
         // 총알 만들기
         MakingBullet(4, time, bulletFact);
     }
@@ -363,6 +370,7 @@ public class Boss : MonoBehaviour
     // 패턴 4 : 빠른 속도를 총알 5개 발사
     private void BossAttack4()
     {
+        anim.Play("Attack");
         int n = UnityEngine.Random.Range(5, 9);
         // 총알 만들기
         MakingBullet(n, time * 0.5f, fastBulletFact);
@@ -370,6 +378,7 @@ public class Boss : MonoBehaviour
     // 패턴 5 : 유도탄 + 빠른 총알 1개 발사
     private void BossAttack5()
     {
+        anim.Play("Attack");
         // 플레이어 바라보기
         Vector3 mySight = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
         transform.LookAt(mySight);
