@@ -92,13 +92,6 @@ public class SR_ShotGun : MonoBehaviour
     void Update()
     {
 
-        
-
-        if (GameManager.Instance.m_state != GameManager.GameState.Playing)
-        {
-            return;
-        }
-
         if(gameObject.activeSelf == true) anim = animTarget.GetComponent<Animator>();
 
 
