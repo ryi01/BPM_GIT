@@ -14,6 +14,8 @@ public class SR_BossToEnemy2 : MonoBehaviour
     public GameObject boss;
     public GameObject enemy2;
     public GameObject enemy2Tre;
+
+
     private void Start()
     {
         color = black.GetComponent<Image>().color;

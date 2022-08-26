@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
 public class SR_Enemy2ToBoss : MonoBehaviour
 {
     public Image black;
@@ -24,8 +23,6 @@ public class SR_Enemy2ToBoss : MonoBehaviour
     public int count = 0;
 
     public int doorCnt = 0;
-
-
     private void Start()
     {
         color = black.GetComponent<Image>().color;
@@ -72,6 +69,7 @@ public class SR_Enemy2ToBoss : MonoBehaviour
             enemy2.SetActive(false);
             enemy2Tre.SetActive(false);
             bossHP.SetActive(true);
+
             SR_PlayerRotate[] y = boss.GetComponentsInChildren<SR_PlayerRotate>();
             for (int i = 0; i < y.Length; i++)
             {

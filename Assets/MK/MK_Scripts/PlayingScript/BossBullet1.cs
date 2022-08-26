@@ -25,7 +25,7 @@ public class BossBullet1 : MonoBehaviour
     void Update()
     {
         currentTime += Time.deltaTime;
-        if (currentTime > 0.3409f * 5)
+        if (currentTime > 0.3409f * 2)
         {
             // 움직이기
             transform.position += speed * dir * Time.deltaTime;
