@@ -16,6 +16,8 @@ public class SR_UltimateSkill : MonoBehaviour
     // 스킬 이미지
     public Image skill;
 
+    
+
     private void Start()
     {
         skill.gameObject.SetActive(false);
