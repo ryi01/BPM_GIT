@@ -257,8 +257,18 @@ public class SR_Rifle : MonoBehaviour
 
             }
 
-            if (hit.transform.name.Contains("_Boss")) hit.transform.GetComponent<BossHP>().AddDamage(damage, fpsCam.transform.forward);
-
+            if (hit.transform.name.Contains("_Boss")) 
+            { 
+                BossHP boss = hit.transform.GetComponent<BossHP>();
+                if (boss.ENEMYHP > 0)
+                {
+                    boss.AddDamage(damage, fpsCam.transform.forward);
+                }
+                else
+                {
+                    boss.AddDamage(1, fpsCam.transform.forward);
+                }
+            }
             if (hit.transform.name.Contains("Slow")) Destroy(hit.transform.gameObject); // 보스 Slow Bullet 피격처
             
 
