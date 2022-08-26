@@ -18,7 +18,9 @@ public class BossHP : MonoBehaviour
 
     Animator anim;
 
-    
+    public GameObject fireWork;
+
+
     public float ENEMYHP
     {
         get { return enemyHP; }
@@ -38,6 +40,7 @@ public class BossHP : MonoBehaviour
             if (enemyHP <= -5)
             {
                 anim.Play("Die");
+                fireWork.SetActive(true);
                 Destroy(gameObject,5.0f);
             }
             
@@ -53,5 +56,6 @@ public class BossHP : MonoBehaviour
         ENEMYHP = maxHP;
         rigid = GetComponent<Rigidbody>();
         anim = GetComponentInChildren<Animator>();
+        fireWork.SetActive(false);
     }
 }
