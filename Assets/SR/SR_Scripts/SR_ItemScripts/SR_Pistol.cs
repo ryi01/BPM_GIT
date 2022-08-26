@@ -58,7 +58,9 @@ public class SR_Pistol : MonoBehaviour
 
     public GameObject player;
     //float speed;
-    
+
+
+
     private void Start()
     {
         currentAmmo = maxAmmo;
@@ -254,7 +256,12 @@ public class SR_Pistol : MonoBehaviour
             }
 
 
-            if (hit.transform.name == "_Boss") hit.transform.GetComponent<BossHP>().AddDamage(damage, fpsCam.transform.forward);
+            if (hit.transform.name == "_Boss")
+            {
+                hit.transform.GetComponent<BossHP>().AddDamage(damage, fpsCam.transform.forward);
+                //bossAnim = boss.GetComponentInChildren<Animator>();
+                //bossAnim.Play("Damaged");
+            }
 
             if (hit.transform.name.Contains("Slow")) Destroy(hit.transform.gameObject); // 보스 Slow Bullet 피격처
             

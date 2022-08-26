@@ -16,6 +16,8 @@ public class BossHP : MonoBehaviour
     // 리지드바디
     Rigidbody rigid;
 
+    Animator anim;
+
     
     public float ENEMYHP
     {
@@ -35,6 +37,7 @@ public class BossHP : MonoBehaviour
             
             if (enemyHP <= -5)
             {
+                anim.Play("Die");
                 Destroy(gameObject,5.0f);
             }
             
@@ -49,5 +52,6 @@ public class BossHP : MonoBehaviour
     {
         ENEMYHP = maxHP;
         rigid = GetComponent<Rigidbody>();
+        anim = GetComponentInChildren<Animator>();
     }
 }
