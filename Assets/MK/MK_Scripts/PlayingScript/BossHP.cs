@@ -20,7 +20,7 @@ public class BossHP : MonoBehaviour
 
     public GameObject fireWork;
 
-
+    int num;
     public float ENEMYHP
     {
         get { return enemyHP; }
@@ -39,7 +39,16 @@ public class BossHP : MonoBehaviour
             if (enemyHP > -5 && enemyHP <= 0)
             {
                 anim.StopPlayback();
-                anim.Play("Damaged");
+                if (num == 0)
+                {
+                    anim.Play("Damaged");
+                    num++;
+                }
+                else
+                {
+                    anim.Play("Damaged1");
+                    num = 0;
+                }
             }
             
             if (enemyHP <= -5)
