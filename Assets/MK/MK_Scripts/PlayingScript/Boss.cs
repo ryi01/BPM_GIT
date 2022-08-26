@@ -145,6 +145,10 @@ public class Boss : MonoBehaviour
     // 플레이어를 향해 움직임
     private void BossMove()
     {
+        // 플레이어 바라보기
+        Vector3 mySight = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
+        transform.LookAt(mySight);
+
         // y축 변경
         float y = UnityEngine.Random.Range(4, 6);
         // 플레이어까지 방향
@@ -278,12 +282,12 @@ public class Boss : MonoBehaviour
     private void BossAttack1()
     {
         anim.Play("BoxAttack");
-        // 플레이어 바라보기
-        Vector3 mySight = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
 
         currentTime += Time.deltaTime;
         if(currentTime <= time * 10f)
         {
+            // 플레이어 바라보기
+            Vector3 mySight = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
             attack1 = 0;
             left.gameObject.SetActive(false);
             right.gameObject.SetActive(true);
@@ -295,10 +299,11 @@ public class Boss : MonoBehaviour
         }
         else if(currentTime > time * 10 && currentTime < time * 20f)
         {
+            Vector3 sight = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
             attack = 0;
             right.gameObject.SetActive(false);
             left.gameObject.SetActive(true);
-            LookBoss(mySight);
+            LookBoss(sight);
             if (currentTime >= 19.95f * time && currentTime <= time * 20)
             {
                 attack1 = 1;
