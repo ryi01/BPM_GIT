@@ -30,14 +30,29 @@ public class StartText : MonoBehaviour
     {
         StartCoroutine(BigSize());
     }
-    int size = 0;
     IEnumerator BigSize()
     {
-        while(startText.fontSize <= maxSize)
+        // 250
+        int size = normalSize;
+        // 280
+        int downsize = maxSize;
+        Color alpha = startText.color;
+        float b = 1;
+        while (startText.fontSize < maxSize)
         {
             size += speed;
             startText.fontSize = size;
             yield return null;
         }
-    }
+
+        while (startText.fontSize > normalSize && alpha.a >= 0)
+        {
+            downsize -= 1;
+            b -= 0.01f;
+            startText.fontSize = downsize;
+            alpha.a = b;
+            startText.color = alpha;
+            yield return null;
+        }
+    }    
 }
