@@ -24,7 +24,7 @@ public class SR_UltimateSkill : MonoBehaviour
     private void FixedUpdate()
     {
 
-        cnt = GetComponent<SR_PlayerInventory>().numberOfScrolls;
+        cnt = GetComponentInParent<SR_PlayerInventory>().numberOfScrolls;
         // print(cnt);
 
 
