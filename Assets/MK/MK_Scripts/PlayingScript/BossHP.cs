@@ -20,6 +20,8 @@ public class BossHP : MonoBehaviour
 
     public GameObject fireWork;
 
+    public GameObject skill;
+
     int num;
     public float ENEMYHP
     {
@@ -38,6 +40,7 @@ public class BossHP : MonoBehaviour
 
             if (enemyHP > -5 && enemyHP <= 0)
             {
+                skill.gameObject.SetActive(false);
 
                 if (num == 0)
                 {
