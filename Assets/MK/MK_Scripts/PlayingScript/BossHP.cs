@@ -36,6 +36,11 @@ public class BossHP : MonoBehaviour
                 rigid.velocity = new Vector3(0, 0, 0);
             }
 
+            if (enemyHP > -5 && enemyHP <= 0)
+            {
+                anim.StopPlayback();
+                anim.Play("Damaged");
+            }
             
             if (enemyHP <= -5)
             {
