@@ -16,8 +16,7 @@ public class SR_UltimateSkill : MonoBehaviour
     // 스킬 이미지
     public Image skill;
 
-    public GameObject boss;
-    float bossHP;
+    
 
     private void Start()
     {
