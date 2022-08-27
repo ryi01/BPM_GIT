@@ -12,18 +12,21 @@ public class StartText : MonoBehaviour
     public int speed = 3;
     // Å©±â
     public int maxSize = 280;
-    int normalSize = 250;
+    int normalSize = 200;
+
+    int count;
 
     // Start is called before the first frame update
     void Start()
     {
         startText.fontSize = normalSize;
+        SizeUp();
     }
 
     // Update is called once per frame
     void Update()
     {
-        SizeUp();
+
     }
 
     void SizeUp()
@@ -44,8 +47,8 @@ public class StartText : MonoBehaviour
             startText.fontSize = size;
             yield return null;
         }
-
-        while (startText.fontSize > normalSize && alpha.a >= 0)
+        yield return new WaitForSeconds(0.3f);
+        while (startText.fontSize > 190 && alpha.a > 0)
         {
             downsize -= 1;
             b -= 0.01f;

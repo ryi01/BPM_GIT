@@ -18,11 +18,14 @@ public class SR_EndingManager : MonoBehaviour
     private void Update()
     {
         currentTime += Time.deltaTime;
-        if(currentTime>1.0f)
+        if (currentTime > 1.0f)
         {
             StartCoroutine(Show());
         }
-        if(Input.anyKey) SceneManager.LoadScene("Main");
+        if (victory.gameObject.activeSelf == true)
+        {
+            if (Input.anyKey) SceneManager.LoadScene("Main");
+        }
     }
 
 

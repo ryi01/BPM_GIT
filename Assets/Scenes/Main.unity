@@ -632,7 +632,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uC885  \uB8CC     \n"
+  m_Text: "\uC885  \uB8CC     "
 --- !u!222 &785182275
 CanvasRenderer:
   m_ObjectHideFlags: 0
