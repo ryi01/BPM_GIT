@@ -19,8 +19,11 @@ public class StartText : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        startText.fontSize = normalSize;
-        SizeUp();
+        if (GameManager.Instance.m_state == GameManager.GameState.Ready)
+        {
+            startText.fontSize = normalSize;
+            SizeUp();
+        }
     }
 
     // Update is called once per frame
@@ -33,29 +36,24 @@ public class StartText : MonoBehaviour
     {
         StartCoroutine(BigSize());
     }
+    float currentTime = 0;
     IEnumerator BigSize()
     {
         // 250
         int size = normalSize;
-        // 280
-        int downsize = maxSize;
+
         Color alpha = startText.color;
         float b = 1;
-        while (startText.fontSize < maxSize)
+
+        while (b > 0)
         {
             size += speed;
             startText.fontSize = size;
-            yield return null;
-        }
-        yield return new WaitForSeconds(0.3f);
-        while (startText.fontSize > 190 && alpha.a > 0)
-        {
-            downsize -= 1;
-            b -= 0.01f;
-            startText.fontSize = downsize;
+            b -= 0.005f;
             alpha.a = b;
             startText.color = alpha;
             yield return null;
         }
+        
     }    
 }
